@@ -2881,6 +2881,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@big-whale-labs/prettier-config@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@big-whale-labs/prettier-config@npm:1.1.1"
+  checksum: 52873751a245cefdef8588abab3eef5a4b1212fd462de3c03c3081df4735222f82ced2e04d103c327cf43d65d7060a85b7e2878529c0f13661dbbd7e9a68a00d
+  languageName: node
+  linkType: hard
+
 "@colors/colors@npm:^1.5.0":
   version: 1.5.0
   resolution: "@colors/colors@npm:1.5.0"
@@ -13331,6 +13338,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "seal-hub-frontend@workspace:."
   dependencies:
+    "@big-whale-labs/prettier-config": ^1.1.1
     "@preact/preset-vite": ^2.4.0
     "@types/node": ^18.11.9
     "@typescript-eslint/eslint-plugin": ^5.42.0

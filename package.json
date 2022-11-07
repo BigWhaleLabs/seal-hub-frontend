@@ -24,6 +24,7 @@
     ]
   },
   "dependencies": {
+    "@big-whale-labs/prettier-config": "^1.1.1",
     "@vitejs/plugin-react": "^2.2.0",
     "preact": "^10.11.2",
     "unfetch": "^4.2.0",
