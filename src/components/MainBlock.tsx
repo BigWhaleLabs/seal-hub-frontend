@@ -1,5 +1,6 @@
-import { GradientText, HeaderText, StatusText } from 'components/Text'
+import BottomCard from 'components/BottomCard'
 import StatusBlock from 'components/StatusBlock'
+import TopCard from 'components/TopCard'
 import classnames, {
   alignItems,
   display,
@@ -18,19 +19,18 @@ const container = classnames(
 export default function () {
   return (
     <div className={container}>
-      <HeaderText>Verify, and stay anonymous</HeaderText>
-      <GradientText>In laymen’s terms:</GradientText>
-      <StatusText color="success">
-        Checking for existing commitment...
-      </StatusText>
-      <StatusBlock
-        loadingText="Waiting for signature"
-        subtitle="We’re requesting your signature to generate your commitment. "
+      <TopCard
+        label="// 100% ANONYMOUS"
+        title="Verify, and stay anonymous"
+        subtitle="SealHub allows anyone to prove they own a wallet without exposing their identity—not even we’ll know who you are."
+        statusOrContent={
+          <StatusBlock
+            loadingText="Checking for existing commitment..."
+            subtitle="Hang tight!"
+          />
+        }
       />
-      <StatusBlock
-        loadingText="Checking for existing commitment..."
-        subtitle="Hang tight!"
-      />
+      <BottomCard />
     </div>
   )
 }
