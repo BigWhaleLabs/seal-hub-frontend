@@ -13,7 +13,7 @@ import classnames, {
   padding,
 } from 'classnames/tailwind'
 
-const castLoading = classnames(
+const statusLoading = classnames(
   display('flex'),
   backgroundColor('bg-black-background'),
   flexDirection('flex-col'),
@@ -41,7 +41,7 @@ export default function ({
   completed?: boolean
 }) {
   return (
-    <div className={castLoading}>
+    <div className={statusLoading}>
       {errorBlock}
       <AccentText>
         <StatusText color="success">
