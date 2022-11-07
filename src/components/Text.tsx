@@ -49,12 +49,19 @@ export function GradientText({ children }: ChildrenProp) {
   return <span className={gradientText}>{children}</span>
 }
 
-const statusText = classnames(
-  textColor('text-tertiary'),
-  fontSize('text-sm'),
-  fontFamily('font-primary'),
-  fontWeight('font-bold')
-)
-export function StatusText({ children }: ChildrenProp) {
-  return <span className={statusText}>{children}</span>
+const statusText = (color: 'success' | 'error') =>
+  classnames(
+    textColor({
+      'text-tertiary': color === 'success',
+      'text-error': color === 'error',
+    }),
+    fontSize('text-sm'),
+    fontFamily('font-primary'),
+    fontWeight('font-bold')
+  )
+export function StatusText({
+  children,
+  color,
+}: ChildrenProp & { color: 'success' | 'error' }) {
+  return <span className={statusText(color)}>{children}</span>
 }

@@ -21,7 +21,9 @@ export default function () {
     <div className={container}>
       <HeaderText>Verify, and stay anonymous</HeaderText>
       <GradientText>In laymen’s terms:</GradientText>
-      <StatusText>Checking for existing commitment...</StatusText>
+      <StatusText color="success">
+        Checking for existing commitment...
+      </StatusText>
       {/* <Suspense fallback={<BodyText>Loading...</BodyText>}>
         <UserCount />
       </Suspense> */}

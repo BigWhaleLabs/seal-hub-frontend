@@ -11,6 +11,7 @@ module.exports = {
         accent: 'var(--accent)',
         secondary: 'var(--secondary)',
         tertiary: 'var(--tertiary)',
+        error: 'var(--error)',
         black: {
           background: '#040404',
           'background-purpose': '#12141D',
