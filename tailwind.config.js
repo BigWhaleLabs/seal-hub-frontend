@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       colors: {
         'formal-accent': 'var(--formal-accent)',
+        accent: 'var(--accent)',
         black: {
           background: '#040404',
           'background-purpose': '#12141D',
