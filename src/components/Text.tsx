@@ -7,7 +7,6 @@ import {
   fontWeight,
   gradientColorStops,
   lineHeight,
-  textAlign,
   textColor,
 } from 'classnames/tailwind'
 import ChildrenProp from 'models/ChildrenProp'

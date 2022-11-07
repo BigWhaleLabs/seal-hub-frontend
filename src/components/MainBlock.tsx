@@ -1,6 +1,4 @@
-import { BodyText, GradientText, HeaderText, StatusText } from 'components/Text'
-import { Suspense } from 'preact/compat'
-import UserCount from 'components/UserCount'
+import { GradientText, HeaderText, StatusText } from 'components/Text'
 import classnames, {
   alignItems,
   display,
@@ -24,9 +22,6 @@ export default function () {
       <StatusText color="success">
         Checking for existing commitment...
       </StatusText>
-      {/* <Suspense fallback={<BodyText>Loading...</BodyText>}>
-        <UserCount />
-      </Suspense> */}
     </div>
   )
 }
