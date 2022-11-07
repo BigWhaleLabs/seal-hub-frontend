@@ -1,8 +1,11 @@
 import {
+  backgroundClip,
+  backgroundImage,
   classnames,
   fontFamily,
   fontSize,
   fontWeight,
+  gradientColorStops,
   lineHeight,
   textAlign,
   textColor,
@@ -32,4 +35,16 @@ export function BodyText({ children }: ChildrenProp) {
 
 export function AccentText({ children }: ChildrenProp) {
   return <p className={textColor('text-accent')}>{children}</p>
+}
+
+const gradientText = classnames(
+  textColor('text-transparent'),
+  backgroundImage('bg-gradient-to-r'),
+  backgroundClip('bg-clip-text'),
+  gradientColorStops('from-secondary', 'to-accent'),
+  fontWeight('font-bold'),
+  fontFamily('font-primary')
+)
+export function GradientText({ children }: ChildrenProp) {
+  return <span className={gradientText}>{children}</span>
 }
