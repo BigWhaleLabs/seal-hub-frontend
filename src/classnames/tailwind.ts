@@ -282,6 +282,7 @@ export type TBackgroundColor =
   | 'bg-formal-accent'
   | 'bg-accent'
   | 'bg-secondary'
+  | 'bg-tertiary'
   | 'bg-gold-dark'
   | 'bg-gold-light'
 
@@ -1003,6 +1004,9 @@ export type TGradientColorStops =
   | 'from-secondary'
   | 'via-secondary'
   | 'to-secondary'
+  | 'from-tertiary'
+  | 'via-tertiary'
+  | 'to-tertiary'
   | 'from-gold-dark'
   | 'via-gold-dark'
   | 'to-gold-dark'
@@ -2649,6 +2653,11 @@ export type TBorderColor =
   | 'border-r-secondary'
   | 'border-b-secondary'
   | 'border-l-secondary'
+  | 'border-tertiary'
+  | 'border-t-tertiary'
+  | 'border-r-tertiary'
+  | 'border-b-tertiary'
+  | 'border-l-tertiary'
   | 'border-gold-dark'
   | 'border-t-gold-dark'
   | 'border-r-gold-dark'
@@ -3300,6 +3309,7 @@ export type TRingColor =
   | 'ring-formal-accent'
   | 'ring-accent'
   | 'ring-secondary'
+  | 'ring-tertiary'
   | 'ring-gold-dark'
   | 'ring-gold-light'
 
@@ -3562,6 +3572,7 @@ export type TRingOffsetColor =
   | 'ring-offset-formal-accent'
   | 'ring-offset-accent'
   | 'ring-offset-secondary'
+  | 'ring-offset-tertiary'
   | 'ring-offset-gold-dark'
   | 'ring-offset-gold-light'
 
@@ -3818,6 +3829,7 @@ export type TOutlineColor =
   | 'outline-formal-accent'
   | 'outline-accent'
   | 'outline-secondary'
+  | 'outline-tertiary'
   | 'outline-gold-dark'
   | 'outline-gold-light'
 
@@ -4125,6 +4137,7 @@ export type TBoxShadowColor =
   | 'shadow-formal-accent'
   | 'shadow-accent'
   | 'shadow-secondary'
+  | 'shadow-tertiary'
   | 'shadow-gold-dark'
   | 'shadow-gold-light'
 
@@ -5677,6 +5690,7 @@ export type TCaretColor =
   | 'caret-formal-accent'
   | 'caret-accent'
   | 'caret-secondary'
+  | 'caret-tertiary'
   | 'caret-gold-dark'
   | 'caret-gold-light'
 
@@ -5919,6 +5933,7 @@ export type TAccentColor =
   | 'accent-formal-accent'
   | 'accent-accent'
   | 'accent-secondary'
+  | 'accent-tertiary'
   | 'accent-gold-dark'
   | 'accent-gold-light'
 
@@ -7152,6 +7167,7 @@ export type TFill =
   | 'fill-formal-accent'
   | 'fill-accent'
   | 'fill-secondary'
+  | 'fill-tertiary'
   | 'fill-gold'
 
 export type TStroke =
@@ -7185,6 +7201,7 @@ export type TStroke =
   | 'stroke-formal-accent'
   | 'stroke-accent'
   | 'stroke-secondary'
+  | 'stroke-tertiary'
   | 'stroke-gold'
 
 export type TStrokeWidth = 'stroke-0' | 'stroke-1' | 'stroke-2'
@@ -7701,6 +7718,7 @@ export type TPlaceholderColor =
   | 'placeholder-formal-accent'
   | 'placeholder-accent'
   | 'placeholder-secondary'
+  | 'placeholder-tertiary'
   | 'placeholder-gold-dark'
   | 'placeholder-gold-light'
 
@@ -7953,6 +7971,7 @@ export type TTextColor =
   | 'text-formal-accent'
   | 'text-accent'
   | 'text-secondary'
+  | 'text-tertiary'
   | 'text-gold-dark'
   | 'text-gold-light'
 
@@ -8244,6 +8263,7 @@ export type TTextDecorationColor =
   | 'decoration-formal-accent'
   | 'decoration-accent'
   | 'decoration-secondary'
+  | 'decoration-tertiary'
   | 'decoration-gold-dark'
   | 'decoration-gold-light'
 

@@ -48,3 +48,13 @@ const gradientText = classnames(
 export function GradientText({ children }: ChildrenProp) {
   return <span className={gradientText}>{children}</span>
 }
+
+const statusText = classnames(
+  textColor('text-tertiary'),
+  fontSize('text-sm'),
+  fontFamily('font-primary'),
+  fontWeight('font-bold')
+)
+export function StatusText({ children }: ChildrenProp) {
+  return <span className={statusText}>{children}</span>
+}

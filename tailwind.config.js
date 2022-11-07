@@ -10,6 +10,7 @@ module.exports = {
         'formal-accent': 'var(--formal-accent)',
         accent: 'var(--accent)',
         secondary: 'var(--secondary)',
+        tertiary: 'var(--tertiary)',
         black: {
           background: '#040404',
           'background-purpose': '#12141D',

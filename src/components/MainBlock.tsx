@@ -1,4 +1,4 @@
-import { BodyText, GradientText, HeaderText } from 'components/Text'
+import { BodyText, GradientText, HeaderText, StatusText } from 'components/Text'
 import { Suspense } from 'preact/compat'
 import UserCount from 'components/UserCount'
 import classnames, {
@@ -21,6 +21,7 @@ export default function () {
     <div className={container}>
       <HeaderText>Verify, and stay anonymous</HeaderText>
       <GradientText>In laymen’s terms:</GradientText>
+      <StatusText>Checking for existing commitment...</StatusText>
       {/* <Suspense fallback={<BodyText>Loading...</BodyText>}>
         <UserCount />
       </Suspense> */}
