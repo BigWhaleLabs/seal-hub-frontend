@@ -1,26 +1,66 @@
 import {
+  backgroundClip,
+  backgroundImage,
   classnames,
+  fontFamily,
   fontSize,
   fontWeight,
-  textAlign,
+  gradientColorStops,
+  lineHeight,
   textColor,
 } from 'classnames/tailwind'
 import ChildrenProp from 'models/ChildrenProp'
 
-const whiteText = classnames(textColor('text-white'))
-const grayText = classnames(textColor('text-gray-300'))
-
-const headerText = classnames(
-  whiteText,
-  fontSize('text-3xl', 'md:text-6xl'),
-  fontWeight('font-bold'),
-  textAlign('text-center')
-)
-export function HeaderText({ children }: ChildrenProp) {
-  return <p className={headerText}>{children}</p>
+const headerText = (small?: boolean) =>
+  classnames(
+    fontWeight('font-bold'),
+    lineHeight(small ? 'leading-8' : 'leading-10'),
+    fontSize(small ? 'text-2xl' : 'text-3.5xl'),
+    fontFamily('font-primary')
+  )
+export function HeaderText({
+  children,
+  small,
+}: ChildrenProp & {
+  small?: boolean
+}) {
+  return <p className={headerText(small)}>{children}</p>
 }
 
-const bodyText = classnames(grayText, textAlign('text-center'))
+const bodyText = classnames(lineHeight('leading-5'), fontFamily('font-primary'))
 export function BodyText({ children }: ChildrenProp) {
   return <p className={bodyText}>{children}</p>
+}
+
+export function AccentText({ children }: ChildrenProp) {
+  return <p className={textColor('text-accent')}>{children}</p>
+}
+
+const gradientText = classnames(
+  textColor('text-transparent'),
+  backgroundImage('bg-gradient-to-r'),
+  backgroundClip('bg-clip-text'),
+  gradientColorStops('from-secondary', 'to-accent'),
+  fontWeight('font-bold'),
+  fontFamily('font-primary')
+)
+export function GradientText({ children }: ChildrenProp) {
+  return <span className={gradientText}>{children}</span>
+}
+
+const statusText = (color: 'success' | 'error') =>
+  classnames(
+    textColor({
+      'text-tertiary': color === 'success',
+      'text-error': color === 'error',
+    }),
+    fontSize('text-sm'),
+    fontFamily('font-primary'),
+    fontWeight('font-bold')
+  )
+export function StatusText({
+  children,
+  color,
+}: ChildrenProp & { color: 'success' | 'error' }) {
+  return <span className={statusText(color)}>{children}</span>
 }

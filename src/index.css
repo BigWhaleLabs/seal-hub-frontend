@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --formal-accent: #efecd6;
+  --accent: #fed823;
+  --secondary: #ff7bed;
+  --tertiary: #01feb6;
+  --error: #ff7b83;
+}
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--formal-accent);
 }

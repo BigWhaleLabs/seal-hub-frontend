@@ -1,7 +1,6 @@
-import { BodyText, HeaderText } from 'components/Text'
-import { Suspense } from 'preact/compat'
+import { GradientText, HeaderText, StatusText } from 'components/Text'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import UserCount from 'components/UserCount'
+import StatusBlock from 'components/StatusBlock'
 import classnames, {
   alignItems,
   display,
@@ -20,11 +19,20 @@ const container = classnames(
 export default function () {
   return (
     <div className={container}>
-      <HeaderText>Frontend Template</HeaderText>
+      <HeaderText>Verify, and stay anonymous</HeaderText>
+      <GradientText>In laymen’s terms:</GradientText>
       <ConnectWalletButton />
-      <Suspense fallback={<BodyText>Loading...</BodyText>}>
-        <UserCount />
-      </Suspense>
+      <StatusText color="success">
+        Checking for existing commitment...
+      </StatusText>
+      <StatusBlock
+        loadingText="Waiting for signature"
+        subtitle="We’re requesting your signature to generate your commitment. "
+      />
+      <StatusBlock
+        loadingText="Checking for existing commitment..."
+        subtitle="Hang tight!"
+      />
     </div>
   )
 }
