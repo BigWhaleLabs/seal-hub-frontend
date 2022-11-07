@@ -34,6 +34,9 @@ module.exports = {
       fontSize: {
         '3.5xl': '2rem',
       },
+      dropShadow: {
+        accent: '0rem 0rem 0.625rem var(--accent)',
+      },
     },
     container: {
       center: true,

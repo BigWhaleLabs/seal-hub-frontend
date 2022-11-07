@@ -4273,6 +4273,7 @@ export type TDropShadow =
   | 'drop-shadow-xl'
   | 'drop-shadow-2xl'
   | 'drop-shadow-none'
+  | 'drop-shadow-accent'
 
 export type TGrayscale = 'grayscale-0' | 'grayscale'
 
