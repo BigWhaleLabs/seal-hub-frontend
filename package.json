@@ -23,7 +23,6 @@
       "last 1 safari version"
     ]
   },
-  "prettier": "@big-whale-labs/prettier-config",
   "dependencies": {
     "@vitejs/plugin-react": "^2.2.0",
     "preact": "^10.11.2",
@@ -31,7 +30,6 @@
     "valtio": "^1.7.5"
   },
   "devDependencies": {
-    "@big-whale-labs/prettier-config": "^1.1.1",
     "@preact/preset-vite": "^2.4.0",
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
