@@ -1,6 +1,4 @@
-import { BodyText, HeaderText } from 'components/Text'
-import { Suspense } from 'preact/compat'
-import UserCount from 'components/UserCount'
+import { GradientText, HeaderText, StatusText } from 'components/Text'
 import classnames, {
   alignItems,
   display,
@@ -19,10 +17,11 @@ const container = classnames(
 export default function () {
   return (
     <div className={container}>
-      <HeaderText>Frontend Template</HeaderText>
-      <Suspense fallback={<BodyText>Loading...</BodyText>}>
-        <UserCount />
-      </Suspense>
+      <HeaderText>Verify, and stay anonymous</HeaderText>
+      <GradientText>In laymen’s terms:</GradientText>
+      <StatusText color="success">
+        Checking for existing commitment...
+      </StatusText>
     </div>
   )
 }
