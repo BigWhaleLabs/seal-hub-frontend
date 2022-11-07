@@ -279,6 +279,7 @@ export type TBackgroundColor =
   | 'bg-rose-700'
   | 'bg-rose-800'
   | 'bg-rose-900'
+  | 'bg-formal-accent'
   | 'bg-gold-dark'
   | 'bg-gold-light'
 
@@ -991,6 +992,9 @@ export type TGradientColorStops =
   | 'from-rose-900'
   | 'via-rose-900'
   | 'to-rose-900'
+  | 'from-formal-accent'
+  | 'via-formal-accent'
+  | 'to-formal-accent'
   | 'from-gold-dark'
   | 'via-gold-dark'
   | 'to-gold-dark'
@@ -2622,6 +2626,11 @@ export type TBorderColor =
   | 'border-l-rose-900'
   | 'border-x-rose-900'
   | 'border-y-rose-900'
+  | 'border-formal-accent'
+  | 'border-t-formal-accent'
+  | 'border-r-formal-accent'
+  | 'border-b-formal-accent'
+  | 'border-l-formal-accent'
   | 'border-gold-dark'
   | 'border-t-gold-dark'
   | 'border-r-gold-dark'
@@ -3270,6 +3279,7 @@ export type TRingColor =
   | 'ring-rose-700'
   | 'ring-rose-800'
   | 'ring-rose-900'
+  | 'ring-formal-accent'
   | 'ring-gold-dark'
   | 'ring-gold-light'
 
@@ -3529,6 +3539,7 @@ export type TRingOffsetColor =
   | 'ring-offset-rose-700'
   | 'ring-offset-rose-800'
   | 'ring-offset-rose-900'
+  | 'ring-offset-formal-accent'
   | 'ring-offset-gold-dark'
   | 'ring-offset-gold-light'
 
@@ -3782,6 +3793,7 @@ export type TOutlineColor =
   | 'outline-rose-700'
   | 'outline-rose-800'
   | 'outline-rose-900'
+  | 'outline-formal-accent'
   | 'outline-gold-dark'
   | 'outline-gold-light'
 
@@ -4086,6 +4098,7 @@ export type TBoxShadowColor =
   | 'shadow-rose-700'
   | 'shadow-rose-800'
   | 'shadow-rose-900'
+  | 'shadow-formal-accent'
   | 'shadow-gold-dark'
   | 'shadow-gold-light'
 
@@ -5635,6 +5648,7 @@ export type TCaretColor =
   | 'caret-rose-700'
   | 'caret-rose-800'
   | 'caret-rose-900'
+  | 'caret-formal-accent'
   | 'caret-gold-dark'
   | 'caret-gold-light'
 
@@ -5874,6 +5888,7 @@ export type TAccentColor =
   | 'accent-rose-800'
   | 'accent-rose-900'
   | 'accent-auto'
+  | 'accent-formal-accent'
   | 'accent-gold-dark'
   | 'accent-gold-light'
 
@@ -7104,6 +7119,7 @@ export type TFill =
   | 'fill-fuchsia'
   | 'fill-pink'
   | 'fill-rose'
+  | 'fill-formal-accent'
   | 'fill-gold'
 
 export type TStroke =
@@ -7134,6 +7150,7 @@ export type TStroke =
   | 'stroke-fuchsia'
   | 'stroke-pink'
   | 'stroke-rose'
+  | 'stroke-formal-accent'
   | 'stroke-gold'
 
 export type TStrokeWidth = 'stroke-0' | 'stroke-1' | 'stroke-2'
@@ -7363,7 +7380,7 @@ export type TTextDecorationStyle =
   | 'decoration-dashed'
   | 'decoration-wavy'
 
-export type TFontFamily = 'font-sans' | 'font-serif' | 'font-mono'
+export type TFontFamily = 'font-primary'
 
 export type TFontSize =
   | 'text-xs'
@@ -7379,6 +7396,7 @@ export type TFontSize =
   | 'text-7xl'
   | 'text-8xl'
   | 'text-9xl'
+  | 'text-3.5xl'
 
 export type TFontWeight =
   | 'font-thin'
@@ -7646,6 +7664,7 @@ export type TPlaceholderColor =
   | 'placeholder-rose-700'
   | 'placeholder-rose-800'
   | 'placeholder-rose-900'
+  | 'placeholder-formal-accent'
   | 'placeholder-gold-dark'
   | 'placeholder-gold-light'
 
@@ -7895,6 +7914,7 @@ export type TTextColor =
   | 'text-rose-700'
   | 'text-rose-800'
   | 'text-rose-900'
+  | 'text-formal-accent'
   | 'text-gold-dark'
   | 'text-gold-light'
 
@@ -8183,6 +8203,7 @@ export type TTextDecorationColor =
   | 'decoration-rose-700'
   | 'decoration-rose-800'
   | 'decoration-rose-900'
+  | 'decoration-formal-accent'
   | 'decoration-gold-dark'
   | 'decoration-gold-light'
 

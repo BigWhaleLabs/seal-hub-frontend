@@ -2,8 +2,12 @@
 module.exports = {
   content: ['./index.html', './src/**/!(tailwind).{ts,tsx}'],
   theme: {
+    fontFamily: {
+      primary: ['"Space Grotesk"', 'sans-serif'],
+    },
     extend: {
       colors: {
+        'formal-accent': 'var(--formal-accent)',
         black: {
           background: '#040404',
           'background-purpose': '#12141D',
@@ -22,6 +26,9 @@ module.exports = {
         chart: '108px',
         time: '95px',
         glass: '107px',
+      },
+      fontSize: {
+        '3.5xl': '2rem',
       },
     },
     container: {
