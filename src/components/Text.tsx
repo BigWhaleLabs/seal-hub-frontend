@@ -9,15 +9,21 @@ import {
 } from 'classnames/tailwind'
 import ChildrenProp from 'models/ChildrenProp'
 
-const headerText = classnames(
-  textColor('text-formal-accent'),
-  fontWeight('font-bold'),
-  lineHeight('leading-10'),
-  fontSize('text-3.5xl'),
-  fontFamily('font-primary')
-)
-export function HeaderText({ children }: ChildrenProp) {
-  return <p className={headerText}>{children}</p>
+const headerText = (small?: boolean) =>
+  classnames(
+    textColor('text-formal-accent'),
+    fontWeight('font-bold'),
+    lineHeight(small ? 'leading-8' : 'leading-10'),
+    fontSize(small ? 'text-2xl' : 'text-3.5xl'),
+    fontFamily('font-primary')
+  )
+export function HeaderText({
+  children,
+  small,
+}: ChildrenProp & {
+  small: boolean
+}) {
+  return <p className={headerText(small)}>{children}</p>
 }
 
 const bodyText = classnames(
