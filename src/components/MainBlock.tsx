@@ -5,8 +5,8 @@ import classnames, {
   alignItems,
   display,
   flexDirection,
+  gap,
   justifyContent,
-  space,
 } from 'classnames/tailwind'
 
 const container = classnames(
@@ -14,7 +14,7 @@ const container = classnames(
   flexDirection('flex-col'),
   justifyContent('justify-center'),
   alignItems('items-center'),
-  space('space-y-2')
+  gap('gap-y-8')
 )
 export default function () {
   return (
