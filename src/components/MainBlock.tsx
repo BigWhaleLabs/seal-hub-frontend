@@ -19,10 +19,10 @@ const container = classnames(
 export default function () {
   return (
     <div className={container}>
-      <HeaderText>Frontend Template</HeaderText>
-      <Suspense fallback={<BodyText>Loading...</BodyText>}>
+      <HeaderText>Verify, and stay anonymous</HeaderText>
+      {/* <Suspense fallback={<BodyText>Loading...</BodyText>}>
         <UserCount />
-      </Suspense>
+      </Suspense> */}
     </div>
   )
 }

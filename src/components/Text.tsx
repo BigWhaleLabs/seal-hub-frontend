@@ -20,7 +20,11 @@ export function HeaderText({ children }: ChildrenProp) {
   return <p className={headerText}>{children}</p>
 }
 
-const bodyText = classnames(grayText, textAlign('text-center'))
+const bodyText = classnames(
+  textColor('text-formal-accent'),
+  lineHeight('leading-5'),
+  fontFamily('font-primary')
+)
 export function BodyText({ children }: ChildrenProp) {
   return <p className={bodyText}>{children}</p>
 }
