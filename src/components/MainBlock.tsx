@@ -1,5 +1,6 @@
 import { BodyText, HeaderText } from 'components/Text'
 import { Suspense } from 'preact/compat'
+import ConnectWalletButton from 'components/ConnectWalletButton'
 import UserCount from 'components/UserCount'
 import classnames, {
   alignItems,
@@ -20,6 +21,7 @@ export default function () {
   return (
     <div className={container}>
       <HeaderText>Frontend Template</HeaderText>
+      <ConnectWalletButton />
       <Suspense fallback={<BodyText>Loading...</BodyText>}>
         <UserCount />
       </Suspense>
