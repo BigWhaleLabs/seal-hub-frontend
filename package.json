@@ -1,14 +1,14 @@
 {
-  "name": "frontend-starter",
+  "name": "seal-hub-frontend",
   "version": "1.0.0",
   "license": "MIT",
+  "homepage": "https://hub.sealcred.xyz",
   "scripts": {
     "start": "yarn generate-css-types && vite",
-    "build": "yarn generate-css-types && cross-env NODE_ENV=production tsc && vite build",
+    "build": "yarn generate-css-types && tsc && cross-env NODE_ENV=production tsc && vite build",
     "pretty": "prettier --check src",
     "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src",
     "generate-css-types": "tailwindcss-classnames -o src/classnames/tailwind.ts && prettier --write src/classnames/tailwind.ts",
-    "update": "yarn build && rm -r docs && cp -r dist docs && git add . && git commit -m 'update' && git push",
     "preview": "yarn build && yarn vite preview"
   },
   "browserslist": {
@@ -30,7 +30,10 @@
     "valtio": "^1.7.5"
   },
   "devDependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
+    "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
     "@preact/preset-vite": "^2.4.0",
+    "@rollup/plugin-inject": "^5.0.2",
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
