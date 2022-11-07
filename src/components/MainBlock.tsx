@@ -1,6 +1,5 @@
 import { GradientText, HeaderText, StatusText } from 'components/Text'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import StatusBlock from 'components/StatusBlock'
 import classnames, {
   alignItems,
   display,
@@ -25,14 +24,6 @@ export default function () {
       <StatusText color="success">
         Checking for existing commitment...
       </StatusText>
-      <StatusBlock
-        loadingText="Waiting for signature"
-        subtitle="We’re requesting your signature to generate your commitment. "
-      />
-      <StatusBlock
-        loadingText="Checking for existing commitment..."
-        subtitle="Hang tight!"
-      />
     </div>
   )
 }
