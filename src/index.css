@@ -16,4 +16,5 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'JetBrains Mono', monospace;
   color: var(--formal-accent);
+  background-color: #0d0030;
 }
