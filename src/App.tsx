@@ -1,3 +1,4 @@
+import '@rainbow-me/rainbowkit/styles.css'
 import MainBlock from 'components/MainBlock'
 import RainbowWrapper from 'components/RainbowWrapper'
 import Root from 'components/Root'

@@ -1,28 +1,24 @@
-import { useConnectModal, useSignMessage } from '@web3modal/react'
-import WalletContext from 'helpers/WalletContext'
+import { Context, useSignMessage } from 'wagmi'
+import { GradientText, StatusText } from 'components/Text'
+import { parseError } from '@big-whale-labs/frontend-utils'
+import { useConnectModal } from '@rainbow-me/rainbowkit'
+import Button from 'components/Button'
+import Spinner from 'icons/Spinner'
 import classnames, {
   alignItems,
-  backgroundColor,
-  borderColor,
-  borderRadius,
-  borderWidth,
+  cursor,
   display,
   flexDirection,
   flexWrap,
   gap,
-  justifyContent,
-  padding,
-  textColor,
-  transitionProperty,
-  wordBreak,
 } from 'classnames/tailwind'
 
 const container = classnames(
   display('flex'),
-  flexDirection('flex-row'),
+  flexDirection('flex-col'),
   flexWrap('flex-wrap'),
   alignItems('items-center'),
-  gap('gap-2')
+  gap('gap-y-4')
 )
 const blocksContainer = classnames(
   display('flex'),
@@ -31,59 +27,51 @@ const blocksContainer = classnames(
   alignItems('items-center'),
   gap('gap-2')
 )
-const button = classnames(
-  backgroundColor('bg-gold-dark'),
-  borderRadius('rounded-full'),
-  padding('px-4', 'py-3'),
-  textColor('text-white'),
-  borderWidth('border'),
-  borderColor('border-white')
-)
-const addressContainer = classnames(
-  display('flex'),
-  flexDirection('flex-row'),
-  gap('gap-x-2'),
-  justifyContent('justify-center'),
-  alignItems('items-center'),
-  backgroundColor('bg-gold-dark'),
-  borderRadius('rounded-full'),
-  padding('px-4', 'py-3'),
-  textColor('text-white'),
-  transitionProperty('transition-colors'),
-  borderWidth('border'),
-  borderColor('border-white'),
-  wordBreak('break-all')
-)
+
 export default function () {
-  const { open } = useConnectModal()
-  const { signature, sign } = useSignMessage()
+  const { openConnectModal } = useConnectModal()
+  const { error, isError, isLoading, isSuccess, signMessage } = useSignMessage()
+  const showButton = !isLoading && !isSuccess
+
   return (
-    <WalletContext.Consumer>
-      {({ address, connected, name, ownsToken }) => (
+    <Context.Consumer>
+      {({
+        address,
+        connected,
+        name,
+      }: {
+        address?: string
+        connected: boolean
+        name: string
+        chainId: number
+        isLoading: boolean
+      }) => (
         <div className={container}>
           {!connected && (
-            <button type="button" className={button} onClick={open}>
-              Connect wallet!
-            </button>
+            <Button onClick={openConnectModal}>Connect wallet</Button>
           )}
           {connected && (
             <div className={blocksContainer}>
-              <div className={addressContainer}>{name || address}</div>
-              {ownsToken && !signature && (
-                <button
-                  type="button"
-                  className={button}
-                  onClick={() => {
-                    void sign('Sign for SealHub')
-                  }}
-                >
-                  Sign message
-                </button>
-              )}
+              <StatusText color="success">{name || address}</StatusText>
             </div>
           )}
+          {connected && showButton && (
+            <div
+              className={cursor('cursor-pointer')}
+              onClick={() => {
+                signMessage({ message: 'Sign for SealHub' })
+              }}
+            >
+              <GradientText>Sign message</GradientText>
+            </div>
+          )}
+          <StatusText color={isError ? 'error' : 'success'}>
+            {isLoading && <Spinner />}
+            {isError && parseError(error)}
+            {isSuccess && 'Signed successfully'}
+          </StatusText>
         </div>
       )}
-    </WalletContext.Consumer>
+    </Context.Consumer>
   )
 }

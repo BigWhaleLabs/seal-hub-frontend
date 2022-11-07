@@ -1,23 +1,22 @@
-import {
-  Web3ModalProvider,
-  useAccount,
-  useFetchEnsName,
-} from '@web3modal/react'
-import { modalConfig, wagmiClient } from 'types/Web3Config'
+import { Context, WagmiConfig, useAccount, useEnsName, useNetwork } from 'wagmi'
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit'
+import { chainList, wagmiClient } from 'types/wagmiClient'
 import ChildrenProp from 'models/ChildrenProp'
-import WalletContext from 'helpers/WalletContext'
 
 function Content({ children }: ChildrenProp) {
-  const { connected, address, chainId } = useAccount()
-  const { isLoading, name } = connected
-    ? useFetchEnsName({
-        chainId,
-        address,
-      })
-    : { isLoading: true, name: null }
+  const { isConnected: connected, address } = useAccount()
+  const { chain } = useNetwork()
+  const chainId = chain?.id
+  const { isLoading, data: name = null } =
+    connected && chainId
+      ? useEnsName({
+          chainId: chainId,
+          address,
+        })
+      : { isLoading: true }
 
   return (
-    <WalletContext.Provider
+    <Context.Provider
       value={{
         address,
         connected,
@@ -28,14 +27,16 @@ function Content({ children }: ChildrenProp) {
       }}
     >
       {children}
-    </WalletContext.Provider>
+    </Context.Provider>
   )
 }
 
 export default function ({ children }: ChildrenProp) {
   return (
-    <Web3ModalProvider config={modalConfig} ethereumClient={wagmiClient}>
-      <Content>{children}</Content>
-    </Web3ModalProvider>
+    <WagmiConfig client={wagmiClient}>
+      <RainbowKitProvider chains={chainList} theme={darkTheme()}>
+        <Content>{children}</Content>
+      </RainbowKitProvider>
+    </WagmiConfig>
   )
 }

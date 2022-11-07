@@ -284,6 +284,8 @@ export type TBackgroundColor =
   | 'bg-secondary'
   | 'bg-tertiary'
   | 'bg-error'
+  | 'bg-primary-bright'
+  | 'bg-primary-dark'
   | 'bg-gold-dark'
   | 'bg-gold-light'
 
@@ -1011,6 +1013,12 @@ export type TGradientColorStops =
   | 'from-error'
   | 'via-error'
   | 'to-error'
+  | 'from-primary-bright'
+  | 'via-primary-bright'
+  | 'to-primary-bright'
+  | 'from-primary-dark'
+  | 'via-primary-dark'
+  | 'to-primary-dark'
   | 'from-gold-dark'
   | 'via-gold-dark'
   | 'to-gold-dark'
@@ -2667,6 +2675,16 @@ export type TBorderColor =
   | 'border-r-error'
   | 'border-b-error'
   | 'border-l-error'
+  | 'border-primary-bright'
+  | 'border-t-primary-bright'
+  | 'border-r-primary-bright'
+  | 'border-b-primary-bright'
+  | 'border-l-primary-bright'
+  | 'border-primary-dark'
+  | 'border-t-primary-dark'
+  | 'border-r-primary-dark'
+  | 'border-b-primary-dark'
+  | 'border-l-primary-dark'
   | 'border-gold-dark'
   | 'border-t-gold-dark'
   | 'border-r-gold-dark'
@@ -2790,6 +2808,15 @@ export type TBorderRadius =
   | 'rounded-br-avatar'
   | 'rounded-bl-avatar'
   | 'rounded-avatar'
+  | 'rounded-t-10xl'
+  | 'rounded-r-10xl'
+  | 'rounded-b-10xl'
+  | 'rounded-l-10xl'
+  | 'rounded-tr-10xl'
+  | 'rounded-tl-10xl'
+  | 'rounded-br-10xl'
+  | 'rounded-bl-10xl'
+  | 'rounded-10xl'
 
 export type TBorderWidth =
   | 'border-t-0'
@@ -3320,6 +3347,8 @@ export type TRingColor =
   | 'ring-secondary'
   | 'ring-tertiary'
   | 'ring-error'
+  | 'ring-primary-bright'
+  | 'ring-primary-dark'
   | 'ring-gold-dark'
   | 'ring-gold-light'
 
@@ -3584,6 +3613,8 @@ export type TRingOffsetColor =
   | 'ring-offset-secondary'
   | 'ring-offset-tertiary'
   | 'ring-offset-error'
+  | 'ring-offset-primary-bright'
+  | 'ring-offset-primary-dark'
   | 'ring-offset-gold-dark'
   | 'ring-offset-gold-light'
 
@@ -3842,6 +3873,8 @@ export type TOutlineColor =
   | 'outline-secondary'
   | 'outline-tertiary'
   | 'outline-error'
+  | 'outline-primary-bright'
+  | 'outline-primary-dark'
   | 'outline-gold-dark'
   | 'outline-gold-light'
 
@@ -3916,6 +3949,7 @@ export type TBoxShadow =
   | 'shadow-2xl'
   | 'shadow-inner'
   | 'shadow-none'
+  | 'shadow-button-active'
 
 export type TBoxShadowColor =
   | 'shadow-inherit'
@@ -4151,6 +4185,8 @@ export type TBoxShadowColor =
   | 'shadow-secondary'
   | 'shadow-tertiary'
   | 'shadow-error'
+  | 'shadow-primary-bright'
+  | 'shadow-primary-dark'
   | 'shadow-gold-dark'
   | 'shadow-gold-light'
 
@@ -5705,6 +5741,8 @@ export type TCaretColor =
   | 'caret-secondary'
   | 'caret-tertiary'
   | 'caret-error'
+  | 'caret-primary-bright'
+  | 'caret-primary-dark'
   | 'caret-gold-dark'
   | 'caret-gold-light'
 
@@ -5949,6 +5987,8 @@ export type TAccentColor =
   | 'accent-secondary'
   | 'accent-tertiary'
   | 'accent-error'
+  | 'accent-primary-bright'
+  | 'accent-primary-dark'
   | 'accent-gold-dark'
   | 'accent-gold-light'
 
@@ -7184,6 +7224,8 @@ export type TFill =
   | 'fill-secondary'
   | 'fill-tertiary'
   | 'fill-error'
+  | 'fill-primary-bright'
+  | 'fill-primary-dark'
   | 'fill-gold'
 
 export type TStroke =
@@ -7219,6 +7261,8 @@ export type TStroke =
   | 'stroke-secondary'
   | 'stroke-tertiary'
   | 'stroke-error'
+  | 'stroke-primary-bright'
+  | 'stroke-primary-dark'
   | 'stroke-gold'
 
 export type TStrokeWidth = 'stroke-0' | 'stroke-1' | 'stroke-2'
@@ -7737,6 +7781,8 @@ export type TPlaceholderColor =
   | 'placeholder-secondary'
   | 'placeholder-tertiary'
   | 'placeholder-error'
+  | 'placeholder-primary-bright'
+  | 'placeholder-primary-dark'
   | 'placeholder-gold-dark'
   | 'placeholder-gold-light'
 
@@ -7991,6 +8037,8 @@ export type TTextColor =
   | 'text-secondary'
   | 'text-tertiary'
   | 'text-error'
+  | 'text-primary-bright'
+  | 'text-primary-dark'
   | 'text-gold-dark'
   | 'text-gold-light'
 
@@ -8284,6 +8332,8 @@ export type TTextDecorationColor =
   | 'decoration-secondary'
   | 'decoration-tertiary'
   | 'decoration-error'
+  | 'decoration-primary-bright'
+  | 'decoration-primary-dark'
   | 'decoration-gold-dark'
   | 'decoration-gold-light'
 

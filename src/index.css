@@ -8,6 +8,8 @@
   --secondary: #ff7bed;
   --tertiary: #01feb6;
   --error: #ff7b83;
+  --primary-bright: #01f5ff;
+  --primary-dark: #0d0030;
 }
 
 body {
