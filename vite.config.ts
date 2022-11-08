@@ -16,4 +16,5 @@ export default defineConfig({
     },
     outDir: './docs',
   },
+  server: { port: 3000 },
 })

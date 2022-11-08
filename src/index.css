@@ -5,11 +5,35 @@
 :root {
   --formal-accent: #efecd6;
   --accent: #fed823;
+  --accent-hover: #fed950;
+  --primary: #15a1fc;
   --secondary: #ff7bed;
   --tertiary: #01feb6;
   --error: #ff7b83;
-  --primary-bright: #01f5ff;
+
+  --selection: #ff7bed35;
   --primary-dark: #0d0030;
+  --primary-bright: #01f5ff;
+  --primary-background: #1a0259;
+  --primary-semi-dimmed: #4b61d5;
+}
+
+* {
+  -webkit-tap-highlight-color: var(--transparent);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Grid */
+  background: conic-gradient(
+      from 90deg at 0.06rem 0.06rem,
+      var(--primary-dark) 90deg,
+      var(--primary-background) 0
+    )
+    0 0/3rem 3rem;
+  background-color: var(--primary-dark);
+  scrollbar-color: var(--accent) transparent;
+  scrollbar-width: thin;
 }
 
 body {
@@ -18,4 +42,50 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'JetBrains Mono', monospace;
   color: var(--formal-accent);
+  min-height: 100vh;
+}
+
+svg {
+  fill: none;
+}
+path,
+circle {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+::selection {
+  background: var(--selection);
+}
+::-moz-selection {
+  background: var(--selection);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 20px;
+  background-clip: content-box;
+  border: 5px solid transparent;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+  border-radius: 20px;
+  background-clip: content-box;
+  border: 4px solid transparent;
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    /* Grid */
+    background: conic-gradient(
+        from 90deg at 0.06rem 0.06rem,
+        var(--primary-dark) 90deg,
+        var(--primary-background) 0
+      )
+      0 0/2rem 2rem;
+  }
 }

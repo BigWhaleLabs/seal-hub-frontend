@@ -15,7 +15,7 @@ import classnames, {
 
 const statusLoading = classnames(
   display('flex'),
-  backgroundColor('bg-black-background'),
+  backgroundColor('bg-primary-dark'),
   flexDirection('flex-col'),
   padding('p-6'),
   alignItems('items-center'),
