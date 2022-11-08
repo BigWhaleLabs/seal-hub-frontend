@@ -129,20 +129,10 @@ circle {
 }
 
 .mask-border-fade-1 {
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    var(--accent) 25%,
-    transparent
-  );
+  mask-image: linear-gradient(90deg, transparent, black 25%, transparent);
 }
 .mask-border-fade-2 {
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    var(--accent) 60%,
-    transparent
-  );
+  mask-image: linear-gradient(90deg, transparent, black 70%, transparent);
 }
 
 @media screen and (max-width: 600px) {
