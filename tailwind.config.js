@@ -23,7 +23,7 @@ module.exports = {
         '5xl': '2.5rem',
       },
       boxShadow: {
-        '2xl': '0rem 0.25rem 2.75rem 0rem rgb(0 0 0 / 0.25)',
+        '2xl': '0rem 0rem 1.75rem 0rem rgb(0 0 0 / 0.25)',
         lg: '0rem 0rem 1rem 0rem rgb(0 0 0 / 0.25)',
         'button-active': '0rem 0rem 0.375rem rgb(0 0 0 / 1)',
         card: '0rem 0.25rem 2.75rem 0rem rgb(0 0 0 / 0.25), inset 0px 0px 1rem rgb(0 0 0 / 0.25)',
@@ -36,8 +36,8 @@ module.exports = {
         3: 3,
       },
       dropShadow: {
-        accent: '0 0 0.625rem var(--accent)',
-        gold: '0 0 1rem rgba(254, 216, 35, 0.4)',
+        accent: '0rem 0rem 0.625rem var(--accent)',
+        gold: '0rem 0rem 1rem rgba(254, 216, 35, 0.4)',
       },
     },
     container: {
