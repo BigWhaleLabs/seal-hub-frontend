@@ -6,8 +6,9 @@ import classnames, {
   borderColor,
   borderRadius,
   borderWidth,
+  boxShadow,
+  boxShadowColor,
   display,
-  dropShadow,
   flexDirection,
   gap,
   padding,
@@ -30,7 +31,8 @@ const wrapper = classnames(
   borderRadius('rounded-2xl'),
   borderWidth('border'),
   borderColor('border-accent'),
-  dropShadow('drop-shadow-accent')
+  boxShadow('shadow-card'),
+  boxShadowColor('shadow-accent-semi-transparent')
 )
 
 export default function ({
