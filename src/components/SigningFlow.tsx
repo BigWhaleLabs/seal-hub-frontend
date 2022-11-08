@@ -3,6 +3,7 @@ import { useEffect } from 'preact/hooks'
 import StatusBlock from 'components/StatusBlock'
 
 export default function () {
+  const { disconnect } = useDisconnect()
   const { isLoading, isSuccess, signMessage } = useSignMessage({
     message: 'Sign a message to connect to SealHub',
     onError() {
@@ -11,7 +12,6 @@ export default function () {
   })
   useEffect(signMessage, [signMessage])
 
-  const { disconnect } = useDisconnect()
   return (
     <>
       {isLoading && (

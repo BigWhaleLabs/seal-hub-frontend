@@ -1,4 +1,4 @@
-import { GradientText, HeaderText, StatusText } from 'components/Text'
+import { GradientText, HeaderText } from 'components/Text'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import classnames, {
   alignItems,
@@ -21,9 +21,6 @@ export default function () {
       <HeaderText>Verify, and stay anonymous</HeaderText>
       <GradientText>In laymen’s terms:</GradientText>
       <ConnectWalletButton />
-      <StatusText color="success">
-        Checking for existing commitment...
-      </StatusText>
     </div>
   )
 }
