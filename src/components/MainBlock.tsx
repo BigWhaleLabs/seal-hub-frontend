@@ -1,11 +1,16 @@
-import { GradientText, HeaderText } from 'components/Text'
-import ConnectWalletButton from 'components/ConnectWalletButton'
+import { useSnapshot } from 'valtio'
+import AppStore from 'stores/AppStore'
+import BottomCard from 'components/BottomCard'
+import GettingStartedBlock from 'components/GettingStartedBlock'
+import SuccessCardBlock from 'components/SuccessCard/SuccessCardBlock'
+import SuccessSubtitle from 'components/SuccessCard/SuccessSubtitle'
+import TopCard from 'components/TopCard'
 import classnames, {
   alignItems,
   display,
   flexDirection,
+  gap,
   justifyContent,
-  space,
 } from 'classnames/tailwind'
 
 const container = classnames(
@@ -13,14 +18,30 @@ const container = classnames(
   flexDirection('flex-col'),
   justifyContent('justify-center'),
   alignItems('items-center'),
-  space('space-y-2')
+  gap('gap-y-8')
 )
 export default function () {
+  const { flowSucceeded } = useSnapshot(AppStore)
+  const label = flowSucceeded ? 'Complete' : '100% ANONYMOUS'
+  const title = flowSucceeded
+    ? 'Your wallet is verified'
+    : 'Verify, and stay anonymous'
+  const subtitle = flowSucceeded ? (
+    <SuccessSubtitle />
+  ) : (
+    'SealHub allows anyone to prove they own a wallet without exposing their identity—not even we’ll know who you are.'
+  )
+  const content = flowSucceeded ? <SuccessCardBlock /> : <GettingStartedBlock />
+
   return (
     <div className={container}>
-      <HeaderText>Verify, and stay anonymous</HeaderText>
-      <GradientText>In laymen’s terms:</GradientText>
-      <ConnectWalletButton />
+      <TopCard
+        label={`// ${label}`}
+        title={title}
+        subtitle={subtitle}
+        statusOrContent={content}
+      />
+      <BottomCard />
     </div>
   )
 }

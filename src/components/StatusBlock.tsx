@@ -11,6 +11,7 @@ import classnames, {
   gap,
   justifyContent,
   padding,
+  width,
 } from 'classnames/tailwind'
 
 const statusLoading = classnames(
@@ -21,7 +22,8 @@ const statusLoading = classnames(
   alignItems('items-center'),
   justifyContent('justify-between'),
   borderRadius('rounded-lg'),
-  gap('gap-y-4')
+  gap('gap-y-4'),
+  width('w-full')
 )
 const loadingBlock = classnames(
   display('flex'),
@@ -43,13 +45,15 @@ export default function ({
   return (
     <div className={statusLoading}>
       {errorBlock}
-      <AccentText>
-        <StatusText color="success">
-          <span className={loadingBlock}>
-            {loadingText} {completed ? <Checkmark /> : <Spinner />}
-          </span>
-        </StatusText>{' '}
-      </AccentText>
+      {!!loadingText.length && (
+        <AccentText>
+          <StatusText color="success">
+            <span className={loadingBlock}>
+              {loadingText} {completed ? <Checkmark /> : <Spinner />}
+            </span>
+          </StatusText>{' '}
+        </AccentText>
+      )}
       {typeof subtitle === 'string' ? (
         <BodyText>{subtitle}</BodyText>
       ) : (

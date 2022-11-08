@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         'formal-accent': 'var(--formal-accent)',
         accent: 'var(--accent)',
+        'accent-semi-transparent': 'var(--accent-semi-transparent)',
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
         tertiary: 'var(--tertiary)',
@@ -22,12 +23,21 @@ module.exports = {
         '5xl': '2.5rem',
       },
       boxShadow: {
-        '2xl': '0rem 0.25rem 2.75rem 0rem rgb(0 0 0 / 0.25)',
+        '2xl': '0rem 0rem 1.75rem 0rem rgb(0 0 0 / 0.25)',
         lg: '0rem 0rem 1rem 0rem rgb(0 0 0 / 0.25)',
         'button-active': '0rem 0rem 0.375rem rgb(0 0 0 / 1)',
+        card: '0rem 0.25rem 2.75rem 0rem rgb(0 0 0 / 0.25), inset 0px 0px 1rem rgb(0 0 0 / 0.25)',
       },
       fontSize: {
+        '2.5xl': '1.625rem',
         '3.5xl': '2rem',
+      },
+      strokeWidth: {
+        3: 3,
+      },
+      dropShadow: {
+        accent: '0rem 0rem 0.625rem var(--accent)',
+        gold: '0rem 0rem 1rem rgba(254, 216, 35, 0.4)',
       },
     },
     container: {
