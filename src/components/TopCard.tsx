@@ -1,4 +1,4 @@
-import { AccentText, HeaderText } from 'components/Text'
+import { AccentText, BodyText, HeaderText } from 'components/Text'
 import { JSX } from 'preact/jsx-runtime'
 import DashedDividers from 'components/DashedDividers'
 import classnames, {
@@ -11,6 +11,7 @@ import classnames, {
   flexDirection,
   gap,
   padding,
+  space,
 } from 'classnames/tailwind'
 
 interface TopCardProps {
@@ -23,7 +24,7 @@ interface TopCardProps {
 const wrapper = classnames(
   display('flex'),
   flexDirection('flex-col'),
-  gap('gap-y-6'),
+  gap('gap-y-8'),
   backgroundColor('bg-primary-dark'),
   padding('py-8', 'px-6'),
   borderRadius('rounded-2xl'),
@@ -41,8 +42,10 @@ export default function ({
   return (
     <div className={wrapper}>
       <AccentText>{label}</AccentText>
-      <HeaderText>{title}</HeaderText>
-      {subtitle}
+      <div className={space('space-y-2')}>
+        <HeaderText>{title}</HeaderText>
+        <BodyText>{subtitle}</BodyText>
+      </div>
       <DashedDividers />
       {statusOrContent}
     </div>
