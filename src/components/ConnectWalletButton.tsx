@@ -1,8 +1,7 @@
-import { Context } from 'wagmi'
-import { useConnectModal } from '@rainbow-me/rainbowkit'
+import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Button from 'components/Button'
-import ConsumerType from 'types/consumerType'
 import SigningFlow from 'components/SigningFlow'
+import Spinner from 'icons/Spinner'
 import classnames, {
   alignItems,
   display,
@@ -20,19 +19,22 @@ const container = classnames(
 )
 
 export default function () {
-  const { openConnectModal } = useConnectModal()
-
   return (
-    <Context.Consumer>
-      {({ connected }: ConsumerType) => (
-        <div className={container}>
-          {connected ? (
-            <SigningFlow />
-          ) : (
-            <Button onClick={openConnectModal}>Connect wallet</Button>
-          )}
-        </div>
-      )}
-    </Context.Consumer>
+    <ConnectButton.Custom>
+      {({ account, chain, openConnectModal, mounted }) => {
+        if (!mounted) return <Spinner />
+        const connected = mounted && account && chain
+
+        return (
+          <div className={container}>
+            {connected ? (
+              <SigningFlow />
+            ) : (
+              <Button onClick={openConnectModal}>Connect wallet</Button>
+            )}
+          </div>
+        )
+      }}
+    </ConnectButton.Custom>
   )
 }
