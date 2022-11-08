@@ -11,7 +11,7 @@ const root = classnames(
   container('container'),
   margin('mx-auto'),
   padding('pb-10', 'py-4'),
-  maxWidth('max-w-4xl')
+  maxWidth('max-w-2xl')
 )
 export default function ({ children }: ChildrenProp) {
   return <div className={root}>{children}</div>
