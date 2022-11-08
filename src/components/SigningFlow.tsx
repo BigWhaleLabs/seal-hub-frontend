@@ -1,5 +1,6 @@
 import { useDisconnect, useSignMessage } from 'wagmi'
 import { useEffect } from 'preact/hooks'
+import AppStore from 'stores/AppStore'
 import StatusBlock from 'components/StatusBlock'
 
 export default function () {
@@ -8,6 +9,9 @@ export default function () {
     message: 'Sign a message to connect to SealHub',
     onError() {
       disconnect()
+    },
+    onSuccess() {
+      AppStore.flowSucceeded = true
     },
   })
   const loadingText = isLoading

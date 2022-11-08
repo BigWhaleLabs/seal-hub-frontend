@@ -2,6 +2,7 @@ import {
   backgroundClip,
   backgroundImage,
   classnames,
+  cursor,
   fontFamily,
   fontSize,
   fontWeight,
@@ -9,6 +10,7 @@ import {
   lineHeight,
   textAlign,
   textColor,
+  textDecoration,
   width,
 } from 'classnames/tailwind'
 import ChildrenProp from 'models/ChildrenProp'
@@ -76,4 +78,33 @@ export function StatusText({
   color,
 }: ChildrenProp & { color: 'success' | 'error' }) {
   return <span className={statusText(color)}>{children}</span>
+}
+
+const linkText = classnames(
+  textColor('text-primary'),
+  textDecoration('underline', 'hover:no-underline'),
+  cursor('cursor-pointer')
+)
+export function LinkText({
+  url,
+  onClick,
+  children,
+}: ChildrenProp & { url?: string; onClick?: () => void }) {
+  if (url)
+    return (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={linkText}
+        onClick={onClick}
+      >
+        {children}
+      </a>
+    )
+  return (
+    <span className={linkText} onClick={() => onClick && onClick()}>
+      {children}
+    </span>
+  )
 }

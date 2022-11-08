@@ -45,13 +45,15 @@ export default function ({
   return (
     <div className={statusLoading}>
       {errorBlock}
-      <AccentText>
-        <StatusText color="success">
-          <span className={loadingBlock}>
-            {loadingText} {completed ? <Checkmark /> : <Spinner />}
-          </span>
-        </StatusText>{' '}
-      </AccentText>
+      {!!loadingText.length && (
+        <AccentText>
+          <StatusText color="success">
+            <span className={loadingBlock}>
+              {loadingText} {completed ? <Checkmark /> : <Spinner />}
+            </span>
+          </StatusText>{' '}
+        </AccentText>
+      )}
       {typeof subtitle === 'string' ? (
         <BodyText>{subtitle}</BodyText>
       ) : (
