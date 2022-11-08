@@ -1,4 +1,4 @@
-import { BodyText, GradientText, HeaderText } from 'components/Text'
+import { BodyText, GradientText, HeaderText, LinkText } from 'components/Text'
 import SealStar from 'icons/SealStar'
 import classnames, {
   backgroundColor,
@@ -62,7 +62,11 @@ export default function () {
                 With the ZKP you create, you can prove you own a wallet without
                 revealing your identity.
               </li>
-              <li>Read more about it here</li>
+              <li>
+                <LinkText url="https://blog.bigwhalelabs.com/">
+                  Read more about it here
+                </LinkText>
+              </li>
             </ul>
           </BodyText>
         </div>
