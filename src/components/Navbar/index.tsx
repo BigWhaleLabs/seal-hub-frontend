@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'preact/hooks'
 import RightBlock from 'components/Navbar/RightBlock'
+import SealHubLogo from 'icons/SealHubLogo'
 import SiteLogo from 'components/Navbar/SiteLogo'
 import classnames, {
   alignItems,
@@ -40,7 +41,7 @@ export default function ({ hideWalletPart }: { hideWalletPart?: boolean }) {
 
   return (
     <nav className={navbar(backgroundVisible, hideWalletPart)}>
-      <SiteLogo alpha logoText="SealHub" />
+      <SiteLogo alpha logoText="SealHub" logo={<SealHubLogo />} />
       {!hideWalletPart && <RightBlock />}
     </nav>
   )

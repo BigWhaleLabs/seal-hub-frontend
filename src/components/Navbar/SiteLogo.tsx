@@ -1,7 +1,6 @@
 import { LogoSubText, LogoText } from 'components/Text'
 import { VNode } from 'preact'
 import { displayFrom } from 'helpers/visibilityClassnames'
-import SealHubLogo from 'icons/SealHubLogo'
 import classnames, {
   alignItems,
   display,
@@ -25,17 +24,17 @@ const logoWithVersion = classnames(
 const logoWrapper = classnames(display('flex'), width('w-full'))
 
 export default function ({
+  logo,
   logoText,
   alpha,
 }: {
+  logo: VNode
   logoText: VNode | string
   alpha?: boolean
 }) {
   return (
     <div className={logoContainer}>
-      <div className={logoWrapper}>
-        <SealHubLogo />
-      </div>
+      <div className={logoWrapper}>{logo}</div>
       <div className={logoWithVersion}>
         {typeof logoText === 'string' ? (
           <>
