@@ -1,6 +1,6 @@
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit'
 import { WagmiConfig } from 'wagmi'
-import { chainList, wagmiClient } from 'types/wagmiClient'
+import { chainList, wagmiClient } from 'helpers/wagmiClient'
 import ChildrenProp from 'models/ChildrenProp'
 
 export default function ({ children }: ChildrenProp) {

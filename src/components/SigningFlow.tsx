@@ -10,22 +10,19 @@ export default function () {
       disconnect()
     },
   })
+  const loadingText = isLoading
+    ? 'Waiting for signature'
+    : 'Checking for existing commitment...'
+  const subTitle = isLoading
+    ? 'We’re requesting your signature to generate your commitment.'
+    : 'Hang tight!'
+
   useEffect(signMessage, [signMessage])
 
   return (
     <>
-      {isLoading && (
-        <StatusBlock
-          completed={isSuccess}
-          loadingText={isLoading ? 'Waiting for signature' : ''}
-          subtitle="We’re requesting your signature to generate your commitment. "
-        />
-      )}
-      {isSuccess && (
-        <StatusBlock
-          loadingText="Checking for existing commitment..."
-          subtitle="Hang tight!"
-        />
+      {(isLoading || isSuccess) && (
+        <StatusBlock loadingText={loadingText} subtitle={subTitle} />
       )}
     </>
   )
