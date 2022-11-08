@@ -14,6 +14,7 @@ export default defineConfig({
         }) as Plugin,
       ],
     },
+    outDir: './docs',
   },
   server: { port: 3000 },
 })

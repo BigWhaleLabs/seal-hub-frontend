@@ -1,5 +1,5 @@
-import { GradientText, HeaderText, StatusText } from 'components/Text'
-import StatusBlock from 'components/StatusBlock'
+import { GradientText, HeaderText } from 'components/Text'
+import ConnectWalletButton from 'components/ConnectWalletButton'
 import classnames, {
   alignItems,
   display,
@@ -20,17 +20,7 @@ export default function () {
     <div className={container}>
       <HeaderText>Verify, and stay anonymous</HeaderText>
       <GradientText>In laymen’s terms:</GradientText>
-      <StatusText color="success">
-        Checking for existing commitment...
-      </StatusText>
-      <StatusBlock
-        loadingText="Waiting for signature"
-        subtitle="We’re requesting your signature to generate your commitment. "
-      />
-      <StatusBlock
-        loadingText="Checking for existing commitment..."
-        subtitle="Hang tight!"
-      />
+      <ConnectWalletButton />
     </div>
   )
 }
