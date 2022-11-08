@@ -1,4 +1,5 @@
 import { BodyText, GradientText, HeaderText } from 'components/Text'
+import SealStar from 'icons/SealStar'
 import classnames, {
   backgroundColor,
   borderColor,
@@ -7,7 +8,6 @@ import classnames, {
   display,
   flexDirection,
   gap,
-  height,
   padding,
   width,
 } from 'classnames/tailwind'
@@ -33,7 +33,9 @@ export default function () {
   return (
     <div className={wrapper}>
       <div className={topBlock}>
-        <div className={classnames(width('w-14'), height('h-14'))} />
+        <div className={width('w-14')}>
+          <SealStar small />
+        </div>
         <div className={topBlockInfo}>
           <HeaderText>The deets</HeaderText>
           <BodyText>

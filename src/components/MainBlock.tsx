@@ -1,5 +1,5 @@
 import BottomCard from 'components/BottomCard'
-import ConnectWalletButton from 'components/ConnectWalletButton'
+import GettingStartedBlock from 'components/GettingStartedBlock'
 import TopCard from 'components/TopCard'
 import classnames, {
   alignItems,
@@ -23,7 +23,7 @@ export default function () {
         label="// 100% ANONYMOUS"
         title="Verify, and stay anonymous"
         subtitle="SealHub allows anyone to prove they own a wallet without exposing their identity—not even we’ll know who you are."
-        statusOrContent={<ConnectWalletButton />}
+        statusOrContent={<GettingStartedBlock />}
       />
       <BottomCard />
     </div>

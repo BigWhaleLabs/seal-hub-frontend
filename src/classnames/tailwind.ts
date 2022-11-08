@@ -4263,6 +4263,7 @@ export type TDropShadow =
   | 'drop-shadow-2xl'
   | 'drop-shadow-none'
   | 'drop-shadow-accent'
+  | 'drop-shadow-gold'
 
 export type TGrayscale = 'grayscale-0' | 'grayscale'
 
@@ -7216,7 +7217,7 @@ export type TStroke =
   | 'stroke-primary-background'
   | 'stroke-primary-semi-dimmed'
 
-export type TStrokeWidth = 'stroke-0' | 'stroke-1' | 'stroke-2'
+export type TStrokeWidth = 'stroke-0' | 'stroke-1' | 'stroke-2' | 'stroke-3'
 
 export type TSVG = TFill | TStroke | TStrokeWidth
 
@@ -7459,6 +7460,7 @@ export type TFontSize =
   | 'text-7xl'
   | 'text-8xl'
   | 'text-9xl'
+  | 'text-2.5xl'
   | 'text-3.5xl'
 
 export type TFontWeight =
