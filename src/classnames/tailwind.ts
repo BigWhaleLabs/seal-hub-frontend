@@ -7460,6 +7460,7 @@ export type TFontSize =
   | 'text-7xl'
   | 'text-8xl'
   | 'text-9xl'
+  | 'text-2.5xl'
   | 'text-3.5xl'
 
 export type TFontWeight =

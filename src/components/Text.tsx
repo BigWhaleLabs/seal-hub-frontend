@@ -7,30 +7,41 @@ import {
   fontWeight,
   gradientColorStops,
   lineHeight,
+  textAlign,
   textColor,
   width,
 } from 'classnames/tailwind'
 import ChildrenProp from 'models/ChildrenProp'
 
-const headerText = (small?: boolean) =>
+const headerText = (small?: boolean, mono?: boolean) =>
   classnames(
     fontWeight('font-bold'),
     lineHeight(small ? 'leading-8' : 'leading-10'),
-    fontSize(small ? 'text-2xl' : 'text-3.5xl'),
-    fontFamily('font-primary')
+    fontSize(small ? 'text-2.5xl' : 'text-3.5xl'),
+    fontFamily({ 'font-primary': !mono })
   )
 export function HeaderText({
   children,
   small,
+  mono,
 }: ChildrenProp & {
   small?: boolean
+  mono?: boolean
 }) {
-  return <p className={headerText(small)}>{children}</p>
+  return <p className={headerText(small, mono)}>{children}</p>
 }
 
-const bodyText = classnames(lineHeight('leading-5'), fontFamily('font-primary'))
-export function BodyText({ children }: ChildrenProp) {
-  return <p className={bodyText}>{children}</p>
+const bodyText = (centered?: boolean) =>
+  classnames(
+    lineHeight('leading-5'),
+    fontFamily('font-primary'),
+    textAlign({ 'text-center': centered })
+  )
+export function BodyText({
+  children,
+  centered,
+}: ChildrenProp & { centered?: boolean }) {
+  return <p className={bodyText(centered)}>{children}</p>
 }
 
 export function AccentText({ children }: ChildrenProp) {
