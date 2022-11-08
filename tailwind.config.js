@@ -27,7 +27,7 @@ module.exports = {
       },
       borderRadius: {
         avatar: '6rem',
-        '10xl': '2.5rem',
+        '5xl': '2.5rem',
       },
       boxShadow: {
         '2xl': '0rem 0.25rem 2.75rem 0rem rgb(0 0 0 / 0.25)',

@@ -43,7 +43,7 @@ const button = (available?: boolean) =>
     lineHeight('leading-6'),
     padding('py-4', 'px-6'),
     textColor('text-primary-dark'),
-    borderRadius('rounded-10xl'),
+    borderRadius('rounded-5xl'),
     backgroundImage('bg-gradient-to-r'),
     gradientColorStops('from-tertiary', 'to-primary-bright'),
     boxShadowColor(
