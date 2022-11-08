@@ -13,6 +13,7 @@ import classnames, {
   gap,
   padding,
   space,
+  width,
 } from 'classnames/tailwind'
 
 interface TopCardProps {
@@ -32,7 +33,8 @@ const wrapper = classnames(
   borderWidth('border'),
   borderColor('border-accent'),
   boxShadow('shadow-card'),
-  boxShadowColor('shadow-accent-semi-transparent')
+  boxShadowColor('shadow-accent-semi-transparent'),
+  width('w-full')
 )
 
 export default function ({
