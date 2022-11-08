@@ -1,3 +1,6 @@
+import { StatusBlockCard, Subtitle } from 'components/SuccessBlock'
+import { useSnapshot } from 'valtio'
+import AppStore from 'stores/AppStore'
 import BottomCard from 'components/BottomCard'
 import GettingStartedBlock from 'components/GettingStartedBlock'
 import TopCard from 'components/TopCard'
@@ -17,13 +20,27 @@ const container = classnames(
   gap('gap-y-8')
 )
 export default function () {
+  const { flowSucceeded } = useSnapshot(AppStore)
+
   return (
     <div className={container}>
       <TopCard
-        label="// 100% ANONYMOUS"
-        title="Verify, and stay anonymous"
-        subtitle="SealHub allows anyone to prove they own a wallet without exposing their identity—not even we’ll know who you are."
-        statusOrContent={<GettingStartedBlock />}
+        label={`// ${flowSucceeded ? 'Complete' : '100% ANONYMOUS'}`}
+        title={`${
+          flowSucceeded
+            ? 'Your wallet is verified'
+            : 'Verify, and stay anonymous'
+        }`}
+        subtitle={
+          flowSucceeded ? (
+            <Subtitle />
+          ) : (
+            'SealHub allows anyone to prove they own a wallet without exposing their identity—not even we’ll know who you are.'
+          )
+        }
+        statusOrContent={
+          flowSucceeded ? <StatusBlockCard /> : <GettingStartedBlock />
+        }
       />
       <BottomCard />
     </div>

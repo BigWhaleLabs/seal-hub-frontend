@@ -1,6 +1,8 @@
 import { BodyText, LinkText, StatusText } from 'components/Text'
+import { useDisconnect } from 'wagmi'
+import AppStore from 'stores/AppStore'
 import Checkmark from 'icons/Checkmark'
-import Spinner from 'icons/Spinner'
+import SealStar from 'icons/SealStar'
 import StatusBlock from 'components/StatusBlock'
 import classnames, { alignItems, display, gap } from 'classnames/tailwind'
 
@@ -14,7 +16,7 @@ export function StatusBlockCard() {
   const StatusBlockSubtitle = () => {
     return (
       <>
-        <Spinner />
+        <SealStar />
         <StatusText color="success">
           <span className={successText}>
             Success!
@@ -34,11 +36,17 @@ export function StatusBlockCard() {
 }
 
 export function Subtitle() {
+  const { disconnect } = useDisconnect()
   return (
     <div>
       You can add another wallet’s commitment.
       <br />
-      <LinkText onClick={() => console.log('disconnect')}>
+      <LinkText
+        onClick={() => {
+          AppStore.flowSucceeded = false
+          disconnect()
+        }}
+      >
         Disconnect wallet and add commitment for another wallet
       </LinkText>
     </div>
