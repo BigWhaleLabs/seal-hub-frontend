@@ -9,27 +9,22 @@ module.exports = {
       colors: {
         'formal-accent': 'var(--formal-accent)',
         accent: 'var(--accent)',
+        primary: 'var(--primary)',
         secondary: 'var(--secondary)',
         tertiary: 'var(--tertiary)',
         error: 'var(--error)',
-        black: {
-          background: '#040404',
-          'background-purpose': '#12141D',
-          'perk-gradient-light': 'rgba(4, 6, 14, 0.9)',
-          'perk-gradient-dark': '#04060E',
-        },
-        gold: {
-          dark: '#FA6641',
-          light: '#EAE100',
-        },
+        'primary-dark': 'var(--primary-dark)',
+        'primary-bright': 'var(--primary-bright)',
+        'primary-background': 'var(--primary-background)',
+        'primary-semi-dimmed': 'var(--primary-semi-dimmed)',
       },
       borderRadius: {
-        avatar: '6rem',
+        '5xl': '2.5rem',
       },
-      width: {
-        chart: '108px',
-        time: '95px',
-        glass: '107px',
+      boxShadow: {
+        '2xl': '0rem 0.25rem 2.75rem 0rem rgb(0 0 0 / 0.25)',
+        lg: '0rem 0rem 1rem 0rem rgb(0 0 0 / 0.25)',
+        'button-active': '0rem 0rem 0.375rem rgb(0 0 0 / 1)',
       },
       fontSize: {
         '3.5xl': '2rem',

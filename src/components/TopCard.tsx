@@ -24,7 +24,7 @@ const wrapper = classnames(
   display('flex'),
   flexDirection('flex-col'),
   gap('gap-y-6'),
-  backgroundColor('bg-gray-900'),
+  backgroundColor('bg-primary-dark'),
   padding('py-8', 'px-6'),
   borderRadius('rounded-2xl'),
   borderWidth('border'),

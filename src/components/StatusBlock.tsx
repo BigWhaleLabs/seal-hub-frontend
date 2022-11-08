@@ -11,17 +11,19 @@ import classnames, {
   gap,
   justifyContent,
   padding,
+  width,
 } from 'classnames/tailwind'
 
 const statusLoading = classnames(
   display('flex'),
-  backgroundColor('bg-blue-500'),
+  backgroundColor('bg-primary-background'),
   flexDirection('flex-col'),
   padding('p-6'),
   alignItems('items-center'),
   justifyContent('justify-between'),
   borderRadius('rounded-lg'),
-  gap('gap-y-4')
+  gap('gap-y-4'),
+  width('w-full')
 )
 const loadingBlock = classnames(
   display('flex'),
