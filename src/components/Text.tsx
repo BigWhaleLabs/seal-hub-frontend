@@ -8,6 +8,7 @@ import {
   gradientColorStops,
   lineHeight,
   textColor,
+  width,
 } from 'classnames/tailwind'
 import ChildrenProp from 'models/ChildrenProp'
 
@@ -42,7 +43,8 @@ const gradientText = classnames(
   backgroundClip('bg-clip-text'),
   gradientColorStops('from-secondary', 'to-accent'),
   fontWeight('font-bold'),
-  fontFamily('font-primary')
+  fontFamily('font-primary'),
+  width('w-fit')
 )
 export function GradientText({ children }: ChildrenProp) {
   return <span className={gradientText}>{children}</span>
