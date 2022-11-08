@@ -63,6 +63,11 @@ circle {
   background: var(--selection);
 }
 
+/* list styles */
+li::marker {
+  font-size: 0.9rem;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 15px;

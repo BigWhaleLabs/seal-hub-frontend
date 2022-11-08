@@ -8,7 +8,10 @@ import classnames, {
   display,
   flexDirection,
   gap,
+  listStyleType,
+  margin,
   padding,
+  space,
   width,
 } from 'classnames/tailwind'
 
@@ -28,6 +31,10 @@ const topBlockInfo = classnames(
   flexDirection('flex-col'),
   gap('gap-y-2')
 )
+const listStyles = classnames(
+  listStyleType('list-disc'),
+  margin('mt-6', 'ml-6')
+)
 
 export default function () {
   return (
@@ -41,7 +48,7 @@ export default function () {
           <BodyText>
             If this is your first time verifying through SealHub, you’ll need to
             create a ‘commitment’ on the blockchain. Basically, this means:
-            <ul>
+            <ul className={listStyles}>
               <li>
                 There is a hashed signature proving you own your wallet (your
                 commitment).
@@ -60,12 +67,14 @@ export default function () {
           </BodyText>
         </div>
       </div>
-      <hr className={borderColor('border-gray-500')} />
-      <GradientText>In laymen’s terms:</GradientText>
-      <BodyText>
-        We use a fancy shmancy process to verify your identity while protecting
-        your anonymity with Zero Knowledge Proof.{' '}
-      </BodyText>
+      <hr className={borderColor('border-gray-700')} />
+      <div className={space('space-y-2')}>
+        <GradientText>In laymen’s terms:</GradientText>
+        <BodyText>
+          We use a fancy shmancy process to verify your identity while
+          protecting your anonymity with Zero Knowledge Proof.{' '}
+        </BodyText>
+      </div>
     </div>
   )
 }
