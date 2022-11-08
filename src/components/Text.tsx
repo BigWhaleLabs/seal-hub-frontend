@@ -1,4 +1,5 @@
 import {
+  TTextColor,
   backgroundClip,
   backgroundImage,
   classnames,
@@ -8,8 +9,10 @@ import {
   gradientColorStops,
   lineHeight,
   textColor,
+  textDecoration,
 } from 'classnames/tailwind'
 import ChildrenProp from 'models/ChildrenProp'
+import classNamesToString from 'helpers/classNamesToString'
 
 const headerText = (small?: boolean) =>
   classnames(
@@ -32,8 +35,11 @@ export function BodyText({ children }: ChildrenProp) {
   return <p className={bodyText}>{children}</p>
 }
 
-export function AccentText({ children }: ChildrenProp) {
-  return <p className={textColor('text-accent')}>{children}</p>
+export function AccentText({
+  color,
+  children,
+}: ChildrenProp & { color?: TTextColor }) {
+  return <p className={textColor(color ?? 'text-accent')}>{children}</p>
 }
 
 const gradientText = classnames(
@@ -63,4 +69,41 @@ export function StatusText({
   color,
 }: ChildrenProp & { color: 'success' | 'error' }) {
   return <span className={statusText(color)}>{children}</span>
+}
+
+const logoText = classnames(
+  textColor('text-accent'),
+  fontWeight('font-bold'),
+  fontSize('text-sm', 'xs:text-lg'),
+  lineHeight('leading-none')
+)
+export function LogoText({ children }: ChildrenProp) {
+  return <span className={logoText}>{children}</span>
+}
+const logoSubText = classnames(
+  textColor('text-primary-semi-dimmed', 'selection:text-primary'),
+  fontWeight('font-bold'),
+  fontSize('text-xs')
+)
+export function LogoSubText({ children }: ChildrenProp) {
+  return <span className={logoSubText}>{children}</span>
+}
+
+const socialLink = classnames(
+  lineHeight('leading-6'),
+  fontSize('text-base'),
+  textDecoration('no-underline', 'active:underline'),
+  textColor('hover:text-tertiary', 'text-formal-accent')
+)
+export function SocialLink({ url, children }: ChildrenProp & { url: string }) {
+  return (
+    <a
+      className={classNamesToString(socialLink, 'hover-tertiary')}
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {children}
+    </a>
+  )
 }

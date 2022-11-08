@@ -13,6 +13,7 @@
 
   --selection: #ff7bed35;
   --primary-dark: #0d0030;
+  --primary-dimmed: #3a00d6;
   --primary-bright: #01f5ff;
   --primary-background: #1a0259;
   --primary-semi-dimmed: #4b61d5;
@@ -87,5 +88,12 @@ circle {
         var(--primary-background) 0
       )
       0 0/2rem 2rem;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hover-tertiary:hover {
+    color: var(--tertiary);
+    text-decoration: underline;
   }
 }

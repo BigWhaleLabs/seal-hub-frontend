@@ -17,6 +17,7 @@ module.exports = {
         'primary-bright': 'var(--primary-bright)',
         'primary-background': 'var(--primary-background)',
         'primary-semi-dimmed': 'var(--primary-semi-dimmed)',
+        'primary-dimmed': 'var(--primary-dimmed)',
       },
       borderRadius: {
         '5xl': '2.5rem',
@@ -28,6 +29,18 @@ module.exports = {
       },
       fontSize: {
         '3.5xl': '2rem',
+      },
+      screens: {
+        xs: '22.5rem',
+      },
+      dropShadow: {
+        secondary: '0 0 0.625rem var(--secondary)',
+      },
+      width: {
+        'full-105': '105%',
+      },
+      strokeWidth: {
+        1.5: '1.5',
       },
     },
     container: {
