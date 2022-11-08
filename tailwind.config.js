@@ -29,8 +29,12 @@ module.exports = {
       fontSize: {
         '3.5xl': '2rem',
       },
+      strokeWidth: {
+        3: 3,
+      },
       dropShadow: {
-        accent: '0rem 0rem 0.625rem var(--accent)',
+        accent: '0 0 0.625rem var(--accent)',
+        gold: '0 0 1rem rgba(254, 216, 35, 0.4)',
       },
     },
     container: {
