@@ -1,5 +1,6 @@
 import classnames, {
   backgroundImage,
+  display,
   gradientColorStops,
   height,
   width,
@@ -10,7 +11,8 @@ const line = (toLeft?: boolean) => {
     height('h-px'),
     width('w-36'),
     gradientColorStops('from-accent', 'to-primary-dark'),
-    backgroundImage(toLeft ? 'bg-gradient-to-l' : 'bg-gradient-to-r')
+    backgroundImage(toLeft ? 'bg-gradient-to-l' : 'bg-gradient-to-r'),
+    display('hidden', 'md:block')
   )
 }
 
