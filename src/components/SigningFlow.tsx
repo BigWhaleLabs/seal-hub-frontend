@@ -1,4 +1,5 @@
-import { useAccount, useDisconnect, useSignMessage } from 'wagmi'
+import { Signer } from 'ethers'
+import { useAccount, useSigner } from 'wagmi'
 import { useEffect } from 'preact/hooks'
 import StatusBlock from 'components/StatusBlock'
 import createMessage from 'helpers/createMessage'
@@ -6,16 +7,7 @@ import createProof from 'helpers/createProof'
 
 export default function () {
   const { address } = useAccount()
-  const { disconnect } = useDisconnect()
-  const message = `SealHub verification for ${address}`
-  const { isLoading, isSuccess, signMessage } = useSignMessage({
-    onSuccess(signature) {
-      void createProof(signature, message)
-    },
-    onError() {
-      disconnect()
-    },
-  })
+  const { data: signer, isLoading } = useSigner()
 
   const loadingText = isLoading
     ? 'Waiting for signature'
@@ -26,17 +18,19 @@ export default function () {
     : 'Hang tight!'
 
   useEffect(() => {
-    async function start() {
-      const messageHash = await createMessage(message)
-      signMessage(messageHash)
+    async function start(signer: Signer) {
+      const baseMessage = `SealHub verification for ${address}`
+      const messageHash = await createMessage(baseMessage)
+      const signature = await signer.signMessage(messageHash)
+      void createProof(signature, baseMessage)
     }
 
-    if (address) void start()
-  }, [address, message, signMessage])
+    if (address && signer) void start(signer)
+  }, [address, signer])
 
   return (
     <>
-      {(isLoading || isSuccess) && (
+      {isLoading && (
         <StatusBlock loadingText={loadingText} subtitle={subTitle} />
       )}
     </>

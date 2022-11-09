@@ -1,6 +1,6 @@
-import { BigNumber, utils } from 'ethers'
 import { Proof } from 'models/ProofResult'
 import { hashPersonalMessage } from '@ethereumjs/util'
+import { utils } from 'ethers'
 import BN from 'bn.js'
 import elliptic from 'elliptic'
 
@@ -16,14 +16,19 @@ const SECP256K1_N = new BN(
 
 const addHexPrefix = (str: string) => `0x${str}`
 
-const splitToRegisters = (value: number) => {
+interface ExtendedBasePoint extends elliptic.curve.base.BasePoint {
+  x: BN
+  y: BN
+}
+
+const splitToRegisters = (value?: BN | string) => {
   const registers = [] as bigint[]
 
   if (!value) {
     return [0n, 0n, 0n, 0n]
   }
-
-  const hex = value.toString(16).padStart(64, '0')
+  const hex =
+    typeof value === 'string' ? value : value.toString('hex').padStart(64, '0')
   for (let k = 0; k < REGISTERS; k++) {
     // 64bit = 16 chars in hex
     const val = hex.slice(k * 16, (k + 1) * 16)
@@ -34,10 +39,10 @@ const splitToRegisters = (value: number) => {
   return registers.map((el) => el.toString())
 }
 
-const getPointPreComputes = (point: { x: number; y: number }) => {
+const getPointPreComputes = (point: ExtendedBasePoint) => {
   const keyPoint = ec.keyFromPublic({
-    x: Buffer.from(point.x.toString(16), 'hex'),
-    y: Buffer.from(point.y.toString(16), 'hex'),
+    x: Buffer.from(point.x.toString(16), 'hex').toString('hex'),
+    y: Buffer.from(point.y.toString(16), 'hex').toString('hex'),
   })
 
   const gPowers = [] as (bigint[] | string[])[][][]
@@ -47,8 +52,9 @@ const getPointPreComputes = (point: { x: number; y: number }) => {
     for (let j = 0n; j < 2n ** STRIDE; j++) {
       const l = j * power
 
-      const gPower = keyPoint.getPublic().mul(new BN(l.toString()))
-
+      const gPower = keyPoint
+        .getPublic()
+        .mul(new BN(l.toString())) as ExtendedBasePoint
       const x = splitToRegisters(gPower.x)
       const y = splitToRegisters(gPower.y)
       stride.push([x, y])
@@ -73,7 +79,7 @@ function generateInput(signature: string, message: string) {
   const rInv = bnR.invm(SECP256K1_N)
   const w = rInv.mul(new BN(msgHash)).neg().umod(SECP256K1_N)
   const U = ec.curve.g.mul(w)
-  const T = rPoint.getPublic().mul(rInv)
+  const T = rPoint.getPublic().mul(rInv) as ExtendedBasePoint
   const TPreComputes = getPointPreComputes(T)
 
   return {
