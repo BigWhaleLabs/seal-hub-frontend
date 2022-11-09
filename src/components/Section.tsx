@@ -15,7 +15,7 @@ export default function ({
 }: ChildrenProp & { title?: ComponentChildren }) {
   return (
     <section className={sectionWrapper}>
-      {title ? <SectionTitle>{title}</SectionTitle> : undefined}
+      {!!title && <SectionTitle>{title}</SectionTitle>}
       {children}
     </section>
   )
