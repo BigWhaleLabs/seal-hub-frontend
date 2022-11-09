@@ -21,7 +21,7 @@ const socialContainerCard = classnames(
   alignItems('md:items-end'),
   justifyContent('justify-end', 'md:justify-start'),
   flexDirection('flex-col', 'md:flex-row'),
-  padding('lg:px-25'),
+  padding('md:px-25'),
   space('space-y-4', 'md:space-x-4', 'md:space-y-0'),
   padding('pb-10')
 )
