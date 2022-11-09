@@ -1,3 +1,4 @@
+import { Link } from 'wouter'
 import { LogoSubText, LogoText } from 'components/Text'
 import { VNode } from 'preact'
 import { displayFrom } from 'helpers/visibilityClassnames'
@@ -38,7 +39,7 @@ export default function ({
   alpha?: boolean
 }) {
   return (
-    <div className={logoContainer}>
+    <Link className={logoContainer} href="/">
       <div className={logoWrapper}>{logo}</div>
       <div className={logoWithVersion}>
         {typeof logoText === 'string' ? (
@@ -50,6 +51,6 @@ export default function ({
           { logoText }
         )}
       </div>
-    </div>
+    </Link>
   )
 }
