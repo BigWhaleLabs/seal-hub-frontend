@@ -1,5 +1,5 @@
 import { BodyText, GradientText, HeaderText, LinkText } from 'components/Text'
-import { basicCardStyles } from 'components/Card'
+import Card from 'components/Card'
 import SealStar from 'icons/SealStar'
 import classnames, {
   borderColor,
@@ -12,11 +12,6 @@ import classnames, {
   width,
 } from 'classnames/tailwind'
 
-const wrapper = classnames(
-  gap('gap-y-6'),
-  borderColor('border-gray-500'),
-  basicCardStyles
-)
 const topBlock = classnames(display('flex'), gap('gap-x-4'))
 const topBlockInfo = classnames(
   display('flex'),
@@ -30,7 +25,7 @@ const listStyles = classnames(
 
 export default function () {
   return (
-    <div className={wrapper}>
+    <Card>
       <div className={topBlock}>
         <div className={width('w-14')}>
           <SealStar small />
@@ -71,6 +66,6 @@ export default function () {
           protecting your anonymity with Zero Knowledge Proof.{' '}
         </BodyText>
       </div>
-    </div>
+    </Card>
   )
 }
