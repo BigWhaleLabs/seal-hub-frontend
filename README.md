@@ -3,7 +3,8 @@
 ## Local launch
 
 1. Install dependencies with `yarn`
-2. Run the server with `yarn start`
+2. Download essential ZKP files with `yarn get-zkp`
+3. Run the server with `yarn start`
 
 ## Environment variables
 
@@ -19,3 +20,4 @@ Also, please, consider looking at `.env.sample`.
 - `yarn lint` — checks if the code is linted and formatted
 - `yarn start` — runs the app in the development mode
 - `yarn generate-css-types` — generates the CSS types for `tailwind-css`
+- `yarn get-zkp` — will run `.sh` script that downloads ZKP files into `public/zkp`
