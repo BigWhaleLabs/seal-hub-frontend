@@ -82,7 +82,6 @@ function generateInput(signature: string, message: string) {
   const U = ec.curve.g.mul(w)
   const T = rPoint.getPublic().mul(rInv) as ExtendedBasePoint
   const TPreComputes = getPointPreComputes(T)
-
   return {
     TPreComputes,
     U: [splitToRegisters(U.x), splitToRegisters(U.y)],
@@ -96,7 +95,7 @@ export default function build(
 ): Promise<ProofResult> {
   return snarkjs.groth16.fullProve(
     generateInput(signature, message),
-    '/zk/ECDSAChecker.wasm',
-    '/zk/ECDSAChecker_final.zkey'
+    'zk/ECDSAChecker.wasm',
+    'zk/ECDSAChecker_final.zkey'
   )
 }

@@ -9,7 +9,8 @@
     "pretty": "prettier --check src",
     "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src",
     "generate-css-types": "tailwindcss-classnames -o src/classnames/tailwind.ts && prettier --write src/classnames/tailwind.ts",
-    "preview": "yarn build && yarn vite preview"
+    "preview": "yarn build && yarn vite preview",
+    "get-zkp": "./scripts/getWasm.sh"
   },
   "browserslist": {
     "production": [

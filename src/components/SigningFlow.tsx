@@ -1,27 +1,25 @@
 import { ECDSAProofStruct } from '@big-whale-labs/seal-hub-contract/dist/typechain/contracts/SealHub'
+import { ExternalProvider, Web3Provider } from '@ethersproject/providers'
 import { SealHub, SealHub__factory } from '@big-whale-labs/seal-hub-contract'
 import { Signer, Wallet } from 'ethers'
 import { hashPersonalMessage } from '@ethereumjs/util'
-import { useAccount, useContract, useProvider, useSigner } from 'wagmi'
+import { useAccount, useProvider, useSigner } from 'wagmi'
 import { useEffect } from 'preact/hooks'
 import AppStore from 'stores/AppStore'
 import StatusBlock from 'components/StatusBlock'
+import buffer from 'buffer'
 import createProof from 'helpers/createProof'
+import env from 'helpers/env'
 import makeTransaction from 'helpers/makeTransaction'
+import relayProvider from 'helpers/relayProvider'
 
-const wallet = new Wallet(
-  '52a3552aa62636873b378a5f63e7925621764c89f408ed5ecd8b27719faedc3f'
-)
+const { Buffer } = buffer
+if (!window.Buffer) window.Buffer = Buffer
 
 export default function () {
   const { address } = useAccount()
   const { data: signer, isLoading } = useSigner()
   const provider = useProvider()
-  const contract = useContract({
-    address: '0x812c83CD01b59bBcd4d29950D99fcBee9354adD7',
-    abi: SealHub__factory.abi,
-    signerOrProvider: wallet.connect(provider),
-  })
 
   const loadingText = isLoading
     ? 'Waiting for signature'
@@ -34,16 +32,31 @@ export default function () {
   useEffect(() => {
     const baseMessage = `SealHub verification for ${address}`
 
-    async function start(signer: Signer, contract: SealHub) {
+    async function start(signer: Signer) {
       try {
         AppStore.flowInit = true
+        const readContract = SealHub__factory.connect(
+          env.VITE_SEAL_HUB,
+          provider
+        )
         const messageHash = hashPersonalMessage(Buffer.from(baseMessage))
         const signature = await signer.signMessage(messageHash)
         const proof = await createProof(signature, baseMessage)
         const txData = makeTransaction(proof)
         const hash = txData.input[0]
-        if (!(await contract.commitmentMap(hash))) {
-          const tx = await contract.createCommitment(
+        if (!(await readContract.commitmentMap(hash))) {
+          const gsnProvider = await relayProvider(
+            provider as unknown as Web3Provider
+          )
+
+          const signer = new Web3Provider(
+            gsnProvider as unknown as ExternalProvider
+          ).getSigner(0)
+          const writeContract = SealHub__factory.connect(
+            env.VITE_SEAL_HUB,
+            signer
+          )
+          const tx = await writeContract.createCommitment(
             txData as unknown as ECDSAProofStruct
           )
           const res = await tx.wait()
@@ -55,9 +68,8 @@ export default function () {
       }
     }
 
-    if (!AppStore.flowInit && signer && contract)
-      void start(signer, contract as SealHub)
-  }, [address, signer, contract])
+    if (!AppStore.flowInit && signer) void start(signer)
+  }, [address, signer, provider])
 
   return (
     <>

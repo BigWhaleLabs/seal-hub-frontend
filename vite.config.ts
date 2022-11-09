@@ -6,7 +6,6 @@ import GlobalsPolyfills from '@esbuild-plugins/node-globals-polyfill'
 import inject from '@rollup/plugin-inject'
 import nodePolyfills from 'rollup-plugin-polyfill-node'
 import removeConsole from 'vite-plugin-remove-console'
-import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill'
 
 export default defineConfig({
   plugins: [preact(), tsconfigPaths()],
@@ -46,7 +45,6 @@ export default defineConfig({
         GlobalsPolyfills({
           buffer: true,
         }),
-        NodeModulesPolyfillPlugin(),
       ] as any[],
     },
   },
