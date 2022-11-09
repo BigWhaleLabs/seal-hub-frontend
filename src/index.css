@@ -21,7 +21,7 @@
 }
 
 * {
-  -webkit-tap-highlight-color: var(--transparent);
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {

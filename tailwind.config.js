@@ -51,6 +51,9 @@ module.exports = {
         1.5: '1.5',
         3: 3,
       },
+      padding: {
+        25: '6.25rem',
+      },
     },
     container: {
       center: true,
