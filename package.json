@@ -32,6 +32,7 @@
     "@lottiefiles/react-lottie-player": "^3.4.7",
     "@rainbow-me/rainbowkit": "^0.7.4",
     "@vitejs/plugin-react": "^2.2.0",
+    "assert-browserify": "^2.0.0",
     "buffer": "^6.0.3",
     "elliptic": "^6.5.4",
     "envalid": "^7.3.1",
