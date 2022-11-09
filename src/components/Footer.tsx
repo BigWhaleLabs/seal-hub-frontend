@@ -55,11 +55,11 @@ export default function () {
           </div>
         </FooterLink>
         <Delimiter />
-        <FooterLink url="https://sealcred.xyz/terms">
+        <FooterLink internal url="/terms">
           Terms of service
         </FooterLink>
         <Delimiter />
-        <FooterLink url="https://sealcred.xyz/privacy">
+        <FooterLink internal url="/privacy">
           Privacy policy
         </FooterLink>
       </div>

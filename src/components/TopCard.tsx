@@ -1,20 +1,8 @@
 import { AccentText, BodyText, HeaderText } from 'components/Text'
 import { JSX } from 'preact/jsx-runtime'
+import { space } from 'classnames/tailwind'
+import Card from 'components/Card'
 import DashedDividers from 'components/DashedDividers'
-import classnames, {
-  backgroundColor,
-  borderColor,
-  borderRadius,
-  borderWidth,
-  boxShadow,
-  boxShadowColor,
-  display,
-  flexDirection,
-  gap,
-  padding,
-  space,
-  width,
-} from 'classnames/tailwind'
 
 interface TopCardProps {
   label: string
@@ -23,20 +11,6 @@ interface TopCardProps {
   statusOrContent?: string | JSX.Element
 }
 
-const wrapper = classnames(
-  display('flex'),
-  flexDirection('flex-col'),
-  gap('gap-y-8'),
-  backgroundColor('bg-primary-dark'),
-  padding('py-8', 'px-6'),
-  borderRadius('rounded-2xl'),
-  borderWidth('border'),
-  borderColor('border-accent'),
-  boxShadow('shadow-card'),
-  boxShadowColor('shadow-accent-semi-transparent'),
-  width('w-full')
-)
-
 export default function ({
   label,
   title,
@@ -44,7 +18,7 @@ export default function ({
   statusOrContent,
 }: TopCardProps) {
   return (
-    <div className={wrapper}>
+    <Card accent bigGap>
       <AccentText>{label}</AccentText>
       <div className={space('space-y-2')}>
         <HeaderText>{title}</HeaderText>
@@ -52,6 +26,6 @@ export default function ({
       </div>
       <DashedDividers />
       {statusOrContent}
-    </div>
+    </Card>
   )
 }

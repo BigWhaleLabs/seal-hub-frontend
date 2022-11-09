@@ -34,7 +34,8 @@
     "preact": "^10.11.2",
     "unfetch": "^4.2.0",
     "valtio": "^1.7.5",
-    "wagmi": "^0.7.12"
+    "wagmi": "^0.7.12",
+    "wouter": "^2.8.1"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.4.0",

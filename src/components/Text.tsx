@@ -1,3 +1,4 @@
+import { Link, useRoute } from 'wouter'
 import {
   TTextColor,
   backgroundClip,
@@ -93,21 +94,26 @@ const linkText = classnames(
 )
 export function LinkText({
   url,
+  internal,
   onClick,
   children,
-}: ChildrenProp & { url?: string; onClick?: () => void }) {
+}: ChildrenProp & { url?: string; internal?: boolean; onClick?: () => void }) {
   if (url)
-    return (
+    return internal ? (
+      <Link href={url} className={linkText}>
+        {children}
+      </Link>
+    ) : (
       <a
         href={url}
         target="_blank"
         rel="noopener noreferrer"
         className={linkText}
-        onClick={onClick}
       >
         {children}
       </a>
     )
+
   return (
     <span className={linkText} onClick={() => onClick && onClick()}>
       {children}
@@ -126,13 +132,23 @@ const footerLink = (active?: boolean) =>
     }),
     transitionProperty('transition-colors')
   )
-export function FooterLink({ url, children }: ChildrenProp & { url: string }) {
-  return (
+export function FooterLink({
+  url,
+  internal,
+  children,
+}: ChildrenProp & { url: string; internal?: boolean }) {
+  const [isActive] = useRoute(url)
+
+  return internal ? (
+    <Link href={url} className={footerLink(isActive)}>
+      {children}
+    </Link>
+  ) : (
     <a
-      className={footerLink()}
       href={url}
-      target="_blank"
+      target={internal ? '_self' : '_blank'}
       rel="noopener noreferrer"
+      className={footerLink()}
     >
       {children}
     </a>
@@ -174,4 +190,30 @@ export function SocialLink({ url, children }: ChildrenProp & { url: string }) {
       {children}
     </a>
   )
+}
+
+const cardParagraphText = classnames(
+  textColor('text-formal-accent'),
+  fontFamily('font-primary'),
+  fontSize('text-sm', 'sm:text-base'),
+  lineHeight('leading-6')
+)
+export function CardParagraphText({ children }: ChildrenProp) {
+  return <p className={cardParagraphText}>{children}</p>
+}
+
+const subheaderCardText = classnames(
+  textColor('text-formal-accent'),
+  fontFamily('font-primary'),
+  fontWeight('font-bold'),
+  fontSize('text-lg'),
+  lineHeight('leading-7')
+)
+export function SubheaderCardText({ children }: ChildrenProp) {
+  return <p className={subheaderCardText}>{children}</p>
+}
+
+const sectionTitle = fontSize('text-sm')
+export function SectionTitle({ children }: ChildrenProp) {
+  return <p className={sectionTitle}>{children}</p>
 }

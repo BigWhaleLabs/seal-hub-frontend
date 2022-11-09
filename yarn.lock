@@ -15738,6 +15738,7 @@ __metadata:
     vite: ^3.2.3
     vite-tsconfig-paths: ^3.5.2
     wagmi: ^0.7.12
+    wouter: ^2.8.1
   languageName: unknown
   linkType: soft
 
@@ -18043,6 +18044,15 @@ __metadata:
     "@types/trusted-types": ^2.0.2
     workbox-core: 6.4.2
   checksum: 811dd5cae8f493e66e39729440b36a96ca3cb91b99595fd62f151c6f92f5e658109b0444aa3b91fafd1232220798c61c2164f1f2c76e21079abed9ceebe93f22
+  languageName: node
+  linkType: hard
+
+"wouter@npm:^2.8.1":
+  version: 2.8.1
+  resolution: "wouter@npm:2.8.1"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: a0a77eed13695e9c688887e67be1f02056fc3693f1b4b36a3d0a523924c3d46b18b62a56e1bd1f0295e252c5a714481629b1dabf34164f129ab264d0847195c5
   languageName: node
   linkType: hard
 
