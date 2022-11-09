@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@big-whale-labs/frontend-utils": "^0.1.2",
+    "@lottiefiles/react-lottie-player": "^3.4.7",
     "@rainbow-me/rainbowkit": "^0.7.4",
     "@vitejs/plugin-react": "^2.2.0",
     "envalid": "^7.3.1",

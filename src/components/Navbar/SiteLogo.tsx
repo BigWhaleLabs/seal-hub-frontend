@@ -6,6 +6,7 @@ import classnames, {
   display,
   flexDirection,
   gap,
+  maxWidth,
   width,
 } from 'classnames/tailwind'
 
@@ -21,7 +22,11 @@ const logoWithVersion = classnames(
   displayFrom('md')
 )
 
-const logoWrapper = classnames(display('flex'), width('w-full'))
+const logoWrapper = classnames(
+  display('flex'),
+  width('w-full'),
+  maxWidth('max-w-14')
+)
 
 export default function ({
   logo,

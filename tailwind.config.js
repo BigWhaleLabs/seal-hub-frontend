@@ -44,6 +44,9 @@ module.exports = {
       width: {
         'full-105': '105%',
       },
+      maxWidth: {
+        14: '3.5rem',
+      },
       strokeWidth: {
         1.5: '1.5',
         3: 3,
