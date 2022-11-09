@@ -1,11 +1,10 @@
 import { Signer } from 'ethers'
+import { hashPersonalMessage } from '@ethereumjs/util'
 import { useAccount, useSigner } from 'wagmi'
 import { useEffect } from 'preact/hooks'
 import StatusBlock from 'components/StatusBlock'
-import createProof from 'helpers/createProof'
-
-import { hashPersonalMessage } from '@ethereumjs/util'
 import buffer from 'buffer'
+import createProof from 'helpers/createProof'
 const { Buffer } = buffer
 
 if (!window.Buffer) window.Buffer = Buffer

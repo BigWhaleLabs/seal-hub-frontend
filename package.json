@@ -9,7 +9,8 @@
     "pretty": "prettier --check src",
     "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src",
     "generate-css-types": "tailwindcss-classnames -o src/classnames/tailwind.ts && prettier --write src/classnames/tailwind.ts",
-    "preview": "yarn build && yarn vite preview"
+    "preview": "yarn build && yarn vite preview",
+    "get-zkp": "./scripts/getWasm.sh"
   },
   "browserslist": {
     "production": [
@@ -27,6 +28,7 @@
     "@big-whale-labs/frontend-utils": "^0.1.2",
     "@big-whale-labs/seal-hub-contract": "^0.0.1",
     "@ethereumjs/util": "^8.0.2",
+    "@lottiefiles/react-lottie-player": "^3.4.7",
     "@rainbow-me/rainbowkit": "^0.7.4",
     "@vitejs/plugin-react": "^2.2.0",
     "elliptic": "^6.5.4",
