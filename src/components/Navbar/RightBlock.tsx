@@ -38,7 +38,7 @@ const accountLinkContainer = classnames(
 )
 
 const AccountAndLogo = () => {
-  const { address: account } = useAccount()
+  const { address } = useAccount()
 
   return (
     <>
@@ -46,7 +46,7 @@ const AccountAndLogo = () => {
         <ConnectedButton />
       </div>
       <div className={width('w-fit')}>
-        <Logo connected={!!account} />
+        <Logo connected={!!address} />
       </div>
     </>
   )

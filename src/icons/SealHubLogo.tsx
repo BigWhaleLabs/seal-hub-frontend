@@ -9,7 +9,6 @@ export default function () {
       width="52"
       height="64"
       viewBox="0 0 52 64"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -41,10 +40,10 @@ export default function () {
       <defs>
         <linearGradient
           id="paint0_linear_19_6050"
-          x1="49.3671"
-          y1="43.3013"
-          x2="9.77344"
-          y2="43.3013"
+          x1="49.36"
+          y1="43.30"
+          x2="9.77"
+          y2="43.30"
           gradientUnits="userSpaceOnUse"
         >
           <stop stop-color="var(--primary-bright)" />
@@ -52,10 +51,10 @@ export default function () {
         </linearGradient>
         <linearGradient
           id="paint1_linear_19_6050"
-          x1="32.1528"
-          y1="50.087"
-          x2="-3.88591e-07"
-          y2="50.087"
+          x1="32.15"
+          y1="50.08"
+          x2="-3.88"
+          y2="50.08"
           gradientUnits="userSpaceOnUse"
         >
           <stop stop-color="var(--primary-bright)" />
