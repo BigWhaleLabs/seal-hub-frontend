@@ -2,8 +2,13 @@ import { Signer } from 'ethers'
 import { useAccount, useSigner } from 'wagmi'
 import { useEffect } from 'preact/hooks'
 import StatusBlock from 'components/StatusBlock'
-import createMessage from 'helpers/createMessage'
 import createProof from 'helpers/createProof'
+
+import { hashPersonalMessage } from '@ethereumjs/util'
+import buffer from 'buffer'
+const { Buffer } = buffer
+
+if (!window.Buffer) window.Buffer = Buffer
 
 export default function () {
   const { address } = useAccount()
@@ -20,9 +25,9 @@ export default function () {
   useEffect(() => {
     async function start(signer: Signer) {
       const baseMessage = `SealHub verification for ${address}`
-      const messageHash = await createMessage(baseMessage)
-      const signature = await signer.signMessage(messageHash)
-      void createProof(signature, baseMessage)
+      const msgHash = hashPersonalMessage(Buffer.from(baseMessage))
+      const signature = await signer.signMessage(msgHash)
+      console.log(await createProof(signature, baseMessage))
     }
 
     if (address && signer) void start(signer)

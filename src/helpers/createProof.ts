@@ -1,3 +1,4 @@
+import * as snarkjs from 'snarkjs'
 import { Proof } from 'models/ProofResult'
 import { hashPersonalMessage } from '@ethereumjs/util'
 import { utils } from 'ethers'
@@ -81,7 +82,6 @@ function generateInput(signature: string, message: string) {
   const U = ec.curve.g.mul(w)
   const T = rPoint.getPublic().mul(rInv) as ExtendedBasePoint
   const TPreComputes = getPointPreComputes(T)
-
   return {
     TPreComputes,
     U: [splitToRegisters(U.x), splitToRegisters(U.y)],
@@ -89,16 +89,13 @@ function generateInput(signature: string, message: string) {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare const snarkjs: any
-
 export default function build(
   signature: string,
   message: string
 ): Promise<Proof> {
   return snarkjs.groth16.fullProve(
     generateInput(signature, message),
-    '/zk/ECDSAChecker.wasm',
-    '/zk/ECDSAChecker_final.zkey'
+    'zk/ECDSAChecker.wasm',
+    'zk/ECDSAChecker_final.zkey'
   )
 }

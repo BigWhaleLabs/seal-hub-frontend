@@ -46,7 +46,6 @@ export default defineConfig({
         GlobalsPolyfills({
           buffer: true,
         }),
-        NodeModulesPolyfillPlugin(),
       ] as any[],
     },
   },
