@@ -7,8 +7,11 @@ import {
 import { space } from 'classnames/tailwind'
 import Card from 'components/Card'
 import Section from 'components/Section'
+import useScrollToTop from 'helpers/useScrollToTop'
 
 export default function () {
+  useScrollToTop()
+
   return (
     <Card>
       <div className={space('space-y-4')}>

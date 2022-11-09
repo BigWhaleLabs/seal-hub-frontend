@@ -1,3 +1,4 @@
+import { Link, useRoute } from 'wouter'
 import {
   TTextColor,
   backgroundClip,
@@ -98,17 +99,21 @@ export function LinkText({
   children,
 }: ChildrenProp & { url?: string; internal?: boolean; onClick?: () => void }) {
   if (url)
-    return (
+    return internal ? (
+      <Link href={url} className={linkText}>
+        {children}
+      </Link>
+    ) : (
       <a
         href={url}
-        target={internal ? '_self' : '_blank'}
+        target="_blank"
         rel="noopener noreferrer"
         className={linkText}
-        onClick={onClick}
       >
         {children}
       </a>
     )
+
   return (
     <span className={linkText} onClick={() => onClick && onClick()}>
       {children}
@@ -127,13 +132,23 @@ const footerLink = (active?: boolean) =>
     }),
     transitionProperty('transition-colors')
   )
-export function FooterLink({ url, children }: ChildrenProp & { url: string }) {
-  return (
+export function FooterLink({
+  url,
+  internal,
+  children,
+}: ChildrenProp & { url: string; internal?: boolean }) {
+  const [isActive] = useRoute(url)
+
+  return internal ? (
+    <Link href={url} className={footerLink(isActive)}>
+      {children}
+    </Link>
+  ) : (
     <a
-      className={footerLink()}
       href={url}
-      target="_blank"
+      target={internal ? '_self' : '_blank'}
       rel="noopener noreferrer"
+      className={footerLink()}
     >
       {children}
     </a>
