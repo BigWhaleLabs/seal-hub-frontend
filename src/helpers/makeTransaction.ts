@@ -1,4 +1,5 @@
 import { BigNumber } from 'ethers'
+import { ECDSAProofStruct } from '@big-whale-labs/seal-hub-contract/dist/typechain/contracts/SealHub'
 import ProofResult from 'models/ProofResult'
 
 export default function makeTransaction(proofResult: ProofResult) {
@@ -24,5 +25,5 @@ export default function makeTransaction(proofResult: ProofResult) {
       BigNumber.from(proofResult.proof.pi_c[1]),
     ],
     input: proofResult.publicSignals.map(BigNumber.from),
-  }
+  } as ECDSAProofStruct
 }

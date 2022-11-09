@@ -1,14 +1,22 @@
+import { ExternalProvider, Web3Provider } from '@ethersproject/providers'
 import { SealHub__factory } from '@big-whale-labs/seal-hub-contract'
-import { Signer } from 'ethers'
-import { wrapContract } from '@opengsn/provider/dist/WrapContract'
+import { Wallet } from 'ethers'
+import defaultProvider from 'helpers/defaultProvider'
 import env from 'helpers/env'
+import relayProvider from 'helpers/relayProvider'
 
-export default function (signer: Signer) {
-  const writeContract = SealHub__factory.connect(env.VITE_SEAL_HUB, signer)
+export default async function () {
+  const wallet = Wallet.createRandom()
 
-  return wrapContract(writeContract, {
-    paymasterAddress: env.VITE_GSN_PAYMASTER_CONTRACT_ADDRESS,
-    preferredRelays: [env.VITE_GSN_SC_RELAY],
-    blacklistedRelays: ['https://goerli.v3.opengsn.org/v3'],
-  })
+  const gsnProvider = await relayProvider(defaultProvider)
+  gsnProvider.addAccount(wallet.privateKey)
+
+  const etherProvider = new Web3Provider(
+    gsnProvider as unknown as ExternalProvider
+  )
+
+  return SealHub__factory.connect(
+    env.VITE_SEAL_HUB,
+    etherProvider.getSigner(wallet.address)
+  )
 }
