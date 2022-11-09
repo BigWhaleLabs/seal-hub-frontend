@@ -12,6 +12,7 @@ import {
   textAlign,
   textColor,
   textDecoration,
+  transitionProperty,
   width,
 } from 'classnames/tailwind'
 import ChildrenProp from 'models/ChildrenProp'
@@ -111,6 +112,30 @@ export function LinkText({
     <span className={linkText} onClick={() => onClick && onClick()}>
       {children}
     </span>
+  )
+}
+
+const footerLink = (active?: boolean) =>
+  classnames(
+    fontSize('text-sm'),
+    fontWeight('font-semibold'),
+    textDecoration({ underline: active, 'hover:underline': true }),
+    textColor({
+      'text-accent': active,
+      'hover:text-accent': true,
+    }),
+    transitionProperty('transition-colors')
+  )
+export function FooterLink({ url, children }: ChildrenProp & { url: string }) {
+  return (
+    <a
+      className={footerLink()}
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {children}
+    </a>
   )
 }
 
