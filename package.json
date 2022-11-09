@@ -5,7 +5,7 @@
   "homepage": "https://hub.sealcred.xyz",
   "scripts": {
     "start": "yarn generate-css-types && vite",
-    "build": "yarn generate-css-types && tsc && cross-env NODE_ENV=production tsc && vite build",
+    "build": "yarn get-zkp && yarn generate-css-types && tsc && cross-env NODE_ENV=production tsc && vite build",
     "pretty": "prettier --check src",
     "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src",
     "generate-css-types": "tailwindcss-classnames -o src/classnames/tailwind.ts && prettier --write src/classnames/tailwind.ts",
