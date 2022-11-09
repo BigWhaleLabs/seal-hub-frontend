@@ -32,6 +32,6 @@ yarn-error.log*
 !.yarn/versions
 
 # ZKP files
-public/zkp/*.wasm
-public/zkp/*.zkey
-public/zkp/*.json
+public/zk/*.wasm
+public/zk/*.zkey
+public/zk/*.json
