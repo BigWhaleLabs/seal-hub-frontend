@@ -1,7 +1,8 @@
-import { Proof } from 'models/ProofResult'
+import * as snarkjs from 'snarkjs'
 import { hashPersonalMessage } from '@ethereumjs/util'
 import { utils } from 'ethers'
 import BN from 'bn.js'
+import ProofResult from 'models/ProofResult'
 import elliptic from 'elliptic'
 
 const ec = new elliptic.ec('secp256k1')
@@ -89,13 +90,10 @@ function generateInput(signature: string, message: string) {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare const snarkjs: any
-
 export default function build(
   signature: string,
   message: string
-): Promise<Proof> {
+): Promise<ProofResult> {
   return snarkjs.groth16.fullProve(
     generateInput(signature, message),
     '/zk/ECDSAChecker.wasm',

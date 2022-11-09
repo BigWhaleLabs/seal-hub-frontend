@@ -5,7 +5,7 @@ import { publicProvider } from 'wagmi/providers/public'
 import env from 'helpers/env'
 
 const { chains, provider } = configureChains(
-  [chain.mainnet],
+  [chain.goerli],
   [alchemyProvider({ apiKey: env.VITE_ALCHEMY_API_KEY }), publicProvider()]
 )
 
