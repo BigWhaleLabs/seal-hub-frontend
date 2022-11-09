@@ -93,14 +93,15 @@ const linkText = classnames(
 )
 export function LinkText({
   url,
+  internal,
   onClick,
   children,
-}: ChildrenProp & { url?: string; onClick?: () => void }) {
+}: ChildrenProp & { url?: string; internal?: boolean; onClick?: () => void }) {
   if (url)
     return (
       <a
         href={url}
-        target="_blank"
+        target={internal ? '_self' : '_blank'}
         rel="noopener noreferrer"
         className={linkText}
         onClick={onClick}
@@ -174,4 +175,30 @@ export function SocialLink({ url, children }: ChildrenProp & { url: string }) {
       {children}
     </a>
   )
+}
+
+const cardParagraphText = classnames(
+  textColor('text-formal-accent'),
+  fontFamily('font-primary'),
+  fontSize('text-sm', 'sm:text-base'),
+  lineHeight('leading-6')
+)
+export function CardParagraphText({ children }: ChildrenProp) {
+  return <p className={cardParagraphText}>{children}</p>
+}
+
+const subheaderCardText = classnames(
+  textColor('text-formal-accent'),
+  fontFamily('font-primary'),
+  fontWeight('font-bold'),
+  fontSize('text-lg'),
+  lineHeight('leading-7')
+)
+export function SubheaderCardText({ children }: ChildrenProp) {
+  return <p className={subheaderCardText}>{children}</p>
+}
+
+const sectionTitle = fontSize('text-sm')
+export function SectionTitle({ children }: ChildrenProp) {
+  return <p className={sectionTitle}>{children}</p>
 }

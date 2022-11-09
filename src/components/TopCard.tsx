@@ -1,19 +1,12 @@
 import { AccentText, BodyText, HeaderText } from 'components/Text'
 import { JSX } from 'preact/jsx-runtime'
+import { basicCardStyles } from 'components/Card'
 import DashedDividers from 'components/DashedDividers'
 import classnames, {
-  backgroundColor,
   borderColor,
-  borderRadius,
-  borderWidth,
-  boxShadow,
   boxShadowColor,
-  display,
-  flexDirection,
   gap,
-  padding,
   space,
-  width,
 } from 'classnames/tailwind'
 
 interface TopCardProps {
@@ -24,17 +17,10 @@ interface TopCardProps {
 }
 
 const wrapper = classnames(
-  display('flex'),
-  flexDirection('flex-col'),
+  basicCardStyles,
   gap('gap-y-8'),
-  backgroundColor('bg-primary-dark'),
-  padding('py-8', 'px-6'),
-  borderRadius('rounded-2xl'),
-  borderWidth('border'),
   borderColor('border-accent'),
-  boxShadow('shadow-card'),
-  boxShadowColor('shadow-accent-semi-transparent'),
-  width('w-full')
+  boxShadowColor('shadow-accent-semi-transparent')
 )
 
 export default function ({

@@ -1,29 +1,21 @@
 import { BodyText, GradientText, HeaderText, LinkText } from 'components/Text'
+import { basicCardStyles } from 'components/Card'
 import SealStar from 'icons/SealStar'
 import classnames, {
-  backgroundColor,
   borderColor,
-  borderRadius,
-  borderWidth,
   display,
   flexDirection,
   gap,
   listStyleType,
   margin,
-  padding,
   space,
   width,
 } from 'classnames/tailwind'
 
 const wrapper = classnames(
-  display('flex'),
-  flexDirection('flex-col'),
   gap('gap-y-6'),
-  backgroundColor('bg-primary-dark'),
-  padding('py-8', 'px-6'),
-  borderRadius('rounded-2xl'),
-  borderWidth('border'),
-  borderColor('border-gray-500')
+  borderColor('border-gray-500'),
+  basicCardStyles
 )
 const topBlock = classnames(display('flex'), gap('gap-x-4'))
 const topBlockInfo = classnames(
