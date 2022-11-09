@@ -287,6 +287,7 @@ export type TBackgroundColor =
   | 'bg-primary-bright'
   | 'bg-primary-background'
   | 'bg-primary-semi-dimmed'
+  | 'bg-primary-dimmed'
 
 export type TBackgroundPosition =
   | 'bg-bottom'
@@ -1021,6 +1022,9 @@ export type TGradientColorStops =
   | 'from-primary-semi-dimmed'
   | 'via-primary-semi-dimmed'
   | 'to-primary-semi-dimmed'
+  | 'from-primary-dimmed'
+  | 'via-primary-dimmed'
+  | 'to-primary-dimmed'
 
 export type TBackgrounds =
   | TBackgroundAttachment
@@ -2678,6 +2682,11 @@ export type TBorderColor =
   | 'border-r-primary-semi-dimmed'
   | 'border-b-primary-semi-dimmed'
   | 'border-l-primary-semi-dimmed'
+  | 'border-primary-dimmed'
+  | 'border-t-primary-dimmed'
+  | 'border-r-primary-dimmed'
+  | 'border-b-primary-dimmed'
+  | 'border-l-primary-dimmed'
 
 export type TBorderOpacity =
   | 'border-opacity-0'
@@ -3320,6 +3329,7 @@ export type TRingColor =
   | 'ring-primary-bright'
   | 'ring-primary-background'
   | 'ring-primary-semi-dimmed'
+  | 'ring-primary-dimmed'
 
 export type TRingWidth =
   | 'ring-0'
@@ -3585,6 +3595,7 @@ export type TRingOffsetColor =
   | 'ring-offset-primary-bright'
   | 'ring-offset-primary-background'
   | 'ring-offset-primary-semi-dimmed'
+  | 'ring-offset-primary-dimmed'
 
 export type TRingOffsetWidth =
   | 'ring-offset-0'
@@ -3844,6 +3855,7 @@ export type TOutlineColor =
   | 'outline-primary-bright'
   | 'outline-primary-background'
   | 'outline-primary-semi-dimmed'
+  | 'outline-primary-dimmed'
 
 export type TBorders =
   | TBorderStyle
@@ -4156,6 +4168,7 @@ export type TBoxShadowColor =
   | 'shadow-primary-bright'
   | 'shadow-primary-background'
   | 'shadow-primary-semi-dimmed'
+  | 'shadow-primary-dimmed'
 
 export type TOpacity =
   | 'opacity-0'
@@ -4277,6 +4290,7 @@ export type TDropShadow =
   | 'drop-shadow-2xl'
   | 'drop-shadow-none'
   | 'drop-shadow-accent'
+  | 'drop-shadow-secondary'
   | 'drop-shadow-gold'
 
 export type TGrayscale = 'grayscale-0' | 'grayscale'
@@ -5713,6 +5727,7 @@ export type TCaretColor =
   | 'caret-primary-bright'
   | 'caret-primary-background'
   | 'caret-primary-semi-dimmed'
+  | 'caret-primary-dimmed'
 
 export type TWillChange =
   | 'will-change-auto'
@@ -5958,6 +5973,7 @@ export type TAccentColor =
   | 'accent-primary-bright'
   | 'accent-primary-background'
   | 'accent-primary-semi-dimmed'
+  | 'accent-primary-dimmed'
 
 export type TScrollPadding =
   | 'scroll-p-0'
@@ -7006,6 +7022,7 @@ export type TWidth =
   | 'w-min'
   | 'w-max'
   | 'w-fit'
+  | 'w-full-105'
 
 export type TMinWidth =
   | 'min-w-0'
@@ -7038,6 +7055,7 @@ export type TMaxWidth =
   | 'max-w-screen-lg'
   | 'max-w-screen-xl'
   | 'max-w-screen-2xl'
+  | 'max-w-screen-xs'
 
 export type THeight =
   | 'h-0'
@@ -7194,6 +7212,7 @@ export type TFill =
   | 'fill-primary-bright'
   | 'fill-primary-background'
   | 'fill-primary-semi-dimmed'
+  | 'fill-primary-dimmed'
 
 export type TStroke =
   | 'stroke-inherit'
@@ -7234,8 +7253,14 @@ export type TStroke =
   | 'stroke-primary-bright'
   | 'stroke-primary-background'
   | 'stroke-primary-semi-dimmed'
+  | 'stroke-primary-dimmed'
 
-export type TStrokeWidth = 'stroke-0' | 'stroke-1' | 'stroke-2' | 'stroke-3'
+export type TStrokeWidth =
+  | 'stroke-0'
+  | 'stroke-1'
+  | 'stroke-2'
+  | 'stroke-3'
+  | 'stroke-1.5'
 
 export type TSVG = TFill | TStroke | TStrokeWidth
 
@@ -7755,6 +7780,7 @@ export type TPlaceholderColor =
   | 'placeholder-primary-bright'
   | 'placeholder-primary-background'
   | 'placeholder-primary-semi-dimmed'
+  | 'placeholder-primary-dimmed'
 
 export type TPlaceholderOpacity =
   | 'placeholder-opacity-0'
@@ -8010,6 +8036,7 @@ export type TTextColor =
   | 'text-primary-bright'
   | 'text-primary-background'
   | 'text-primary-semi-dimmed'
+  | 'text-primary-dimmed'
 
 export type TTextOpacity =
   | 'text-opacity-0'
@@ -8304,6 +8331,7 @@ export type TTextDecorationColor =
   | 'decoration-primary-bright'
   | 'decoration-primary-background'
   | 'decoration-primary-semi-dimmed'
+  | 'decoration-primary-dimmed'
 
 export type TTextDecorationThickness =
   | 'decoration-0'
@@ -8404,6 +8432,7 @@ export type TPseudoClassVariants =
   | 'lg:'
   | 'xl:'
   | '2xl:'
+  | 'xs:'
 
 //////////// Utility Function generic type
 

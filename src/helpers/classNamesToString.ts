@@ -4,6 +4,7 @@ type AllowedExtraClassnames =
   | 'seal-star'
   | 'small-star'
   | 'colorful-bg'
+  | 'hover-tertiary'
   | 'mask-border-fade-1'
   | 'mask-border-fade-2'
 
