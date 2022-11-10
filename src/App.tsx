@@ -1,8 +1,9 @@
 import '@rainbow-me/rainbowkit/styles.css'
-import { Route, Router } from 'wouter'
+import { Redirect, Route, Router, Switch } from 'wouter'
 import Footer from 'components/Footer'
 import Main from 'pages/Main'
 import Navbar from 'components/Navbar'
+import NotFound from 'pages/NotFound'
 import Privacy from 'pages/Privacy'
 import RainbowWrapper from 'components/RainbowWrapper'
 import Root from 'components/Root'
@@ -18,9 +19,15 @@ export default function () {
       <Navbar />
       <Root>
         <Router hook={useHashLocation}>
-          <Route path="/" component={Main} />
-          <Route path="/terms" component={Terms} />
-          <Route path="/privacy" component={Privacy} />
+          <Switch>
+            <Route path="/" component={Main} />
+            <Route path="/terms" component={Terms} />
+            <Route path="/privacy" component={Privacy} />
+            <Route path="/404" component={NotFound} />
+            <Route path="">
+              <Redirect to="/404" />
+            </Route>
+          </Switch>
         </Router>
       </Root>
       <Footer />

@@ -1,5 +1,6 @@
 import { BodyText } from 'components/Text'
-import ConnectWalletButton from 'components/ConnectWalletButton'
+import { Link, useLocation } from 'wouter'
+import Button from 'components/Button'
 import Highlighter from 'components/Highlighter'
 import classnames, {
   alignItems,
@@ -16,13 +17,17 @@ const wrapper = classnames(
 )
 
 export default function () {
+  const [, setLocation] = useLocation()
+
   return (
     <div className={wrapper}>
-      <Highlighter text="Getting Started" />
-      <BodyText centered>
-        Connect a wallet to generate a commitment and add on chain.
-      </BodyText>
-      <ConnectWalletButton />
+      <Highlighter text="What to do?" textCenter />
+      <BodyText centered>Refresh SealHub to start over</BodyText>
+      <Link href="/">
+        <Button fitContent onClick={() => setLocation('/')}>
+          Refresh Sealhub
+        </Button>
+      </Link>
     </div>
   )
 }

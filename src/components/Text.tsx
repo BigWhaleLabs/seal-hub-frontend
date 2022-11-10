@@ -20,22 +20,25 @@ import ChildrenProp from 'models/ChildrenProp'
 import checkIsLinkActive from 'helpers/checkIsLinkActive'
 import classNamesToString from 'helpers/classNamesToString'
 
-const headerText = (small?: boolean, mono?: boolean) =>
+const headerText = (small?: boolean, mono?: boolean, centered?: boolean) =>
   classnames(
     fontWeight('font-bold'),
     lineHeight(small ? 'leading-8' : 'leading-10'),
     fontSize(small ? 'text-2.5xl' : 'text-3.5xl'),
-    fontFamily({ 'font-primary': !mono })
+    fontFamily({ 'font-primary': !mono }),
+    textAlign({ 'text-center': centered })
   )
 export function HeaderText({
   children,
   small,
   mono,
+  centered,
 }: ChildrenProp & {
   small?: boolean
   mono?: boolean
+  centered?: boolean
 }) {
-  return <p className={headerText(small, mono)}>{children}</p>
+  return <p className={headerText(small, mono, centered)}>{children}</p>
 }
 
 const bodyText = (centered?: boolean) =>
