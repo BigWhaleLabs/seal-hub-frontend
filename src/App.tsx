@@ -7,9 +7,12 @@ import Privacy from 'pages/Privacy'
 import RainbowWrapper from 'components/RainbowWrapper'
 import Root from 'components/Root'
 import Terms from 'pages/Terms'
+import setGlobalDefaults from 'helpers/setGlobalDefaults'
 import useHashLocation from 'hooks/useHashLocation'
 
 export default function () {
+  setGlobalDefaults()
+
   return (
     <RainbowWrapper>
       <Navbar />

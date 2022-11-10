@@ -8,9 +8,12 @@
 
 ## Environment variables
 
-| Name                   | Description     |
-| ---------------------- | --------------- |
-| `VITE_ALCHEMY_API_KEY` | Alchemy Api key |
+| Name                                  | Description                                                 |
+| ------------------------------------- | ----------------------------------------------------------- |
+| `VITE_ALCHEMY_API_KEY`                | Alchemy Api key                                             |
+| `VITE_SEAL_HUB_CONTRACT`              | Sealhub contract address                                    |
+| `VITE_GSN_PAYMASTER_CONTRACT_ADDRESS` | GSN Paymaster contract address (defaults to @bwl/constants) |
+| `VITE_GSN_SC_RELAY`                   | Relay URL (defaults to @bwl/constants)                      |
 
 Also, please, consider looking at `.env.sample`.
 
