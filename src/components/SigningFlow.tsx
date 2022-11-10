@@ -5,40 +5,11 @@ import { useEffect } from 'preact/hooks'
 import { useState } from 'react'
 import AppStore from 'stores/AppStore'
 import StatusBlock from 'components/StatusBlock'
-import buffer from 'buffer'
 import createProof from 'helpers/createProof'
 import getSealHubGSN from 'helpers/getSealHubGSN'
 import makeTransaction from 'helpers/makeTransaction'
 import sealHub from 'helpers/sealHub'
-
-const { Buffer } = buffer
-if (!window.Buffer) window.Buffer = Buffer
-
-enum STATES {
-  ERROR,
-  INIT,
-  CHECK_COMMITMENT,
-  GENERATE_COMMITMENT,
-}
-
-const states = {
-  [STATES.ERROR]: {
-    title: 'Error',
-    subTitle: 'Try again',
-  },
-  [STATES.INIT]: {
-    title: 'Waiting for signature',
-    subTitle: 'We’re requesting your signature to generate your commitment.',
-  },
-  [STATES.CHECK_COMMITMENT]: {
-    title: 'Checking for existing commitment...',
-    subTitle: 'Hang tight!',
-  },
-  [STATES.GENERATE_COMMITMENT]: {
-    title: 'Generate commitment...',
-    subTitle: 'Hang tight!',
-  },
-}
+import SigningStates, { STATES } from 'types/SigningStates'
 
 export default function () {
   const { address } = useAccount()
@@ -78,7 +49,7 @@ export default function () {
     if (!AppStore.flowInit && signer) void start(signer)
   }, [address, signer, provider])
 
-  const { title, subTitle } = states[state]
+  const { title, subTitle } = SigningStates[state]
 
   return <StatusBlock loadingText={title} subtitle={subTitle} />
 }
