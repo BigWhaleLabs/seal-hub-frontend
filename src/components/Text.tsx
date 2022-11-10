@@ -58,23 +58,28 @@ export function AccentText({
   return <p className={textColor(color ?? 'text-accent')}>{children}</p>
 }
 
-const gradientText = classnames(
-  textColor('text-transparent'),
-  backgroundImage('bg-gradient-to-r'),
-  backgroundClip('bg-clip-text'),
-  gradientColorStops('from-secondary', 'to-accent'),
-  fontWeight('font-bold'),
-  fontFamily('font-primary'),
-  width('w-fit')
-)
-export function GradientText({ children }: ChildrenProp) {
-  return <span className={gradientText}>{children}</span>
+const gradientText = (center?: boolean) =>
+  classnames(
+    textColor('text-transparent'),
+    backgroundImage('bg-gradient-to-r'),
+    backgroundClip('bg-clip-text'),
+    gradientColorStops('from-secondary', 'to-accent'),
+    fontWeight('font-bold'),
+    fontFamily('font-primary'),
+    width('w-fit'),
+    textAlign({ 'text-center': center })
+  )
+export function GradientText({
+  center,
+  children,
+}: ChildrenProp & { center?: boolean }) {
+  return <span className={gradientText(center)}>{children}</span>
 }
 
-const statusText = (color: 'success' | 'error' | 'default') =>
+const statusText = (color?: 'success' | 'error') =>
   classnames(
     textColor({
-      'text-formal-accent': color === 'default',
+      'text-formal-accent': !color,
       'text-tertiary': color === 'success',
       'text-error': color === 'error',
     }),
@@ -85,7 +90,7 @@ const statusText = (color: 'success' | 'error' | 'default') =>
 export function StatusText({
   children,
   color,
-}: ChildrenProp & { color: 'success' | 'error' | 'default' }) {
+}: ChildrenProp & { color?: 'success' | 'error' }) {
   return <span className={statusText(color)}>{children}</span>
 }
 
@@ -222,10 +227,31 @@ export function SectionTitle({ children }: ChildrenProp) {
 
 const captionText = classnames(
   fontFamily('font-primary'),
-  textColor('text-primary-caption'),
+  textColor('text-primary-brighter'),
   fontSize('text-xs'),
-  textAlign('text-center')
+  width('w-fit')
 )
 export function CaptionText({ children }: ChildrenProp) {
-  return <p className={captionText}>{children}</p>
+  return <span className={captionText}>{children}</span>
+}
+
+export const highlightedText = (bold?: boolean, center?: boolean) =>
+  classnames(
+    width('w-fit'),
+    textColor('text-primary-dark'),
+    fontWeight(bold ? 'font-bold' : 'font-semibold'),
+    fontFamily(bold ? 'font-primary' : undefined),
+    fontSize(bold ? 'text-base' : 'text-sm'),
+    lineHeight(bold ? 'leading-6' : 'leading-5'),
+    textAlign(center ? 'text-center' : 'text-left')
+  )
+export function HighlightedText({
+  bold,
+  center,
+  children,
+}: ChildrenProp & {
+  bold?: boolean
+  center?: boolean
+}) {
+  return <div className={highlightedText(bold, center)}>{children}</div>
 }

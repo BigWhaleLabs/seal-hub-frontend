@@ -19,6 +19,7 @@ const wrapper = classnames(
 
 export default function () {
   const { connected } = useSnapshot(AppStore)
+
   return (
     <div className={wrapper}>
       {!connected && (

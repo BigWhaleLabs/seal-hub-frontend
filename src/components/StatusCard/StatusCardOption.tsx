@@ -25,7 +25,7 @@ export default function ({
   complete?: boolean
 }) {
   return (
-    <StatusText color={complete ? 'success' : 'default'}>
+    <StatusText color={complete ? 'success' : undefined}>
       <span className={option}>
         {children}
         {complete && <Checkmark />}

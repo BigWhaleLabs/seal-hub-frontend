@@ -35,7 +35,7 @@ export default function ({
     <div className={statusCard}>
       {children}
       <Delimiter horizontal />
-      <StatusText color="default">{statusDescription}</StatusText>
+      <StatusText>{statusDescription}</StatusText>
     </div>
   )
 }
