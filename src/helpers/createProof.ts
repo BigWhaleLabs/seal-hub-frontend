@@ -1,4 +1,3 @@
-import * as snarkjs from 'snarkjs'
 import { hashPersonalMessage } from '@ethereumjs/util'
 import { utils } from 'ethers'
 import BN from 'bn.js'
@@ -88,6 +87,9 @@ function generateInput(signature: string, message: string) {
     s: [splitToRegisters(Buffer.from(s).toString('hex'))],
   }
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const snarkjs: any
 
 export default function build(
   signature: string,

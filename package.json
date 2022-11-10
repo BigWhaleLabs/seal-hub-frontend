@@ -39,7 +39,6 @@
     "ethers": "^5.7.2",
     "preact": "^10.11.2",
     "rollup-plugin-node-polyfills": "^0.2.1",
-    "snarkjs": "^0.5.0",
     "unfetch": "^4.2.0",
     "valtio": "^1.7.5",
     "wagmi": "^0.7.12"
