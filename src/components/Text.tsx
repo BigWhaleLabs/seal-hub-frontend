@@ -1,4 +1,4 @@
-import { Link, useRoute } from 'wouter'
+import { Link } from 'wouter'
 import {
   TTextColor,
   backgroundClip,
@@ -17,6 +17,7 @@ import {
   width,
 } from 'classnames/tailwind'
 import ChildrenProp from 'models/ChildrenProp'
+import checkIsLinkActive from 'helpers/checkIsLinkActive'
 import classNamesToString from 'helpers/classNamesToString'
 
 const headerText = (small?: boolean, mono?: boolean) =>
@@ -137,7 +138,7 @@ export function FooterLink({
   internal,
   children,
 }: ChildrenProp & { url: string; internal?: boolean }) {
-  const [isActive] = useRoute(url)
+  const isActive = checkIsLinkActive(url)
 
   return internal ? (
     <Link href={url} className={footerLink(isActive)}>
