@@ -4,12 +4,12 @@ import { useAccount, useProvider, useSigner } from 'wagmi'
 import { useEffect } from 'preact/hooks'
 import { useState } from 'react'
 import AppStore from 'stores/AppStore'
+import SigningStates, { STATES } from 'types/SigningStates'
 import StatusBlock from 'components/StatusBlock'
 import createProof from 'helpers/createProof'
 import getSealHubGSN from 'helpers/getSealHubGSN'
 import makeTransaction from 'helpers/makeTransaction'
 import sealHub from 'helpers/sealHub'
-import SigningStates, { STATES } from 'types/SigningStates'
 
 export default function () {
   const { address } = useAccount()
