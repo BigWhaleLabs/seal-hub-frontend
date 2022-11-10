@@ -4236,6 +4236,7 @@ export type TAnimation =
   | 'animate-ping'
   | 'animate-pulse'
   | 'animate-bounce'
+  | 'animate-rotateY'
 
 export type TTransitionsAndAnimations =
   | TTransitionProperty
@@ -6933,6 +6934,13 @@ export type TInset =
   | 'right-full'
   | 'bottom-full'
   | 'left-full'
+  | '-inset-67px'
+  | '-inset-x-67px'
+  | '-inset-y-67px'
+  | '-top-67px'
+  | '-right-67px'
+  | '-bottom-67px'
+  | '-left-67px'
   | 'inset-full-73'
   | 'inset-x-full-73'
   | 'inset-y-full-73'

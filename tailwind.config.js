@@ -6,6 +6,16 @@ module.exports = {
       primary: ['"Space Grotesk"', 'sans-serif'],
     },
     extend: {
+      keyframes: {
+        rotateY: {
+          '100%': {
+            transform: 'rotateY(360deg)',
+          },
+        },
+      },
+      animation: {
+        rotateY: 'rotateY 6s linear infinite',
+      },
       colors: {
         'formal-accent': 'var(--formal-accent)',
         accent: 'var(--accent)',
@@ -59,6 +69,7 @@ module.exports = {
         '-90': '-90deg',
       },
       inset: {
+        '-67px': '-67px',
         'full-73': '73%',
       },
     },

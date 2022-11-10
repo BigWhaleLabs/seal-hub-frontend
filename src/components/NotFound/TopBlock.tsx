@@ -1,14 +1,17 @@
 import { AccentText, BodyText, HeaderText } from 'components/Text'
+import PalmStars from 'components/NotFound/PalmStars'
 import PalmTree from 'icons/PalmTree'
 import classNamesToString from 'helpers/classNamesToString'
 import classnames, {
   alignItems,
+  animation,
   display,
   flexDirection,
   fontSize,
   fontWeight,
   gap,
   inset,
+  margin,
   position,
   rotate,
   space,
@@ -21,6 +24,7 @@ const wrapper = classnames(
   gap('gap-y-6'),
   alignItems('items-center')
 )
+const palmBlock = classnames(position('relative'), margin('my-16'))
 const big404 = classNamesToString(
   position('absolute'),
   rotate('-rotate-90'),
@@ -28,6 +32,7 @@ const big404 = classNamesToString(
   textColor('text-transparent'),
   fontWeight('font-bold'),
   inset('right-full-73', 'top-1/2'),
+  display('hidden', 'lg:block'),
   'accent-text-stroke'
 )
 
@@ -35,8 +40,11 @@ export default function () {
   return (
     <>
       <div className={wrapper}>
-        <div>
-          <PalmTree />
+        <div className={palmBlock}>
+          <PalmStars />
+          <div className={animation('animate-rotateY')}>
+            <PalmTree />
+          </div>
         </div>
         <AccentText>// 100% NOT RIGHT</AccentText>
         <div className={space('space-y-2')}>
