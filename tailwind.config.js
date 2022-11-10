@@ -12,9 +12,15 @@ module.exports = {
             transform: 'rotateY(360deg)',
           },
         },
+        'appear-404': {
+          to: {
+            transform: 'translateX(-67%) rotate(-90deg)',
+          },
+        },
       },
       animation: {
         rotateY: 'rotateY 6s linear infinite',
+        'appear-404': 'appear-404 1.5s ease-in-out forwards',
       },
       colors: {
         'formal-accent': 'var(--formal-accent)',

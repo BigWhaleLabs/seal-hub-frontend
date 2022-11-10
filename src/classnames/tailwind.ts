@@ -4237,6 +4237,7 @@ export type TAnimation =
   | 'animate-pulse'
   | 'animate-bounce'
   | 'animate-rotateY'
+  | 'animate-appear-404'
 
 export type TTransitionsAndAnimations =
   | TTransitionProperty

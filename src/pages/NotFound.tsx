@@ -1,4 +1,5 @@
 import {
+  animation,
   display,
   fontFamily,
   fontSize,
@@ -16,12 +17,13 @@ import classNamesToString from 'helpers/classNamesToString'
 
 const big404 = classNamesToString(
   position('absolute'),
-  rotate('-rotate-90'),
   fontSize('text-13.5xl'),
   textColor('text-transparent'),
   fontWeight('font-bold'),
   fontFamily('font-primary'),
-  inset('right-full-70', 'top-1/6'),
+  inset('top-1/6'),
+  rotate('-rotate-90'),
+  animation('animate-appear-404'),
   display('hidden', 'lg:block'),
   zIndex('z-10'),
   'accent-text-stroke'
