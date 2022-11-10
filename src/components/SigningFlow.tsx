@@ -18,6 +18,7 @@ export default function () {
   useEffect(() => {
     async function start(signer: Signer) {
       if (!address) return
+
       try {
         AppStore.flowInit = true
 
