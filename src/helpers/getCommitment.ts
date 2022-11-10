@@ -1,8 +1,6 @@
 import { ProofInput } from 'models/ProofInput'
-import { publicKeyToArraysSplitted } from 'helpers/createProof'
-import _ from 'lodash'
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { buildBabyjub, buildMimc7 } from 'circomlibjs'
+import { publicKeyToArraysSplitted } from 'helpers/createProof'
 import { recoverPublicKey } from 'ethers/lib/utils'
 import { utils } from 'ethers'
 
@@ -25,15 +23,13 @@ class Mimc7 {
   }
 }
 
-type RecursiveArray<T> = T | Array<RecursiveArray<T>>
-
 export default async function getCommitment(
   inputs: ProofInput,
   signature: string,
   baseMessage: string
 ) {
   const k = 4
-  const prepHash: RecursiveArray<bigint | string> = []
+  const prepHash: (string | bigint)[] = []
 
   const msgHash = utils.hashMessage(baseMessage)
   const msgHashBytes = utils.arrayify(msgHash)
@@ -42,17 +38,14 @@ export default async function getCommitment(
   const [x, y] = publicKeyToArraysSplitted(publicKey)
 
   for (let i = 0; i < k; i++) {
-    prepHash[i] = inputs.s[i]
+    prepHash[i] = inputs.s[0][i]
     prepHash[k + i] = inputs.U[0][i]
     prepHash[2 * k + i] = inputs.U[1][i]
     prepHash[3 * k + i] = x[i]
     prepHash[4 * k + i] = y[i]
   }
 
-  const hashInput = _.flattenDeep(prepHash.filter((item) => item)).map((v) =>
-    BigInt(v)
-  )
-
+  const hashInput = prepHash.flat().map((v) => BigInt(v))
   const mimc7 = await new Mimc7().prepare()
 
   return mimc7.hash(hashInput)
