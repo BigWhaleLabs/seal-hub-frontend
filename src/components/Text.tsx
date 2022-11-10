@@ -71,9 +71,10 @@ export function GradientText({ children }: ChildrenProp) {
   return <span className={gradientText}>{children}</span>
 }
 
-const statusText = (color: 'success' | 'error') =>
+const statusText = (color: 'success' | 'error' | 'default') =>
   classnames(
     textColor({
+      'text-formal-accent': color === 'default',
       'text-tertiary': color === 'success',
       'text-error': color === 'error',
     }),
@@ -84,7 +85,7 @@ const statusText = (color: 'success' | 'error') =>
 export function StatusText({
   children,
   color,
-}: ChildrenProp & { color: 'success' | 'error' }) {
+}: ChildrenProp & { color: 'success' | 'error' | 'default' }) {
   return <span className={statusText(color)}>{children}</span>
 }
 
@@ -217,4 +218,14 @@ export function SubheaderCardText({ children }: ChildrenProp) {
 const sectionTitle = fontSize('text-sm')
 export function SectionTitle({ children }: ChildrenProp) {
   return <p className={sectionTitle}>{children}</p>
+}
+
+const captionText = classnames(
+  fontFamily('font-primary'),
+  textColor('text-primary-caption'),
+  fontSize('text-xs'),
+  textAlign('text-center')
+)
+export function CaptionText({ children }: ChildrenProp) {
+  return <p className={captionText}>{children}</p>
 }

@@ -1,4 +1,5 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import AppStore from 'stores/AppStore'
 import Button from 'components/Button'
 import SigningFlow from 'components/SigningFlow'
 import Spinner from 'icons/Spinner'
@@ -26,6 +27,7 @@ export default function () {
       {({ account, chain, openConnectModal, mounted }) => {
         if (!mounted) return <Spinner />
         const connected = mounted && account && chain
+        AppStore.connected = !!connected
 
         return (
           <div className={container}>
