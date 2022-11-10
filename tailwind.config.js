@@ -6,6 +6,22 @@ module.exports = {
       primary: ['"Space Grotesk"', 'sans-serif'],
     },
     extend: {
+      keyframes: {
+        rotateY: {
+          '100%': {
+            transform: 'rotateY(360deg)',
+          },
+        },
+        'appear-404': {
+          to: {
+            transform: 'translateX(-67%) rotate(-90deg)',
+          },
+        },
+      },
+      animation: {
+        rotateY: 'rotateY 6s linear infinite',
+        'appear-404': 'appear-404 1.5s ease-in-out forwards',
+      },
       colors: {
         'formal-accent': 'var(--formal-accent)',
         accent: 'var(--accent)',
@@ -16,6 +32,7 @@ module.exports = {
         error: 'var(--error)',
         'primary-dark': 'var(--primary-dark)',
         'primary-bright': 'var(--primary-bright)',
+        'primary-brighter': 'var(--primary-brighter)',
         'primary-background': 'var(--primary-background)',
         'primary-semi-dimmed': 'var(--primary-semi-dimmed)',
         'primary-dimmed': 'var(--primary-dimmed)',
@@ -32,6 +49,7 @@ module.exports = {
       fontSize: {
         '2.5xl': '1.625rem',
         '3.5xl': '2rem',
+        '13.5xl': '16.875rem',
       },
       screens: {
         xs: '22.5rem',
@@ -53,6 +71,14 @@ module.exports = {
       },
       padding: {
         25: '6.25rem',
+      },
+      rotate: {
+        '-90': '-90deg',
+      },
+      inset: {
+        '-67px': '-67px',
+        'full-70': '70%',
+        '1/6': '15%',
       },
     },
     container: {

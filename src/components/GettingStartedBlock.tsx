@@ -1,6 +1,8 @@
 import { BodyText } from 'components/Text'
+import { useSnapshot } from 'valtio'
+import AppStore from 'stores/AppStore'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import GettingStarted from 'components/GettingStarted'
+import Highlighter from 'components/Highlighter'
 import classnames, {
   alignItems,
   display,
@@ -16,12 +18,18 @@ const wrapper = classnames(
 )
 
 export default function () {
+  const { connected } = useSnapshot(AppStore)
+
   return (
     <div className={wrapper}>
-      <GettingStarted />
-      <BodyText centered>
-        Connect a wallet to generate a commitment and add on chain.
-      </BodyText>
+      {!connected && (
+        <>
+          <Highlighter text="Getting Started" />
+          <BodyText centered>
+            Connect a wallet to generate a commitment and add on chain.
+          </BodyText>
+        </>
+      )}
       <ConnectWalletButton />
     </div>
   )

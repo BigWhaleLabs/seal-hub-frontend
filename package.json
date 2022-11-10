@@ -30,6 +30,7 @@
     "@big-whale-labs/seal-hub-contract": "^0.0.1",
     "@ethereumjs/util": "^8.0.2",
     "@lottiefiles/react-lottie-player": "^3.4.7",
+    "@material-tailwind/react": "^1.2.4",
     "@rainbow-me/rainbowkit": "^0.7.4",
     "@vitejs/plugin-react": "^2.2.0",
     "assert-browserify": "^2.0.0",
