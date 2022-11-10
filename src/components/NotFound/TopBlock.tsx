@@ -1,10 +1,11 @@
-import { AccentText, HeaderText, SubheaderCardText } from 'components/Text'
+import { AccentText, BodyText, HeaderText } from 'components/Text'
 import PalmTree from 'icons/PalmTree'
 import classnames, {
   alignItems,
   display,
   flexDirection,
   gap,
+  space,
 } from 'classnames/tailwind'
 
 const wrapper = classnames(
@@ -21,11 +22,11 @@ export default function () {
         <PalmTree />
       </div>
       <AccentText>// 100% NOT RIGHT</AccentText>
-      <div>
+      <div className={space('space-y-2')}>
         <HeaderText>This page failed to load</HeaderText>
-        <SubheaderCardText>
-          No worries, just refresh or try visiting again.{' '}
-        </SubheaderCardText>
+        <BodyText centered>
+          No worries, just refresh or try visiting again.
+        </BodyText>
       </div>
     </div>
   )
