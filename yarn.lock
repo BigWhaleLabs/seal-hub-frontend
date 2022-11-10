@@ -3747,6 +3747,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash@npm:^4.14.188":
+  version: 4.14.188
+  resolution: "@types/lodash@npm:4.14.188"
+  checksum: 89c32f0a18e0da6ae914b430e76b3d0451c4c85b9c838b440c0c9a8d4966c8e2a76dbb30964c7126402856b2997ec56a8c36d8d6461ec14387689ec37594f09f
+  languageName: node
+  linkType: hard
+
 "@types/mime@npm:*":
   version: 3.0.1
   resolution: "@types/mime@npm:3.0.1"
@@ -15458,6 +15465,7 @@ __metadata:
     "@rainbow-me/rainbowkit": ^0.7.4
     "@rollup/plugin-inject": ^5.0.2
     "@types/elliptic": ^6.4.14
+    "@types/lodash": ^4.14.188
     "@types/node": ^18.11.9
     "@typescript-eslint/eslint-plugin": ^5.42.0
     "@typescript-eslint/parser": ^5.42.0
@@ -15465,6 +15473,7 @@ __metadata:
     assert-browserify: ^2.0.0
     autoprefixer: ^10.4.13
     buffer: ^6.0.3
+    circomlibjs: ^0.1.7
     cross-env: ^7.0.3
     elliptic: ^6.5.4
     envalid: ^7.3.1
