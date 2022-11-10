@@ -55,11 +55,11 @@ export default function () {
           </div>
         </FooterLink>
         <Delimiter />
-        <FooterLink internal url="/terms">
+        <FooterLink internal url="#/terms">
           Terms of service
         </FooterLink>
         <Delimiter />
-        <FooterLink internal url="/privacy">
+        <FooterLink internal url="#/privacy">
           Privacy policy
         </FooterLink>
       </div>

@@ -1,4 +1,4 @@
-import { Link, useRoute } from 'wouter'
+import { Link } from 'wouter'
 import {
   TTextColor,
   backgroundClip,
@@ -18,6 +18,7 @@ import {
 } from 'classnames/tailwind'
 import ChildrenProp from 'models/ChildrenProp'
 import classNamesToString from 'helpers/classNamesToString'
+import useHashLocation from 'hooks/useHashLocation'
 
 const headerText = (small?: boolean, mono?: boolean) =>
   classnames(
@@ -137,7 +138,8 @@ export function FooterLink({
   internal,
   children,
 }: ChildrenProp & { url: string; internal?: boolean }) {
-  const [isActive] = useRoute(url)
+  const [location] = useHashLocation()
+  const isActive = location === url.replace(/^#/, '')
 
   return internal ? (
     <Link href={url} className={footerLink(isActive)}>
