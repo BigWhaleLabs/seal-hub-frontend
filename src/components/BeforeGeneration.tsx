@@ -46,6 +46,7 @@ const buttonCaption = classnames(displayFrom('sm'), padding('px-9'))
 export default function () {
   const tooltipText =
     'Using a centralized server won’t be as secure as if you generated yourself locally in browser. Although we’ll do everything we can to protect data, it’ll never be as anonymous. '
+
   return (
     <div className={container}>
       <BodyText>
