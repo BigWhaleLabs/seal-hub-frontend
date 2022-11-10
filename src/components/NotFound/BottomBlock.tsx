@@ -1,5 +1,6 @@
 import { BodyText } from 'components/Text'
-import ConnectWalletButton from 'components/ConnectWalletButton'
+import { Link } from 'wouter'
+import Button from 'components/Button'
 import FocusedText from 'components/FocusedText'
 import classnames, {
   alignItems,
@@ -18,11 +19,11 @@ const wrapper = classnames(
 export default function () {
   return (
     <div className={wrapper}>
-      <FocusedText text="Getting Started" />
-      <BodyText centered>
-        Connect a wallet to generate a commitment and add on chain.
-      </BodyText>
-      <ConnectWalletButton />
+      <FocusedText text="What to do?" />
+      <BodyText>Refresh SealHub to start over</BodyText>
+      <Link href="/">
+        <Button fitContent>Refresh Sealhub</Button>
+      </Link>
     </div>
   )
 }

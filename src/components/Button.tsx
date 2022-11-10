@@ -22,10 +22,11 @@ import {
   transitionDuration,
   transitionProperty,
   transitionTimingFunction,
+  width,
 } from 'classnames/tailwind'
 import Spinner from 'icons/Spinner'
 
-const button = (available?: boolean) =>
+const button = (available?: boolean, fitContent?: boolean) =>
   classnames(
     display('flex'),
     gap('gap-x-2'),
@@ -55,17 +56,20 @@ const button = (available?: boolean) =>
       'shadow-2xl': available,
       'hover:shadow-lg': available,
       'active:shadow-button-active': available,
-    })
+    }),
+    width({ 'w-fit': fitContent })
   )
 
 interface ButtonProps {
   disabled?: boolean
   loading?: boolean
+  fitContent?: boolean
 }
 
 export default function ({
   loading,
   disabled,
+  fitContent,
   children,
   ...rest
 }: Omit<HTMLAttributes<HTMLButtonElement>, 'loading'> & ButtonProps) {
@@ -73,7 +77,11 @@ export default function ({
   const available = !loading && !disabled
 
   return (
-    <button className={button(available)} disabled={!available} {...rest}>
+    <button
+      className={button(available, fitContent)}
+      disabled={!available}
+      {...rest}
+    >
       {loading && <Spinner />}
       {showContent && <span>{children}</span>}
     </button>
