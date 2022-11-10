@@ -70,7 +70,8 @@ module.exports = {
       },
       inset: {
         '-67px': '-67px',
-        'full-73': '73%',
+        'full-70': '70%',
+        '1/6': '15%',
       },
     },
     container: {

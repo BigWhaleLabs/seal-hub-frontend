@@ -12,6 +12,7 @@ import classnames, {
   padding,
   position,
   width,
+  zIndex,
 } from 'classnames/tailwind'
 
 interface CardProps {
@@ -32,7 +33,8 @@ const basicCardStyles = ({ accent, bigGap }: CardProps) =>
     borderColor(accent ? 'border-accent' : 'border-gray-500'),
     boxShadow('shadow-card'),
     boxShadowColor(accent ? 'shadow-accent-semi-transparent' : undefined),
-    width('w-full')
+    width('w-full'),
+    zIndex('z-20')
   )
 
 export default function ({

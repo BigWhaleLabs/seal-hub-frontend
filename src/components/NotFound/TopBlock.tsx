@@ -1,21 +1,15 @@
 import { AccentText, BodyText, HeaderText } from 'components/Text'
 import PalmStars from 'components/NotFound/PalmStars'
 import PalmTree from 'icons/PalmTree'
-import classNamesToString from 'helpers/classNamesToString'
 import classnames, {
   alignItems,
   animation,
   display,
   flexDirection,
-  fontSize,
-  fontWeight,
   gap,
-  inset,
   margin,
   position,
-  rotate,
   space,
-  textColor,
 } from 'classnames/tailwind'
 
 const wrapper = classnames(
@@ -25,16 +19,6 @@ const wrapper = classnames(
   alignItems('items-center')
 )
 const palmBlock = classnames(position('relative'), margin('my-16'))
-const big404 = classNamesToString(
-  position('absolute'),
-  rotate('-rotate-90'),
-  fontSize('text-13.5xl'),
-  textColor('text-transparent'),
-  fontWeight('font-bold'),
-  inset('right-full-73', 'top-1/2'),
-  display('hidden', 'lg:block'),
-  'accent-text-stroke'
-)
 
 export default function () {
   return (
@@ -54,7 +38,6 @@ export default function () {
           </BodyText>
         </div>
       </div>
-      <span className={big404}>404</span>
     </>
   )
 }
