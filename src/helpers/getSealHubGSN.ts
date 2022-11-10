@@ -16,7 +16,7 @@ export default async function () {
   )
 
   return SealHub__factory.connect(
-    env.VITE_SEAL_HUB,
+    env.VITE_SEAL_HUB_CONTRACT,
     etherProvider.getSigner(wallet.address)
   )
 }
