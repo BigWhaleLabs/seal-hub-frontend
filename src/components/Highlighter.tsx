@@ -18,14 +18,20 @@ const headerWrapper = classnames(
   dropShadow('drop-shadow-accent')
 )
 
-export default function () {
+export default function ({
+  text,
+  textCenter,
+}: {
+  text: string
+  textCenter?: boolean
+}) {
   return (
     <div className={wrapper}>
       <Line toLeft />
       <div className={headerWrapper}>
         <AccentText>
-          <HeaderText mono small>
-            Getting started
+          <HeaderText mono small centered={textCenter}>
+            {text}
           </HeaderText>
         </AccentText>
       </div>

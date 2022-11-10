@@ -143,6 +143,10 @@ li::marker {
   mask-image: linear-gradient(90deg, transparent, black 70%, transparent);
 }
 
+.accent-text-stroke {
+  -webkit-text-stroke: 1px var(--accent);
+}
+
 @media screen and (max-width: 600px) {
   body {
     /* Grid */
