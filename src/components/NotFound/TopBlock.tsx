@@ -48,7 +48,7 @@ export default function () {
         </div>
         <AccentText>// 100% NOT RIGHT</AccentText>
         <div className={space('space-y-2')}>
-          <HeaderText>This page failed to load</HeaderText>
+          <HeaderText centered>This page failed to load</HeaderText>
           <BodyText centered>
             No worries, just refresh or try visiting again.
           </BodyText>
