@@ -1,7 +1,7 @@
 import { BodyText } from 'components/Text'
 import { Link } from 'wouter'
 import Button from 'components/Button'
-import FocusedText from 'components/FocusedText'
+import Highlighter from 'components/Highlighter'
 import classnames, {
   alignItems,
   display,
@@ -19,7 +19,7 @@ const wrapper = classnames(
 export default function () {
   return (
     <div className={wrapper}>
-      <FocusedText text="What to do?" textCenter />
+      <Highlighter text="What to do?" textCenter />
       <BodyText centered>Refresh SealHub to start over</BodyText>
       <Link href="/">
         <Button fitContent>Refresh Sealhub</Button>

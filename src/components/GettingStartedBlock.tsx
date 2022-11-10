@@ -1,6 +1,6 @@
 import { BodyText } from 'components/Text'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import FocusedText from 'components/FocusedText'
+import Highlighter from 'components/Highlighter'
 import classnames, {
   alignItems,
   display,
@@ -18,7 +18,7 @@ const wrapper = classnames(
 export default function () {
   return (
     <div className={wrapper}>
-      <FocusedText text="Getting Started" />
+      <Highlighter text="Getting Started" />
       <BodyText centered>
         Connect a wallet to generate a commitment and add on chain.
       </BodyText>
