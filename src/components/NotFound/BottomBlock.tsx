@@ -19,8 +19,8 @@ const wrapper = classnames(
 export default function () {
   return (
     <div className={wrapper}>
-      <FocusedText text="What to do?" />
-      <BodyText>Refresh SealHub to start over</BodyText>
+      <FocusedText text="What to do?" textCenter />
+      <BodyText centered>Refresh SealHub to start over</BodyText>
       <Link href="/">
         <Button fitContent>Refresh Sealhub</Button>
       </Link>
