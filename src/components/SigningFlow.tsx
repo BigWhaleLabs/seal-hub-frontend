@@ -1,6 +1,5 @@
 import { Signer } from 'ethers'
 import { generateInput } from 'helpers/createProof'
-import { keccak256, recoverPublicKey } from 'ethers/lib/utils'
 import { useAccount, useProvider, useSigner } from 'wagmi'
 import { useEffect } from 'preact/hooks'
 import { useState } from 'react'
@@ -30,10 +29,7 @@ export default function () {
         setState(STATES.CHECK_COMMITMENT)
 
         const input = generateInput(signature, baseMessage)
-
-        const hashedAddress = await keccak256(address)
-        const publicKey = recoverPublicKey(hashedAddress, signature)
-        const commitment = await getCommitment(input, publicKey)
+        const commitment = await getCommitment(input, signature, baseMessage)
 
         if (await hasCommitment(commitment)) {
           AppStore.flowSucceeded = true
@@ -42,10 +38,8 @@ export default function () {
         setState(STATES.GENERATE_PROOF)
         const txData = await generateProof(signature, baseMessage)
 
-        console.log('txData', txData.input[0], commitment)
-
         setState(STATES.GENERATE_COMMITMENT)
-        // await generateCommitment(txData)
+        await generateCommitment(txData)
         AppStore.flowSucceeded = true
       } catch (e) {
         AppStore.flowInit = false

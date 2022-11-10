@@ -3,6 +3,8 @@ import { publicKeyToArraysSplitted } from 'helpers/createProof'
 import _ from 'lodash'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { buildBabyjub, buildMimc7 } from 'circomlibjs'
+import { recoverPublicKey } from 'ethers/lib/utils'
+import { utils } from 'ethers'
 
 class Mimc7 {
   private babyJub: any
@@ -25,19 +27,24 @@ class Mimc7 {
 
 export default async function getCommitment(
   inputs: ProofInput,
-  publicKey: string
+  signature: string,
+  baseMessage: string
 ) {
   const k = 4
   const prepHash = []
 
-  const pubKey = publicKeyToArraysSplitted(publicKey)
+  const msgHash = utils.hashMessage(baseMessage)
+  const msgHashBytes = utils.arrayify(msgHash)
+  const publicKey = recoverPublicKey(msgHashBytes, signature)
+
+  const [x, y] = publicKeyToArraysSplitted(publicKey)
 
   for (let i = 0; i < k; i++) {
     prepHash[i] = inputs.s[i]
     prepHash[k + i] = inputs.U[0][i]
     prepHash[2 * k + i] = inputs.U[1][i]
-    prepHash[3 * k + i] = pubKey[0][i]
-    prepHash[4 * k + i] = pubKey[1][i]
+    prepHash[3 * k + i] = x[i]
+    prepHash[4 * k + i] = y[i]
   }
 
   const hashInput = _.flattenDeep(prepHash.filter((item) => item)).map((v) =>
