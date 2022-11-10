@@ -41,7 +41,8 @@
     "rollup-plugin-node-polyfills": "^0.2.1",
     "unfetch": "^4.2.0",
     "valtio": "^1.7.5",
-    "wagmi": "^0.7.12"
+    "wagmi": "^0.7.12",
+    "wouter": "^2.8.1"
   },
   "devDependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
