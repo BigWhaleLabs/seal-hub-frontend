@@ -1,5 +1,5 @@
 import { BodyText } from 'components/Text'
-import { Link } from 'wouter'
+import { Link, useLocation } from 'wouter'
 import Button from 'components/Button'
 import Highlighter from 'components/Highlighter'
 import classnames, {
@@ -17,12 +17,16 @@ const wrapper = classnames(
 )
 
 export default function () {
+  const [, setLocation] = useLocation()
+
   return (
     <div className={wrapper}>
       <Highlighter text="What to do?" textCenter />
       <BodyText centered>Refresh SealHub to start over</BodyText>
       <Link href="/">
-        <Button fitContent>Refresh Sealhub</Button>
+        <Button fitContent onClick={() => setLocation('/')}>
+          Refresh Sealhub
+        </Button>
       </Link>
     </div>
   )
