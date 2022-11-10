@@ -32,6 +32,7 @@ module.exports = {
         error: 'var(--error)',
         'primary-dark': 'var(--primary-dark)',
         'primary-bright': 'var(--primary-bright)',
+        'primary-brighter': 'var(--primary-brighter)',
         'primary-background': 'var(--primary-background)',
         'primary-semi-dimmed': 'var(--primary-semi-dimmed)',
         'primary-dimmed': 'var(--primary-dimmed)',
