@@ -1,18 +1,12 @@
 import { Signer } from 'ethers'
-import { hashPersonalMessage } from '@ethereumjs/util'
 import { useAccount, useProvider, useSigner } from 'wagmi'
 import { useEffect } from 'preact/hooks'
 import { useState } from 'react'
 import AppStore from 'stores/AppStore'
 import StatusBlock from 'components/StatusBlock'
-import buffer from 'buffer'
-import createProof from 'helpers/createProof'
-import getSealHubGSN from 'helpers/getSealHubGSN'
-import makeTransaction from 'helpers/makeTransaction'
-import sealHub from 'helpers/sealHub'
-
-const { Buffer } = buffer
-if (!window.Buffer) window.Buffer = Buffer
+import generateCommitment from 'helpers/generateCommitment'
+import generateProof from 'helpers/generateProof'
+import signMessage from 'helpers/signMessage'
 
 enum STATES {
   ERROR,
@@ -47,23 +41,24 @@ export default function () {
   const [state, setState] = useState(STATES.INIT)
 
   useEffect(() => {
-    const baseMessage = `SealHub verification for ${address}`
-
     async function start(signer: Signer) {
+      if (!address) return
       try {
         AppStore.flowInit = true
-        const messageHash = hashPersonalMessage(Buffer.from(baseMessage))
-        const signature = await signer.signMessage(messageHash)
+
+        const { baseMessage, signature } = await signMessage(address, signer)
         setState(STATES.CHECK_COMMITMENT)
-        const proof = await createProof(signature, baseMessage)
-        const txData = makeTransaction(proof)
-        const hash = txData.input[0]
-        if (!(await sealHub.commitmentMap(hash))) {
-          setState(STATES.GENERATE_COMMITMENT)
-          const sealHubGSN = await getSealHubGSN()
-          const tx = await sealHubGSN.createCommitment(txData)
-          await tx.wait()
+        const { hasCommitment, txData } = await generateProof(
+          signature,
+          baseMessage
+        )
+        if (hasCommitment) {
+          AppStore.flowSucceeded = true
+          return
         }
+
+        setState(STATES.GENERATE_COMMITMENT)
+        await generateCommitment(txData)
         AppStore.flowSucceeded = true
       } catch (e) {
         AppStore.flowInit = false
