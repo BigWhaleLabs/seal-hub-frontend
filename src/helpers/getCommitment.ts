@@ -1,27 +1,8 @@
 import { ProofInput } from 'models/ProofInput'
-import { buildBabyjub, buildMimc7 } from 'circomlibjs'
 import { publicKeyToArraysSplitted } from 'helpers/createProof'
 import { recoverPublicKey } from 'ethers/lib/utils'
 import { utils } from 'ethers'
-
-class Mimc7 {
-  private babyJub: any
-  F: any
-  private mimc7: any
-
-  async prepare() {
-    this.babyJub = await buildBabyjub()
-    this.F = this.babyJub.F
-    this.mimc7 = await buildMimc7()
-    return this
-  }
-  hash(elements: any[] | Uint8Array) {
-    return this.F.toObject(this.mimc7.multiHash.bind(this.mimc7)(elements))
-  }
-  hashWithoutBabyJub(elements: any[] | Uint8Array) {
-    return this.mimc7.multiHash.bind(this.mimc7)(elements)
-  }
-}
+import Mimc7 from 'models/Mimc7'
 
 export default async function getCommitment(
   inputs: ProofInput,
