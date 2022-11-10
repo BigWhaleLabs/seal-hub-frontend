@@ -25,13 +25,15 @@ class Mimc7 {
   }
 }
 
+type RecursiveArray<T> = T | Array<RecursiveArray<T>>
+
 export default async function getCommitment(
   inputs: ProofInput,
   signature: string,
   baseMessage: string
 ) {
   const k = 4
-  const prepHash = []
+  const prepHash: RecursiveArray<bigint | string> = []
 
   const msgHash = utils.hashMessage(baseMessage)
   const msgHashBytes = utils.arrayify(msgHash)
