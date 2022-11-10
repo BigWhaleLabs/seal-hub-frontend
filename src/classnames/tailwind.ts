@@ -4249,6 +4249,8 @@ export type TAnimation =
   | 'animate-ping'
   | 'animate-pulse'
   | 'animate-bounce'
+  | 'animate-rotateY'
+  | 'animate-appear-404'
 
 export type TTransitionsAndAnimations =
   | TTransitionProperty
@@ -6948,6 +6950,27 @@ export type TInset =
   | 'right-full'
   | 'bottom-full'
   | 'left-full'
+  | '-inset-67px'
+  | '-inset-x-67px'
+  | '-inset-y-67px'
+  | '-top-67px'
+  | '-right-67px'
+  | '-bottom-67px'
+  | '-left-67px'
+  | 'inset-full-70'
+  | 'inset-x-full-70'
+  | 'inset-y-full-70'
+  | 'top-full-70'
+  | 'right-full-70'
+  | 'bottom-full-70'
+  | 'left-full-70'
+  | 'inset-1/6'
+  | 'inset-x-1/6'
+  | 'inset-y-1/6'
+  | 'top-1/6'
+  | 'right-1/6'
+  | 'bottom-1/6'
+  | 'left-1/6'
 
 export type TZIndex =
   | 'z-0'
@@ -7370,6 +7393,7 @@ export type TRotate =
   | 'rotate-45'
   | 'rotate-90'
   | 'rotate-180'
+  | '-rotate-90'
 
 export type TTranslate =
   | 'translate-x-0'
@@ -7569,6 +7593,7 @@ export type TFontSize =
   | 'text-9xl'
   | 'text-2.5xl'
   | 'text-3.5xl'
+  | 'text-13.5xl'
 
 export type TFontWeight =
   | 'font-thin'

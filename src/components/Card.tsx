@@ -10,7 +10,9 @@ import classnames, {
   flexDirection,
   gap,
   padding,
+  position,
   width,
+  zIndex,
 } from 'classnames/tailwind'
 
 interface CardProps {
@@ -22,6 +24,7 @@ const basicCardStyles = ({ accent, bigGap }: CardProps) =>
   classnames(
     display('flex'),
     flexDirection('flex-col'),
+    position('relative'),
     gap(bigGap ? 'gap-y-8' : 'gap-y-6'),
     backgroundColor('bg-primary-dark'),
     padding('py-8', 'px-6'),
@@ -30,7 +33,8 @@ const basicCardStyles = ({ accent, bigGap }: CardProps) =>
     borderColor(accent ? 'border-accent' : 'border-gray-500'),
     boxShadow('shadow-card'),
     boxShadowColor(accent ? 'shadow-accent-semi-transparent' : undefined),
-    width('w-full')
+    width('w-full'),
+    zIndex('z-20')
   )
 
 export default function ({

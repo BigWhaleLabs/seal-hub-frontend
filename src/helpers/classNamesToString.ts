@@ -7,6 +7,7 @@ type AllowedExtraClassnames =
   | 'hover-tertiary'
   | 'mask-border-fade-1'
   | 'mask-border-fade-2'
+  | 'accent-text-stroke'
 
 export default function (
   ...classNames: (AllowedExtraClassnames | TTailwindString | undefined | null)[]
