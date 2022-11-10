@@ -1,4 +1,5 @@
 import { LinkText } from 'components/Text'
+import { STATES } from 'types/SigningStates'
 import { useDisconnect } from 'wagmi'
 import AppStore from 'stores/AppStore'
 
@@ -11,6 +12,7 @@ export default function () {
       <LinkText
         onClick={() => {
           AppStore.flowSucceeded = false
+          AppStore.flowState = STATES.INIT
           disconnect()
         }}
       >

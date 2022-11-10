@@ -4,7 +4,10 @@ import {
   CaptionText,
   GradientText,
 } from 'components/Text'
+import { STATES } from 'types/SigningStates'
 import { displayFrom, displayTo } from 'helpers/visibilityClassnames'
+import { useSnapshot } from 'valtio'
+import AppStore from 'stores/AppStore'
 import Button from 'components/Button'
 import CharInCircle from 'components/CharInCircle'
 import Tooltip from 'components/Tooltip'
@@ -16,6 +19,8 @@ import classnames, {
   justifyContent,
   padding,
 } from 'classnames/tailwind'
+import generateCommitment from 'helpers/generateCommitment'
+import generateProof from 'helpers/generateProof'
 
 const container = classnames(
   display('flex'),
@@ -44,6 +49,7 @@ const tooltipWrapper = classnames(
 const buttonCaption = classnames(displayFrom('sm'), padding('px-9'))
 
 export default function () {
+  const { input } = useSnapshot(AppStore)
   const tooltipText =
     'Using a centralized server won’t be as secure as if you generated yourself locally in browser. Although we’ll do everything we can to protect data, it’ll never be as anonymous. '
 
@@ -57,7 +63,24 @@ export default function () {
       </BodyText>
       <div className={bottomPart}>
         <div className={buttonsWrapper}>
-          <Button onClick={() => console.log('Clicked')}>
+          <Button
+            disabled={!input}
+            onClick={async () => {
+              try {
+                if (AppStore.input) {
+                  AppStore.flowState = STATES.GENERATE_PROOF
+                  const txData = await generateProof(AppStore.input)
+                  AppStore.proof = txData
+                  AppStore.flowState = STATES.GENERATE_COMMITMENT
+                  await generateCommitment(AppStore.proof)
+                  AppStore.flowSucceeded = true
+                }
+              } finally {
+                delete AppStore.proof
+                delete AppStore.input
+              }
+            }}
+          >
             Start ZKP generation
           </Button>
           <div className={displayTo('sm')}>
