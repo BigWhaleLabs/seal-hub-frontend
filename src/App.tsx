@@ -8,8 +8,11 @@ import RainbowWrapper from 'components/RainbowWrapper'
 import Root from 'components/Root'
 import Terms from 'pages/Terms'
 import useHashLocation from 'hooks/useHashLocation'
+import setGlobalDefaults from 'helpers/setGlobalDefaults'
 
 export default function () {
+  setGlobalDefaults()
+
   return (
     <RainbowWrapper>
       <Navbar />

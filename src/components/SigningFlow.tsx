@@ -3,36 +3,11 @@ import { useAccount, useProvider, useSigner } from 'wagmi'
 import { useEffect } from 'preact/hooks'
 import { useState } from 'react'
 import AppStore from 'stores/AppStore'
+import SigningStates, { STATES } from 'types/SigningStates'
 import StatusBlock from 'components/StatusBlock'
 import generateCommitment from 'helpers/generateCommitment'
 import generateProof from 'helpers/generateProof'
 import signMessage from 'helpers/signMessage'
-
-enum STATES {
-  ERROR,
-  INIT,
-  CHECK_COMMITMENT,
-  GENERATE_COMMITMENT,
-}
-
-const states = {
-  [STATES.ERROR]: {
-    title: 'Error',
-    subTitle: 'Try again',
-  },
-  [STATES.INIT]: {
-    title: 'Waiting for signature',
-    subTitle: 'We’re requesting your signature to generate your commitment.',
-  },
-  [STATES.CHECK_COMMITMENT]: {
-    title: 'Checking for existing commitment...',
-    subTitle: 'Hang tight!',
-  },
-  [STATES.GENERATE_COMMITMENT]: {
-    title: 'Generate commitment...',
-    subTitle: 'Hang tight!',
-  },
-}
 
 export default function () {
   const { address } = useAccount()
@@ -73,7 +48,7 @@ export default function () {
     if (!AppStore.flowInit && signer) void start(signer)
   }, [address, signer, provider])
 
-  const { title, subTitle } = states[state]
+  const { title, subTitle } = SigningStates[state]
 
   return <StatusBlock loadingText={title} subtitle={subTitle} />
 }
