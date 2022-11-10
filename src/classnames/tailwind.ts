@@ -6933,6 +6933,13 @@ export type TInset =
   | 'right-full'
   | 'bottom-full'
   | 'left-full'
+  | 'inset-full-73'
+  | 'inset-x-full-73'
+  | 'inset-y-full-73'
+  | 'top-full-73'
+  | 'right-full-73'
+  | 'bottom-full-73'
+  | 'left-full-73'
 
 export type TZIndex =
   | 'z-0'
@@ -7353,6 +7360,7 @@ export type TRotate =
   | 'rotate-45'
   | 'rotate-90'
   | 'rotate-180'
+  | '-rotate-90'
 
 export type TTranslate =
   | 'translate-x-0'
@@ -7552,6 +7560,7 @@ export type TFontSize =
   | 'text-9xl'
   | 'text-2.5xl'
   | 'text-3.5xl'
+  | 'text-13.5xl'
 
 export type TFontWeight =
   | 'font-thin'

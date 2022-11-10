@@ -10,6 +10,7 @@ import classnames, {
   flexDirection,
   gap,
   padding,
+  position,
   width,
 } from 'classnames/tailwind'
 
@@ -22,6 +23,7 @@ const basicCardStyles = ({ accent, bigGap }: CardProps) =>
   classnames(
     display('flex'),
     flexDirection('flex-col'),
+    position('relative'),
     gap(bigGap ? 'gap-y-8' : 'gap-y-6'),
     backgroundColor('bg-primary-dark'),
     padding('py-8', 'px-6'),

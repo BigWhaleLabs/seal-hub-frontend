@@ -32,6 +32,7 @@ module.exports = {
       fontSize: {
         '2.5xl': '1.625rem',
         '3.5xl': '2rem',
+        '13.5xl': '16.875rem',
       },
       screens: {
         xs: '22.5rem',
@@ -53,6 +54,12 @@ module.exports = {
       },
       padding: {
         25: '6.25rem',
+      },
+      rotate: {
+        '-90': '-90deg',
+      },
+      inset: {
+        'full-73': '73%',
       },
     },
     container: {
