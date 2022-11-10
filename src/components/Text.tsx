@@ -17,8 +17,8 @@ import {
   width,
 } from 'classnames/tailwind'
 import ChildrenProp from 'models/ChildrenProp'
+import checkIsLinkActive from 'helpers/checkIsLinkActive'
 import classNamesToString from 'helpers/classNamesToString'
-import useHashLocation from 'hooks/useHashLocation'
 
 const headerText = (small?: boolean, mono?: boolean) =>
   classnames(
@@ -138,8 +138,7 @@ export function FooterLink({
   internal,
   children,
 }: ChildrenProp & { url: string; internal?: boolean }) {
-  const [location] = useHashLocation()
-  const isActive = location === url.replace(/^#/, '')
+  const isActive = checkIsLinkActive(url)
 
   return internal ? (
     <Link href={url} className={footerLink(isActive)}>
