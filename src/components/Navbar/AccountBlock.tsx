@@ -20,8 +20,8 @@ function Account({ address }: { address: string }) {
 
 export default function ({ address }: { address: string }) {
   const { chain } = useNetwork()
-
   const { disconnect } = useDisconnect()
+
   const onSelectOption = (selectedValue: string) => {
     if (selectedValue === 'disconnect') {
       AppStore.resetOnDisconnect()
@@ -37,7 +37,7 @@ export default function ({ address }: { address: string }) {
     <Dropdown
       extraSpacing
       fitToItemSize
-      currentValue={window.location.origin}
+      currentValue={address}
       options={options}
       staticPlaceholder={<Account address={address} />}
       onChange={onSelectOption}
