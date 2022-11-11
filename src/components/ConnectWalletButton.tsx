@@ -1,5 +1,5 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { STAGE } from 'types/flowStage'
+import { Phase } from 'types/flowPhase'
 import AppStore from 'stores/AppStore'
 import Button from 'components/Button'
 import SigningFlow from 'components/SigningFlow'
@@ -29,7 +29,7 @@ export default function () {
         if (!mounted) return <Spinner />
         const connected = mounted && account && chain
         AppStore.connected = !!connected
-        AppStore.stage = connected ? STAGE.CHECK : STAGE.INIT
+        AppStore.phase = connected ? Phase.CHECK : Phase.INIT
 
         return (
           <div className={container}>

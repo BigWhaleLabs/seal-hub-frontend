@@ -1,4 +1,4 @@
-import { STAGE } from 'types/flowStage'
+import { Phase } from 'types/flowPhase'
 import { STATES } from 'types/SigningStates'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
@@ -30,7 +30,7 @@ export default function () {
         Generate zero knowledge proof
       </StatusCardOption>
       <StatusCardOption
-        complete={AppStore.stage === STAGE.SUCCESS}
+        complete={AppStore.phase === Phase.SUCCESS}
         loading={flowState === STATES.GENERATE_COMMITMENT}
       >
         Add to chain

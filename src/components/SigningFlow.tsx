@@ -1,4 +1,4 @@
-import { STAGE } from 'types/flowStage'
+import { Phase } from 'types/flowPhase'
 import { Signer } from 'ethers'
 import { generateInput } from 'helpers/createProof'
 import { useAccount, useProvider, useSigner } from 'wagmi'
@@ -20,7 +20,7 @@ export default function () {
   useEffect(() => {
     async function startCheckingAddress(signer: Signer) {
       if (!address) return
-      AppStore.stage = STAGE.CHECK
+      AppStore.phase = Phase.CHECK
 
       try {
         const { baseMessage, signature } = await signMessage(address, signer)
@@ -34,12 +34,12 @@ export default function () {
         )
 
         if (AppStore.commitment && (await hasCommitment(AppStore.commitment))) {
-          AppStore.stage = STAGE.SUCCESS
+          AppStore.phase = Phase.SUCCESS
           return
         }
 
         AppStore.flowState = STATES.READY_FOR_GENERATING_PROOF
-        AppStore.stage = STAGE.READY
+        AppStore.phase = Phase.READY
       } catch (e) {
         AppStore.flowState = STATES.ERROR
         console.error(e)
