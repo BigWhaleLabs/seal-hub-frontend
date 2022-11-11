@@ -69,15 +69,15 @@ export default function () {
             onClick={async () => {
               AppStore.stage = STAGE.GENERATE
               try {
-                if (AppStore.input) {
-                  AppStore.flowState = STATES.GENERATE_PROOF
-                  const txData = await generateProof(AppStore.input)
-                  AppStore.proof = txData
-                  AppStore.flowState = STATES.GENERATE_COMMITMENT
-                  await generateCommitment(AppStore.proof)
-                  AppStore.flowSucceeded = true
-                  AppStore.stage = STAGE.SUCCESS
-                }
+                if (!AppStore.input) return
+
+                AppStore.flowState = STATES.GENERATE_PROOF
+                const txData = await generateProof(AppStore.input)
+                AppStore.proof = txData
+                AppStore.flowState = STATES.GENERATE_COMMITMENT
+                await generateCommitment(AppStore.proof)
+                AppStore.flowSucceeded = true
+                AppStore.stage = STAGE.SUCCESS
               } finally {
                 delete AppStore.proof
                 delete AppStore.input

@@ -18,7 +18,7 @@ export default function () {
   const { flowState } = useSnapshot(AppStore)
 
   useEffect(() => {
-    async function start(signer: Signer) {
+    async function startCheckingAddress(signer: Signer) {
       if (!address) return
       AppStore.stage = STAGE.CHECK
 
@@ -47,7 +47,7 @@ export default function () {
       }
     }
 
-    if (!AppStore.input && signer) void start(signer)
+    if (!AppStore.input && signer) void startCheckingAddress(signer)
   }, [address, signer, provider])
 
   const { title, subTitle } = SigningStates[flowState]
