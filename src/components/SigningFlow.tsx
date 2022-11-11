@@ -2,6 +2,7 @@ import { ErrorType, ThrownError, errorList } from 'types/ErrorType'
 import { Phase } from 'types/flowPhase'
 import { Signer } from 'ethers'
 import { generateInput } from 'helpers/createProof'
+import { margin } from 'classnames/tailwind'
 import { useAccount, useSigner } from 'wagmi'
 import { useCallback, useEffect } from 'preact/hooks'
 import { useSnapshot } from 'valtio'
@@ -10,28 +11,20 @@ import Button from 'components/Button'
 import ErrorBlock from 'components/ErrorBlock'
 import SigningStates, { STATES } from 'types/SigningStates'
 import StatusBlock from 'components/StatusBlock'
-import classnames, { display, justifyContent } from 'classnames/tailwind'
 import getCommitment from 'helpers/getCommitment'
 import hasCommitment from 'helpers/hasCommitment'
 import signMessage from 'helpers/signMessage'
 
-const errorButtonWrapper = classnames(
-  display('flex'),
-  justifyContent('justify-center')
-)
-
 function SignError({
-  error,
   onClick,
 }: {
-  error: ErrorType
   onClick: () => Promise<void | null | undefined>
 }) {
   return (
-    <div className={errorButtonWrapper}>
-      {error === ErrorType.SIGNATURE && (
-        <Button onClick={onClick}>Sign again</Button>
-      )}
+    <div className={margin('mx-auto')}>
+      <Button onClick={onClick} fitContent>
+        Sign again
+      </Button>
     </div>
   )
 }
@@ -83,11 +76,11 @@ export default function () {
 
   const { title, subTitle } = SigningStates[flowState]
 
-  return error ? (
+  return error === ErrorType.SIGNATURE ? (
     <ErrorBlock
       colored
       subtitle={errorList[error]}
-      content={<SignError error={error} onClick={reSignMessage} />}
+      content={<SignError onClick={reSignMessage} />}
     />
   ) : (
     <StatusBlock loadingText={title} subtitle={subTitle} />
