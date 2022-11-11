@@ -1,4 +1,4 @@
-import { STAGE } from 'types/flowStage'
+import { Phase } from 'types/flowPhase'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import BottomCard from 'components/BottomCard'
@@ -21,8 +21,8 @@ const container = classnames(
 )
 
 export default function () {
-  const { stage = STAGE.INIT } = useSnapshot(AppStore)
-  const { label, title, subtitle, content } = renderStageData[stage]
+  const { phase = Phase.INIT } = useSnapshot(AppStore)
+  const { label, title, subtitle, content } = renderStageData[phase]
 
   return (
     <div className={container}>

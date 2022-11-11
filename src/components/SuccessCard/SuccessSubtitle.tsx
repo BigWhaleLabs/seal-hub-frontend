@@ -1,5 +1,5 @@
 import { LinkText } from 'components/Text'
-import { STAGE } from 'types/flowStage'
+import { Phase } from 'types/flowPhase'
 import { STATES } from 'types/SigningStates'
 import { useDisconnect } from 'wagmi'
 import AppStore from 'stores/AppStore'
@@ -7,7 +7,7 @@ import AppStore from 'stores/AppStore'
 export default function () {
   const { disconnect } = useDisconnect()
   const resetConnection = () => {
-    AppStore.stage = STAGE.INIT
+    AppStore.phase = Phase.INIT
     AppStore.flowState = STATES.INIT
     disconnect()
   }

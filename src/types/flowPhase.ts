@@ -1,12 +1,13 @@
 import { JSX } from 'preact'
-export interface StageContext {
+
+export interface PhaseContext {
   label: string
   title: string
   subtitle?: string | JSX.Element
   content: JSX.Element
 }
 
-export enum STAGE {
+export enum Phase {
   INIT = 'INIT',
   CHECK = 'CHECK_COMMITMENT',
   READY = 'READY_FOR_GENERATING_PROOF',
