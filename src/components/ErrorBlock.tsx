@@ -12,7 +12,7 @@ import classnames, {
   width,
 } from 'classnames/tailwind'
 
-const statusLoading = (colored?: boolean) =>
+const block = (colored?: boolean) =>
   classnames(
     display('flex'),
     backgroundColor({ 'bg-primary-background': colored }),
@@ -37,7 +37,7 @@ export default function ({
 }) {
   return (
     <>
-      <div className={statusLoading(colored)}>
+      <div className={block(colored)}>
         {subtitle && typeof subtitle === 'string' ? (
           <AccentText color="text-error">
             <BodyText>{subtitle}</BodyText>

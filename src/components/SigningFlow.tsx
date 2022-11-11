@@ -1,4 +1,4 @@
-import { ErrorType, errorList } from 'types/ErrorType'
+import { ErrorType, ThrownError, errorList } from 'types/ErrorType'
 import { Phase } from 'types/flowPhase'
 import { Signer } from 'ethers'
 import { generateInput } from 'helpers/createProof'
@@ -20,17 +20,29 @@ const errorButtonWrapper = classnames(
   justifyContent('justify-center')
 )
 
+function SignError({
+  error,
+  onClick,
+}: {
+  error: ErrorType
+  onClick: () => Promise<void | null | undefined>
+}) {
+  return (
+    <div className={errorButtonWrapper}>
+      {error === ErrorType.SIGNATURE && (
+        <Button onClick={onClick}>Sign again</Button>
+      )}
+    </div>
+  )
+}
+
 export default function () {
   const { address } = useAccount()
-  const { data: signer } = useSigner({
-    onError() {
-      console.warn('ERROR')
-    },
-  })
+  const { data: signer } = useSigner()
   const { flowState, error } = useSnapshot(AppStore)
   const startCheckingAddress = useCallback(
-    async (signer?: Signer) => {
-      if (!address || !signer) {
+    async (signer: Signer) => {
+      if (!address) {
         AppStore.error = ErrorType.CONNECTION
         return
       }
@@ -56,12 +68,14 @@ export default function () {
         AppStore.flowState = STATES.READY_FOR_GENERATING_PROOF
         AppStore.phase = Phase.READY
       } catch (e) {
-        AppStore.error = ErrorType.SIGNATURE
+        AppStore.error = (e as unknown as ThrownError).type
         console.error(e)
       }
     },
     [address]
   )
+  const reSignMessage = async () =>
+    signer && (await startCheckingAddress(signer))
 
   useEffect(() => {
     if (!AppStore.input && signer) void startCheckingAddress(signer)
@@ -75,19 +89,7 @@ export default function () {
         <ErrorBlock
           colored
           subtitle={errorList[error]}
-          content={
-            <div className={errorButtonWrapper}>
-              {error === ErrorType.SIGNATURE && (
-                <Button
-                  onClick={async () =>
-                    signer && (await startCheckingAddress(signer))
-                  }
-                >
-                  Sign again
-                </Button>
-              )}
-            </div>
-          }
+          content={<SignError error={error} onClick={reSignMessage} />}
         />
       ) : (
         <StatusBlock loadingText={title} subtitle={subTitle} />

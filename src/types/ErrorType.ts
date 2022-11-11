@@ -1,3 +1,8 @@
+export interface ThrownError {
+  type: ErrorType
+  error: unknown
+}
+
 export enum ErrorType {
   CONNECTION = 'CONNECTION',
   SIGNATURE = 'SIGNATURE',
