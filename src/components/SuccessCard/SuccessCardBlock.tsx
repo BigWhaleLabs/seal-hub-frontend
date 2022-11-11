@@ -1,4 +1,4 @@
-import { BodyText, LinkText, StatusText } from 'components/Text'
+import { StatusText } from 'components/Text'
 import Checkmark from 'icons/Checkmark'
 import SealStar from 'icons/SealStar'
 import StatusBlock from 'components/StatusBlock'
@@ -21,11 +21,6 @@ export default function () {
             <Checkmark />
           </span>
         </StatusText>
-
-        <BodyText>
-          You’re verified. Here’s a link to your{' '}
-          <LinkText url="#">commitment on etherscan</LinkText>.
-        </BodyText>
       </>
     )
   }
