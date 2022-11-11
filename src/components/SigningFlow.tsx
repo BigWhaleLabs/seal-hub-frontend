@@ -34,7 +34,6 @@ export default function () {
         )
 
         if (AppStore.commitment && (await hasCommitment(AppStore.commitment))) {
-          AppStore.flowSucceeded = true
           AppStore.stage = STAGE.SUCCESS
           return
         }

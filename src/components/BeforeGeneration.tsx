@@ -76,7 +76,6 @@ export default function () {
                 AppStore.proof = txData
                 AppStore.flowState = STATES.GENERATE_COMMITMENT
                 await generateCommitment(AppStore.proof)
-                AppStore.flowSucceeded = true
                 AppStore.stage = STAGE.SUCCESS
               } finally {
                 delete AppStore.proof

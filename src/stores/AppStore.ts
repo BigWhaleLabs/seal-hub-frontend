@@ -7,7 +7,6 @@ import { proxy } from 'valtio'
 class AppStore {
   connected = false
   stage?: STAGE
-  flowSucceeded = false
   flowState = STATES.INIT
 
   input?: ProofInput
