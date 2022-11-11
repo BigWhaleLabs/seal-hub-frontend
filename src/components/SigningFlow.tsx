@@ -1,7 +1,6 @@
 import { ErrorType, ThrownError, errorList } from 'types/ErrorType'
 import { Phase } from 'types/flowPhase'
 import { Signer } from 'ethers'
-import { generateInput } from 'helpers/createProof'
 import { margin } from 'classnames/tailwind'
 import { useAccount, useSigner } from 'wagmi'
 import { useCallback, useEffect } from 'preact/hooks'
@@ -46,7 +45,11 @@ export default function () {
         const { baseMessage, signature } = await signMessage(address, signer)
 
         AppStore.flowState = STATES.CHECK_COMMITMENT
-        AppStore.input = generateInput(signature, baseMessage)
+        const instance = new ComlinkWorker<
+          typeof import('../helpers/createProof')
+        >(new URL('../helpers/createProof', import.meta.url))
+
+        AppStore.input = await instance.generateInput(signature, baseMessage)
         AppStore.commitment = await getCommitment(
           AppStore.input,
           signature,
