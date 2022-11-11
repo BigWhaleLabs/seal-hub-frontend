@@ -14,6 +14,12 @@ class AppStore {
   input?: ProofInput
   proof?: ECDSAProofStruct
   commitment?: bigint
+
+  resetOnDisconnect() {
+    this.connected = false
+    this.flowState = STATES.INIT
+    this.phase = this.input = this.proof = this.commitment = undefined
+  }
 }
 
 export default proxy(new AppStore())
