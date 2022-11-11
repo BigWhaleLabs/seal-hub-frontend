@@ -4,8 +4,11 @@ import { hashPersonalMessage } from '@ethereumjs/util'
 import { utils } from 'ethers'
 import BN from 'bn.js'
 import ProofResult from 'models/ProofResult'
+import buffer from 'buffer'
 import elliptic from 'elliptic'
 import splitToRegisters from 'helpers/splitToRegisters'
+
+const { Buffer } = buffer
 
 const ec = new elliptic.ec('secp256k1')
 const STRIDE = 8n
