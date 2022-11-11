@@ -1,5 +1,7 @@
+import { BigIntOrString } from 'models/BigIntOrString'
+
 export interface ProofInput {
-  TPreComputes: (bigint[] | string[])[][][]
-  U: (bigint[] | string[])[]
-  s: (bigint[] | string[])[]
+  TPreComputes: BigIntOrString[][][][]
+  U: BigIntOrString[][]
+  s: BigIntOrString[][]
 }
