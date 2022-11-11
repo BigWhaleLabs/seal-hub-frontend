@@ -1,8 +1,11 @@
 import { BodyText, LinkText, StatusText } from 'components/Text'
+import { useSnapshot } from 'valtio'
 import Checkmark from 'icons/Checkmark'
+import SavedDataStore from 'stores/persistence/SavedDataStore'
 import SealStar from 'icons/SealStar'
 import StatusBlock from 'components/StatusBlock'
 import classnames, { alignItems, display, gap } from 'classnames/tailwind'
+import getEtherscanTxUrl from 'helpers/getEtherscanTxUrl'
 
 const successText = classnames(
   display('flex'),
@@ -11,6 +14,8 @@ const successText = classnames(
 )
 
 export default function () {
+  const { txHash } = useSnapshot(SavedDataStore)
+
   const StatusBlockSubtitle = () => {
     return (
       <>
@@ -23,8 +28,16 @@ export default function () {
         </StatusText>
 
         <BodyText>
-          You’re verified. Here’s a link to your{' '}
-          <LinkText url="#">commitment on etherscan</LinkText>.
+          You’re verified.
+          {txHash && (
+            <>
+              Here’s a link to your{' '}
+              <LinkText url={getEtherscanTxUrl(txHash)}>
+                commitment on etherscan
+              </LinkText>
+              .
+            </>
+          )}
         </BodyText>
       </>
     )

@@ -11,6 +11,7 @@ import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import Button from 'components/Button'
 import CharInCircle from 'components/CharInCircle'
+import SavedDataStore from 'stores/persistence/SavedDataStore'
 import Tooltip from 'components/Tooltip'
 import classnames, {
   alignItems,
@@ -75,7 +76,9 @@ export default function () {
                 const txData = await generateProof(AppStore.input)
                 AppStore.proof = txData
                 AppStore.flowState = STATES.GENERATE_COMMITMENT
-                await generateCommitment(AppStore.proof)
+                SavedDataStore.txHash = (
+                  await generateCommitment(AppStore.proof)
+                ).blockHash
                 AppStore.phase = Phase.SUCCESS
               } finally {
                 delete AppStore.proof
