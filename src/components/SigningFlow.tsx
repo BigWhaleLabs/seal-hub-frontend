@@ -83,17 +83,13 @@ export default function () {
 
   const { title, subTitle } = SigningStates[flowState]
 
-  return (
-    <>
-      {error ? (
-        <ErrorBlock
-          colored
-          subtitle={errorList[error]}
-          content={<SignError error={error} onClick={reSignMessage} />}
-        />
-      ) : (
-        <StatusBlock loadingText={title} subtitle={subTitle} />
-      )}
-    </>
+  return error ? (
+    <ErrorBlock
+      colored
+      subtitle={errorList[error]}
+      content={<SignError error={error} onClick={reSignMessage} />}
+    />
+  ) : (
+    <StatusBlock loadingText={title} subtitle={subTitle} />
   )
 }
