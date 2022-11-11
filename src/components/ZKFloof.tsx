@@ -29,7 +29,7 @@ export default function () {
         Generate zero knowledge proof
       </StatusCardOption>
       <StatusCardOption
-        complete={AppStore.flowSucceeded}
+        complete={!!AppStore.flowSucceeded}
         loading={flowState === STATES.GENERATE_COMMITMENT}
       >
         Add to chain
