@@ -41,17 +41,19 @@ export function HeaderText({
   return <p className={headerText(small, mono, centered)}>{children}</p>
 }
 
-const bodyText = (centered?: boolean) =>
+const bodyText = (centered?: boolean, small?: boolean) =>
   classnames(
     lineHeight('leading-5'),
     fontFamily('font-primary'),
-    textAlign({ 'text-center': centered })
+    textAlign({ 'text-center': centered }),
+    fontSize({ 'text-sm': small })
   )
 export function BodyText({
   children,
+  small,
   centered,
-}: ChildrenProp & { centered?: boolean }) {
-  return <p className={bodyText(centered)}>{children}</p>
+}: ChildrenProp & { centered?: boolean; small?: boolean }) {
+  return <p className={bodyText(centered, small)}>{children}</p>
 }
 
 export function AccentText({
@@ -79,7 +81,7 @@ export function GradientText({
   return <span className={gradientText(center)}>{children}</span>
 }
 
-const statusText = (color?: 'success' | 'error') =>
+const statusText = (color?: 'success' | 'error', centered?: boolean) =>
   classnames(
     textColor({
       'text-formal-accent': !color,
@@ -88,13 +90,15 @@ const statusText = (color?: 'success' | 'error') =>
     }),
     fontSize('text-sm'),
     fontFamily('font-primary'),
-    fontWeight('font-bold')
+    fontWeight('font-bold'),
+    textAlign({ 'text-center': centered })
   )
 export function StatusText({
   children,
   color,
-}: ChildrenProp & { color?: 'success' | 'error' }) {
-  return <span className={statusText(color)}>{children}</span>
+  centered,
+}: ChildrenProp & { color?: 'success' | 'error'; centered?: boolean }) {
+  return <span className={statusText(color, centered)}>{children}</span>
 }
 
 const linkText = classnames(

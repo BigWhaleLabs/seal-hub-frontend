@@ -1,4 +1,4 @@
-import { StatusText } from 'components/Text'
+import { BodyText, StatusText } from 'components/Text'
 import Checkmark from 'icons/Checkmark'
 import SealStar from 'icons/SealStar'
 import StatusBlock from 'components/StatusBlock'
@@ -15,12 +15,15 @@ export default function () {
     return (
       <>
         <SealStar />
-        <StatusText color="success">
+        <StatusText color="success" centered>
           <span className={successText}>
             Success!
             <Checkmark />
           </span>
         </StatusText>
+        <BodyText centered small>
+          You're verified
+        </BodyText>
       </>
     )
   }
