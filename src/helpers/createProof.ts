@@ -1,53 +1,24 @@
+import { BigIntOrString } from 'models/BigIntOrString'
 import { ProofInput } from 'models/ProofInput'
 import { hashPersonalMessage } from '@ethereumjs/util'
 import { utils } from 'ethers'
 import BN from 'bn.js'
 import ProofResult from 'models/ProofResult'
 import elliptic from 'elliptic'
+import splitToRegisters from 'helpers/splitToRegisters'
 
 const ec = new elliptic.ec('secp256k1')
 const STRIDE = 8n
 const NUM_STRIDES = 256n / STRIDE // = 32
-const REGISTERS = 4n
 
 const SECP256K1_N = new BN(
   'fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141',
   16
 )
 
-export function publicKeyToArraysSplitted(publicKey: string) {
-  const x = splitToRegisters(
-    new BN(BigInt(addHexPrefix(publicKey.slice(4, 4 + 64))).toString())
-  )
-  const y = splitToRegisters(
-    new BN(BigInt(addHexPrefix(publicKey.slice(68, 68 + 64))).toString())
-  )
-
-  return [x, y]
-}
-
-const addHexPrefix = (str: string) => `0x${str}`
-
 interface ExtendedBasePoint extends elliptic.curve.base.BasePoint {
   x: BN
   y: BN
-}
-
-const splitToRegisters = (value?: BN | string) => {
-  const registers = [] as bigint[]
-
-  if (!value) {
-    return [0n, 0n, 0n, 0n]
-  }
-  const hex = value.toString('hex').padStart(64, '0')
-  for (let k = 0; k < REGISTERS; k++) {
-    // 64bit = 16 chars in hex
-    const val = hex.slice(k * 16, (k + 1) * 16)
-
-    registers.unshift(BigInt(addHexPrefix(val)))
-  }
-
-  return registers.map((el) => el.toString())
 }
 
 const getPointPreComputes = (point: ExtendedBasePoint) => {
@@ -56,9 +27,9 @@ const getPointPreComputes = (point: ExtendedBasePoint) => {
     y: Buffer.from(point.y.toString(16), 'hex').toString('hex'),
   })
 
-  const gPowers = [] as (bigint[] | string[])[][][]
+  const gPowers = [] as BigIntOrString[][][][]
   for (let i = 0n; i < NUM_STRIDES; i++) {
-    const stride: (bigint[] | string[])[][] = []
+    const stride: BigIntOrString[][][] = []
     const power = 2n ** (i * STRIDE)
     for (let j = 0n; j < 2n ** STRIDE; j++) {
       const l = j * power
