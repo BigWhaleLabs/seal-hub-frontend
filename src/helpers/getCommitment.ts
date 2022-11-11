@@ -1,8 +1,8 @@
 import { ProofInput } from 'models/ProofInput'
-import { publicKeyToArraysSplitted } from 'helpers/createProof'
 import { recoverPublicKey } from 'ethers/lib/utils'
 import { utils } from 'ethers'
 import Mimc7 from 'models/Mimc7'
+import publicKeyToArraysSplitted from 'helpers/publicKeyToArraysSplitted'
 
 export default async function getCommitment(
   inputs: ProofInput,
