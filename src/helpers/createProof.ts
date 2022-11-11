@@ -1,4 +1,5 @@
 import { BigIntOrString } from 'models/BigIntOrString'
+import { ProofInput } from 'models/ProofInput'
 import { hashPersonalMessage } from '@ethereumjs/util'
 import { utils } from 'ethers'
 import BN from 'bn.js'
@@ -83,12 +84,9 @@ export function generateInput(signature: string, message: string) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const snarkjs: any
 
-export default function build(
-  signature: string,
-  message: string
-): Promise<ProofResult> {
+export default function build(input: ProofInput): Promise<ProofResult> {
   return snarkjs.groth16.fullProve(
-    generateInput(signature, message),
+    input,
     'zk/ECDSAChecker.wasm',
     'zk/ECDSAChecker_final.zkey'
   )

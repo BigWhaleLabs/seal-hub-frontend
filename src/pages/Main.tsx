@@ -1,9 +1,7 @@
+import { STAGE } from 'types/flowStage'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import BottomCard from 'components/BottomCard'
-import GettingStartedBlock from 'components/GettingStartedBlock'
-import SuccessCardBlock from 'components/SuccessCard/SuccessCardBlock'
-import SuccessSubtitle from 'components/SuccessCard/SuccessSubtitle'
 import TopCard from 'components/TopCard'
 import classnames, {
   alignItems,
@@ -12,6 +10,7 @@ import classnames, {
   gap,
   justifyContent,
 } from 'classnames/tailwind'
+import renderStageData from 'helpers/renderStageData'
 
 const container = classnames(
   display('flex'),
@@ -20,25 +19,17 @@ const container = classnames(
   alignItems('items-center'),
   gap('gap-y-8')
 )
+
 export default function () {
-  const { flowSucceeded } = useSnapshot(AppStore)
-  const label = flowSucceeded ? 'Complete' : '100% ANONYMOUS'
-  const title = flowSucceeded
-    ? 'Your wallet is verified'
-    : 'Verify, and stay anonymous'
-  const subtitle = flowSucceeded ? (
-    <SuccessSubtitle />
-  ) : (
-    'SealHub allows anyone to prove they own a wallet without exposing their identity—not even we’ll know who you are.'
-  )
-  const content = flowSucceeded ? <SuccessCardBlock /> : <GettingStartedBlock />
+  const { stage = STAGE.INIT } = useSnapshot(AppStore)
+  const { label, title, subtitle, content } = renderStageData[stage]
 
   return (
     <div className={container}>
       <TopCard
-        label={`// ${label}`}
+        label={label}
         title={title}
-        subtitle={subtitle}
+        subtitle={typeof subtitle === 'string' ? subtitle : subtitle}
         statusOrContent={content}
       />
       <BottomCard />
