@@ -1,7 +1,7 @@
 import { AccentText } from 'components/Text'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { displayFrom, displayTo } from 'helpers/visibilityClassnames'
-import ENSAddress from 'components/ENSAddress'
+import AccountBlock from 'components/Navbar/AccountBlock'
 
 const NotConnected = () => (
   <>
@@ -26,8 +26,8 @@ export default function () {
           <AccentText
             color={connected ? 'text-accent' : 'text-primary-semi-dimmed'}
           >
-            {connected ? (
-              <ENSAddress address={account.address} />
+            {connected && chain.name ? (
+              <AccountBlock address={account.address} network={chain.name} />
             ) : (
               <div onClick={openConnectModal}>
                 <NotConnected />
