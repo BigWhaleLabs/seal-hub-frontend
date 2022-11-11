@@ -17,13 +17,13 @@ export default function () {
   return (
     <StatusCardBlock statusDescription={statusDescription}>
       <StatusCardOption
-        complete={AppStore.commitment}
+        complete={!!AppStore.commitment}
         loading={flowState === STATES.CHECK_COMMITMENT}
       >
         Commitment generated
       </StatusCardOption>
       <StatusCardOption
-        complete={AppStore.proof}
+        complete={!!AppStore.proof}
         loading={flowState === STATES.GENERATE_PROOF}
       >
         Generate zero knowledge proof

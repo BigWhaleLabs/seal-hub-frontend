@@ -2,7 +2,11 @@ import { STAGE, stageData } from 'types/flowStage'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import BottomCard from 'components/BottomCard'
+import GettingStartedBlock from 'components/GettingStartedBlock'
+import SigningFlow from 'components/SigningFlow'
+import SuccessCardBlock from 'components/SuccessCard/SuccessCardBlock'
 import TopCard from 'components/TopCard'
+import ZKFloof from 'components/ZKFloof'
 import classnames, {
   alignItems,
   display,
@@ -19,8 +23,26 @@ const container = classnames(
   gap('gap-y-8')
 )
 
+function getContent(state: STAGE) {
+  switch (state) {
+    case STAGE.INIT:
+      return <GettingStartedBlock />
+    case STAGE.CHECK:
+      return <SigningFlow />
+    case STAGE.READY:
+      return <ZKFloof />
+    case STAGE.GENERATE:
+      return <ZKFloof />
+    case STAGE.SUCCESS:
+      return <SuccessCardBlock />
+    default:
+      return <GettingStartedBlock />
+  }
+}
+
 function CardBlock({ state = STAGE.INIT }: { state?: STAGE }) {
-  const { label, title, subtitle, content } = stageData[state]
+  const { label, title, subtitle } = stageData[state]
+  const content = getContent(state)
 
   return (
     <TopCard
@@ -29,7 +51,7 @@ function CardBlock({ state = STAGE.INIT }: { state?: STAGE }) {
       subtitle={
         typeof subtitle === 'string' ? subtitle : subtitle && subtitle()
       }
-      statusOrContent={content()}
+      statusOrContent={content}
     />
   )
 }

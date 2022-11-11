@@ -4,6 +4,7 @@ import {
   CaptionText,
   GradientText,
 } from 'components/Text'
+import { STAGE } from 'types/flowStage'
 import { STATES } from 'types/SigningStates'
 import { displayFrom, displayTo } from 'helpers/visibilityClassnames'
 import { useSnapshot } from 'valtio'
@@ -66,6 +67,7 @@ export default function () {
           <Button
             disabled={!input}
             onClick={async () => {
+              AppStore.stage = STAGE.GENERATE
               try {
                 if (AppStore.input) {
                   AppStore.flowState = STATES.GENERATE_PROOF
@@ -74,6 +76,7 @@ export default function () {
                   AppStore.flowState = STATES.GENERATE_COMMITMENT
                   await generateCommitment(AppStore.proof)
                   AppStore.flowSucceeded = true
+                  AppStore.stage = STAGE.SUCCESS
                 }
               } finally {
                 delete AppStore.proof
