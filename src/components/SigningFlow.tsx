@@ -78,7 +78,6 @@ export default function () {
 
   return error === ErrorType.SIGNATURE ? (
     <ErrorBlock
-      colored
       subtitle={errorList[error]}
       content={<SignError onClick={reSignMessage} />}
     />

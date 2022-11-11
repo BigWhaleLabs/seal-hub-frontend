@@ -1,43 +1,20 @@
 import { AccentText, BodyText } from 'components/Text'
 import { JSX } from 'preact/jsx-runtime'
-import classnames, {
-  alignItems,
-  backgroundColor,
-  borderRadius,
-  display,
-  flexDirection,
-  gap,
-  justifyContent,
-  padding,
-  width,
-} from 'classnames/tailwind'
-
-const block = (colored?: boolean) =>
-  classnames(
-    display('flex'),
-    backgroundColor({ 'bg-primary-background': colored }),
-    flexDirection('flex-col'),
-    padding('p-6'),
-    alignItems('items-center'),
-    justifyContent('justify-between'),
-    borderRadius('rounded-lg'),
-    gap('gap-y-4'),
-    width('w-full')
-  )
+import StatusCard from 'components/StatusCard'
 
 export default function ({
-  colored,
+  transparent,
   subtitle,
   content,
 }: {
-  colored?: boolean
+  transparent?: boolean
   subtitle?: string | JSX.Element
   content?: JSX.Element
   fallback?: () => void
 }) {
   return (
     <>
-      <div className={block(colored)}>
+      <StatusCard transparent={transparent}>
         {subtitle && typeof subtitle === 'string' ? (
           <AccentText color="text-error">
             <BodyText>{subtitle}</BodyText>
@@ -45,7 +22,7 @@ export default function ({
         ) : (
           subtitle
         )}
-      </div>
+      </StatusCard>
       {content}
     </>
   )
