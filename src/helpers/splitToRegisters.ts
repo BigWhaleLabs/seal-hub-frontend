@@ -1,4 +1,5 @@
 /* eslint-disable no-relative-import-paths/no-relative-import-paths */
+// Used by worker, which accepts only absolute paths, you can use this function as usual
 import BN from 'bn.js'
 import addHexPrefix from '../helpers/addHexPrefix'
 
