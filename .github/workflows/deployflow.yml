@@ -1,0 +1,58 @@
+name: Build and deploy app
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy-app:
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      NODE_OPTIONS: '--max_old_space_size=4096'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - uses: c-hive/gha-yarn-cache@v2
+      - name: Install modules
+        run: yarn
+        shell: bash
+      - name: Build code
+        env:
+          VITE_ENCRYPT_KEY: ${{ secrets.VITE_ENCRYPT_KEY }}
+          VITE_SEAL_HUB_CONTRACT: ${{ secrets.VITE_SEAL_HUB_CONTRACT }}
+        run: yarn build
+        shell: bash
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: 'docs'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+      - uses: satak/webrequest-action@master
+        if: success()
+        env:
+          deploy_url: ${{ steps.deployment.outputs.page_url }}
+        with:
+          url: https://discord.com/api/webhooks/${{ secrets.DISCORD_CHANNEL_ID }}/${{ secrets.DISCORD_BOT_ID }}
+          method: POST
+          headers: '{"Authorization": "Bot ${{ secrets.DISCORD_BOT_ID }}"}'
+          payload: '{"content": "✅ `${{ env.deploy_url }}` deployed"}'
+      - uses: satak/webrequest-action@master
+        if: failure()
+        env:
+          repository: ${{ github.repository }}
+        with:
+          url: https://discord.com/api/webhooks/${{ secrets.DISCORD_CHANNEL_ID }}/${{ secrets.DISCORD_BOT_ID }}
+          method: POST
+          headers: '{"Authorization": "Bot ${{ secrets.DISCORD_BOT_ID }}"}'
+          payload: '{"content": "💥 `${{ env.repository }}` failed to deploy <@&975961160488718386>"}'

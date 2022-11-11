@@ -1,24 +1,44 @@
+import { ErrorType, ThrownError, errorList } from 'types/ErrorType'
 import { Phase } from 'types/flowPhase'
 import { Signer } from 'ethers'
-import { useAccount, useProvider, useSigner } from 'wagmi'
-import { useEffect } from 'preact/hooks'
+import { margin } from 'classnames/tailwind'
+import { useAccount, useSigner } from 'wagmi'
+import { useCallback, useEffect } from 'preact/hooks'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
+import Button from 'components/Button'
+import ErrorBlock from 'components/ErrorBlock'
 import SigningStates, { STATES } from 'types/SigningStates'
 import StatusBlock from 'components/StatusBlock'
 import getCommitment from 'helpers/getCommitment'
 import hasCommitment from 'helpers/hasCommitment'
 import signMessage from 'helpers/signMessage'
 
+function SignError({
+  onClick,
+}: {
+  onClick: () => Promise<void | null | undefined>
+}) {
+  return (
+    <div className={margin('mx-auto')}>
+      <Button onClick={onClick} fitContent>
+        Sign again
+      </Button>
+    </div>
+  )
+}
+
 export default function () {
   const { address } = useAccount()
   const { data: signer } = useSigner()
-  const provider = useProvider()
-  const { flowState } = useSnapshot(AppStore)
-
-  useEffect(() => {
-    async function startCheckingAddress(signer: Signer) {
-      if (!address) return
+  const { flowState, error } = useSnapshot(AppStore)
+  const startCheckingAddress = useCallback(
+    async (signer: Signer) => {
+      if (!address) {
+        AppStore.error = ErrorType.CONNECTION
+        return
+      }
+      AppStore.error = undefined
       AppStore.phase = Phase.CHECK
 
       try {
@@ -44,15 +64,27 @@ export default function () {
         AppStore.flowState = STATES.READY_FOR_GENERATING_PROOF
         AppStore.phase = Phase.READY
       } catch (e) {
-        AppStore.flowState = STATES.ERROR
+        AppStore.error = (e as unknown as ThrownError).type
         console.error(e)
       }
-    }
+    },
+    [address]
+  )
+  const reSignMessage = async () =>
+    signer && (await startCheckingAddress(signer))
 
+  useEffect(() => {
     if (!AppStore.input && signer) void startCheckingAddress(signer)
-  }, [address, signer, provider])
+  }, [signer, startCheckingAddress])
 
   const { title, subTitle } = SigningStates[flowState]
 
-  return <StatusBlock loadingText={title} subtitle={subTitle} />
+  return error === ErrorType.SIGNATURE ? (
+    <ErrorBlock
+      subtitle={errorList[error]}
+      content={<SignError onClick={reSignMessage} />}
+    />
+  ) : (
+    <StatusBlock loadingText={title} subtitle={subTitle} />
+  )
 }

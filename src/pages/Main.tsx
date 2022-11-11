@@ -32,7 +32,7 @@ export default function () {
         subtitle={typeof subtitle === 'string' ? subtitle : subtitle}
         statusOrContent={content}
       />
-      <BottomCard />
+      {phase !== Phase.SUCCESS && <BottomCard />}
     </div>
   )
 }
