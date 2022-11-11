@@ -1,5 +1,5 @@
 export default function (address: string, network: string) {
   return `https://${
-    network === 'mainnet' ? '' : `${network.toLowerCase()}.`
+    network === 'homestead' ? '' : `${network.toLowerCase()}.`
   }etherscan.io/address/${address}`
 }

@@ -1,4 +1,5 @@
-import { useDisconnect } from 'wagmi'
+import { AccentText } from 'components/Text'
+import { useDisconnect, useNetwork } from 'wagmi'
 import AppStore from 'stores/AppStore'
 import Dropdown from 'components/Dropdown'
 import ENSAddress from 'components/ENSAddress'
@@ -9,14 +10,28 @@ const options = [
   { label: 'Disconnect', value: 'disconnect' },
 ]
 
-export default function ({
-  address,
-  network,
-}: {
-  address: string
-  network: string
-}) {
+function Account({ address }: { address: string }) {
+  return (
+    <AccentText color="text-accent">
+      <ENSAddress address={address} />
+    </AccentText>
+  )
+}
+
+export default function ({ address }: { address: string }) {
+  const { chain } = useNetwork()
+
   const { disconnect } = useDisconnect()
+  const onSelectOption = (selectedValue: string) => {
+    if (selectedValue === 'disconnect') {
+      AppStore.resetOnDisconnect()
+      disconnect()
+    } else {
+      address &&
+        chain &&
+        window.open(getEtherscanAddressUrl(address, chain.network), '_blank')
+    }
+  }
 
   return (
     <Dropdown
@@ -24,17 +39,8 @@ export default function ({
       fitToItemSize
       currentValue={window.location.origin}
       options={options}
-      staticPlaceholder={<ENSAddress address={address} />}
-      onChange={(selectedValue: string) => {
-        if (selectedValue === 'disconnect') {
-          AppStore.resetOnDisconnect()
-          disconnect()
-        } else {
-          address &&
-            network &&
-            window.open(getEtherscanAddressUrl(address, network), '_blank')
-        }
-      }}
+      staticPlaceholder={<Account address={address} />}
+      onChange={onSelectOption}
     />
   )
 }
