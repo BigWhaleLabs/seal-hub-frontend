@@ -7,9 +7,9 @@ import AppStore from 'stores/AppStore'
 export default function () {
   const { disconnect } = useDisconnect()
   const resetConnection = () => {
-    disconnect()
     AppStore.stage = STAGE.INIT
     AppStore.flowState = STATES.INIT
+    disconnect()
   }
 
   return (
