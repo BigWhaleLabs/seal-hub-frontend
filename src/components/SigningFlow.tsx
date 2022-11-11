@@ -31,7 +31,7 @@ export default function () {
           baseMessage
         )
 
-        if (await hasCommitment(AppStore.commitment)) {
+        if (AppStore.commitment && (await hasCommitment(AppStore.commitment))) {
           AppStore.flowSucceeded = true
           return
         }
