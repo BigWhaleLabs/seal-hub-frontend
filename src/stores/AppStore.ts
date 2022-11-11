@@ -1,4 +1,5 @@
 import { ECDSAProofStruct } from '@big-whale-labs/seal-hub-contract/dist/typechain/contracts/SealHub'
+import { ErrorType } from 'types/ErrorType'
 import { Phase } from 'types/flowPhase'
 import { ProofInput } from 'models/ProofInput'
 import { STATES } from 'types/SigningStates'
@@ -8,6 +9,7 @@ class AppStore {
   connected = false
   phase?: Phase
   flowState = STATES.INIT
+  error?: ErrorType
 
   input?: ProofInput
   proof?: ECDSAProofStruct

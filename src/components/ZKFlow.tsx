@@ -2,39 +2,39 @@ import { Phase } from 'types/flowPhase'
 import { STATES } from 'types/SigningStates'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
-import StatusCardBlock from 'components/StatusCard/StatusCardBlock'
-import StatusCardOption from 'components/StatusCard/StatusCardOption'
+import Option from 'components/StatusesList/Option'
+import StatusesList from 'components/StatusesList'
 
 export default function () {
   const { flowState } = useSnapshot(AppStore)
 
   const statusDescription =
     flowState === STATES.GENERATE_PROOF
-      ? 'Hang tight, this whole process may take 5-20 minutes. Feel free to leave and come back—we’ll still be here.'
+      ? 'Hang tight, this whole process may take 5-20 minutes.'
       : flowState === STATES.GENERATE_COMMITMENT
       ? 'Almost there'
       : 'Ready to begin...'
 
   return (
-    <StatusCardBlock statusDescription={statusDescription}>
-      <StatusCardOption
+    <StatusesList statusDescription={statusDescription}>
+      <Option
         complete={!!AppStore.commitment}
         loading={flowState === STATES.CHECK_COMMITMENT}
       >
         Commitment generated
-      </StatusCardOption>
-      <StatusCardOption
+      </Option>
+      <Option
         complete={!!AppStore.proof}
         loading={flowState === STATES.GENERATE_PROOF}
       >
         Generate zero knowledge proof
-      </StatusCardOption>
-      <StatusCardOption
+      </Option>
+      <Option
         complete={AppStore.phase === Phase.SUCCESS}
         loading={flowState === STATES.GENERATE_COMMITMENT}
       >
         Add to chain
-      </StatusCardOption>
-    </StatusCardBlock>
+      </Option>
+    </StatusesList>
   )
 }

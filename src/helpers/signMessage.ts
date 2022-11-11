@@ -1,8 +1,14 @@
+import { ErrorType } from 'types/ErrorType'
 import { Signer } from 'ethers'
 
 export default async function (address: string, signer: Signer) {
-  const baseMessage = `SealHub verification for ${address}`
-  const signature = await signer.signMessage(baseMessage)
+  try {
+    const baseMessage = `SealHub verification for ${address}`
+    const signature = await signer.signMessage(baseMessage)
 
-  return { baseMessage, signature }
+    return { baseMessage, signature }
+  } catch (e) {
+    console.error(e)
+    throw { type: ErrorType.SIGNATURE, error: e }
+  }
 }
