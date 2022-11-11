@@ -6,6 +6,7 @@ import {
 import { cleanEnv, str } from 'envalid'
 
 export default cleanEnv(import.meta.env, {
+  VITE_ENCRYPT_KEY: str(),
   VITE_ALCHEMY_API_KEY: str(),
   VITE_ETH_NETWORK: str({ default: ETH_NETWORK }),
   VITE_SEAL_HUB_CONTRACT: str(),
