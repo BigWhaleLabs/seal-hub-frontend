@@ -1,6 +1,5 @@
 import { defineConfig, Plugin } from 'vite'
 import preact from '@preact/preset-vite'
-import { comlink } from 'vite-plugin-comlink'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { visualizer } from 'rollup-plugin-visualizer'
 import GlobalsPolyfills from '@esbuild-plugins/node-globals-polyfill'
@@ -9,7 +8,7 @@ import nodePolyfills from 'rollup-plugin-polyfill-node'
 import removeConsole from 'vite-plugin-remove-console'
 
 export default defineConfig({
-  plugins: [comlink(), preact(), tsconfigPaths()],
+  plugins: [preact(), tsconfigPaths()],
   resolve: { alias: { assert: 'assert-browserify' } },
   build: {
     target: 'es2020',
@@ -51,9 +50,6 @@ export default defineConfig({
   },
   esbuild: {
     logOverride: { 'this-is-undefined-in-esm': 'silent' },
-  },
-  worker: {
-    plugins: [comlink()],
   },
   server: { port: 3000 },
 })
