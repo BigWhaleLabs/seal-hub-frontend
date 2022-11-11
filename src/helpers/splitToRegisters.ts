@@ -1,5 +1,6 @@
+/* eslint-disable no-relative-import-paths/no-relative-import-paths */
 import BN from 'bn.js'
-import addHexPrefix from 'helpers/addHexPrefix'
+import addHexPrefix from '../helpers/addHexPrefix'
 
 const REGISTERS = 4n
 
