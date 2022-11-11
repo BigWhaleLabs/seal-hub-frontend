@@ -5,7 +5,7 @@
   "homepage": "https://hub.sealcred.xyz",
   "scripts": {
     "start": "yarn generate-css-types && vite",
-    "build": "yarn generate-css-types && tsc && cross-env NODE_ENV=production tsc && vite build",
+    "build": "yarn generate-css-types && tsc && cross-env NODE_OPTIONS='--max-old-space-size=4096' NODE_ENV=production vite build",
     "pretty": "prettier --check src",
     "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src",
     "generate-css-types": "tailwindcss-classnames -o src/classnames/tailwind.ts && prettier --write src/classnames/tailwind.ts",
@@ -39,7 +39,6 @@
     "envalid": "^7.3.1",
     "ethers": "^5.7.2",
     "preact": "^10.11.2",
-    "unfetch": "^4.2.0",
     "valtio": "^1.7.5",
     "wagmi": "^0.7.12",
     "wouter": "^2.8.1"
@@ -55,6 +54,7 @@
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
     "autoprefixer": "^10.4.13",
+    "circomlibjs": "^0.1.7",
     "cross-env": "^7.0.3",
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",

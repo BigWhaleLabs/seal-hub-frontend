@@ -2,6 +2,7 @@ export enum STATES {
   ERROR,
   INIT,
   CHECK_COMMITMENT,
+  GENERATE_PROOF,
   GENERATE_COMMITMENT,
 }
 
@@ -16,6 +17,10 @@ export default {
   },
   [STATES.CHECK_COMMITMENT]: {
     title: 'Checking for existing commitment...',
+    subTitle: 'Hang tight!',
+  },
+  [STATES.GENERATE_PROOF]: {
+    title: 'Generate proof...',
     subTitle: 'Hang tight!',
   },
   [STATES.GENERATE_COMMITMENT]: {
