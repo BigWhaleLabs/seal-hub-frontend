@@ -10,7 +10,7 @@ export default function () {
 
   const statusDescription =
     flowState === STATES.GENERATE_PROOF
-      ? 'Hang tight, this whole process may take 5-20 minutes. Feel free to leave and come back—we’ll still be here.'
+      ? 'Hang tight, this whole process may take 5-20 minutes.'
       : flowState === STATES.GENERATE_COMMITMENT
       ? 'Almost there'
       : 'Ready to begin...'
