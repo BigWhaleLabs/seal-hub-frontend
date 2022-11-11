@@ -1,7 +1,6 @@
 import { STATES } from 'types/SigningStates'
 import { useAccount } from 'wagmi'
 import { useSnapshot } from 'valtio'
-import { useState } from 'preact/hooks'
 import AppStore from 'stores/AppStore'
 import BeforeGeneration from 'components/BeforeGeneration'
 import BottomCard from 'components/BottomCard'
