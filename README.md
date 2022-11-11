@@ -10,6 +10,7 @@
 
 | Name                                  | Description                                                 |
 | ------------------------------------- | ----------------------------------------------------------- |
+| `VITE_ENCRYPT_KEY`                    | Secret key to encrypt local storage                         |
 | `VITE_ALCHEMY_API_KEY`                | Alchemy Api key                                             |
 | `VITE_SEAL_HUB_CONTRACT`              | Sealhub contract address                                    |
 | `VITE_GSN_PAYMASTER_CONTRACT_ADDRESS` | GSN Paymaster contract address (defaults to @bwl/constants) |
