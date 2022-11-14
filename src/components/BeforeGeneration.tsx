@@ -30,6 +30,7 @@ const container = classnames(
 const bottomPart = classnames(
   display('flex'),
   flexDirection('flex-col'),
+  alignItems('items-center'),
   gap('gap-y-2')
 )
 const buttonsWrapper = classnames(
@@ -50,7 +51,7 @@ const buttonCaption = classnames(displayFrom('sm'), padding('px-9'))
 
 export default function () {
   const { input } = useSnapshot(AppStore)
-  const isHidden = true
+  const isVisible = false
   const tooltipText =
     'Using a centralized server won’t be as secure as if you generated yourself locally in browser. Although we’ll do everything we can to protect data, it’ll never be as anonymous. '
 
@@ -88,16 +89,16 @@ export default function () {
           <div className={displayTo('sm')}>
             <CaptionText>Happens locally in browser</CaptionText>
           </div>
-
-          <AccentText color="text-primary-semi-dimmed">or</AccentText>
-
-          {isHidden && (
-            <div className={tooltipWrapper}>
-              <GradientText center>
-                Generate on a centralized prover
-              </GradientText>
-              <CentralizedProverHint text={tooltipText} />
-            </div>
+          {isVisible && (
+            <>
+              <AccentText color="text-primary-semi-dimmed">or</AccentText>
+              <div className={tooltipWrapper}>
+                <GradientText center>
+                  Generate on a centralized prover
+                </GradientText>
+                <CentralizedProverHint text={tooltipText} />
+              </div>
+            </>
           )}
         </div>
         <div className={buttonCaption}>

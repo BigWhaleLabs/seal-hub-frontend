@@ -1,5 +1,5 @@
 import { FooterLink, SocialLink } from 'components/Text'
-import { displayTo } from 'helpers/visibilityClassnames'
+import { displayFrom, displayTo } from 'helpers/visibilityClassnames'
 import Delimiter from 'components/Delimiter'
 import Discord from 'icons/Discord'
 import FooterLogo from 'icons/FooterLogo'
@@ -43,6 +43,11 @@ const footerLogo = classnames(
   space('space-x-4')
 )
 const socialLinksContainer = classnames(displayTo('md'), socialContainer)
+const FooterDelimiter = () => (
+  <div className={displayFrom('md')}>
+    <Delimiter />
+  </div>
+)
 
 export default function () {
   return (
@@ -54,11 +59,11 @@ export default function () {
             <span>Blog</span>
           </div>
         </FooterLink>
-        <Delimiter />
+        <FooterDelimiter />
         <FooterLink internal url="#/terms">
           Terms of service
         </FooterLink>
-        <Delimiter />
+        <FooterDelimiter />
         <FooterLink internal url="#/privacy">
           Privacy policy
         </FooterLink>
