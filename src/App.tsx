@@ -8,29 +8,42 @@ import Privacy from 'pages/Privacy'
 import RainbowWrapper from 'components/RainbowWrapper'
 import Root from 'components/Root'
 import Terms from 'pages/Terms'
+import classnames, {
+  display,
+  flexDirection,
+  minHeight,
+} from 'classnames/tailwind'
 import setGlobalDefaults from 'helpers/setGlobalDefaults'
 import useHashLocation from 'hooks/useHashLocation'
+
+const wrapper = classnames(
+  display('flex'),
+  flexDirection('flex-col'),
+  minHeight('min-h-screen')
+)
 
 export default function () {
   setGlobalDefaults()
 
   return (
     <RainbowWrapper>
-      <Navbar />
-      <Root>
-        <Router hook={useHashLocation}>
-          <Switch>
-            <Route path="/" component={Main} />
-            <Route path="/terms" component={Terms} />
-            <Route path="/privacy" component={Privacy} />
-            <Route path="/404" component={NotFound} />
-            <Route path="">
-              <Redirect to="/404" />
-            </Route>
-          </Switch>
-        </Router>
-      </Root>
-      <Footer />
+      <div className={wrapper}>
+        <Navbar />
+        <Root>
+          <Router hook={useHashLocation}>
+            <Switch>
+              <Route path="/" component={Main} />
+              <Route path="/terms" component={Terms} />
+              <Route path="/privacy" component={Privacy} />
+              <Route path="/404" component={NotFound} />
+              <Route path="">
+                <Redirect to="/404" />
+              </Route>
+            </Switch>
+          </Router>
+        </Root>
+        <Footer />
+      </div>
     </RainbowWrapper>
   )
 }
