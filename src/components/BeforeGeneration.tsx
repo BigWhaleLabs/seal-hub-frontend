@@ -10,8 +10,7 @@ import { displayFrom, displayTo } from 'helpers/visibilityClassnames'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import Button from 'components/Button'
-import CharInCircle from 'components/CharInCircle'
-import Tooltip from 'components/Tooltip'
+import CentralizedProverHint from 'components/CentralizedProverHint'
 import classnames, {
   alignItems,
   display,
@@ -97,11 +96,7 @@ export default function () {
                 <GradientText center>
                   Generate on a centralized prover
                 </GradientText>
-                <Tooltip fitContainer position="bottom-end" text={tooltipText}>
-                  <span>
-                    <CharInCircle char="?" />
-                  </span>
-                </Tooltip>
+                <CentralizedProverHint text={tooltipText} />
               </div>
             </>
           )}
