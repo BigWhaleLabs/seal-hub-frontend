@@ -2,6 +2,7 @@ import { AccentText } from 'components/Text'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { displayFrom, displayTo } from 'helpers/visibilityClassnames'
 import AccountBlock from 'components/Navbar/AccountBlock'
+import AppStore from 'stores/AppStore'
 
 const NotConnected = () => (
   <AccentText color="text-primary-semi-dimmed">
@@ -17,6 +18,7 @@ export default function () {
         if (!mounted) return <NotConnected />
 
         const connected = mounted && account && chain
+        AppStore.connected = !!connected
 
         return connected && chain.name ? (
           <AccountBlock address={account.address} />
