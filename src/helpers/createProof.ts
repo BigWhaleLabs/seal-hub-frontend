@@ -8,7 +8,7 @@ import { utils } from 'ethers'
 import BN from 'bn.js'
 import ProofResult from '../models/ProofResult'
 import elliptic from 'elliptic'
-import getECDSACheckerFiles from './getECDSACheckerFiles'
+import getECDSACheckerFiles from '../helpers/getECDSACheckerFiles'
 import splitToRegisters from '../helpers/splitToRegisters'
 
 const ec = new elliptic.ec('secp256k1')
