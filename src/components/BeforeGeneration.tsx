@@ -7,6 +7,7 @@ import {
 import { Phase } from 'types/flowPhase'
 import { STATES } from 'types/SigningStates'
 import { displayFrom, displayTo } from 'helpers/visibilityClassnames'
+import { useAccount } from 'wagmi'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import Button from 'components/Button'
@@ -51,6 +52,7 @@ const buttonCaption = classnames(displayFrom('sm'), padding('px-9'))
 
 export default function () {
   const { input } = useSnapshot(AppStore)
+  const { address } = useAccount()
   const isVisible = false
   const tooltipText =
     'Using a centralized server won’t be as secure as if you generated yourself locally in browser. Although we’ll do everything we can to protect data, it’ll never be as anonymous. '
@@ -77,6 +79,7 @@ export default function () {
                 AppStore.proof = txData
                 AppStore.flowState = STATES.GENERATE_COMMITMENT
                 await generateCommitment(AppStore.proof)
+                await AppStore.findCommitmentTx(address)
                 AppStore.phase = Phase.SUCCESS
               } finally {
                 delete AppStore.proof
