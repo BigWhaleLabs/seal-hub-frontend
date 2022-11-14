@@ -1,11 +1,13 @@
-import { BigIntOrString } from 'models/BigIntOrString'
-import { ProofInput } from 'models/ProofInput'
+/* eslint-disable no-relative-import-paths/no-relative-import-paths */
+import { BigIntOrString } from '../models/BigIntOrString'
+import { Buffer } from 'buffer'
+import { ProofInput } from '../models/ProofInput'
 import { hashPersonalMessage } from '@ethereumjs/util'
 import { utils } from 'ethers'
 import BN from 'bn.js'
-import ProofResult from 'models/ProofResult'
+import ProofResult from '../models/ProofResult'
 import elliptic from 'elliptic'
-import splitToRegisters from 'helpers/splitToRegisters'
+import splitToRegisters from '../helpers/splitToRegisters'
 
 const ec = new elliptic.ec('secp256k1')
 const STRIDE = 8n

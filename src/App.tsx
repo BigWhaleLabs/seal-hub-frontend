@@ -13,7 +13,6 @@ import classnames, {
   flexDirection,
   minHeight,
 } from 'classnames/tailwind'
-import setGlobalDefaults from 'helpers/setGlobalDefaults'
 import useHashLocation from 'hooks/useHashLocation'
 
 const wrapper = classnames(
@@ -23,8 +22,6 @@ const wrapper = classnames(
 )
 
 export default function () {
-  setGlobalDefaults()
-
   return (
     <RainbowWrapper>
       <div className={wrapper}>

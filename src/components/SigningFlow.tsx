@@ -11,6 +11,7 @@ import Button from 'components/Button'
 import ErrorBlock from 'components/ErrorBlock'
 import SigningStates, { STATES } from 'types/SigningStates'
 import StatusBlock from 'components/StatusBlock'
+import browserIs from 'helpers/browserIs'
 import getCommitment from 'helpers/getCommitment'
 import hasCommitment from 'helpers/hasCommitment'
 import signMessage from 'helpers/signMessage'
@@ -46,7 +47,15 @@ export default function () {
         const { baseMessage, signature } = await signMessage(address, signer)
 
         AppStore.flowState = STATES.CHECK_COMMITMENT
-        AppStore.input = generateInput(signature, baseMessage)
+
+        if (browserIs('firefox')) {
+          AppStore.input = generateInput(signature, baseMessage)
+        } else {
+          const { generateInput } = new ComlinkWorker<
+            typeof import('../helpers/createProof')
+          >(new URL('../helpers/createProof', import.meta.url))
+          AppStore.input = await generateInput(signature, baseMessage)
+        }
 
         AppStore.commitment = await getCommitment(
           AppStore.input,
