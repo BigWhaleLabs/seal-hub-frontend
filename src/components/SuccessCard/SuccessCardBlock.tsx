@@ -14,7 +14,7 @@ const successText = classnames(
 )
 
 export default function () {
-  const { commitmentTxHas } = useSnapshot(AppStore)
+  const { commitmentTxHash } = useSnapshot(AppStore)
 
   const StatusBlockSubtitle = () => {
     return (
@@ -29,10 +29,10 @@ export default function () {
 
         <BodyText>
           You’re verified.
-          {commitmentTxHas && (
+          {commitmentTxHash && (
             <>
               Here’s a link to your{' '}
-              <LinkText url={getEtherscanTxUrl(commitmentTxHas)}>
+              <LinkText url={getEtherscanTxUrl(commitmentTxHash)}>
                 commitment on etherscan
               </LinkText>
               .

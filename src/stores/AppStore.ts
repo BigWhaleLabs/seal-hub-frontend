@@ -15,7 +15,7 @@ class AppStore {
   input?: ProofInput
   proof?: ECDSAProofStruct
   commitment?: bigint
-  commitmentTxHas?: string
+  commitmentTxHash?: string
 
   resetOnDisconnect() {
     this.connected = false
@@ -31,7 +31,7 @@ class AppStore {
       .then((events) => {
         for (const event of events)
           if (event.address === userAddress)
-            this.commitmentTxHas = event.transactionHash
+            this.commitmentTxHash = event.transactionHash
       })
   }
 }
