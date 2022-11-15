@@ -28,9 +28,8 @@ export default function () {
   const { connector: activeConnector } = useAccount()
 
   useEffect(() => {
-    if (activeConnector) {
+    if (activeConnector)
       activeConnector.on('change', () => AppStore.resetOnDisconnect())
-    }
   }, [activeConnector])
 
   return (
