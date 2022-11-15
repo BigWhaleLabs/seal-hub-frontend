@@ -15,8 +15,7 @@ class AppStore {
   proof?: ECDSAProofStruct
   commitment?: bigint
 
-  zkDownloadProgress = 0
-  wasmDownloadProgress = 0
+  zkDownloadProgress = 1
 
   resetOnDisconnect() {
     this.connected = false

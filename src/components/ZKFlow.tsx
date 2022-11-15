@@ -6,10 +6,9 @@ import Option from 'components/StatusesList/Option'
 import StatusesList from 'components/StatusesList'
 
 export default function () {
-  const { flowState, zkDownloadProgress, wasmDownloadProgress } =
-    useSnapshot(AppStore)
+  const { flowState, zkDownloadProgress } = useSnapshot(AppStore)
 
-  const progress = ((zkDownloadProgress + wasmDownloadProgress) * 100) / 2
+  const progress = zkDownloadProgress * 100
 
   const statusDescription =
     flowState === STATES.GENERATE_PROOF
@@ -30,15 +29,9 @@ export default function () {
         complete={progress === 100 && !!AppStore.proof}
         loading={flowState === STATES.GENERATE_PROOF}
       >
-        {progress !== 100 ? (
-          <>
-            Download files (
-            {zkDownloadProgress > 0 ? (zkDownloadProgress > 50 ? 2 : 1) : 0}/2){' '}
-            {progress.toFixed(0)}%
-          </>
-        ) : (
-          'Generate zero knowledge proof'
-        )}
+        {progress !== 100
+          ? `Download files ${progress.toFixed(0)}%`
+          : 'Generate zero knowledge proof'}
       </Option>
       <Option
         complete={AppStore.phase === Phase.SUCCESS}

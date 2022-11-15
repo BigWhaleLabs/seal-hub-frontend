@@ -2,13 +2,10 @@
 // Used by worker, which accepts only absolute paths, you can use this function as usual
 import { BigIntOrString } from '../models/BigIntOrString'
 import { Buffer } from 'buffer'
-import { ProofInput } from '../models/ProofInput'
 import { hashPersonalMessage } from '@ethereumjs/util'
 import { utils } from 'ethers'
 import BN from 'bn.js'
-import ProofResult from '../models/ProofResult'
 import elliptic from 'elliptic'
-import getECDSACheckerFiles from './getECDSACheckerFiles'
 import splitToRegisters from '../helpers/splitToRegisters'
 
 const ec = new elliptic.ec('secp256k1')
@@ -85,10 +82,4 @@ export function generateInput(signature: string, message: string) {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare const snarkjs: any
-
-export default async function build(input: ProofInput): Promise<ProofResult> {
-  const files = await getECDSACheckerFiles()
-  return snarkjs.groth16.fullProve(input, ...files)
-}
+export default generateInput
