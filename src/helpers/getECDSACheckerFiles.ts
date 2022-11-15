@@ -3,19 +3,19 @@ export default async function () {
   const zkeyUrl = 'https://bwl-zk.s3.amazonaws.com/ECDSAChecker_final.zkey'
 
   const cache = await caches.open('v1')
-  const [wasmCache, zkeyCash] = await getCacheFiles(cache, wasmUrl, zkeyUrl)
+  const [wasmCache, zkeyCache] = await getCacheFiles(cache, wasmUrl, zkeyUrl)
 
-  if (wasmCache && zkeyCash)
-    return convertResArrToUint8Array([wasmCache, zkeyCash])
+  if (wasmCache && zkeyCache)
+    return convertResArrToUint8Array([wasmCache, zkeyCache])
 
   await cache.addAll([wasmUrl, zkeyUrl])
-  const [addedWasmCache, addedZkeyCash] = await getCacheFiles(
+  const [addedWasmCache, addedZkeyCache] = await getCacheFiles(
     cache,
     wasmUrl,
     zkeyUrl
   )
-  return addedWasmCache && addedZkeyCash
-    ? convertResArrToUint8Array([addedWasmCache, addedZkeyCash])
+  return addedWasmCache && addedZkeyCache
+    ? convertResArrToUint8Array([addedWasmCache, addedZkeyCache])
     : [wasmUrl, zkeyUrl]
 }
 
