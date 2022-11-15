@@ -49,7 +49,6 @@ export default function () {
         AppStore.flowState = STATES.CHECK_COMMITMENT
 
         if (supportsModuleWorkers()) {
-          console.log('Using module workers')
           const { generateInput } = new ComlinkWorker<
             typeof import('../helpers/createProof')
           >(new URL('../helpers/createProof', import.meta.url))

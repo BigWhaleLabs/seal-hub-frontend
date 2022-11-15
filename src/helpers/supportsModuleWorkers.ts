@@ -9,7 +9,8 @@ export default function () {
   }
 
   try {
-    const worker = new Worker('blob://;', testerFunction)
+    // blob:// creates an empty worker, so it won't take much resources
+    const worker = new Worker('blob://', testerFunction)
     worker.terminate()
     return supports
   } catch (e) {
