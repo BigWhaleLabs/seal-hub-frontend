@@ -4,6 +4,5 @@ import getSealHubGSN from 'helpers/getSealHubGSN'
 export default async function (txData: ECDSAProofStruct) {
   const sealHubGSN = await getSealHubGSN()
   const tx = await sealHubGSN.createCommitment(txData)
-  console.table(tx)
   return tx.wait()
 }
