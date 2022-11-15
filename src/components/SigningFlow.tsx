@@ -40,37 +40,44 @@ export default function () {
         AppStore.error = ErrorType.CONNECTION
         return
       }
+      if (AppStore.isSignRequested[address]) return
+
       AppStore.error = undefined
-      AppStore.phase = Phase.CHECK
+      AppStore.isSignRequested[address] = true
+      AppStore.walletFlow[address].phase = Phase.CHECK
 
       try {
         const { baseMessage, signature } = await signMessage(address, signer)
 
-        AppStore.flowState = STATES.CHECK_COMMITMENT
+        AppStore.walletFlow[address].flowState = STATES.CHECK_COMMITMENT
 
         if (browserIs('firefox')) {
-          AppStore.input = generateInput(signature, baseMessage)
+          AppStore.inputs[address] = generateInput(signature, baseMessage)
         } else {
           const { generateInput } = new ComlinkWorker<
             typeof import('../helpers/createProof')
           >(new URL('../helpers/createProof', import.meta.url))
-          AppStore.input = await generateInput(signature, baseMessage)
+          AppStore.inputs[address] = await generateInput(signature, baseMessage)
         }
-
-        AppStore.commitment = await getCommitment(
-          AppStore.input,
+        AppStore.commitments[address] = await getCommitment(
+          AppStore.inputs[address],
           signature,
           baseMessage
         )
 
-        if (AppStore.commitment && (await hasCommitment(AppStore.commitment))) {
-          AppStore.phase = Phase.SUCCESS
+        if (
+          AppStore.commitments[address] &&
+          (await hasCommitment(AppStore.commitments[address]))
+        ) {
+          AppStore.walletFlow[address].phase = Phase.SUCCESS
           return
         }
 
-        AppStore.flowState = STATES.READY_FOR_GENERATING_PROOF
-        AppStore.phase = Phase.READY
+        AppStore.walletFlow[address].flowState =
+          STATES.READY_FOR_GENERATING_PROOF
+        AppStore.walletFlow[address].phase = Phase.READY
       } catch (e) {
+        AppStore.isSignRequested[address] = false
         AppStore.error = (e as unknown as ThrownError).type
         console.error(e)
       }
@@ -81,8 +88,13 @@ export default function () {
     signer && (await startCheckingAddress(signer))
 
   useEffect(() => {
-    if (!AppStore.input && signer) void startCheckingAddress(signer)
-  }, [signer, startCheckingAddress])
+    if (
+      !AppStore.isSignRequested[address as string] &&
+      !AppStore.input &&
+      signer
+    )
+      void startCheckingAddress(signer)
+  }, [address, signer, startCheckingAddress])
 
   const { title, subTitle } = SigningStates[flowState]
 

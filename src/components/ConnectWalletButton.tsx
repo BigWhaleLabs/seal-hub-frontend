@@ -1,5 +1,4 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { Phase } from 'types/flowPhase'
 import AppStore from 'stores/AppStore'
 import Button from 'components/Button'
 import SigningFlow from 'components/SigningFlow'
@@ -29,11 +28,15 @@ export default function () {
         if (!mounted) return <Spinner />
         const connected = mounted && account && chain
         AppStore.connected = !!connected
-        AppStore.phase = connected ? Phase.CHECK : Phase.INIT
+        const address = account?.address
+        AppStore.wallet = address
+        if (address && !AppStore.walletFlow[address]) {
+          AppStore.initWalletFlow(address)
+        }
 
         return (
           <div className={container}>
-            {connected ? (
+            {address && connected ? (
               <SigningFlow />
             ) : (
               <Button onClick={openConnectModal}>Connect wallet</Button>

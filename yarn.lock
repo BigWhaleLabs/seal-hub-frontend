@@ -1528,7 +1528,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@big-whale-labs/constants@npm:^0.1.37":
+"@big-whale-labs/constants@npm:^0.1.29, @big-whale-labs/constants@npm:^0.1.37":
   version: 0.1.37
   resolution: "@big-whale-labs/constants@npm:0.1.37"
   checksum: 2de01f2af174b469ecf0afdc7da3497e814f92c8041e0f3745157b76fa8c8bea75f3434953843cfcdfba31c68b98f353f95c169f91ce89dede81598545c857a2
@@ -1554,6 +1554,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@big-whale-labs/seal-cred-ledger-contract@npm:^0.2.8":
+  version: 0.2.9
+  resolution: "@big-whale-labs/seal-cred-ledger-contract@npm:0.2.9"
+  checksum: a4212cc70167fc24cb3652417ed038eff0a3a619ddd69c8de8fb565aae5da2dc4011d558affd80c775de8d3bae8011afff4760983930ad6529b7816c895731ac
+  languageName: node
+  linkType: hard
+
 "@big-whale-labs/seal-hub-contract@npm:^0.0.1":
   version: 0.0.1
   resolution: "@big-whale-labs/seal-hub-contract@npm:0.0.1"
@@ -1564,6 +1571,19 @@ __metadata:
     "@zk-kit/incremental-merkle-tree.sol": ^1.3.1
     circomlibjs: ^0.1.7
   checksum: 5287a9c4792f8de877cc0ee77849cc02983f5f5dca6c28b4bca245a5e1ab4d17c8ca41909853578bf2cc75997ccc6c00f6cd22c05945b99c00967bf7b0f3df92
+  languageName: node
+  linkType: hard
+
+"@big-whale-labs/stores@npm:^0.1.17":
+  version: 0.1.17
+  resolution: "@big-whale-labs/stores@npm:0.1.17"
+  dependencies:
+    "@big-whale-labs/constants": ^0.1.29
+    "@big-whale-labs/seal-cred-ledger-contract": ^0.2.8
+    ethers: ^5.7.0
+    secure-ls: ^1.2.6
+    valtio: ^1.7.0
+  checksum: fcda98be204159b965864b97eab4fc1673d59485f5f328fe754a0b8ca2b5d4a35dc6dcaa72247dcbf2b7d4273643e18b90ed1ec039c3f8dbd3a22082722d7291
   languageName: node
   linkType: hard
 
@@ -6922,6 +6942,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"crypto-js@npm:^3.1.6":
+  version: 3.3.0
+  resolution: "crypto-js@npm:3.3.0"
+  checksum: 193923143a4784b2f974366068d96fe8280168fd3fef2bfea9551a5c3e32096f5a8fa49ff4eeb5bd0b9716d325618d38cfbe6125e359a4ef488fbca93e600824
+  languageName: node
+  linkType: hard
+
 "crypto-random-string@npm:^2.0.0":
   version: 2.0.0
   resolution: "crypto-random-string@npm:2.0.0"
@@ -12243,6 +12270,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lz-string@npm:^1.4.4":
+  version: 1.4.4
+  resolution: "lz-string@npm:1.4.4"
+  bin:
+    lz-string: bin/bin.js
+  checksum: 54e31238a61a84d8f664d9860a9fba7310c5b97a52c444f80543069bc084815eff40b8d4474ae1d93992fdf6c252dca37cf27f6adbeb4dbc3df2f3ac773d0e61
+  languageName: node
+  linkType: hard
+
 "magic-string@npm:0.26.2":
   version: 0.26.2
   resolution: "magic-string@npm:0.26.2"
@@ -15714,6 +15750,7 @@ __metadata:
     "@big-whale-labs/constants": ^0.1.37
     "@big-whale-labs/frontend-utils": ^0.1.2
     "@big-whale-labs/seal-hub-contract": ^0.0.1
+    "@big-whale-labs/stores": ^0.1.17
     "@esbuild-plugins/node-globals-polyfill": ^0.1.1
     "@esbuild-plugins/node-modules-polyfill": ^0.1.4
     "@ethereumjs/util": ^8.0.2
@@ -15775,6 +15812,16 @@ __metadata:
     node-gyp: latest
     node-gyp-build: ^4.2.0
   checksum: 21e219adc0024fbd75021001358780a3cc6ac21273c3fcaef46943af73969729709b03f1df7c012a0baab0830fb9a06ccc6b42f8d50050c665cb98078eab477b
+  languageName: node
+  linkType: hard
+
+"secure-ls@npm:^1.2.6":
+  version: 1.2.6
+  resolution: "secure-ls@npm:1.2.6"
+  dependencies:
+    crypto-js: ^3.1.6
+    lz-string: ^1.4.4
+  checksum: a931fd5e80024fa5f8eb2224f6f98b057f696645587d9a6592502a59e5eb1ca9864375e612739b82cb7f48132e1a5236641dcebf3dad2632922e6a54df5cead6
   languageName: node
   linkType: hard
 
@@ -17476,7 +17523,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"valtio@npm:^1.7.5":
+"valtio@npm:^1.7.0, valtio@npm:^1.7.5":
   version: 1.7.5
   resolution: "valtio@npm:1.7.5"
   dependencies:
