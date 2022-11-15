@@ -76,8 +76,11 @@ export default function () {
                 const txData = await generateProof(AppStore.input)
                 AppStore.proof = txData
                 AppStore.flowState = STATES.GENERATE_COMMITMENT
-                await generateCommitment(AppStore.proof)
+                const { events } = await generateCommitment(AppStore.proof)
                 AppStore.phase = Phase.SUCCESS
+
+                if (!events) return
+                AppStore.commitmentTxHash = events[0].transactionHash
               } finally {
                 delete AppStore.proof
                 delete AppStore.input

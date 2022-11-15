@@ -14,6 +14,7 @@ class AppStore {
   input?: ProofInput
   proof?: ECDSAProofStruct
   commitment?: bigint
+  commitmentTxHash?: string
 
   zkDownloadProgress = 1
 

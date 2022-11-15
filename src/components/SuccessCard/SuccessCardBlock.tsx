@@ -1,8 +1,12 @@
 import { BodyText, LinkText, StatusText } from 'components/Text'
+import { useNetwork } from 'wagmi'
+import { useSnapshot } from 'valtio'
+import AppStore from 'stores/AppStore'
 import Checkmark from 'icons/Checkmark'
 import SealStar from 'icons/SealStar'
 import StatusBlock from 'components/StatusBlock'
 import classnames, { alignItems, display, gap } from 'classnames/tailwind'
+import getEtherscanTxUrl from 'helpers/getEtherscanTxUrl'
 
 const successText = classnames(
   display('flex'),
@@ -11,6 +15,9 @@ const successText = classnames(
 )
 
 export default function () {
+  const { commitmentTxHash } = useSnapshot(AppStore)
+  const { chain } = useNetwork()
+
   const StatusBlockSubtitle = () => {
     return (
       <>
@@ -23,8 +30,18 @@ export default function () {
         </StatusText>
 
         <BodyText>
-          You’re verified. Here’s a link to your{' '}
-          <LinkText url="#">commitment on etherscan</LinkText>.
+          You’re verified.
+          {commitmentTxHash && chain && (
+            <>
+              Here’s a link to your{' '}
+              <LinkText
+                url={getEtherscanTxUrl(commitmentTxHash, chain.network)}
+              >
+                commitment on etherscan
+              </LinkText>
+              .
+            </>
+          )}
         </BodyText>
       </>
     )
