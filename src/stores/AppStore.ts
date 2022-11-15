@@ -4,7 +4,6 @@ import { Phase } from 'types/flowPhase'
 import { ProofInput } from 'models/ProofInput'
 import { STATES } from 'types/SigningStates'
 import { proxy } from 'valtio'
-import sealHub from 'helpers/sealHub'
 
 class AppStore {
   connected = false
@@ -21,18 +20,6 @@ class AppStore {
     this.connected = false
     this.flowState = STATES.INIT
     this.phase = this.input = this.proof = this.commitment = undefined
-  }
-
-  async findCommitmentTx(userAddress?: string) {
-    if (!userAddress) return
-
-    await sealHub
-      .queryFilter(sealHub.filters.CommitmentCreated())
-      .then((events) => {
-        for (const event of events)
-          if (event.address === userAddress)
-            this.commitmentTxHash = event.transactionHash
-      })
   }
 }
 
