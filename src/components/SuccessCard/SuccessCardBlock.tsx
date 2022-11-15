@@ -1,4 +1,5 @@
 import { BodyText, LinkText, StatusText } from 'components/Text'
+import { useNetwork } from 'wagmi'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import Checkmark from 'icons/Checkmark'
@@ -15,6 +16,7 @@ const successText = classnames(
 
 export default function () {
   const { commitmentTxHash } = useSnapshot(AppStore)
+  const { chain } = useNetwork()
 
   const StatusBlockSubtitle = () => {
     return (
@@ -29,10 +31,12 @@ export default function () {
 
         <BodyText>
           You’re verified.
-          {commitmentTxHash && (
+          {commitmentTxHash && chain && (
             <>
               Here’s a link to your{' '}
-              <LinkText url={getEtherscanTxUrl(commitmentTxHash)}>
+              <LinkText
+                url={getEtherscanTxUrl(commitmentTxHash, chain.network)}
+              >
                 commitment on etherscan
               </LinkText>
               .

@@ -1,5 +1,7 @@
+import resolveNetworkForEtherscan from 'helpers/resolveNetworkForEtherscan'
+
 export default function (address: string, network: string) {
-  return `https://${
-    network === 'homestead' ? '' : `${network.toLowerCase()}.`
-  }etherscan.io/address/${address}`
+  return `https://${resolveNetworkForEtherscan(
+    network
+  )}etherscan.io/address/${address}`
 }
