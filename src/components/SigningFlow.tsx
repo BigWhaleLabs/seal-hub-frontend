@@ -11,10 +11,10 @@ import Button from 'components/Button'
 import ErrorBlock from 'components/ErrorBlock'
 import SigningStates, { STATES } from 'types/SigningStates'
 import StatusBlock from 'components/StatusBlock'
-import browserIs from 'helpers/browserIs'
 import getCommitment from 'helpers/getCommitment'
 import hasCommitment from 'helpers/hasCommitment'
 import signMessage from 'helpers/signMessage'
+import supportsModuleWorkers from 'helpers/supportsModuleWorkers'
 
 function SignError({
   onClick,
@@ -48,13 +48,14 @@ export default function () {
 
         AppStore.flowState = STATES.CHECK_COMMITMENT
 
-        if (browserIs('firefox')) {
-          AppStore.input = generateInput(signature, baseMessage)
-        } else {
+        if (supportsModuleWorkers()) {
+          console.log('Using module workers')
           const { generateInput } = new ComlinkWorker<
             typeof import('../helpers/createProof')
           >(new URL('../helpers/createProof', import.meta.url))
           AppStore.input = await generateInput(signature, baseMessage)
+        } else {
+          AppStore.input = generateInput(signature, baseMessage)
         }
 
         AppStore.commitment = await getCommitment(
