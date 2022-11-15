@@ -1,4 +1,6 @@
 import { Phase } from 'types/flowPhase'
+import { useAccount } from 'wagmi'
+import { useEffect } from 'preact/hooks'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import BottomCard from 'components/BottomCard'
@@ -23,6 +25,13 @@ const container = classnames(
 export default function () {
   const { phase = Phase.INIT } = useSnapshot(AppStore)
   const { label, title, subtitle, content } = renderStageData[phase]
+  const { connector: activeConnector } = useAccount()
+
+  useEffect(() => {
+    if (activeConnector) {
+      activeConnector.on('change', () => AppStore.resetOnDisconnect())
+    }
+  }, [activeConnector])
 
   return (
     <div className={container}>
