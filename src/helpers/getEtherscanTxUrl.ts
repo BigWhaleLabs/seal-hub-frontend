@@ -1,7 +1,7 @@
 import resolveNetworkForEtherscan from 'helpers/resolveNetworkForEtherscan'
 
-export default function (address: string, network: string) {
+export default function (txHash: string, network: string) {
   return `https://${resolveNetworkForEtherscan(
     network
-  )}etherscan.io/address/${address}`
+  )}goerli.etherscan.io/tx/${txHash}`
 }
