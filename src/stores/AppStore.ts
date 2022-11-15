@@ -15,6 +15,9 @@ class AppStore {
   proof?: ECDSAProofStruct
   commitment?: bigint
 
+  zkDownloadProgress = 0
+  wasmDownloadProgress = 0
+
   resetOnDisconnect() {
     this.connected = false
     this.flowState = STATES.INIT

@@ -8,6 +8,7 @@ import { utils } from 'ethers'
 import BN from 'bn.js'
 import ProofResult from '../models/ProofResult'
 import elliptic from 'elliptic'
+import getECDSACheckerFiles from './getECDSACheckerFiles'
 import splitToRegisters from '../helpers/splitToRegisters'
 
 const ec = new elliptic.ec('secp256k1')
@@ -87,10 +88,7 @@ export function generateInput(signature: string, message: string) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const snarkjs: any
 
-export default function build(input: ProofInput): Promise<ProofResult> {
-  return snarkjs.groth16.fullProve(
-    input,
-    'https://bwl-zk.s3.amazonaws.com/ECDSAChecker.wasm',
-    'https://bwl-zk.s3.amazonaws.com/ECDSAChecker_final.zkey'
-  )
+export default async function build(input: ProofInput): Promise<ProofResult> {
+  const files = await getECDSACheckerFiles()
+  return snarkjs.groth16.fullProve(input, ...files)
 }
