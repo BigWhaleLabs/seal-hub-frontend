@@ -9,6 +9,7 @@ import {
   outlineStyle,
   padding,
   textColor,
+  transitionProperty,
 } from 'classnames/tailwind'
 
 const inputContainer = () =>
@@ -31,6 +32,7 @@ const inputContainer = () =>
       'valid:text-tertiary',
       'focus:text-formal-accent'
     ),
+    transitionProperty('transition-colors'),
     padding('px-4', 'py-3')
   )
 

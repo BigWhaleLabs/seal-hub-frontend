@@ -1,7 +1,9 @@
 import { BodyText, LinkText } from 'components/Text'
 import { useState } from 'preact/hooks'
 import InputField from 'components/InputField'
+import Option from 'components/StatusesList/Option'
 import StartGenerationButton from 'components/BeforeGeneration/StartGenerationButton'
+import StatusesList from 'components/StatusesList'
 
 export default function () {
   const [value] = useState('')
@@ -15,6 +17,9 @@ export default function () {
       </BodyText>
       <InputField type="url" value={value} placeholder="Paste prover URL..." />
       <StartGenerationButton caption="Generates on your own server" />
+      <StatusesList>
+        <Option complete={true}>Commitment generated</Option>
+      </StatusesList>
     </>
   )
 }

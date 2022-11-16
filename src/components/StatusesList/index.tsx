@@ -7,13 +7,17 @@ export default function ({
   statusDescription,
   children,
 }: ChildrenProp & {
-  statusDescription: string
+  statusDescription?: string
 }) {
   return (
     <StatusCard>
       {children}
-      <Delimiter horizontal />
-      <StatusText>{statusDescription}</StatusText>
+      {statusDescription ? (
+        <>
+          <Delimiter horizontal />
+          <StatusText>{statusDescription}</StatusText>
+        </>
+      ) : undefined}
     </StatusCard>
   )
 }
