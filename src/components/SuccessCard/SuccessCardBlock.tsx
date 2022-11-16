@@ -30,7 +30,7 @@ export default function () {
         </StatusText>
 
         <BodyText>
-          You’re verified.
+          You’re verified.{' '}
           {commitmentTxHash && chain && (
             <>
               Here’s a link to your{' '}
