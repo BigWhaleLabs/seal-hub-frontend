@@ -15,8 +15,13 @@ export default function () {
         <LinkText>directions here</LinkText>. And then paste the URL to your
         prover below. This will allow you to use your own centralized server.
       </BodyText>
-      <InputField type="url" value={value} placeholder="Paste prover URL..." />
-      <StartGenerationButton caption="Generates on your own server" />
+      <InputField
+        type="url"
+        value={value}
+        placeholder="Paste prover URL..."
+        disabled
+      />
+      <StartGenerationButton caption="Generates on your own server" disabled />
       <StatusesList>
         <Option complete={true}>Commitment generated</Option>
       </StatusesList>

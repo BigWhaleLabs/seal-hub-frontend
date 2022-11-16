@@ -6,12 +6,18 @@ import Button from 'components/Button'
 import generateCommitment from 'helpers/generateCommitment'
 import generateProof from 'helpers/generateProof'
 
-export default function ({ caption }: { caption: string }) {
+export default function ({
+  caption,
+  disabled,
+}: {
+  caption: string
+  disabled?: boolean
+}) {
   const { input } = useSnapshot(AppStore)
 
   return (
     <Button
-      disabled={!input}
+      disabled={disabled || !input}
       caption={caption}
       onClick={async () => {
         AppStore.phase = Phase.GENERATE
