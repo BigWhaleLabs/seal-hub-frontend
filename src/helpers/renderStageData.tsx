@@ -1,5 +1,5 @@
 import { Phase, PhaseContext } from 'types/flowPhase'
-import BeforeGeneration from 'components/BeforeGeneration'
+import BeforeGeneration from 'components/BeforeGeneration/index'
 import GettingStartedBlock from 'components/GettingStartedBlock'
 import SigningFlow from 'components/SigningFlow'
 import SuccessCardBlock from 'components/SuccessCard/SuccessCardBlock'

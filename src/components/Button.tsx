@@ -1,3 +1,4 @@
+import { CaptionText } from 'components/Text'
 import { HTMLAttributes } from 'preact/compat'
 import {
   alignItems,
@@ -8,6 +9,7 @@ import {
   classnames,
   cursor,
   display,
+  flexDirection,
   fontFamily,
   fontSize,
   fontWeight,
@@ -60,16 +62,25 @@ const button = (available?: boolean, fitContent?: boolean) =>
     width({ 'w-fit': fitContent })
   )
 
+const captionWrapper = classnames(
+  display('flex'),
+  flexDirection('flex-col'),
+  gap('gap-y-1'),
+  alignItems('items-center')
+)
+
 interface ButtonProps {
   disabled?: boolean
   loading?: boolean
   fitContent?: boolean
+  caption?: string
 }
 
 export default function ({
   loading,
   disabled,
   fitContent,
+  caption,
   children,
   ...rest
 }: Omit<HTMLAttributes<HTMLButtonElement>, 'loading'> & ButtonProps) {
@@ -77,13 +88,16 @@ export default function ({
   const available = !loading && !disabled
 
   return (
-    <button
-      className={button(available, fitContent)}
-      disabled={!available}
-      {...rest}
-    >
-      {loading && <Spinner />}
-      {showContent && <span>{children}</span>}
-    </button>
+    <div className={caption ? captionWrapper : undefined}>
+      <button
+        className={button(available, fitContent)}
+        disabled={!available}
+        {...rest}
+      >
+        {loading && <Spinner />}
+        {showContent && <span>{children}</span>}
+      </button>
+      <CaptionText>{caption}</CaptionText>
+    </div>
   )
 }
