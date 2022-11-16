@@ -8,6 +8,7 @@ type AllowedExtraClassnames =
   | 'mask-border-fade-1'
   | 'mask-border-fade-2'
   | 'accent-text-stroke'
+  | 'empty:border-gray-600'
 
 export default function (
   ...classNames: (AllowedExtraClassnames | TTailwindString | undefined | null)[]

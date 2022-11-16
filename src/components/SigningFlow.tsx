@@ -13,6 +13,7 @@ import SigningStates, { STATES } from 'types/SigningStates'
 import StatusBlock from 'components/StatusBlock'
 import getCommitment from 'helpers/getCommitment'
 import hasCommitment from 'helpers/hasCommitment'
+import isMobileDevice from 'helpers/isMobile'
 import signMessage from 'helpers/signMessage'
 import supportsModuleWorkers from 'helpers/supportsModuleWorkers'
 
@@ -69,7 +70,9 @@ export default function () {
         }
 
         AppStore.flowState = STATES.READY_FOR_GENERATING_PROOF
-        AppStore.phase = Phase.READY
+        AppStore.phase = isMobileDevice()
+          ? Phase.READY_CENTRALIZED
+          : Phase.READY_DECENTRALIZED
       } catch (e) {
         AppStore.error = (e as unknown as ThrownError).type
         console.error(e)

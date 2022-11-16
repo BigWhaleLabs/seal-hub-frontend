@@ -1,25 +1,17 @@
-import {
-  AccentText,
-  BodyText,
-  CaptionText,
-  GradientText,
-} from 'components/Text'
+import { AccentText, BodyText, GradientText } from 'components/Text'
 import { Phase } from 'types/flowPhase'
-import { STATES } from 'types/SigningStates'
-import { displayTo } from 'helpers/visibilityClassnames'
-import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
-import Button from 'components/Button'
 import CentralizedProverHint from 'components/CentralizedProverHint'
+import GenerationContainer from 'components/BeforeGeneration/GenerationContainer'
+import StartGenerationButton from 'components/BeforeGeneration/StartGenerationButton'
 import classnames, {
   alignItems,
+  cursor,
   display,
   flexDirection,
   gap,
   justifyContent,
 } from 'classnames/tailwind'
-import generateCommitment from 'helpers/generateCommitment'
-import generateProof from 'helpers/generateProof'
 
 const bottomPart = classnames(
   display('flex'),
@@ -39,16 +31,16 @@ const tooltipWrapper = classnames(
   flexDirection('flex-col', 'sm:flex-row'),
   alignItems('items-center'),
   justifyContent('justify-center'),
-  gap('gap-y-2', 'sm:gap-y-0', 'sm:gap-x-2')
+  gap('gap-y-2', 'sm:gap-y-0', 'sm:gap-x-2'),
+  cursor('cursor-pointer')
 )
 
 export default function () {
-  const { input } = useSnapshot(AppStore)
   const tooltipText =
     'Using a centralized server won’t be as secure as if you generated yourself locally in browser. Although we’ll do everything we can to protect data, it’ll never be as anonymous. '
 
   return (
-    <>
+    <GenerationContainer>
       <BodyText>
         This is a heavy process on your machine. It might help to close other
         programs or browser tabs before beginning. It also may take some time,
@@ -57,43 +49,18 @@ export default function () {
       </BodyText>
       <div className={bottomPart}>
         <div className={buttonsWrapper}>
-          <Button
-            disabled={!input}
-            caption="Happens locally in browser"
-            onClick={async () => {
-              AppStore.phase = Phase.GENERATE
-              try {
-                if (!AppStore.input) return
-
-                AppStore.flowState = STATES.GENERATE_PROOF
-                const txData = await generateProof(AppStore.input)
-                AppStore.proof = txData
-                AppStore.flowState = STATES.GENERATE_COMMITMENT
-                const { events } = await generateCommitment(AppStore.proof)
-                AppStore.phase = Phase.SUCCESS
-
-                if (!events) return
-                AppStore.commitmentTxHash = events[0].transactionHash
-              } finally {
-                delete AppStore.proof
-                delete AppStore.input
-              }
-            }}
-          >
-            Start ZKP generation
-          </Button>
-
-          <div className={displayTo('sm')}>
-            <CaptionText>Happens locally in browser</CaptionText>
-          </div>
+          <StartGenerationButton caption="Happens locally in browser" />
 
           <AccentText color="text-primary-semi-dimmed">or</AccentText>
-          <div className={tooltipWrapper}>
+          <div
+            className={tooltipWrapper}
+            onClick={() => (AppStore.phase = Phase.READY_CENTRALIZED)}
+          >
             <GradientText center>Generate on a centralized prover</GradientText>
             <CentralizedProverHint text={tooltipText} />
           </div>
         </div>
       </div>
-    </>
+    </GenerationContainer>
   )
 }
