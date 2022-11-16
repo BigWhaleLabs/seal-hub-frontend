@@ -4,6 +4,7 @@ import InputField from 'components/InputField'
 import Option from 'components/StatusesList/Option'
 import StartGenerationButton from 'components/BeforeGeneration/StartGenerationButton'
 import StatusesList from 'components/StatusesList'
+import isUrl from 'helpers/isUrl'
 
 export default function () {
   const [value] = useState('')
@@ -15,13 +16,12 @@ export default function () {
         <LinkText>directions here</LinkText>. And then paste the URL to your
         prover below. This will allow you to use your own centralized server.
       </BodyText>
-      <InputField
-        type="url"
-        value={value}
-        placeholder="Paste prover URL..."
-        disabled
+      <InputField type="url" value={value} placeholder="Paste prover URL..." />
+      <StartGenerationButton
+        caption="Generates on your own server"
+        proverAddress={value}
+        disabled={!isUrl(value)}
       />
-      <StartGenerationButton caption="Generates on your own server" disabled />
       <StatusesList>
         <Option complete={true}>Commitment generated</Option>
       </StatusesList>

@@ -3,6 +3,7 @@ import { truncateMiddleIfNeeded } from '@big-whale-labs/frontend-utils'
 import { useAccount } from 'wagmi'
 import GenerationContainer from 'components/BeforeGeneration/GenerationContainer'
 import StartGenerationButton from 'components/BeforeGeneration/StartGenerationButton'
+import env from 'helpers/env'
 
 export default function () {
   const { address } = useAccount()
@@ -20,7 +21,10 @@ export default function () {
         Get commitment on chain for {truncateMiddleIfNeeded(address, 16)} using
         a centralized SealHub prover?
       </BodyText>
-      <StartGenerationButton caption="Generates on SealHub server" />
+      <StartGenerationButton
+        caption="Generates on SealHub server"
+        proverAddress={`${env.VITE_SEAL_HUB_PROVER_ADDRESS}/prove`}
+      />
     </GenerationContainer>
   )
 }

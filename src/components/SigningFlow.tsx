@@ -1,7 +1,7 @@
 import { ErrorType, ThrownError, errorList } from 'types/ErrorType'
 import { Phase } from 'types/flowPhase'
 import { Signer } from 'ethers'
-import { generateInput } from 'helpers/createProof'
+import { generateInput } from 'helpers/proofs/createProof'
 import { margin } from 'classnames/tailwind'
 import { useAccount, useSigner } from 'wagmi'
 import { useCallback, useEffect } from 'preact/hooks'
@@ -51,8 +51,8 @@ export default function () {
 
         if (supportsModuleWorkers()) {
           const { generateInput } = new ComlinkWorker<
-            typeof import('../helpers/createProof')
-          >(new URL('../helpers/createProof', import.meta.url))
+            typeof import('../helpers/proofs/createProof')
+          >(new URL('../helpers/proofs/createProof', import.meta.url))
           AppStore.input = await generateInput(signature, baseMessage)
         } else {
           AppStore.input = generateInput(signature, baseMessage)
