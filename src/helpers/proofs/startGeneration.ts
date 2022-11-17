@@ -60,6 +60,7 @@ export default async function ({
     AppStore.commitmentTxHash = events[0].transactionHash
   } catch (e) {
     console.error(e)
+    // TODO: Handle error here
   } finally {
     delete AppStore.proof
     delete AppStore.input
