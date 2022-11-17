@@ -1,9 +1,14 @@
-import { BodyText } from 'components/Text'
+import { BodyText, GradientText } from 'components/Text'
+import { Phase } from 'types/flowPhase'
+import { cursor } from 'classnames/tailwind'
 import { truncateMiddleIfNeeded } from '@big-whale-labs/frontend-utils'
 import { useAccount } from 'wagmi'
+import AppStore from 'stores/AppStore'
+import BottomButtonsWrapper from 'components/BeforeGeneration/BottomButtonsWrapper'
 import GenerationContainer from 'components/BeforeGeneration/GenerationContainer'
 import StartGenerationButton from 'components/BeforeGeneration/StartGenerationButton'
 import env from 'helpers/env'
+import isMobileDevice from 'helpers/isMobile'
 
 export default function () {
   const { address } = useAccount()
@@ -21,9 +26,25 @@ export default function () {
         Get commitment on chain for {truncateMiddleIfNeeded(address, 16)} using
         a centralized SealHub prover?
       </BodyText>
-      <StartGenerationButton
-        caption="Generates on SealHub server"
-        proverAddress={`${env.VITE_SEAL_HUB_PROVER_ADDRESS}/prove`}
+      <BottomButtonsWrapper
+        leftButton={
+          <StartGenerationButton
+            caption="Generates on SealHub server"
+            proverAddress={`${env.VITE_SEAL_HUB_PROVER_ADDRESS}/prove`}
+          />
+        }
+        rightButton={
+          isMobileDevice() ? undefined : (
+            <div
+              className={cursor('cursor-pointer')}
+              onClick={() => (AppStore.phase = Phase.READY_DECENTRALIZED)}
+            >
+              <GradientText center animatedOnHover>
+                Generate on a decentralized prover
+              </GradientText>
+            </div>
+          )
+        }
       />
     </GenerationContainer>
   )

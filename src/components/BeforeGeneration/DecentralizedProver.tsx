@@ -1,6 +1,7 @@
-import { AccentText, BodyText, GradientText } from 'components/Text'
+import { BodyText, GradientText } from 'components/Text'
 import { Phase } from 'types/flowPhase'
 import AppStore from 'stores/AppStore'
+import BottomButtonsWrapper from 'components/BeforeGeneration/BottomButtonsWrapper'
 import CentralizedProverHint from 'components/CentralizedProverHint'
 import GenerationContainer from 'components/BeforeGeneration/GenerationContainer'
 import StartGenerationButton from 'components/BeforeGeneration/StartGenerationButton'
@@ -19,13 +20,7 @@ const bottomPart = classnames(
   alignItems('items-center'),
   gap('gap-y-2')
 )
-const buttonsWrapper = classnames(
-  display('flex'),
-  flexDirection('flex-col', 'sm:flex-row'),
-  justifyContent('sm:justify-between'),
-  alignItems('items-center'),
-  gap('gap-x-0', 'gap-y-4', 'sm:gap-x-4', 'sm:gap-y-0')
-)
+
 const tooltipWrapper = classnames(
   display('flex'),
   flexDirection('flex-col', 'sm:flex-row'),
@@ -48,20 +43,22 @@ export default function () {
         created, we’ll add it to the chain immediately.
       </BodyText>
       <div className={bottomPart}>
-        <div className={buttonsWrapper}>
-          <StartGenerationButton caption="Happens locally in browser" />
-
-          <AccentText color="text-primary-semi-dimmed">or</AccentText>
-          <div
-            className={tooltipWrapper}
-            onClick={() => (AppStore.phase = Phase.READY_CENTRALIZED)}
-          >
-            <GradientText center animated>
-              Generate on a centralized prover
-            </GradientText>
-            <CentralizedProverHint text={tooltipText} />
-          </div>
-        </div>
+        <BottomButtonsWrapper
+          leftButton={
+            <StartGenerationButton caption="Happens locally in browser" />
+          }
+          rightButton={
+            <div
+              className={tooltipWrapper}
+              onClick={() => (AppStore.phase = Phase.READY_CENTRALIZED)}
+            >
+              <GradientText center animatedOnHover>
+                Generate on a centralized prover
+              </GradientText>
+              <CentralizedProverHint text={tooltipText} />
+            </div>
+          }
+        />
       </div>
     </GenerationContainer>
   )

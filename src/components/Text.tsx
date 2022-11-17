@@ -62,17 +62,15 @@ export function AccentText({
   return <p className={textColor(color ?? 'text-accent')}>{children}</p>
 }
 
-const gradientText = (center?: boolean, animated?: boolean) =>
-  classNamesToString(
+const gradientText = (center?: boolean, animatedOnHover?: boolean) =>
+  classnames(
     textColor('text-transparent'),
     backgroundImage('bg-gradient-to-r'),
     backgroundClip('bg-clip-text'),
     gradientColorStops('from-secondary', 'to-accent'),
     animation({
-      'animate-bg-gradient': animated,
+      'hover:animate-bg-gradient': animatedOnHover,
     }),
-    'hover:pause',
-    transitionProperty('transition-all'),
     fontWeight('font-bold'),
     fontFamily('font-primary'),
     width('w-fit'),
@@ -80,10 +78,12 @@ const gradientText = (center?: boolean, animated?: boolean) =>
   )
 export function GradientText({
   center,
-  animated,
+  animatedOnHover,
   children,
-}: ChildrenProp & { center?: boolean; animated?: boolean }) {
-  return <span className={gradientText(center, animated)}>{children}</span>
+}: ChildrenProp & { center?: boolean; animatedOnHover?: boolean }) {
+  return (
+    <span className={gradientText(center, animatedOnHover)}>{children}</span>
+  )
 }
 
 const statusText = (color?: 'success' | 'error') =>
