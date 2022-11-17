@@ -12,9 +12,8 @@ export default async function (
   while (!Object.keys(result).length) {
     const { data } = await sendRequest(id, proverAddress)
     // TODO: Add error and other states handling
-    if (data.job.status === 'completed') {
+    if (data.job.status === 'completed')
       result = makeTransaction(data.job.result)
-    }
 
     await sleep(15 * 1000)
   }
