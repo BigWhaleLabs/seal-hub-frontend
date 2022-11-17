@@ -30,7 +30,7 @@ export default function () {
         leftButton={
           <StartGenerationButton
             caption="Generates on SealHub server"
-            proverAddress={`${env.VITE_SEAL_HUB_PROVER_ADDRESS}/prove`}
+            proverAddress={`${env.VITE_SEAL_HUB_PROVER_ADDRESS}prove`}
             generationWay="centralized"
           />
         }
