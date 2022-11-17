@@ -19,8 +19,4 @@ export class JobStore extends PersistableStore {
   }
 }
 
-const exportedStore = proxy(new JobStore()).makePersistent()
-
-exportedStore.checkJob()
-
-export default exportedStore
+export default proxy(new JobStore()).makePersistent()
