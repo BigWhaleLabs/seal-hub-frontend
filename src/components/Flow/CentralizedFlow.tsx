@@ -4,7 +4,7 @@ import InputField from 'components/InputField'
 import Option from 'components/StatusesList/Option'
 import StartGenerationButton from 'components/BeforeGeneration/StartGenerationButton'
 import StatusesList from 'components/StatusesList'
-import isUrl from 'helpers/isUrl'
+import isUrl, { urlWithBackslash } from 'helpers/isUrl'
 
 export default function () {
   const [value, setValue] = useState('')
@@ -17,7 +17,7 @@ export default function () {
         prover below. This will allow you to use your own centralized server.
       </BodyText>
       <InputField
-        type="url"
+        pattern={urlWithBackslash.source}
         value={value}
         onChange={({ currentTarget }) => setValue(currentTarget.value)}
         placeholder="Paste prover URL..."
