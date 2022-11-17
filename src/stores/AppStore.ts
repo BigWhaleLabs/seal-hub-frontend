@@ -4,12 +4,11 @@ import { Phase } from 'types/flowPhase'
 import { ProofInput } from 'models/ProofInput'
 import { STATES } from 'types/SigningStates'
 import { proxy } from 'valtio'
-import JobStore from 'stores/JobStore'
 
 class AppStore {
   connected = false
-  phase = JobStore.jobId ? Phase.GENERATE : Phase.INIT
-  flowState = JobStore.jobId ? STATES.GENERATE_PROOF : STATES.INIT
+  phase?: Phase
+  flowState = STATES.INIT
   error?: ErrorType
 
   input?: ProofInput

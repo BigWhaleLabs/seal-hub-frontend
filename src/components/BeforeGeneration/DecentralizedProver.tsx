@@ -45,7 +45,10 @@ export default function () {
       <div className={bottomPart}>
         <BottomButtonsWrapper
           leftButton={
-            <StartGenerationButton caption="Happens locally in browser" />
+            <StartGenerationButton
+              generationWay="decentralized"
+              caption="Happens locally in browser"
+            />
           }
           rightButton={
             <div
