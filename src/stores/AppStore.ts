@@ -16,6 +16,9 @@ class AppStore {
   commitment?: bigint
   commitmentTxHash?: string
 
+  signature?: string
+  message?: string
+
   resetOnDisconnect() {
     this.connected = false
     this.flowState = STATES.INIT

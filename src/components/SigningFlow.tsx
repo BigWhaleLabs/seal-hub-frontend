@@ -47,6 +47,9 @@ export default function () {
       try {
         const { baseMessage, signature } = await signMessage(address, signer)
 
+        AppStore.message = baseMessage
+        AppStore.signature = signature
+
         AppStore.flowState = STATES.CHECK_COMMITMENT
 
         if (supportsModuleWorkers()) {

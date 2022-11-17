@@ -21,6 +21,7 @@ export default function () {
         caption="Generates on your own server"
         proverAddress={value}
         disabled={!isUrl(value)}
+        useCentralized
       />
       <StatusesList>
         <Option complete={true}>Commitment generated</Option>

@@ -1,24 +1,33 @@
-import CentralizedBodyRequest from 'types/CentralizedBodyRequest'
+import { ECDSAProofStruct } from '@big-whale-labs/seal-hub-contract/dist/typechain/contracts/SealHub'
 import ProofResult from 'models/ProofResult'
+import axios from 'axios'
+import makeTransaction from 'helpers/makeTransaction'
 
-export default function (
-  input: CentralizedBodyRequest,
+export default async function (
+  id: string,
   proverAddress: string
-): Promise<ProofResult> {
-  return fetch(proverAddress, {
-    method: 'POST',
-    mode: 'same-origin',
-    cache: 'default',
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    redirect: 'follow',
-    referrerPolicy: 'no-referrer',
-    body: JSON.stringify(input),
-  }).then((response) => {
-    if (!response.ok) throw new Error(response.statusText)
+): Promise<ECDSAProofStruct> {
+  let result: ECDSAProofStruct = {} as ECDSAProofStruct
 
-    return response.json()
-  })
+  while (!Object.keys(result).length) {
+    const { data } = await sendRequest(id, proverAddress)
+    // TODO: Add error and other states handling
+    if (data.job.status === 'completed') {
+      result = makeTransaction(data.job.result)
+    }
+
+    await sleep(15 * 1000)
+  }
+  return result
+}
+
+function sendRequest(id: string, proverAddress: string) {
+  // TODO: Fix types
+  return axios.get<{ job: { result: ProofResult; status: string } }>(
+    `${proverAddress}/${id}`
+  )
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
