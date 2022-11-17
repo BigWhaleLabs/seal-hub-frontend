@@ -56,7 +56,9 @@ export default function () {
             className={tooltipWrapper}
             onClick={() => (AppStore.phase = Phase.READY_CENTRALIZED)}
           >
-            <GradientText center>Generate on a centralized prover</GradientText>
+            <GradientText center animated>
+              Generate on a centralized prover
+            </GradientText>
             <CentralizedProverHint text={tooltipText} />
           </div>
         </div>

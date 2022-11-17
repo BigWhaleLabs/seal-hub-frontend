@@ -7,6 +7,11 @@ module.exports = {
     },
     extend: {
       keyframes: {
+        'bg-gradient': {
+          to: {
+            filter: 'hue-rotate(360deg)',
+          },
+        },
         rotateY: {
           '100%': {
             transform: 'rotateY(360deg)',
@@ -21,6 +26,7 @@ module.exports = {
       animation: {
         rotateY: 'rotateY 6s linear infinite',
         'appear-404': 'appear-404 1.5s ease-in-out forwards',
+        'bg-gradient': 'bg-gradient 3s ease-in-out infinite',
       },
       colors: {
         'formal-accent': 'var(--formal-accent)',

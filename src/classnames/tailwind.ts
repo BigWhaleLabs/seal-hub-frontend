@@ -4251,6 +4251,7 @@ export type TAnimation =
   | 'animate-bounce'
   | 'animate-rotateY'
   | 'animate-appear-404'
+  | 'animate-bg-gradient'
 
 export type TTransitionsAndAnimations =
   | TTransitionProperty
