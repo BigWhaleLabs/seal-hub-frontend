@@ -7,7 +7,7 @@ import StatusesList from 'components/StatusesList'
 import isUrl from 'helpers/isUrl'
 
 export default function () {
-  const [value] = useState('')
+  const [value, setValue] = useState('')
 
   return (
     <>
@@ -16,7 +16,12 @@ export default function () {
         <LinkText>directions here</LinkText>. And then paste the URL to your
         prover below. This will allow you to use your own centralized server.
       </BodyText>
-      <InputField type="url" value={value} placeholder="Paste prover URL..." />
+      <InputField
+        type="url"
+        value={value}
+        onChange={({ currentTarget }) => setValue(currentTarget.value)}
+        placeholder="Paste prover URL..."
+      />
       <StartGenerationButton
         caption="Generates on your own server"
         proverAddress={value}
