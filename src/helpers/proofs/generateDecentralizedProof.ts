@@ -1,5 +1,5 @@
 import { ProofInput } from 'models/ProofInput'
-import createProof from 'helpers/createProof'
+import createProof from 'helpers/proofs/createProof'
 import makeTransaction from 'helpers/makeTransaction'
 
 export default async function (input: ProofInput) {

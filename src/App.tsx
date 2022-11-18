@@ -1,6 +1,7 @@
 import '@rainbow-me/rainbowkit/styles.css'
 import { Redirect, Route, Router, Switch } from 'wouter'
 import Footer from 'components/Footer'
+import JobStore from 'stores/JobStore'
 import Main from 'pages/Main'
 import Navbar from 'components/Navbar'
 import NotFound from 'pages/NotFound'
@@ -22,6 +23,8 @@ const wrapper = classnames(
 )
 
 export default function () {
+  JobStore.checkJob()
+
   return (
     <RainbowWrapper>
       <div className={wrapper}>

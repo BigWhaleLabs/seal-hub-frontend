@@ -7,6 +7,7 @@ import classnames, {
   display,
   flexDirection,
   gap,
+  textColor,
 } from 'classnames/tailwind'
 
 const option = classnames(
@@ -19,9 +20,11 @@ const option = classnames(
 export default function ({
   loading,
   complete,
+  error,
   children,
 }: ChildrenProp & {
   loading?: boolean
+  error?: boolean
   complete?: boolean
 }) {
   return (
@@ -30,6 +33,9 @@ export default function ({
         {children}
         {complete && <Checkmark />}
         {loading && <Spinner />}
+        {error && !loading && !complete && (
+          <span className={textColor('text-error')}>Failed</span>
+        )}
       </span>
     </StatusText>
   )

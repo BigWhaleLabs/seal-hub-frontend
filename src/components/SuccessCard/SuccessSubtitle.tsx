@@ -1,8 +1,9 @@
 import { LinkText } from 'components/Text'
-import { useDisconnect } from 'wagmi'
+import { useAccount, useDisconnect } from 'wagmi'
 import AppStore from 'stores/AppStore'
 
 export default function () {
+  const { address } = useAccount()
   const { disconnect } = useDisconnect()
   const resetConnection = () => {
     AppStore.resetOnDisconnect()
@@ -14,7 +15,9 @@ export default function () {
       You can add another wallet’s commitment.
       <br />
       <LinkText onClick={resetConnection}>
-        Disconnect wallet and add commitment for another wallet
+        {address
+          ? 'Disconnect wallet and add commitment for another wallet'
+          : 'Add commitment for another wallet'}
       </LinkText>
     </div>
   )

@@ -1,6 +1,7 @@
 import { Link } from 'wouter'
 import {
   TTextColor,
+  animation,
   backgroundClip,
   backgroundImage,
   classnames,
@@ -61,12 +62,15 @@ export function AccentText({
   return <p className={textColor(color ?? 'text-accent')}>{children}</p>
 }
 
-const gradientText = (center?: boolean) =>
+const gradientText = (center?: boolean, animatedOnHover?: boolean) =>
   classnames(
     textColor('text-transparent'),
     backgroundImage('bg-gradient-to-r'),
     backgroundClip('bg-clip-text'),
     gradientColorStops('from-secondary', 'to-accent'),
+    animation({
+      'hover:animate-bg-gradient': animatedOnHover,
+    }),
     fontWeight('font-bold'),
     fontFamily('font-primary'),
     width('w-fit'),
@@ -74,9 +78,12 @@ const gradientText = (center?: boolean) =>
   )
 export function GradientText({
   center,
+  animatedOnHover,
   children,
-}: ChildrenProp & { center?: boolean }) {
-  return <span className={gradientText(center)}>{children}</span>
+}: ChildrenProp & { center?: boolean; animatedOnHover?: boolean }) {
+  return (
+    <span className={gradientText(center, animatedOnHover)}>{children}</span>
+  )
 }
 
 const statusText = (color?: 'success' | 'error') =>

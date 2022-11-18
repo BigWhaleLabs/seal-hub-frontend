@@ -1,15 +1,15 @@
 /* eslint-disable no-relative-import-paths/no-relative-import-paths */
 // Used by worker, which accepts only absolute paths, you can use this function as usual
-import { BigIntOrString } from '../models/BigIntOrString'
+import { BigIntOrString } from '../../models/BigIntOrString'
 import { Buffer } from 'buffer'
-import { ProofInput } from '../models/ProofInput'
+import { ProofInput } from '../../models/ProofInput'
 import { hashPersonalMessage } from '@ethereumjs/util'
 import { utils } from 'ethers'
 import BN from 'bn.js'
-import ProofResult from '../models/ProofResult'
+import ProofResult from '../../models/ProofResult'
 import elliptic from 'elliptic'
-import getECDSACheckerFiles from '../helpers/getECDSACheckerFiles'
-import splitToRegisters from '../helpers/splitToRegisters'
+import getECDSACheckerFiles from '../getECDSACheckerFiles'
+import splitToRegisters from '../splitToRegisters'
 
 const ec = new elliptic.ec('secp256k1')
 const STRIDE = 8n

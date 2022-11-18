@@ -1,7 +1,7 @@
 import { ErrorType, ThrownError, errorList } from 'types/ErrorType'
 import { Phase } from 'types/flowPhase'
 import { Signer } from 'ethers'
-import { generateInput } from 'helpers/createProof'
+import { generateInput } from 'helpers/proofs/createProof'
 import { margin } from 'classnames/tailwind'
 import { useAccount, useSigner } from 'wagmi'
 import { useCallback, useEffect } from 'preact/hooks'
@@ -13,6 +13,7 @@ import SigningStates, { STATES } from 'types/SigningStates'
 import StatusBlock from 'components/StatusBlock'
 import getCommitment from 'helpers/getCommitment'
 import hasCommitment from 'helpers/hasCommitment'
+import isMobileDevice from 'helpers/isMobile'
 import signMessage from 'helpers/signMessage'
 import supportsModuleWorkers from 'helpers/supportsModuleWorkers'
 
@@ -46,12 +47,15 @@ export default function () {
       try {
         const { baseMessage, signature } = await signMessage(address, signer)
 
+        AppStore.message = baseMessage
+        AppStore.signature = signature
+
         AppStore.flowState = STATES.CHECK_COMMITMENT
 
         if (supportsModuleWorkers()) {
           const { generateInput } = new ComlinkWorker<
-            typeof import('../helpers/createProof')
-          >(new URL('../helpers/createProof', import.meta.url))
+            typeof import('../helpers/proofs/createProof')
+          >(new URL('../helpers/proofs/createProof', import.meta.url))
           AppStore.input = await generateInput(signature, baseMessage)
         } else {
           AppStore.input = generateInput(signature, baseMessage)
@@ -69,7 +73,9 @@ export default function () {
         }
 
         AppStore.flowState = STATES.READY_FOR_GENERATING_PROOF
-        AppStore.phase = Phase.READY
+        AppStore.phase = isMobileDevice()
+          ? Phase.READY_CENTRALIZED
+          : Phase.READY_DECENTRALIZED
       } catch (e) {
         AppStore.error = (e as unknown as ThrownError).type
         console.error(e)
@@ -86,7 +92,7 @@ export default function () {
 
   const { title, subTitle } = SigningStates[flowState]
 
-  return error === ErrorType.SIGNATURE ? (
+  return error ? (
     <ErrorBlock
       subtitle={errorList[error]}
       content={<SignError onClick={reSignMessage} />}
