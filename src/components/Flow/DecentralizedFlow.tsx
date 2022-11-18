@@ -10,15 +10,14 @@ import StatusesList from 'components/StatusesList'
 export default function () {
   const { flowState, error } = useSnapshot(AppStore)
 
-  const errorDescription = error && errorList[error]
-
-  const statusDescription =
-    errorDescription || flowState === STATES.GENERATE_PROOF
-      ? 'Hang tight, this whole process may take 5-20 minutes.'
-      : flowState === STATES.GENERATE_COMMITMENT
-      ? 'Almost there'
-      : 'Ready to begin...'
-  const isError = !!errorDescription
+  const statusDescription = error
+    ? errorList[error]
+    : flowState === STATES.GENERATE_PROOF
+    ? 'Hang tight, this whole process may take 5-20 minutes.'
+    : flowState === STATES.GENERATE_COMMITMENT
+    ? 'Almost there'
+    : 'Ready to begin...'
+  const isError = !!error
 
   return (
     <StatusesList hasError={!!isError} statusDescription={statusDescription}>
