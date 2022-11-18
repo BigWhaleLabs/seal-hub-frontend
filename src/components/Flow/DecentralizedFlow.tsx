@@ -8,7 +8,8 @@ import Option from 'components/StatusesList/Option'
 import StatusesList from 'components/StatusesList'
 
 export default function () {
-  const { flowState, error } = useSnapshot(AppStore)
+  const { flowState, error, commitment, proof, phase } = useSnapshot(AppStore)
+  const { jobId } = useSnapshot(JobStore)
 
   const statusDescription = error
     ? errorList[error]
@@ -22,21 +23,21 @@ export default function () {
   return (
     <StatusesList hasError={isError} statusDescription={statusDescription}>
       <Option
-        complete={!!AppStore.commitment || !!JobStore.jobId}
+        complete={!!commitment || !!jobId}
         error={isError}
         loading={flowState === STATES.CHECK_COMMITMENT}
       >
         Commitment generated
       </Option>
       <Option
-        complete={!!AppStore.proof}
+        complete={!!proof}
         error={isError}
         loading={flowState === STATES.GENERATE_PROOF}
       >
         Generate zero knowledge proof
       </Option>
       <Option
-        complete={AppStore.phase === Phase.SUCCESS}
+        complete={phase === Phase.SUCCESS}
         error={isError}
         loading={flowState === STATES.GENERATE_COMMITMENT}
       >
