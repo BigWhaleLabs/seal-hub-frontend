@@ -1,4 +1,5 @@
 import { ECDSAProofStruct } from '@big-whale-labs/seal-hub-contract/dist/typechain/contracts/SealHub'
+import { ErrorType } from 'types/ErrorType'
 import JobStatus from 'models/JobStatus'
 import ProofResult from 'models/ProofResult'
 import axios from 'axios'
@@ -18,9 +19,9 @@ export default async function (
     } = await sendRequest(id, proverAddress)
     // TODO: Add error and other states handling
     if (status === JobStatus.completed) result = makeTransaction(jobResult)
-    if (status === JobStatus.failed || status === JobStatus.cancelled) {
-      throw new Error('Proof generating failed. Please, try again.')
-    }
+    if (status === JobStatus.failed || status === JobStatus.cancelled)
+      throw new Error(ErrorType.COMMITMENT)
+
     await sleep(15 * 1000)
   }
   return result

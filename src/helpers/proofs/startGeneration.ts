@@ -1,3 +1,4 @@
+import { ErrorType, isKnownError } from 'types/ErrorType'
 import { Phase } from 'types/flowPhase'
 import { STATES } from 'types/SigningStates'
 import AppStore from 'stores/AppStore'
@@ -14,26 +15,23 @@ export type GenerationWay =
 
 const GetProof = {
   centralized: async (proverAddress?: string) => {
-    if (!proverAddress) throw new Error('Prover address is not defined')
+    if (!proverAddress) throw new Error(ErrorType.PROVER)
 
+    const { message, signature } = AppStore
+    if (!message || !signature) throw new Error(ErrorType.MISSING_DATA)
     JobStore.proverAddress = proverAddress
-    if (!AppStore.message || !AppStore.signature || !JobStore.proverAddress)
-      throw new Error('Missing input data and prover address')
 
-    const jobId = await scheduleProofJob(
-      { message: AppStore.message, signature: AppStore.signature },
-      JobStore.proverAddress
-    )
-    return getCentralizedProof(jobId, JobStore.proverAddress)
+    const jobId = await scheduleProofJob({ message, signature }, proverAddress)
+    return getCentralizedProof(jobId, proverAddress)
   },
   centralizedReloaded: () => {
-    if (!JobStore.proverAddress || !JobStore.jobId)
-      throw new Error('Missing job data')
+    const { proverAddress, jobId } = JobStore
+    if (!proverAddress || !jobId) throw new Error(ErrorType.MISSING_DATA)
 
-    return getCentralizedProof(JobStore.jobId, JobStore.proverAddress)
+    return getCentralizedProof(jobId, proverAddress)
   },
   decentralized: () => {
-    if (!AppStore.input) throw new Error('Missing input data')
+    if (!AppStore.input) throw new Error(ErrorType.MISSING_DATA)
 
     return generateDecentralizedProof(AppStore.input)
   },
@@ -60,7 +58,8 @@ export default async function ({
     AppStore.commitmentTxHash = events[0].transactionHash
   } catch (e) {
     console.error(e)
-    // TODO: Handle error here
+    AppStore.flowState = STATES.ERROR
+    AppStore.error = isKnownError(e) ? e : ErrorType.UNKNOWN
   } finally {
     delete AppStore.proof
     delete AppStore.input

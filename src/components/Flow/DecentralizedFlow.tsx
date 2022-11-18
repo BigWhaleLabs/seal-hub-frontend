@@ -7,17 +7,19 @@ import Option from 'components/StatusesList/Option'
 import StatusesList from 'components/StatusesList'
 
 export default function () {
-  const { flowState } = useSnapshot(AppStore)
+  const { flowState, error } = useSnapshot(AppStore)
 
   const statusDescription =
-    flowState === STATES.GENERATE_PROOF
+    flowState === STATES.ERROR
+      ? error
+      : flowState === STATES.GENERATE_PROOF
       ? 'Hang tight, this whole process may take 5-20 minutes.'
       : flowState === STATES.GENERATE_COMMITMENT
       ? 'Almost there'
       : 'Ready to begin...'
 
   return (
-    <StatusesList statusDescription={statusDescription}>
+    <StatusesList hasError={!!error} statusDescription={statusDescription}>
       <Option
         complete={!!AppStore.commitment || !!JobStore.jobId}
         loading={flowState === STATES.CHECK_COMMITMENT}

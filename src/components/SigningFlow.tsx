@@ -92,7 +92,7 @@ export default function () {
 
   const { title, subTitle } = SigningStates[flowState]
 
-  return error === ErrorType.SIGNATURE ? (
+  return error ? (
     <ErrorBlock
       subtitle={errorList[error]}
       content={<SignError onClick={reSignMessage} />}

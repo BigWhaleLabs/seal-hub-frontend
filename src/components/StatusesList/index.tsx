@@ -5,8 +5,10 @@ import StatusCard from 'components/StatusCard'
 
 export default function ({
   statusDescription,
+  hasError,
   children,
 }: ChildrenProp & {
+  hasError?: boolean
   statusDescription?: string
 }) {
   return (
@@ -15,9 +17,12 @@ export default function ({
       {statusDescription ? (
         <>
           <Delimiter horizontal />
-          <StatusText>{statusDescription}</StatusText>
+          <StatusText color={hasError ? 'error' : undefined}>
+            {statusDescription}
+          </StatusText>
         </>
       ) : undefined}
+      {hasError ? 'Restart flow' : undefined}
     </StatusCard>
   )
 }
