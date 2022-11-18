@@ -26,12 +26,12 @@ export default function ({
   return (
     <div className={buttonsWrapper}>
       {leftButton}
-      {rightButton ? (
+      {rightButton && (
         <>
           <AccentText color="text-primary-semi-dimmed">or</AccentText>
           {rightButton}
         </>
-      ) : undefined}
+      )}
     </div>
   )
 }
