@@ -20,7 +20,7 @@ export default function () {
   const isError = !!error
 
   return (
-    <StatusesList hasError={!!isError} statusDescription={statusDescription}>
+    <StatusesList hasError={isError} statusDescription={statusDescription}>
       <Option
         complete={!!AppStore.commitment || !!JobStore.jobId}
         error={isError}
