@@ -18,13 +18,10 @@ export default function () {
       : flowState === STATES.GENERATE_COMMITMENT
       ? 'Almost there'
       : 'Ready to begin...'
-  const isError = !!error
+  const isError = !!errorDescription
 
   return (
-    <StatusesList
-      hasError={!!errorDescription}
-      statusDescription={statusDescription}
-    >
+    <StatusesList hasError={!!isError} statusDescription={statusDescription}>
       <Option
         complete={!!AppStore.commitment || !!JobStore.jobId}
         error={isError}
