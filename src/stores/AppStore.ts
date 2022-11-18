@@ -4,6 +4,7 @@ import { Phase } from 'types/flowPhase'
 import { ProofInput } from 'models/ProofInput'
 import { STATES } from 'types/SigningStates'
 import { proxy } from 'valtio'
+import GenerationWay from 'types/GenerationWay'
 
 class AppStore {
   connected = false
@@ -13,6 +14,7 @@ class AppStore {
 
   input?: ProofInput
   proof?: ECDSAProofStruct
+  preferredProofWay: GenerationWay = 'decentralized'
   commitment?: bigint
   commitmentTxHash?: string
 

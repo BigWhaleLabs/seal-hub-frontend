@@ -1,3 +1,4 @@
+import { STATES } from 'types/SigningStates'
 import { StatusText } from 'components/Text'
 import AppStore from 'stores/AppStore'
 import Button from 'components/Button'
@@ -6,6 +7,8 @@ import Delimiter from 'components/Delimiter'
 import JobStore from 'stores/JobStore'
 import StatusCard from 'components/StatusCard'
 import classnames, { display, gap } from 'classnames/tailwind'
+import generateCommitment from 'helpers/generateCommitment'
+import startGeneration from 'helpers/proofs/startGeneration'
 
 const buttonsWrapper = classnames(display('flex'), gap('gap-x-4'))
 
@@ -28,8 +31,25 @@ export default function ({
       ) : undefined}
       {hasError ? (
         <div className={buttonsWrapper}>
-          {/* TODO: should continue the action */}
-          <Button small>Try again</Button>
+          <Button
+            small
+            onClick={async () => {
+              if (
+                AppStore.flowState === STATES.GENERATE_COMMITMENT &&
+                AppStore.proof
+              ) {
+                await generateCommitment(AppStore.proof)
+                return
+              }
+
+              await startGeneration({
+                generationWay: AppStore.preferredProofWay,
+                proverAddress: JobStore.proverAddress,
+              })
+            }}
+          >
+            Try again
+          </Button>
           <Button
             outlined
             small

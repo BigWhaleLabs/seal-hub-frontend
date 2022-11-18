@@ -1,7 +1,8 @@
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import Button from 'components/Button'
-import startGeneration, { GenerationWay } from 'helpers/proofs/startGeneration'
+import GenerationWay from 'types/GenerationWay'
+import startGeneration from 'helpers/proofs/startGeneration'
 
 export default function ({
   caption,
