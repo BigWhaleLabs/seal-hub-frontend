@@ -18,6 +18,7 @@ export default function () {
       : flowState === STATES.GENERATE_COMMITMENT
       ? 'Almost there'
       : 'Ready to begin...'
+  const isError = !!error
 
   return (
     <StatusesList
@@ -26,21 +27,21 @@ export default function () {
     >
       <Option
         complete={!!AppStore.commitment || !!JobStore.jobId}
-        error={!!error}
+        error={isError}
         loading={flowState === STATES.CHECK_COMMITMENT}
       >
         Commitment generated
       </Option>
       <Option
         complete={!!AppStore.proof}
-        error={!!error}
+        error={isError}
         loading={flowState === STATES.GENERATE_PROOF}
       >
         Generate zero knowledge proof
       </Option>
       <Option
         complete={AppStore.phase === Phase.SUCCESS}
-        error={!!error}
+        error={isError}
         loading={flowState === STATES.GENERATE_COMMITMENT}
       >
         Add to chain
