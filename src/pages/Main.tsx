@@ -4,7 +4,7 @@ import { useEffect } from 'preact/hooks'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import BottomCard from 'components/BottomCard'
-import PhaseData from 'models/PhaseData'
+import PhaseData from 'PhaseData'
 import TopCard from 'components/TopCard'
 import classnames, {
   alignItems,
@@ -38,8 +38,8 @@ export default function () {
       <TopCard
         label={label}
         title={title}
-        subtitle={subtitle ? subtitle() : undefined}
-        statusOrContent={content()}
+        subtitle={subtitle}
+        statusOrContent={content}
       />
       {phase !== Phase.SUCCESS && <BottomCard />}
     </div>

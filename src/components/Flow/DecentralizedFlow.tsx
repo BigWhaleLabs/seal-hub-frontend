@@ -11,9 +11,9 @@ import StatusesList from 'components/StatusesList'
 export default function () {
   const { flowState, error, commitment, proof, phase } = useSnapshot(AppStore)
   const { jobId } = useSnapshot(JobStore)
-  const { description } = SigningStates[flowState]
+  const { subTitle } = SigningStates[flowState]
 
-  const statusDescription = error ? errorList[error] : description
+  const statusDescription = error ? errorList[error] : subTitle
   const isError = !!error
 
   return (

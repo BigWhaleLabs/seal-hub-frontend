@@ -22,19 +22,16 @@ export default {
   },
   [STATES.READY_FOR_GENERATING_PROOF]: {
     title: 'Wait for approve...',
-    subTitle: 'Ready for generating proof',
-    description: 'Ready to begin...',
+    subTitle: 'Ready to begin...',
   },
   [STATES.GENERATE_PROOF]: {
     title: 'Generate proof...',
-    subTitle: 'Hang tight!',
-    description: 'Hang tight, this whole process may take 5-20 minutes.',
+    subTitle: 'Hang tight, this whole process may take 5-20 minutes.',
   },
   [STATES.GENERATE_COMMITMENT]: {
     title: 'Generate commitment...',
-    subTitle: 'Hang tight!',
-    description: 'Almost there',
+    subTitle: 'Almost there',
   },
 } as {
-  [key in STATES]: { title: string; subTitle: string; description?: string }
+  [key in STATES]: { title: string; subTitle: string }
 }

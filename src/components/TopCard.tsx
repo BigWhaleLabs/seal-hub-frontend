@@ -22,7 +22,7 @@ export default function ({
       {label ? <AccentText>{label}</AccentText> : undefined}
       <div className={space('space-y-2')}>
         {title ? <HeaderText>{title}</HeaderText> : undefined}
-        <BodyText>{subtitle}</BodyText>
+        {subtitle && <BodyText>{subtitle}</BodyText>}
       </div>
       <DashedDividers />
       {statusOrContent}
