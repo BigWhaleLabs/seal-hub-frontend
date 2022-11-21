@@ -1,4 +1,4 @@
-import { ErrorType } from 'types/ErrorType'
+import { ErrorType } from 'models/ErrorType'
 import AppStore from 'stores/AppStore'
 import JobStore from 'stores/JobStore'
 import fetchCentralizedProof from 'helpers/proofs/fetchCentralizedProof'

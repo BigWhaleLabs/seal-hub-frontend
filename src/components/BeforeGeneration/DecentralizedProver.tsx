@@ -1,5 +1,5 @@
 import { BodyText, GradientText } from 'components/Text'
-import { Phase } from 'types/flowPhase'
+import { Phase } from 'models/FlowPhase'
 import AppStore from 'stores/AppStore'
 import BottomButtonsWrapper from 'components/BeforeGeneration/BottomButtonsWrapper'
 import CentralizedProverHint from 'components/CentralizedProverHint'

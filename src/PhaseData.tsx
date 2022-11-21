@@ -1,4 +1,4 @@
-import { Phase, PhaseContext } from 'types/flowPhase'
+import { Phase, PhaseContext } from 'models/FlowPhase'
 import CentralizedFlow from 'components/Flow/CentralizedFlow'
 import CentralizedProver from 'components/BeforeGeneration/CentralizedProver'
 import DecentralizedFlow from 'components/Flow/DecentralizedFlow'

@@ -1,5 +1,5 @@
 import { ECDSAProofStruct } from '@big-whale-labs/seal-hub-contract/dist/typechain/contracts/SealHub'
-import { ErrorType } from 'types/ErrorType'
+import { ErrorType } from 'models/ErrorType'
 import JobStatus from 'models/JobStatus'
 import RequestJobResult from 'models/JobResult'
 import axios from 'axios'

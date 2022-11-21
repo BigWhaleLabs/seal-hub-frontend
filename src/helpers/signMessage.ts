@@ -1,4 +1,4 @@
-import { ErrorType } from 'types/ErrorType'
+import { ErrorType } from 'models/ErrorType'
 import { Signer } from 'ethers'
 
 export default async function (address: string, signer: Signer) {

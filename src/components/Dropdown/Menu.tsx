@@ -1,4 +1,4 @@
-import DropdownOption from 'types/DropdownOption'
+import DropdownOption from 'models/DropdownOption'
 import ItemContainer from 'components/Dropdown/ItemContainer'
 import classnames, {
   backgroundColor,

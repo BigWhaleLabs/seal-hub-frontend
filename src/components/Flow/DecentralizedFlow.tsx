@@ -1,23 +1,19 @@
-import { Phase } from 'types/flowPhase'
-import { STATES } from 'types/SigningStates'
-import { errorList } from 'types/ErrorType'
+import { Phase } from 'models/FlowPhase'
+import { STATES } from 'models/SigningStates'
+import { errorList } from 'models/ErrorType'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import JobStore from 'stores/JobStore'
 import Option from 'components/StatusesList/Option'
+import SigningStates from 'models/SigningStates'
 import StatusesList from 'components/StatusesList'
 
 export default function () {
   const { flowState, error, commitment, proof, phase } = useSnapshot(AppStore)
   const { jobId } = useSnapshot(JobStore)
+  const { subTitle } = SigningStates[flowState]
 
-  const statusDescription = error
-    ? errorList[error]
-    : flowState === STATES.GENERATE_PROOF
-    ? 'Hang tight, this whole process may take 5-20 minutes.'
-    : flowState === STATES.GENERATE_COMMITMENT
-    ? 'Almost there'
-    : 'Ready to begin...'
+  const statusDescription = error ? errorList[error] : subTitle
   const isError = !!error
 
   return (

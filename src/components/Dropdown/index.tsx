@@ -1,7 +1,7 @@
 import { JSX, createRef } from 'react'
 import { useState } from 'react'
 import Arrow from 'icons/Arrow'
-import DropdownOption from 'types/DropdownOption'
+import DropdownOption from 'models/DropdownOption'
 import Menu from 'components/Dropdown/Menu'
 import classnames, {
   alignItems,

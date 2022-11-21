@@ -1,5 +1,5 @@
 import { BodyText, GradientText } from 'components/Text'
-import { Phase } from 'types/flowPhase'
+import { Phase } from 'models/FlowPhase'
 import { cursor } from 'classnames/tailwind'
 import { truncateMiddleIfNeeded } from '@big-whale-labs/frontend-utils'
 import { useAccount } from 'wagmi'

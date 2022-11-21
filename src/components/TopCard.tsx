@@ -7,7 +7,7 @@ import DashedDividers from 'components/DashedDividers'
 interface TopCardProps {
   label?: string
   title?: string
-  subtitle?: string | JSX.Element
+  subtitle?: string | JSX.Element | null
   statusOrContent?: string | JSX.Element
 }
 
@@ -22,7 +22,7 @@ export default function ({
       {label ? <AccentText>{label}</AccentText> : undefined}
       <div className={space('space-y-2')}>
         {title ? <HeaderText>{title}</HeaderText> : undefined}
-        <BodyText>{subtitle}</BodyText>
+        {subtitle && <BodyText>{subtitle}</BodyText>}
       </div>
       <DashedDividers />
       {statusOrContent}
