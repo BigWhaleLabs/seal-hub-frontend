@@ -3886,6 +3886,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/json-bigint@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@types/json-bigint@npm:1.0.1"
+  checksum: b39e55a811f554bd25f1d991bc4fc70655216dff466f21f97160097573a4bc7b478c1907aa5194c79022c115f509f8e4712083c51f57665e7a2de7412ff7801f
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:*, @types/json-schema@npm:^7.0.4, @types/json-schema@npm:^7.0.5, @types/json-schema@npm:^7.0.8, @types/json-schema@npm:^7.0.9":
   version: 7.0.11
   resolution: "@types/json-schema@npm:7.0.11"
@@ -11806,6 +11813,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"json-bigint@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "json-bigint@npm:1.0.0"
+  dependencies:
+    bignumber.js: ^9.0.0
+  checksum: c67bb93ccb3c291e60eb4b62931403e378906aab113ec1c2a8dd0f9a7f065ad6fd9713d627b732abefae2e244ac9ce1721c7a3142b2979532f12b258634ce6f6
+  languageName: node
+  linkType: hard
+
 "json-buffer@npm:3.0.1":
   version: 3.0.1
   resolution: "json-buffer@npm:3.0.1"
@@ -15779,6 +15795,7 @@ __metadata:
     "@rainbow-me/rainbowkit": ^0.7.4
     "@rollup/plugin-inject": ^5.0.2
     "@types/elliptic": ^6.4.14
+    "@types/json-bigint": ^1.0.1
     "@types/node": ^18.11.9
     "@typescript-eslint/eslint-plugin": ^5.42.0
     "@typescript-eslint/parser": ^5.42.0
@@ -15802,6 +15819,7 @@ __metadata:
     eslint-plugin-sort-imports-es6-autofix: ^0.6.0
     eslint-plugin-valtio: ^0.6.1
     ethers: ^5.7.2
+    json-bigint: ^1.0.0
     postcss: ^8.4.18
     preact: ^10.11.2
     prettier: ^2.7.1

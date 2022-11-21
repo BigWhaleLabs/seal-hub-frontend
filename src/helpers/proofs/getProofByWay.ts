@@ -9,11 +9,12 @@ const getProofByWay = {
   centralized: async (proverAddress?: string) => {
     if (!proverAddress) throw new Error(ErrorType.PROVER)
 
-    const { message, signature } = AppStore
-    if (!message || !signature) throw new Error(ErrorType.MISSING_DATA)
+    const { message, signature, input } = AppStore
+    if (!input || !message || !signature)
+      throw new Error(ErrorType.MISSING_DATA)
     JobStore.proverAddress = proverAddress
 
-    const jobId = await scheduleProofJob({ message, signature }, proverAddress)
+    const jobId = await scheduleProofJob(input, proverAddress)
     return fetchCentralizedProof(jobId, proverAddress)
   },
   centralizedReloaded: () => {
