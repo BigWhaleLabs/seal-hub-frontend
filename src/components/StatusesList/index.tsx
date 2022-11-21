@@ -3,7 +3,6 @@ import AppStore from 'stores/AppStore'
 import Button from 'components/Button'
 import ChildrenProp from 'models/ChildrenProp'
 import Delimiter from 'components/Delimiter'
-import JobStore from 'stores/JobStore'
 import StatusCard from 'components/StatusCard'
 import classnames, { display, gap } from 'classnames/tailwind'
 import continueFlowOnError from 'helpers/proofs/continueFlowOnError'
@@ -37,7 +36,6 @@ export default function ({
             small
             onClick={() => {
               AppStore.resetOnDisconnect()
-              JobStore.cleanData()
             }}
           >
             Start over
