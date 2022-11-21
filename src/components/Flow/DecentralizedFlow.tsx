@@ -5,19 +5,15 @@ import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import JobStore from 'stores/JobStore'
 import Option from 'components/StatusesList/Option'
+import SigningStates from 'types/SigningStates'
 import StatusesList from 'components/StatusesList'
 
 export default function () {
   const { flowState, error, commitment, proof, phase } = useSnapshot(AppStore)
   const { jobId } = useSnapshot(JobStore)
+  const { description } = SigningStates[flowState]
 
-  const statusDescription = error
-    ? errorList[error]
-    : flowState === STATES.GENERATE_PROOF
-    ? 'Hang tight, this whole process may take 5-20 minutes.'
-    : flowState === STATES.GENERATE_COMMITMENT
-    ? 'Almost there'
-    : 'Ready to begin...'
+  const statusDescription = error ? errorList[error] : description
   const isError = !!error
 
   return (
