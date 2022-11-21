@@ -1,9 +1,10 @@
-import { Phase } from 'types/flowPhase'
+import { Phase } from 'models/FlowPhase'
 import { useAccount } from 'wagmi'
 import { useEffect } from 'preact/hooks'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import BottomCard from 'components/BottomCard'
+import PhaseData from 'models/PhaseData'
 import TopCard from 'components/TopCard'
 import classnames, {
   alignItems,
@@ -12,7 +13,6 @@ import classnames, {
   gap,
   justifyContent,
 } from 'classnames/tailwind'
-import renderStageData from 'helpers/renderStageData'
 
 const container = classnames(
   display('flex'),
@@ -24,7 +24,7 @@ const container = classnames(
 
 export default function () {
   const { phase = Phase.INIT } = useSnapshot(AppStore)
-  const { label, title, subtitle, content } = renderStageData[phase]
+  const { label, title, subtitle, content } = PhaseData[phase]
   const { connector: activeConnector } = useAccount()
 
   useEffect(() => {
@@ -38,8 +38,8 @@ export default function () {
       <TopCard
         label={label}
         title={title}
-        subtitle={typeof subtitle === 'string' ? subtitle : subtitle}
-        statusOrContent={content}
+        subtitle={subtitle ? subtitle() : undefined}
+        statusOrContent={content()}
       />
       {phase !== Phase.SUCCESS && <BottomCard />}
     </div>

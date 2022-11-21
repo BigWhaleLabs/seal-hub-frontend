@@ -1,10 +1,10 @@
 import { ECDSAProofStruct } from '@big-whale-labs/seal-hub-contract/dist/typechain/contracts/SealHub'
-import { ErrorType } from 'types/ErrorType'
-import { Phase } from 'types/flowPhase'
+import { ErrorType } from 'models/ErrorType'
+import { Phase } from 'models/FlowPhase'
 import { ProofInput } from 'models/ProofInput'
-import { STATES } from 'types/SigningStates'
+import { STATES } from 'models/SigningStates'
 import { proxy } from 'valtio'
-import GenerationWay from 'types/GenerationWay'
+import GenerationWay from 'models/GenerationWay'
 import JobStore from 'stores/JobStore'
 
 class AppStore {

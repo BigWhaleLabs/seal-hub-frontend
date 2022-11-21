@@ -7,7 +7,7 @@ import DashedDividers from 'components/DashedDividers'
 interface TopCardProps {
   label?: string
   title?: string
-  subtitle?: string | JSX.Element
+  subtitle?: string | JSX.Element | null
   statusOrContent?: string | JSX.Element
 }
 

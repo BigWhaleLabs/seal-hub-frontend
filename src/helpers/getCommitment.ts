@@ -1,4 +1,4 @@
-import { ErrorType } from 'types/ErrorType'
+import { ErrorType } from 'models/ErrorType'
 import { ProofInput } from 'models/ProofInput'
 import { recoverPublicKey } from 'ethers/lib/utils'
 import { utils } from 'ethers'

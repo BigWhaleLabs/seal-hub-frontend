@@ -1,4 +1,4 @@
-import { STATES } from 'types/SigningStates'
+import { STATES } from 'models/SigningStates'
 import AppStore from 'stores/AppStore'
 import JobStore from 'stores/JobStore'
 import generateCommitment from 'helpers/generateCommitment'

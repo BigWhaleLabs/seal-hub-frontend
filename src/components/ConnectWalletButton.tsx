@@ -1,5 +1,5 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { Phase } from 'types/flowPhase'
+import { Phase } from 'models/FlowPhase'
 import AppStore from 'stores/AppStore'
 import Button from 'components/Button'
 import SigningFlow from 'components/SigningFlow'

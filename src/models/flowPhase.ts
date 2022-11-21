@@ -3,8 +3,8 @@ import { JSX } from 'preact'
 export interface PhaseContext {
   label: string
   title: string
-  subtitle?: string | JSX.Element
-  content: JSX.Element
+  subtitle?: () => string | JSX.Element | null
+  content: () => JSX.Element
 }
 
 export enum Phase {

@@ -1,4 +1,4 @@
-import DropdownOption from 'types/DropdownOption'
+import DropdownOption from 'models/DropdownOption'
 
 export default [
   { label: 'SealCred', value: 'https://sealcred.xyz' },

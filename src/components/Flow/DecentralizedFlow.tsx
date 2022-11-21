@@ -1,11 +1,11 @@
-import { Phase } from 'types/flowPhase'
-import { STATES } from 'types/SigningStates'
-import { errorList } from 'types/ErrorType'
+import { Phase } from 'models/FlowPhase'
+import { STATES } from 'models/SigningStates'
+import { errorList } from 'models/ErrorType'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import JobStore from 'stores/JobStore'
 import Option from 'components/StatusesList/Option'
-import SigningStates from 'types/SigningStates'
+import SigningStates from 'models/SigningStates'
 import StatusesList from 'components/StatusesList'
 
 export default function () {
