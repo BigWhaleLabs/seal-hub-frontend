@@ -23,7 +23,9 @@ export default async function (
 }
 
 async function sendRequest(id: string, proverAddress: string) {
-  const { data } = await axios.get<RequestJobResult>(`${proverAddress}/${id}`)
+  const { data } = await axios.get<RequestJobResult>(
+    `${proverAddress}/prove/${id}`
+  )
   return data
 }
 
