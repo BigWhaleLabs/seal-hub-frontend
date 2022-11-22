@@ -19,7 +19,7 @@ export default function () {
         <div className={space('space-y-4')}>
           <Section>
             <CardParagraphText>
-              Project operates the website listed at sealcred.xyz, which
+              Project operates the website listed at hub.sealcred.xyz, which
               provides the SERVICE.
             </CardParagraphText>
             <CardParagraphText>
