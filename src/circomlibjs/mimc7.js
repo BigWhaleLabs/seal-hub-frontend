@@ -4,7 +4,7 @@ import { ethers } from 'ethers'
 const SEED = 'mimc'
 const NROUNDS = 91
 
-export default async function buildMimc7() {
+export default async function () {
   const bn128 = await getCurveFromName('bn128', true)
   return new Mimc7(bn128.Fr)
 }

@@ -5,7 +5,7 @@ import { utils } from 'ethers'
 import Mimc7 from 'models/Mimc7'
 import publicKeyToArraysSplitted from 'helpers/publicKeyToArraysSplitted'
 
-export default async function getCommitment(
+export default async function (
   inputs: ProofInput,
   signature: string,
   baseMessage: string

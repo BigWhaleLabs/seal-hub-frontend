@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { buildBabyjub, buildMimc7 } from 'circomlibjs'
 
-export default class Mimc7 {
+export default class {
   private babyJub: any
   F: any
   private mimc7: any
