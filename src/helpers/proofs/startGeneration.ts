@@ -1,6 +1,6 @@
 import { ErrorType, isKnownError } from 'models/ErrorType'
 import { Phase } from 'models/FlowPhase'
-import { STATES } from 'models/SigningStates'
+import { States } from 'models/SigningStates'
 import AppStore from 'stores/AppStore'
 import GenerationWay from 'models/GenerationWay'
 import JobStore from 'stores/JobStore'
@@ -16,18 +16,18 @@ export default async function ({
 }) {
   AppStore.error = undefined
   AppStore.phase = Phase.GENERATE
-  AppStore.flowState = STATES.GENERATE_PROOF
+  AppStore.flowState = States.GENERATE_PROOF
   AppStore.preferredProofWay = generationWay
   try {
     const txData = await getProofByWay[generationWay](proverAddress)
     AppStore.proof = txData
-    AppStore.flowState = STATES.GENERATE_COMMITMENT
+    AppStore.flowState = States.GENERATE_COMMITMENT
     await generateCommitment(AppStore.proof)
     AppStore.phase = Phase.SUCCESS
     JobStore.cleanData()
   } catch (e) {
     console.error(e)
-    AppStore.flowState = STATES.ERROR
+    AppStore.flowState = States.ERROR
     AppStore.error = isKnownError(e) ? e : ErrorType.UNKNOWN
   } finally {
     delete AppStore.proof
