@@ -1,4 +1,4 @@
-export default function isMobileDevice() {
+export default function () {
   const browserData = navigator.userAgent || navigator.vendor
 
   if (

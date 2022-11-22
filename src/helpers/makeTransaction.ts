@@ -2,7 +2,7 @@ import { BigNumber } from 'ethers'
 import { ECDSAProofStruct } from '@big-whale-labs/seal-hub-contract/dist/typechain/contracts/SealHub'
 import ProofResult from 'models/ProofResult'
 
-export default function makeTransaction(proofResult: ProofResult) {
+export default function (proofResult: ProofResult) {
   // This is a hacky way to get rid of the third arguments that are unnecessary and convert to BigNumber
   // Also pay attention to array indexes
   return {
