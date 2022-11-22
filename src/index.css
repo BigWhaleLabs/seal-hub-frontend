@@ -52,7 +52,7 @@ body {
 svg {
   fill: none;
 }
-path,
+path:not(.walletconnect-qrcode__image path),
 circle {
   stroke-linecap: round;
   stroke-linejoin: round;
