@@ -3,7 +3,7 @@
 ## Local launch
 
 1. Install dependencies with `yarn`
-2. Download essential ZKP files with `yarn download-zk-files`
+2. Download essential ZK files with `yarn download-zk-files`
 3. Run the server with `yarn start`
 
 ## Environment variables

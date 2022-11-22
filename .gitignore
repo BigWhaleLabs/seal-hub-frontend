@@ -31,6 +31,6 @@ yarn-error.log*
 !.yarn/sdks
 !.yarn/versions
 
-# ZKP files
+# ZK files
 public/zk/*
 !public/zk/.gitkeep
