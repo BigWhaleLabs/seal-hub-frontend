@@ -1,3 +1,5 @@
+import StateObject from 'models/StateObject'
+
 export enum States {
   ERROR = 'ERROR',
   INIT = 'INIT',
@@ -5,14 +7,6 @@ export enum States {
   READY_FOR_GENERATING_PROOF = 'READY_FOR_GENERATING_PROOF',
   GENERATE_PROOF = 'GENERATE_PROOF',
   GENERATE_COMMITMENT = 'GENERATE_COMMITMENT',
-}
-
-export interface StateObject {
-  title: string
-  subTitle: string
-  beforeStart?: string
-  loadingText?: string
-  completedText?: string
 }
 
 export const generatingFlow = [
