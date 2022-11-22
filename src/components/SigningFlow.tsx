@@ -38,11 +38,11 @@ export default function () {
   const startCheckingAddress = useCallback(
     async (signer: Signer) => {
       if (!address) {
-        AppStore.error = ErrorType.connection
+        AppStore.error = ErrorType.CONNECTION
         return
       }
       AppStore.error = undefined
-      AppStore.phase = Phase.check
+      AppStore.phase = Phase.CHECK
 
       try {
         const { baseMessage, signature } = await signMessage(address, signer)
@@ -50,7 +50,7 @@ export default function () {
         AppStore.message = baseMessage
         AppStore.signature = signature
 
-        AppStore.flowState = States.checkCommitment
+        AppStore.flowState = States.CHECK_COMMITMENT
 
         if (supportsModuleWorkers()) {
           const { generateInput } = new ComlinkWorker<
@@ -68,14 +68,14 @@ export default function () {
         )
 
         if (AppStore.commitment && (await hasCommitment(AppStore.commitment))) {
-          AppStore.phase = Phase.success
+          AppStore.phase = Phase.SUCCESS
           return
         }
 
-        AppStore.flowState = States.readyForGeneratingProof
+        AppStore.flowState = States.READY_FOR_GENERATING_PROOF
         AppStore.phase = isMobileDevice()
-          ? Phase.readyCentralized
-          : Phase.readyDecentralized
+          ? Phase.READY_CENTRALIZED
+          : Phase.READY_DECENTRALIZED
       } catch (e) {
         AppStore.error = (e as unknown as ThrownError).type
         console.error(e)

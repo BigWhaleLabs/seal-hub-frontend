@@ -10,7 +10,7 @@ import JobStore from 'stores/JobStore'
 class AppStore {
   connected = false
   phase?: Phase
-  flowState = States.init
+  flowState = States.INIT
   error?: ErrorType
 
   input?: ProofInput
@@ -24,9 +24,9 @@ class AppStore {
 
   resetOnDisconnect() {
     this.connected = false
-    this.flowState = States.init
+    this.flowState = States.INIT
     this.input = this.proof = this.commitment = undefined
-    this.phase = Phase.init
+    this.phase = Phase.INIT
     JobStore.cleanData()
   }
 }

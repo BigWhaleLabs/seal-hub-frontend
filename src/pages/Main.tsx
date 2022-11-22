@@ -23,7 +23,7 @@ const container = classnames(
 )
 
 export default function () {
-  const { phase = Phase.init } = useSnapshot(AppStore)
+  const { phase = Phase.INIT } = useSnapshot(AppStore)
   const { label, title, subtitle, content } = PhaseData[phase]
   const { connector: activeConnector } = useAccount()
 
@@ -41,7 +41,7 @@ export default function () {
         subtitle={subtitle}
         statusOrContent={content}
       />
-      {phase !== Phase.success && <BottomCard />}
+      {phase !== Phase.SUCCESS && <BottomCard />}
     </div>
   )
 }

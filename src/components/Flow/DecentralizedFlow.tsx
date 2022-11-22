@@ -21,12 +21,12 @@ export default function () {
 
   const hasCompleteState = (state: States) => {
     switch (state) {
-      case States.checkCommitment:
+      case States.CHECK_COMMITMENT:
         return !!AppStore.commitment || !!JobStore.jobId
-      case States.generateProof:
+      case States.GENERATE_PROOF:
         return !!AppStore.proof
-      case States.generateCommitment:
-        return AppStore.phase === Phase.success
+      case States.GENERATE_COMMITMENT:
+        return AppStore.phase === Phase.SUCCESS
       default:
         return false
     }
