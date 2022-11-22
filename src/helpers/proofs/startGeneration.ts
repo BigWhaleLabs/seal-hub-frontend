@@ -15,20 +15,20 @@ export default async function ({
   proverAddress?: string
 }) {
   AppStore.error = undefined
-  AppStore.phase = Phase.GENERATE
-  AppStore.flowState = States.GENERATE_PROOF
+  AppStore.phase = Phase.generate
+  AppStore.flowState = States.generateProof
   AppStore.preferredProofWay = generationWay
   try {
     const txData = await getProofByWay[generationWay](proverAddress)
     AppStore.proof = txData
-    AppStore.flowState = States.GENERATE_COMMITMENT
+    AppStore.flowState = States.generateCommitment
     await generateCommitment(AppStore.proof)
-    AppStore.phase = Phase.SUCCESS
+    AppStore.phase = Phase.success
     JobStore.cleanData()
   } catch (e) {
     console.error(e)
-    AppStore.flowState = States.ERROR
-    AppStore.error = isKnownError(e) ? e : ErrorType.UNKNOWN
+    AppStore.flowState = States.error
+    AppStore.error = isKnownError(e) ? e : ErrorType.unknown
   } finally {
     delete AppStore.proof
     delete AppStore.input

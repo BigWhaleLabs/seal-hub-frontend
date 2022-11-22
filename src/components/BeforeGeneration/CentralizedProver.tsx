@@ -38,7 +38,7 @@ export default function () {
           isMobileDevice() ? undefined : (
             <div
               className={cursor('cursor-pointer')}
-              onClick={() => (AppStore.phase = Phase.READY_DECENTRALIZED)}
+              onClick={() => (AppStore.phase = Phase.readyDecentralized)}
             >
               <GradientText center animatedOnHover>
                 Generate on a decentralized prover

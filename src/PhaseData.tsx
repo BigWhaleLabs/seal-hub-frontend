@@ -9,43 +9,43 @@ import SuccessCardBlock from 'components/SuccessCard/SuccessCardBlock'
 import SuccessSubtitle from 'components/SuccessCard/SuccessSubtitle'
 
 const phaseData: { [key: string]: PhaseContext } = {
-  [Phase.INIT]: {
+  [Phase.init]: {
     label: '// 100% ANONYMOUS',
     title: 'Verify, and stay anonymous',
     subtitle:
       'SealHub allows anyone to prove they own a wallet without exposing their identity—not even we’ll know who you are.',
     content: <GettingStartedBlock />,
   },
-  [Phase.CHECK]: {
+  [Phase.check]: {
     label: '// 100% ANONYMOUS',
     title: 'Verify, and stay anonymous',
     subtitle:
       'SealHub allows anyone to prove they own a wallet without exposing their identity—not even we’ll know who you are.',
     content: <SigningFlow />,
   },
-  [Phase.READY_DECENTRALIZED]: {
+  [Phase.readyDecentralized]: {
     label: 'Ready to anonymize',
     title: 'Before you start ZKP generation',
     subtitle: <DecentralizedProver />,
     content: <DecentralizedFlow />,
   },
-  [Phase.READY_CENTRALIZED]: {
+  [Phase.readyCentralized]: {
     label: 'Ready to anonymize',
     title: 'To continue, you’ll need to choose a path for ZKP generation',
     subtitle: <CentralizedProver />,
     content: <CentralizedFlow />,
   },
-  [Phase.GENERATE]: {
+  [Phase.generate]: {
     label: 'Ready to anonymize',
     title: 'Generating ZKP',
     content: <DecentralizedFlow />,
   },
-  [Phase.ADD_TO_CHAIN]: {
+  [Phase.addToChain]: {
     label: 'Ready to anonymize',
     title: 'Getting your commitment on chain',
     content: <DecentralizedFlow />,
   },
-  [Phase.SUCCESS]: {
+  [Phase.success]: {
     label: '// Complete',
     title: 'Your wallet is verified',
     subtitle: <SuccessSubtitle />,
