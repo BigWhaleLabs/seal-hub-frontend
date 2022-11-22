@@ -9,7 +9,7 @@ import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import Button from 'components/Button'
 import ErrorBlock from 'components/ErrorBlock'
-import SigningStates, { STATES } from 'models/SigningStates'
+import SigningStates, { States } from 'models/SigningStates'
 import StatusBlock from 'components/StatusBlock'
 import getCommitment from 'helpers/getCommitment'
 import hasCommitment from 'helpers/hasCommitment'
@@ -50,7 +50,7 @@ export default function () {
         AppStore.message = baseMessage
         AppStore.signature = signature
 
-        AppStore.flowState = STATES.CHECK_COMMITMENT
+        AppStore.flowState = States.CHECK_COMMITMENT
 
         if (supportsModuleWorkers()) {
           const { generateInput } = new ComlinkWorker<
@@ -72,7 +72,7 @@ export default function () {
           return
         }
 
-        AppStore.flowState = STATES.READY_FOR_GENERATING_PROOF
+        AppStore.flowState = States.READY_FOR_GENERATING_PROOF
         AppStore.phase = isMobileDevice()
           ? Phase.READY_CENTRALIZED
           : Phase.READY_DECENTRALIZED

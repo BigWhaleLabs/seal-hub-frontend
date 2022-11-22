@@ -1,37 +1,51 @@
-export enum STATES {
-  ERROR,
-  INIT,
-  CHECK_COMMITMENT,
-  READY_FOR_GENERATING_PROOF,
-  GENERATE_PROOF,
-  GENERATE_COMMITMENT,
+import StateObject from 'models/StateObject'
+
+export enum States {
+  ERROR = 'ERROR',
+  INIT = 'INIT',
+  CHECK_COMMITMENT = 'CHECK_COMMITMENT',
+  READY_FOR_GENERATING_PROOF = 'READY_FOR_GENERATING_PROOF',
+  GENERATE_PROOF = 'GENERATE_PROOF',
+  GENERATE_COMMITMENT = 'GENERATE_COMMITMENT',
 }
 
+export const generatingFlow = [
+  States.CHECK_COMMITMENT,
+  States.GENERATE_PROOF,
+  States.GENERATE_COMMITMENT,
+]
+
 export default {
-  [STATES.ERROR]: {
+  [States.ERROR]: {
     title: 'Error',
     subTitle: 'Try again',
   },
-  [STATES.INIT]: {
+  [States.INIT]: {
     title: 'Waiting for signature',
     subTitle: 'We’re requesting your signature to generate your commitment.',
   },
-  [STATES.CHECK_COMMITMENT]: {
+  [States.CHECK_COMMITMENT]: {
     title: 'Checking for existing commitment...',
+    completedText: 'Commitment generated',
     subTitle: 'Hang tight!',
   },
-  [STATES.READY_FOR_GENERATING_PROOF]: {
+  [States.READY_FOR_GENERATING_PROOF]: {
     title: 'Wait for approve...',
     subTitle: 'Ready to begin...',
   },
-  [STATES.GENERATE_PROOF]: {
+  [States.GENERATE_PROOF]: {
     title: 'Generate proof...',
+    beforeStart: 'Generate zero knowledge proof',
+    loadingText: 'Generating zero knowledge proof',
+    completedText: 'ZKP generated',
     subTitle: 'Hang tight, this whole process may take 5-20 minutes.',
   },
-  [STATES.GENERATE_COMMITMENT]: {
+  [States.GENERATE_COMMITMENT]: {
     title: 'Generate commitment...',
+    beforeStart: 'Add to chain',
+    loadingText: 'Adding to blockchain',
     subTitle: 'Almost there',
   },
 } as {
-  [key in STATES]: { title: string; subTitle: string }
+  [key in States]: StateObject
 }

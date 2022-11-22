@@ -13,7 +13,6 @@ export default async function (
 
   while (!Object.keys(result).length) {
     const { status, result: jobResult } = await sendRequest(id, proverAddress)
-    // TODO: Add error and other states handling
     if (status === JobStatus.completed) result = makeTransaction(jobResult)
     if (status === JobStatus.failed || status === JobStatus.cancelled)
       throw new Error(ErrorType.COMMITMENT)

@@ -1,44 +1,34 @@
-import { Phase } from 'models/FlowPhase'
-import { STATES } from 'models/SigningStates'
 import { errorList } from 'models/ErrorType'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import JobStore from 'stores/JobStore'
-import Option from 'components/StatusesList/Option'
-import SigningStates from 'models/SigningStates'
+import OptionStatus from 'components/StatusesList/OptionStatus'
+import SigningStates, { generatingFlow } from 'models/SigningStates'
 import StatusesList from 'components/StatusesList'
+import checkIfStateCompleted from 'helpers/checkIfStateCompleted'
 
 export default function () {
-  const { flowState, error, commitment, proof, phase } = useSnapshot(AppStore)
+  const { flowState, error } = useSnapshot(AppStore)
   const { jobId } = useSnapshot(JobStore)
   const { subTitle } = SigningStates[flowState]
 
-  const statusDescription = error ? errorList[error] : subTitle
+  const serverCaption = jobId
+    ? ' Feel free to leave and come back—we’ll still be here.'
+    : ''
+  const description = subTitle + serverCaption
+  const jobStatus = error ? errorList[error] : description
   const isError = !!error
 
   return (
-    <StatusesList hasError={isError} statusDescription={statusDescription}>
-      <Option
-        complete={!!commitment || !!jobId}
-        error={isError}
-        loading={flowState === STATES.CHECK_COMMITMENT}
-      >
-        Commitment generated
-      </Option>
-      <Option
-        complete={!!proof}
-        error={isError}
-        loading={flowState === STATES.GENERATE_PROOF}
-      >
-        Generate zero knowledge proof
-      </Option>
-      <Option
-        complete={phase === Phase.SUCCESS}
-        error={isError}
-        loading={flowState === STATES.GENERATE_COMMITMENT}
-      >
-        Add to chain
-      </Option>
+    <StatusesList hasError={isError} statusDescription={jobStatus}>
+      {generatingFlow.map((state) => (
+        <OptionStatus
+          isError={isError}
+          isCompleted={checkIfStateCompleted(state)}
+          isLoading={AppStore.flowState === state}
+          state={state}
+        />
+      ))}
     </StatusesList>
   )
 }

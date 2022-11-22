@@ -40,6 +40,11 @@ const phaseData: { [key: string]: PhaseContext } = {
     title: 'Generating ZKP',
     content: <DecentralizedFlow />,
   },
+  [Phase.ADD_TO_CHAIN]: {
+    label: 'Ready to anonymize',
+    title: 'Getting your commitment on chain',
+    content: <DecentralizedFlow />,
+  },
   [Phase.SUCCESS]: {
     label: '// Complete',
     title: 'Your wallet is verified',
