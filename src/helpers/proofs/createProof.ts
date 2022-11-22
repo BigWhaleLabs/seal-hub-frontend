@@ -88,7 +88,7 @@ export function generateInput(signature: string, message: string) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const snarkjs: any
 
-export default async function build(input: ProofInput): Promise<ProofResult> {
+export default async function (input: ProofInput): Promise<ProofResult> {
   const files = await getECDSACheckerFiles()
   return snarkjs.groth16.fullProve(input, ...files)
 }

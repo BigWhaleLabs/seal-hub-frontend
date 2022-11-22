@@ -5,7 +5,7 @@ import addHexPrefix from '../helpers/addHexPrefix'
 
 const REGISTERS = 4n
 
-export default function splitToRegisters(value?: BN | string) {
+export default function (value?: BN | string) {
   const registers = [] as bigint[]
 
   if (!value) {
