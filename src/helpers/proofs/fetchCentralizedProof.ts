@@ -24,7 +24,12 @@ export default async function (
 
 async function sendRequest(id: string, proverAddress: string) {
   const { data } = await axios.get<RequestJobResult>(
-    `${proverAddress}/prove/${id}`
+    `${proverAddress}/prove/${id}`,
+    {
+      headers: {
+        'User-Agent': 'SealHub',
+      },
+    }
   )
   return data
 }
