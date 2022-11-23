@@ -28,7 +28,7 @@
     "@big-whale-labs/constants": "^0.1.37",
     "@big-whale-labs/frontend-utils": "^0.1.2",
     "@big-whale-labs/seal-hub-contract": "^0.1.0",
-    "@big-whale-labs/stores": "portal:/D:/Projects/Programming/BWL/stores",
+    "@big-whale-labs/stores": "^0.1.18",
     "@ethereumjs/util": "^8.0.2",
     "@lottiefiles/react-lottie-player": "^3.4.9",
     "@material-tailwind/react": "^1.2.4",
@@ -50,7 +50,7 @@
   "devDependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
     "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
-    "@opengsn/provider": "^3.0.0-beta.1",
+    "@opengsn/provider": "3.0.0-beta.1",
     "@preact/preset-vite": "^2.4.0",
     "@rollup/plugin-inject": "^5.0.2",
     "@types/elliptic": "^6.4.14",
