@@ -14,7 +14,15 @@ export default async function (input: ProofInput, proverAddress: string) {
     formData.append(key, JSONbig.stringify(value))
   })
 
-  const { data } = await axios.post<JobResponse>(proverAddress, formData)
+  const { data } = await axios.post<JobResponse>(
+    `${proverAddress}/prove`,
+    formData,
+    {
+      headers: {
+        'User-Agent': 'SealHub',
+      },
+    }
+  )
   JobStore.jobId = data.id
 
   return data.id

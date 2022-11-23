@@ -86,7 +86,7 @@ export function GradientText({
   )
 }
 
-const statusText = (color?: 'success' | 'error') =>
+const statusText = (color?: 'success' | 'error', center?: boolean) =>
   classnames(
     textColor({
       'text-formal-accent': !color,
@@ -95,13 +95,15 @@ const statusText = (color?: 'success' | 'error') =>
     }),
     fontSize('text-sm'),
     fontFamily('font-primary'),
-    fontWeight('font-bold')
+    fontWeight('font-bold'),
+    textAlign({ 'text-center': center })
   )
 export function StatusText({
   children,
   color,
-}: ChildrenProp & { color?: 'success' | 'error' }) {
-  return <span className={statusText(color)}>{children}</span>
+  center,
+}: ChildrenProp & { color?: 'success' | 'error'; center?: boolean }) {
+  return <span className={statusText(color, center)}>{children}</span>
 }
 
 const linkText = classnames(

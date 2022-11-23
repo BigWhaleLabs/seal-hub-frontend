@@ -23,7 +23,7 @@ export default function ({
       {statusDescription ? (
         <>
           <Delimiter horizontal />
-          <StatusText>{statusDescription}</StatusText>
+          <StatusText center>{statusDescription}</StatusText>
         </>
       ) : undefined}
       {hasError ? (

@@ -1,3 +1,3 @@
-export default function addHexPrefix(str: string) {
+export default function (str: string) {
   return `0x${str}`
 }

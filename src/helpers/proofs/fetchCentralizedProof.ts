@@ -13,7 +13,6 @@ export default async function (
 
   while (!Object.keys(result).length) {
     const { status, result: jobResult } = await sendRequest(id, proverAddress)
-    // TODO: Add error and other states handling
     if (status === JobStatus.completed) result = makeTransaction(jobResult)
     if (status === JobStatus.failed || status === JobStatus.cancelled)
       throw new Error(ErrorType.COMMITMENT)
@@ -24,7 +23,14 @@ export default async function (
 }
 
 async function sendRequest(id: string, proverAddress: string) {
-  const { data } = await axios.get<RequestJobResult>(`${proverAddress}/${id}`)
+  const { data } = await axios.get<RequestJobResult>(
+    `${proverAddress}/prove/${id}`,
+    {
+      headers: {
+        'User-Agent': 'SealHub',
+      },
+    }
+  )
   return data
 }
 
