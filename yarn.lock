@@ -2978,7 +2978,7 @@ __metadata:
 
 "@opengsn/common@patch:@opengsn/common@npm%3A3.0.0-beta.1#./.yarn/patches/@opengsn-common-npm-3.0.0-beta.1-79cb41f503.patch::locator=seal-hub-frontend%40workspace%3A.":
   version: 3.0.0-beta.1
-  resolution: "@opengsn/common@patch:@opengsn/common@npm%3A3.0.0-beta.1#./.yarn/patches/@opengsn-common-npm-3.0.0-beta.1-79cb41f503.patch::version=3.0.0-beta.1&hash=17823f&locator=seal-hub-frontend%40workspace%3A."
+  resolution: "@opengsn/common@patch:@opengsn/common@npm%3A3.0.0-beta.1#./.yarn/patches/@opengsn-common-npm-3.0.0-beta.1-79cb41f503.patch::version=3.0.0-beta.1&hash=357076&locator=seal-hub-frontend%40workspace%3A."
   dependencies:
     "@ethereumjs/tx": ^3.2.0
     "@opengsn/contracts": ^3.0.0-beta.1
@@ -3001,7 +3001,6 @@ __metadata:
     web3-eth-abi: ^1.7.3
     web3-eth-contract: ^1.7.3
     web3-utils: ^1.7.3
-  checksum: e25ee5a746cf6e2804b032a210127aeb3474e1aa0be49f6303ca21c2d4c47af1456ce47320b62a32676ef6984cd98d749446279381be2bd478356f1691b5fe4b
   languageName: node
   linkType: hard
 
