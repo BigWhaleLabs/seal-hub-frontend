@@ -4,7 +4,7 @@ import { useEffect } from 'preact/hooks'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import BottomCard from 'components/BottomCard'
-import PhaseData from 'PhaseData'
+import PhaseData from 'data/phaseData'
 import TopCard from 'components/TopCard'
 import classnames, {
   alignItems,

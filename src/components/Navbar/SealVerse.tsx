@@ -1,6 +1,6 @@
 import { displayFrom } from 'helpers/visibilityClassnames'
 import Dropdown from 'components/Dropdown'
-import sealVerseData from 'sealVerseData'
+import sealVerseData from 'data/sealVerseData'
 
 const placeholder = <div className={displayFrom('xs')}>SealVerse</div>
 
