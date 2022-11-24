@@ -2,7 +2,7 @@ import { ECDSAProofStruct } from '@big-whale-labs/seal-hub-contract/dist/typecha
 import { ErrorType } from 'models/ErrorType'
 import JobStatus from 'models/JobStatus'
 import RequestJobResult from 'models/JobResult'
-import axios from 'axios'
+import api from 'helpers/api'
 import makeTransaction from 'helpers/makeTransaction'
 
 export default async function (
@@ -24,15 +24,7 @@ export default async function (
 }
 
 async function sendRequest(id: string, proverAddress: string) {
-  const { data } = await axios.get<RequestJobResult>(
-    `${proverAddress}/prove/${id}`,
-    {
-      headers: {
-        'User-Agent': 'SealHub',
-      },
-    }
-  )
-  return data
+  return await api.get(`${proverAddress}/prove/${id}`).json<RequestJobResult>()
 }
 
 function sleep(ms: number) {
