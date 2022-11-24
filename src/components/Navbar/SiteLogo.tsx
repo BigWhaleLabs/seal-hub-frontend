@@ -1,5 +1,5 @@
 import { Link } from 'wouter'
-import { LogoSubText, LogoText } from 'components/Text'
+import { LogoSubText, LogoText } from 'components/Common/Text'
 import { VNode } from 'preact'
 import { displayFrom } from 'helpers/visibilityClassnames'
 import classnames, {

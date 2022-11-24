@@ -12,7 +12,7 @@ import {
 } from 'classnames/tailwind'
 import BottomBlock from 'components/NotFound/BottomBlock'
 import TopBlock from 'components/NotFound/TopBlock'
-import TopCard from 'components/TopCard'
+import TopCard from 'components/CardsLayout/TopCard'
 import classNamesToString from 'helpers/classNamesToString'
 
 const big404 = classNamesToString(

@@ -1,10 +1,10 @@
-import { BodyText, LinkText, StatusText } from 'components/Text'
+import { BodyText, LinkText, StatusText } from 'components/Common/Text'
 import { useNetwork } from 'wagmi'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import Checkmark from 'icons/Checkmark'
 import SealStar from 'icons/SealStar'
-import StatusBlock from 'components/StatusBlock'
+import StatusBlock from 'components/Common/StatusBlock'
 import classnames, { alignItems, display, gap } from 'classnames/tailwind'
 import getEtherscanTxUrl from 'helpers/getEtherscanTxUrl'
 

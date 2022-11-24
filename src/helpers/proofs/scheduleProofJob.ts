@@ -1,7 +1,7 @@
 import { ProofInput } from 'models/ProofInput'
 import JSONbig from 'json-bigint'
 import JobStore from 'stores/JobStore'
-import axios from 'axios'
+import api from 'helpers/api'
 
 interface JobResponse {
   id: string
@@ -14,16 +14,10 @@ export default async function (input: ProofInput, proverAddress: string) {
     formData.append(key, JSONbig.stringify(value))
   })
 
-  const { data } = await axios.post<JobResponse>(
-    `${proverAddress}/prove`,
-    formData,
-    {
-      headers: {
-        'User-Agent': 'SealHub',
-      },
-    }
-  )
-  JobStore.jobId = data.id
+  const { id } = await api
+    .post(`${proverAddress}/prove`, { body: formData })
+    .json<JobResponse>()
+  JobStore.jobId = id
 
-  return data.id
+  return id
 }

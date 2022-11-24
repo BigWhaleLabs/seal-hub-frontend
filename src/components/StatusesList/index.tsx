@@ -1,9 +1,9 @@
-import { StatusText } from 'components/Text'
+import { StatusText } from 'components/Common/Text'
 import AppStore from 'stores/AppStore'
-import Button from 'components/Button'
+import Button from 'components/Common/Button'
 import ChildrenProp from 'models/ChildrenProp'
-import Delimiter from 'components/Delimiter'
-import StatusCard from 'components/StatusCard'
+import Delimiter from 'components/Common/Delimiter'
+import StatusCard from 'components/Common/StatusCard'
 import classnames, { display, gap } from 'classnames/tailwind'
 import continueFlowOnError from 'helpers/proofs/continueFlowOnError'
 

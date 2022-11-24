@@ -1,8 +1,8 @@
-import { AccentText, BodyText, HeaderText } from 'components/Text'
+import { AccentText, BodyText, HeaderText } from 'components/Common/Text'
 import { JSX } from 'preact/jsx-runtime'
 import { space } from 'classnames/tailwind'
-import Card from 'components/Card'
-import DashedDividers from 'components/DashedDividers'
+import Card from 'components/Common/Card'
+import DashedDividers from 'components/Common/DashedDividers'
 
 interface TopCardProps {
   label?: string
