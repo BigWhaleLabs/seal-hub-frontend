@@ -52,14 +52,7 @@ export default function () {
 
         AppStore.flowState = States.checkCommitment
 
-        if (supportsModuleWorkers()) {
-          const { default: generateInput } = new ComlinkWorker<
-            typeof import('../../helpers/generateInput')
-          >(new URL('./../../../helpers/generateInput', import.meta.url))
-          AppStore.input = await generateInput(signature, baseMessage)
-        } else {
-          AppStore.input = generateInput(signature, baseMessage)
-        }
+        AppStore.input = generateInput(signature, baseMessage)
 
         if (!AppStore.input) return
         AppStore.commitment = await generateCommitment(signature, baseMessage)
