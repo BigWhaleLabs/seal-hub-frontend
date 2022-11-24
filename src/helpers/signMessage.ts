@@ -9,6 +9,6 @@ export default async function (address: string, signer: Signer) {
     return { baseMessage, signature }
   } catch (e) {
     console.error(e)
-    throw { type: ErrorType.SIGNATURE, error: e }
+    throw { type: ErrorType.signature, error: e }
   }
 }

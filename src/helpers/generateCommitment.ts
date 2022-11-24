@@ -5,7 +5,7 @@ import getSealHubGSN from 'helpers/getSealHubGSN'
 
 export default async function (txData: ECDSAProofStruct) {
   AppStore.error = undefined
-  AppStore.phase = Phase.ADD_TO_CHAIN
+  AppStore.phase = Phase.addToChain
   const sealHubGSN = await getSealHubGSN()
   const tx = await sealHubGSN.createCommitment(txData)
   const { events } = await tx.wait()

@@ -29,7 +29,7 @@ export default function () {
         if (!mounted) return <Spinner />
         const connected = mounted && account && chain
         AppStore.connected = !!connected
-        AppStore.phase = connected ? Phase.CHECK : Phase.INIT
+        AppStore.phase = connected ? Phase.check : Phase.init
 
         return (
           <div className={container}>

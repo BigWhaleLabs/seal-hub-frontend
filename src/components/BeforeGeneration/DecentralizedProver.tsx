@@ -53,7 +53,7 @@ export default function () {
           rightButton={
             <div
               className={tooltipWrapper}
-              onClick={() => (AppStore.phase = Phase.READY_CENTRALIZED)}
+              onClick={() => (AppStore.phase = Phase.readyCentralized)}
             >
               <GradientText center animatedOnHover>
                 Generate on a centralized prover

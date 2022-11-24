@@ -8,25 +8,25 @@ export interface ThrownError {
 }
 
 export enum ErrorType {
-  CONNECTION = 'CONNECTION',
-  SIGNATURE = 'SIGNATURE',
-  COMMITMENT = 'COMMITMENT',
-  PROVER = 'PROVER',
-  ZKP = 'ZKP',
-  CHAIN = 'CHAIN',
-  MISSING_DATA = 'MISSING_DATA',
-  UNKNOWN = 'UNKNOWN',
+  connection = 'connection',
+  signature = 'signature',
+  commitment = 'commitment',
+  prover = 'prover',
+  zkp = 'zkp',
+  chain = 'chain',
+  missingData = 'missingData',
+  unknown = 'unknown',
 }
 
 export const errorList = {
-  [ErrorType.CONNECTION]: 'Failed to connect. Please try again.',
-  [ErrorType.SIGNATURE]: 'Signature request rejected. Please try again.',
-  [ErrorType.COMMITMENT]: 'Commitment check failed.',
-  [ErrorType.PROVER]:
+  [ErrorType.connection]: 'Failed to connect. Please try again.',
+  [ErrorType.signature]: 'Signature request rejected. Please try again.',
+  [ErrorType.commitment]: 'Commitment check failed.',
+  [ErrorType.prover]:
     'The prover URL you added is invalid. Please check for any errors and try again.',
-  [ErrorType.ZKP]: 'Your generation of ZKP failed. Please try again.',
-  [ErrorType.CHAIN]: 'Try again with the same ZKP?',
-  [ErrorType.MISSING_DATA]:
+  [ErrorType.zkp]: 'Your generation of ZKP failed. Please try again.',
+  [ErrorType.chain]: 'Try again with the same ZKP?',
+  [ErrorType.missingData]:
     'Looks like we miss signature or prover address. Please try again.',
-  [ErrorType.UNKNOWN]: 'An unknown error occurred. Please try again.',
+  [ErrorType.unknown]: 'An unknown error occurred. Please try again.',
 }

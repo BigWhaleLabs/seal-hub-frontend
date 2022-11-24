@@ -15,7 +15,7 @@ export default async function (
     const { status, result: jobResult } = await sendRequest(id, proverAddress)
     if (status === JobStatus.completed) result = makeTransaction(jobResult)
     if (status === JobStatus.failed || status === JobStatus.cancelled)
-      throw new Error(ErrorType.COMMITMENT)
+      throw new Error(ErrorType.commitment)
 
     await sleep(15 * 1000)
   }
