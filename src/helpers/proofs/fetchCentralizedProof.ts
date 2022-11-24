@@ -23,8 +23,8 @@ export default async function (
   return result
 }
 
-async function sendRequest(id: string, proverAddress: string) {
-  return await api.get(`${proverAddress}/prove/${id}`).json<RequestJobResult>()
+function sendRequest(id: string, proverAddress: string) {
+  return api.get(`${proverAddress}/prove/${id}`).json<RequestJobResult>()
 }
 
 function sleep(ms: number) {
