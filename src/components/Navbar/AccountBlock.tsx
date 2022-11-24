@@ -1,4 +1,4 @@
-import { AccentText } from 'components/UI/Text'
+import { AccentText } from 'components/Common/Text'
 import { useDisconnect, useNetwork } from 'wagmi'
 import AppStore from 'stores/AppStore'
 import Dropdown from 'components/Dropdown'

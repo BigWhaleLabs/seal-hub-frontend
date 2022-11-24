@@ -1,4 +1,4 @@
-import { AccentText, BodyText, HeaderText } from 'components/UI/Text'
+import { AccentText, BodyText, HeaderText } from 'components/Common/Text'
 import PalmStars from 'components/NotFound/PalmStars'
 import PalmTree from 'icons/PalmTree'
 import classnames, {

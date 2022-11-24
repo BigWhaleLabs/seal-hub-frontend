@@ -1,7 +1,7 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { Phase } from 'models/FlowPhase'
 import AppStore from 'stores/AppStore'
-import Button from 'components/UI/Button'
+import Button from 'components/Common/Button'
 import SigningFlow from 'components/Flow/SigningFlow'
 import Spinner from 'icons/Spinner'
 import classnames, {

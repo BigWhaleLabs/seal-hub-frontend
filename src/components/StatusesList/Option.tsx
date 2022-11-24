@@ -1,4 +1,4 @@
-import { StatusText } from 'components/UI/Text'
+import { StatusText } from 'components/Common/Text'
 import Checkmark from 'icons/Checkmark'
 import ChildrenProp from 'models/ChildrenProp'
 import Spinner from 'icons/Spinner'

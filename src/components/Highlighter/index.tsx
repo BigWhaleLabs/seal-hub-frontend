@@ -1,4 +1,4 @@
-import { AccentText, HeaderText } from 'components/UI/Text'
+import { AccentText, HeaderText } from 'components/Common/Text'
 import Line from 'components/Highlighter/Line'
 import classnames, {
   alignItems,

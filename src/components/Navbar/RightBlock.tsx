@@ -1,7 +1,7 @@
 import { displayFrom, displayTo } from 'helpers/visibilityClassnames'
 import { useAccount } from 'wagmi'
 import ConnectedButton from 'components/Navbar/ConnectedButton'
-import Delimiter from 'components/UI/Delimiter'
+import Delimiter from 'components/Common/Delimiter'
 import Logo from 'components/Navbar/Logo'
 import SealVerse from 'components/Navbar/SealVerse'
 import SocialLinks from 'components/Navbar/SocialLinks'

@@ -1,4 +1,4 @@
-import { AccentText } from 'components/UI/Text'
+import { AccentText } from 'components/Common/Text'
 import { JSX } from 'preact/jsx-runtime'
 import classnames, {
   alignItems,

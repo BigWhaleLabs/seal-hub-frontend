@@ -3,8 +3,8 @@ import {
   GradientText,
   HeaderText,
   LinkText,
-} from 'components/UI/Text'
-import Card from 'components/UI/Card'
+} from 'components/Common/Text'
+import Card from 'components/Common/Card'
 import SealStar from 'icons/SealStar'
 import classnames, {
   borderColor,
