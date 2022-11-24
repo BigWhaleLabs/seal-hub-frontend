@@ -5,8 +5,9 @@ export default async function () {
   const cache = await caches.open('v1')
   const [wasmCache, zkeyCache] = await getCacheFiles(cache, wasmUrl, zkeyUrl)
 
-  if (wasmCache && zkeyCache)
+  if (wasmCache && zkeyCache) {
     return convertResArrToUint8Array([wasmCache, zkeyCache])
+  }
 
   await cache.addAll([wasmUrl, zkeyUrl])
   const [addedWasmCache, addedZkeyCache] = await getCacheFiles(

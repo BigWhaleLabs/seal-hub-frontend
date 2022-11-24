@@ -11,8 +11,9 @@ export default function () {
       options={sealVerseData}
       staticPlaceholder={placeholder}
       onChange={(value) => {
-        if (value && value !== window.location.origin)
+        if (value && value !== window.location.origin) {
           window.open(value, '_blank')
+        }
       }}
       fitToItemSize
       withArrow

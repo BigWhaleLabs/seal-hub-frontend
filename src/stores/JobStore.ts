@@ -7,11 +7,12 @@ export class JobStore extends PersistableStore {
   proverAddress?: string
 
   checkJob() {
-    if (this.jobId && this.proverAddress)
+    if (this.jobId && this.proverAddress) {
       void startGeneration({
         proverAddress: this.proverAddress,
         generationWay: 'centralizedReloaded',
       })
+    }
   }
 
   cleanData() {

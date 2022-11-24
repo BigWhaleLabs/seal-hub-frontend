@@ -117,7 +117,7 @@ export function LinkText({
   onClick,
   children,
 }: ChildrenProp & { url?: string; internal?: boolean; onClick?: () => void }) {
-  if (url)
+  if (url) {
     return internal ? (
       <Link href={url} className={linkText}>
         {children}
@@ -132,6 +132,7 @@ export function LinkText({
         {children}
       </a>
     )
+  }
 
   return (
     <span className={linkText} onClick={() => onClick && onClick()}>
