@@ -54,8 +54,8 @@ export default function () {
 
         if (supportsModuleWorkers()) {
           const { generateInput } = new ComlinkWorker<
-            typeof import('../../helpers/proofs/createProof')
-          >(new URL('./../../../helpers/proofs/createProof', import.meta.url))
+            typeof import('../helpers/proofs/createProof')
+          >(new URL('../helpers/proofs/createProof', import.meta.url))
           AppStore.input = await generateInput(signature, baseMessage)
         } else {
           AppStore.input = generateInput(signature, baseMessage)
