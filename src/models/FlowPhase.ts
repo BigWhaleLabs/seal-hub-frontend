@@ -8,11 +8,11 @@ export interface PhaseContext {
 }
 
 export enum Phase {
-  INIT = 'INIT',
-  CHECK = 'CHECK_COMMITMENT',
-  READY_DECENTRALIZED = 'READY_FOR_GENERATING_PROOF_DECENTRALIZED',
-  READY_CENTRALIZED = 'READY_FOR_GENERATING_PROOF_CENTRALIZED',
-  GENERATE = 'GENERATE_PROOF',
-  ADD_TO_CHAIN = 'ADD_TO_CHAIN',
-  SUCCESS = 'SUCCESS',
+  init = 'init',
+  check = 'checkCommitment',
+  readyDecentralized = 'readyDecentralized',
+  readyCentralized = 'readyCentralized',
+  generate = 'generateProof',
+  addToChain = 'addToChain',
+  success = 'success',
 }

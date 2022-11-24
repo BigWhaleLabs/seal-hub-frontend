@@ -34,6 +34,6 @@ export default async function (
     return mimc7.hash(hashInput)
   } catch (e) {
     console.error(e)
-    throw { type: ErrorType.COMMITMENT, error: e }
+    throw { type: ErrorType.commitment, error: e }
   }
 }

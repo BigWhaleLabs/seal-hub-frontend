@@ -7,10 +7,10 @@ import scheduleProofJob from 'helpers/proofs/scheduleProofJob'
 
 const getProofByWay = {
   centralized: async (proverAddress?: string) => {
-    if (!proverAddress) throw new Error(ErrorType.PROVER)
+    if (!proverAddress) throw new Error(ErrorType.prover)
 
     const { input } = AppStore
-    if (!input) throw new Error(ErrorType.MISSING_DATA)
+    if (!input) throw new Error(ErrorType.missingData)
     JobStore.proverAddress = proverAddress
 
     const jobId = await scheduleProofJob(input, proverAddress)
@@ -18,12 +18,12 @@ const getProofByWay = {
   },
   centralizedReloaded: () => {
     const { proverAddress, jobId } = JobStore
-    if (!proverAddress || !jobId) throw new Error(ErrorType.MISSING_DATA)
+    if (!proverAddress || !jobId) throw new Error(ErrorType.missingData)
 
     return fetchCentralizedProof(jobId, proverAddress)
   },
   decentralized: () => {
-    if (!AppStore.input) throw new Error(ErrorType.MISSING_DATA)
+    if (!AppStore.input) throw new Error(ErrorType.missingData)
 
     return generateDecentralizedProof(AppStore.input)
   },

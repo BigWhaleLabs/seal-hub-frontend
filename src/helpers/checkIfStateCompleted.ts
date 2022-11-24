@@ -5,12 +5,12 @@ import JobStore from 'stores/JobStore'
 
 export default function (state: States) {
   switch (state) {
-    case States.CHECK_COMMITMENT:
+    case States.checkCommitment:
       return !!AppStore.commitment || !!JobStore.jobId
-    case States.GENERATE_PROOF:
+    case States.generateProof:
       return !!AppStore.proof
-    case States.GENERATE_COMMITMENT:
-      return AppStore.phase === Phase.SUCCESS
+    case States.generateCommitment:
+      return AppStore.phase === Phase.success
     default:
       return false
   }
