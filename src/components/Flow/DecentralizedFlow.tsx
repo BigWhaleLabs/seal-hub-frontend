@@ -3,7 +3,7 @@ import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import JobStore from 'stores/JobStore'
 import OptionStatus from 'components/StatusesList/OptionStatus'
-import SigningStates, { generatingFlow } from 'models/SigningStates'
+import SigningStates, { States, generatingFlow } from 'models/SigningStates'
 import StatusesList from 'components/StatusesList'
 import checkIfStateCompleted from 'helpers/checkIfStateCompleted'
 
@@ -12,9 +12,10 @@ export default function () {
   const { jobId } = useSnapshot(JobStore)
   const { subTitle } = SigningStates[flowState]
 
-  const serverCaption = jobId
-    ? ' Feel free to leave and come back—we’ll still be here.'
-    : ''
+  const serverCaption =
+    jobId && flowState === States.generateProof
+      ? ' Feel free to leave and come back—we’ll still be here.'
+      : ''
   const description = subTitle + serverCaption
   const jobStatus = error ? errorList[error] : description
   const isError = !!error
