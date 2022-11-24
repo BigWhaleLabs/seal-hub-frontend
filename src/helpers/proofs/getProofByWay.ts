@@ -8,7 +8,10 @@ import scheduleProofJob from 'helpers/proofs/scheduleProofJob'
 const getProofByWay = {
   centralized: async (proverAddress?: string) => {
     if (!proverAddress) throw new Error(ErrorType.prover)
-    if (!proverAddress.startsWith('https://')) {
+    if (
+      !proverAddress.startsWith('https://') &&
+      !proverAddress.startsWith('http://')
+    ) {
       proverAddress = `https://${proverAddress}`
     }
     const { input } = AppStore
