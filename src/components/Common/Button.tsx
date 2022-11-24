@@ -1,4 +1,4 @@
-import { CaptionText, GradientText } from 'components/Text'
+import { CaptionText, GradientText } from 'components/Common/Text'
 import { HTMLAttributes } from 'preact/compat'
 import {
   alignItems,

@@ -7,10 +7,10 @@ import { useAccount, useSigner } from 'wagmi'
 import { useCallback, useEffect } from 'preact/hooks'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
-import Button from 'components/Button'
-import ErrorBlock from 'components/ErrorBlock'
+import Button from 'components/Common/Button'
+import ErrorBlock from 'components/Common/ErrorBlock'
 import SigningStates, { States } from 'models/SigningStates'
-import StatusBlock from 'components/StatusBlock'
+import StatusBlock from 'components/Common/StatusBlock'
 import getCommitment from 'helpers/getCommitment'
 import hasCommitment from 'helpers/hasCommitment'
 import isMobileDevice from 'helpers/isMobile'
@@ -54,13 +54,14 @@ export default function () {
 
         if (supportsModuleWorkers()) {
           const { generateInput } = new ComlinkWorker<
-            typeof import('../helpers/proofs/createProof')
-          >(new URL('../helpers/proofs/createProof', import.meta.url))
+            typeof import('../../helpers/proofs/createProof')
+          >(new URL('./../../../helpers/proofs/createProof', import.meta.url))
           AppStore.input = await generateInput(signature, baseMessage)
         } else {
           AppStore.input = generateInput(signature, baseMessage)
         }
 
+        if (!AppStore.input) return
         AppStore.commitment = await getCommitment(
           AppStore.input,
           signature,

@@ -3,9 +3,9 @@ import { useAccount } from 'wagmi'
 import { useEffect } from 'preact/hooks'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
-import BottomCard from 'components/BottomCard'
+import BottomCard from 'components/CardsLayout/BottomCard'
 import PhaseData from 'data/phaseData'
-import TopCard from 'components/TopCard'
+import TopCard from 'components/CardsLayout/TopCard'
 import classnames, {
   alignItems,
   display,

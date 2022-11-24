@@ -1,8 +1,8 @@
-import { AccentText, BodyText, StatusText } from 'components/Text'
+import { AccentText, BodyText, StatusText } from 'components/Common/Text'
 import { JSX } from 'preact/jsx-runtime'
 import Checkmark from 'icons/Checkmark'
 import Spinner from 'icons/Spinner'
-import StatusCard from 'components/StatusCard'
+import StatusCard from 'components/Common/StatusCard'
 import classnames, { alignItems, display, gap } from 'classnames/tailwind'
 
 const loadingBlock = classnames(

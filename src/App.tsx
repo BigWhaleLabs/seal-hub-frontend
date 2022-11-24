@@ -1,6 +1,6 @@
 import '@rainbow-me/rainbowkit/styles.css'
 import { Redirect, Route, Router, Switch } from 'wouter'
-import Footer from 'components/Footer'
+import Footer from 'components/Common/Footer'
 import JobStore from 'stores/JobStore'
 import Main from 'pages/Main'
 import Navbar from 'components/Navbar'

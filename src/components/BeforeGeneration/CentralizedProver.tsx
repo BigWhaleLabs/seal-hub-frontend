@@ -1,4 +1,4 @@
-import { BodyText, GradientText } from 'components/Text'
+import { BodyText, GradientText } from 'components/Common/Text'
 import { Phase } from 'models/FlowPhase'
 import { cursor } from 'classnames/tailwind'
 import { truncateMiddleIfNeeded } from '@big-whale-labs/frontend-utils'

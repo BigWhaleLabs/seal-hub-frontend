@@ -1,8 +1,8 @@
-import { BodyText, GradientText } from 'components/Text'
+import { BodyText, GradientText } from 'components/Common/Text'
 import { Phase } from 'models/FlowPhase'
 import AppStore from 'stores/AppStore'
 import BottomButtonsWrapper from 'components/BeforeGeneration/BottomButtonsWrapper'
-import CentralizedProverHint from 'components/CentralizedProverHint'
+import CentralizedProverHint from 'components/Common/CentralizedProverHint'
 import GenerationContainer from 'components/BeforeGeneration/GenerationContainer'
 import StartGenerationButton from 'components/BeforeGeneration/StartGenerationButton'
 import classnames, {

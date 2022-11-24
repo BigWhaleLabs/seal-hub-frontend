@@ -1,8 +1,8 @@
-import { AccentText } from 'components/Text'
+import { AccentText } from 'components/Common/Text'
 import { useDisconnect, useNetwork } from 'wagmi'
 import AppStore from 'stores/AppStore'
 import Dropdown from 'components/Dropdown'
-import ENSAddress from 'components/ENSAddress'
+import ENSAddress from 'components/Navbar/ENSAddress'
 import getEtherscanAddressUrl from 'helpers/getEtherscanAddressUrl'
 
 const options = [

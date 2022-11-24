@@ -1,6 +1,6 @@
-import { SocialLink } from 'components/Text'
+import { SocialLink } from 'components/Common/Text'
 import { displayFrom } from 'helpers/visibilityClassnames'
-import Delimiter from 'components/Delimiter'
+import Delimiter from 'components/Common/Delimiter'
 import Discord from 'icons/Discord'
 import Twitter from 'icons/Twitter'
 import classnames, { alignItems, display, space } from 'classnames/tailwind'
