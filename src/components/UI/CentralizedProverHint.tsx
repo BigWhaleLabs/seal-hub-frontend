@@ -1,5 +1,5 @@
 import { displayFrom, displayTo } from 'helpers/visibilityClassnames'
-import CharInCircle from 'components/CharInCircle'
+import CharInCircle from 'components/Tooltip/CharInCircle'
 import Tooltip from 'components/Tooltip'
 
 const TooltipHint = ({

@@ -1,5 +1,5 @@
 import { Tooltip } from '@material-tailwind/react/components/Tooltip'
-import { highlightedText } from 'components/Text'
+import { highlightedText } from 'components/UI/Text'
 import { placement } from '@material-tailwind/react/types/components/popover'
 import ChildrenProp from 'models/ChildrenProp'
 import classnames, {

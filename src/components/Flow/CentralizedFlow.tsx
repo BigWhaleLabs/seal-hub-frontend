@@ -1,6 +1,6 @@
-import { BodyText, LinkText } from 'components/Text'
+import { BodyText, LinkText } from 'components/UI/Text'
 import { useState } from 'preact/hooks'
-import InputField from 'components/InputField'
+import InputField from 'components/UI/InputField'
 import Option from 'components/StatusesList/Option'
 import StartGenerationButton from 'components/BeforeGeneration/StartGenerationButton'
 import StatusesList from 'components/StatusesList'

@@ -1,5 +1,5 @@
-import { AccentText, HeaderText } from 'components/Text'
-import Line from 'components/Line'
+import { AccentText, HeaderText } from 'components/UI/Text'
+import Line from 'components/Highlighter/Line'
 import classnames, {
   alignItems,
   display,

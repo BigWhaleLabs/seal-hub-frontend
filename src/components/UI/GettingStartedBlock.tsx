@@ -1,7 +1,7 @@
-import { BodyText } from 'components/Text'
+import { BodyText } from 'components/UI/Text'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
-import ConnectWalletButton from 'components/ConnectWalletButton'
+import ConnectWalletButton from 'components/UI/ConnectWalletButton'
 import Highlighter from 'components/Highlighter'
 import classnames, {
   alignItems,

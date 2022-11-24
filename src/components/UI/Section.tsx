@@ -1,5 +1,5 @@
 import { ComponentChildren } from 'preact'
-import { SectionTitle } from 'components/Text'
+import { SectionTitle } from 'components/UI/Text'
 import ChildrenProp from 'models/ChildrenProp'
 import classnames, { display, flexDirection, gap } from 'classnames/tailwind'
 

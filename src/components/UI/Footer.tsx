@@ -1,6 +1,6 @@
-import { FooterLink, SocialLink } from 'components/Text'
+import { FooterLink, SocialLink } from 'components/UI/Text'
 import { displayFrom, displayTo } from 'helpers/visibilityClassnames'
-import Delimiter from 'components/Delimiter'
+import Delimiter from 'components/UI/Delimiter'
 import Discord from 'icons/Discord'
 import FooterLogo from 'icons/FooterLogo'
 import Twitter from 'icons/Twitter'

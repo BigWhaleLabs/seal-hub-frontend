@@ -3,10 +3,10 @@ import {
   HeaderText,
   LinkText,
   SubheaderCardText,
-} from 'components/Text'
+} from 'components/UI/Text'
 import { space } from 'classnames/tailwind'
-import Card from 'components/Card'
-import Section from 'components/Section'
+import Card from 'components/UI/Card'
+import Section from 'components/UI/Section'
 import useScrollToTop from 'helpers/useScrollToTop'
 
 export default function () {

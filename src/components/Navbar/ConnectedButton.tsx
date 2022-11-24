@@ -1,4 +1,4 @@
-import { AccentText } from 'components/Text'
+import { AccentText } from 'components/UI/Text'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { displayFrom, displayTo } from 'helpers/visibilityClassnames'
 import AccountBlock from 'components/Navbar/AccountBlock'

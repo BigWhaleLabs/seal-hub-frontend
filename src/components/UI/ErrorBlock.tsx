@@ -1,6 +1,6 @@
-import { AccentText, BodyText } from 'components/Text'
+import { AccentText, BodyText } from 'components/UI/Text'
 import { JSX } from 'preact/jsx-runtime'
-import StatusCard from 'components/StatusCard'
+import StatusCard from 'components/UI/StatusCard'
 
 export default function ({
   transparent,

@@ -1,5 +1,10 @@
-import { BodyText, GradientText, HeaderText, LinkText } from 'components/Text'
-import Card from 'components/Card'
+import {
+  BodyText,
+  GradientText,
+  HeaderText,
+  LinkText,
+} from 'components/UI/Text'
+import Card from 'components/UI/Card'
 import SealStar from 'icons/SealStar'
 import classnames, {
   borderColor,

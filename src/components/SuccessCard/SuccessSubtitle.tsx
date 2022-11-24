@@ -1,4 +1,4 @@
-import { LinkText } from 'components/Text'
+import { LinkText } from 'components/UI/Text'
 import { useAccount, useDisconnect } from 'wagmi'
 import AppStore from 'stores/AppStore'
 

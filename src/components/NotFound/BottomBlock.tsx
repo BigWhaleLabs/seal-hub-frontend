@@ -1,6 +1,6 @@
-import { BodyText } from 'components/Text'
+import { BodyText } from 'components/UI/Text'
 import { Link, useLocation } from 'wouter'
-import Button from 'components/Button'
+import Button from 'components/UI/Button'
 import Highlighter from 'components/Highlighter'
 import classnames, {
   alignItems,
