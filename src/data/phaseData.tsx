@@ -4,7 +4,7 @@ import CentralizedProver from 'components/BeforeGeneration/CentralizedProver'
 import DecentralizedFlow from 'components/Flow/DecentralizedFlow'
 import DecentralizedProver from 'components/BeforeGeneration/DecentralizedProver'
 import GettingStartedBlock from 'components/Common/GettingStartedBlock'
-import SigningFlow from 'components/Flow/SigningFlow'
+import SigningFlow from 'components/SigningFlow'
 import SuccessCardBlock from 'components/SuccessCard/SuccessCardBlock'
 import SuccessSubtitle from 'components/SuccessCard/SuccessSubtitle'
 
