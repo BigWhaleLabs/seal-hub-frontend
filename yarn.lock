@@ -1520,6 +1520,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@big-whale-labs/constants@npm:^0.1.39":
+  version: 0.1.39
+  resolution: "@big-whale-labs/constants@npm:0.1.39"
+  checksum: 69807bda7e9ffb4561d1adb9fb62d34257b3099c1d52131adc55e4b10a859135200bc22ce8a80bce28a584ebba76e4c4f6254988415fbbddb8ad8cb20573b742
+  languageName: node
+  linkType: hard
+
 "@big-whale-labs/frontend-utils@npm:^0.1.2":
   version: 0.1.2
   resolution: "@big-whale-labs/frontend-utils@npm:0.1.2"
@@ -15979,7 +15986,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "seal-hub-frontend@workspace:."
   dependencies:
-    "@big-whale-labs/constants": ^0.1.37
+    "@big-whale-labs/constants": ^0.1.39
     "@big-whale-labs/frontend-utils": ^0.1.2
     "@big-whale-labs/seal-hub-contract": ^0.1.0
     "@big-whale-labs/seal-hub-kit": ^0.0.1
