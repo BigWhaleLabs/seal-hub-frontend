@@ -17,9 +17,7 @@ export default function () {
       ? 'Feel free to leave and come back — we’ll still be here.'
       : ''
   const queueCaption =
-    queuePosition !== undefined &&
-    queuePosition > 0 &&
-    `Your position in queue is: ${queuePosition}`
+    queuePosition && `Your position in queue is: ${queuePosition}`
 
   const description = subTitle + ' ' + serverCaption + ' ' + queueCaption
   const jobStatus = error ? errorList[error] : description
