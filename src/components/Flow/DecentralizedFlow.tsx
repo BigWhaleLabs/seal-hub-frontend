@@ -16,8 +16,9 @@ export default function () {
     jobId && flowState === States.generateProof
       ? ' Feel free to leave and come back — we’ll still be here.'
       : ''
-  const queueCaption =
-    queuePosition && ` Your position in queue is: ${queuePosition}`
+  const queueCaption = queuePosition
+    ? ` Your position in queue is: ${queuePosition}`
+    : ''
 
   const description = subTitle + serverCaption + queueCaption
   const jobStatus = error ? errorList[error] : description
