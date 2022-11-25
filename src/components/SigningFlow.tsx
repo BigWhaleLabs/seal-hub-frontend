@@ -94,7 +94,6 @@ export default function () {
   return error ? (
     <StatusBlock
       error
-      loadingText=""
       subtitle={errorList[error]}
       content={<SignError onClick={reSignMessage} />}
     />
