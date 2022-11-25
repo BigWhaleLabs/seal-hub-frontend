@@ -11,7 +11,9 @@ export default cleanEnv(import.meta.env, {
   VITE_ETH_RPC: str({ default: ETH_RPC }),
   VITE_ETH_NETWORK: str({ default: ETH_NETWORK }),
   VITE_SEAL_HUB_CONTRACT: str(),
-  VITE_SEAL_HUB_PROVER_ADDRESS: str(),
+  VITE_SEAL_HUB_PROVER_ADDRESS: str({
+    default: 'https://prover.hub.sealcred.xyz',
+  }),
   VITE_GSN_PAYMASTER_CONTRACT_ADDRESS: str({
     default: GSN_PAYMASTER_CONTRACT_ADDRESS,
   }),
