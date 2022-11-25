@@ -18,9 +18,15 @@ export default async function (
       position,
       result: jobResult,
     } = await sendRequest(id, proverAddress)
-    if (status === JobStatus.completed) result = makeTransaction(jobResult)
-    if (status === JobStatus.scheduled) JobStore.queuePosition = position
+    if (status === JobStatus.completed) {
+      result = makeTransaction(jobResult)
+      JobStore.queuePosition = undefined
+    }
+    if (status === JobStatus.scheduled || status === JobStatus.running) {
+      JobStore.queuePosition = position
+    }
     if (status === JobStatus.failed || status === JobStatus.cancelled) {
+      JobStore.queuePosition = undefined
       throw new Error(ErrorType.commitment)
     }
 
