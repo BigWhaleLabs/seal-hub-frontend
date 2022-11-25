@@ -20,13 +20,13 @@ export default function ({
   return (
     <StatusCard>
       {children}
-      {statusDescription ? (
+      {!!statusDescription && (
         <>
           <Delimiter horizontal />
           <StatusText center>{statusDescription}</StatusText>
         </>
-      ) : undefined}
-      {hasError ? (
+      )}
+      {hasError && (
         <div className={buttonsWrapper}>
           <Button small onClick={continueFlowOnError}>
             Try again
@@ -41,7 +41,7 @@ export default function ({
             Start over
           </Button>
         </div>
-      ) : undefined}
+      )}
     </StatusCard>
   )
 }
