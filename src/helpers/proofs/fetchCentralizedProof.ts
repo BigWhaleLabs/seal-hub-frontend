@@ -1,6 +1,7 @@
 import { ECDSAProofStruct } from '@big-whale-labs/seal-hub-contract/dist/typechain/contracts/SealHub'
 import { ErrorType } from 'models/ErrorType'
 import JobStatus from 'models/JobStatus'
+import JobStore from 'stores/JobStore'
 import RequestJobResult from 'models/JobResult'
 import api from 'helpers/api'
 import makeTransaction from 'helpers/makeTransaction'
@@ -12,8 +13,13 @@ export default async function (
   let result: ECDSAProofStruct = {} as ECDSAProofStruct
 
   while (!Object.keys(result).length) {
-    const { status, result: jobResult } = await sendRequest(id, proverAddress)
+    const {
+      status,
+      position,
+      result: jobResult,
+    } = await sendRequest(id, proverAddress)
     if (status === JobStatus.completed) result = makeTransaction(jobResult)
+    if (status === JobStatus.scheduled) JobStore.queuePosition = position
     if (status === JobStatus.failed || status === JobStatus.cancelled) {
       throw new Error(ErrorType.commitment)
     }

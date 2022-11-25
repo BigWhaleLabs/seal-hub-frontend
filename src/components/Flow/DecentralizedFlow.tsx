@@ -9,14 +9,19 @@ import checkIfStateCompleted from 'helpers/checkIfStateCompleted'
 
 export default function () {
   const { flowState, error } = useSnapshot(AppStore)
-  const { jobId } = useSnapshot(JobStore)
+  const { jobId, queuePosition } = useSnapshot(JobStore)
   const { subTitle } = SigningStates[flowState]
 
   const serverCaption =
     jobId && flowState === States.generateProof
-      ? ' Feel free to leave and come back—we’ll still be here.'
+      ? 'Feel free to leave and come back—we’ll still be here.'
       : ''
-  const description = subTitle + serverCaption
+  const queueCaption =
+    queuePosition && queuePosition > 0
+      ? `Your position in queue is: ${queuePosition}`
+      : 'Generating your proof right now'
+
+  const description = subTitle + ' ' + serverCaption + ' ' + queueCaption
   const jobStatus = error ? errorList[error] : description
   const isError = !!error
 
