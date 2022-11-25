@@ -19,18 +19,19 @@ export default async function ({
   AppStore.flowState = States.generateProof
   AppStore.preferredProofWay = generationWay
   try {
-    const txData = await getProofByWay[generationWay](proverAddress)
-    AppStore.proof = txData
+    if (!AppStore.proof) {
+      const txData = await getProofByWay[generationWay](proverAddress)
+      AppStore.proof = txData
+    }
     AppStore.flowState = States.generateCommitment
     await generateCommitment(AppStore.proof)
     AppStore.phase = Phase.success
     JobStore.cleanData()
+    delete AppStore.proof
+    delete AppStore.input
   } catch (e) {
     console.error(e)
     AppStore.flowState = States.error
     AppStore.error = isKnownError(e) ? e : ErrorType.unknown
-  } finally {
-    delete AppStore.proof
-    delete AppStore.input
   }
 }
