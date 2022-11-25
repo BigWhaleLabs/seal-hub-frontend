@@ -5,6 +5,7 @@ import startGeneration from 'helpers/proofs/startGeneration'
 export class JobStore extends PersistableStore {
   jobId?: string
   proverAddress?: string
+  queuePosition?: number
 
   checkJob() {
     if (this.jobId && this.proverAddress) {
