@@ -1520,6 +1520,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@big-whale-labs/constants@npm:^0.1.39":
+  version: 0.1.39
+  resolution: "@big-whale-labs/constants@npm:0.1.39"
+  checksum: 69807bda7e9ffb4561d1adb9fb62d34257b3099c1d52131adc55e4b10a859135200bc22ce8a80bce28a584ebba76e4c4f6254988415fbbddb8ad8cb20573b742
+  languageName: node
+  linkType: hard
+
 "@big-whale-labs/frontend-utils@npm:^0.1.2":
   version: 0.1.2
   resolution: "@big-whale-labs/frontend-utils@npm:0.1.2"
@@ -1559,9 +1566,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@big-whale-labs/seal-hub-kit@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "@big-whale-labs/seal-hub-kit@npm:0.0.1"
+"@big-whale-labs/seal-hub-kit@npm:^0.0.2-1":
+  version: 0.0.2
+  resolution: "@big-whale-labs/seal-hub-kit@npm:0.0.2"
   dependencies:
     "@big-whale-labs/constants": ^0.1.38
     "@big-whale-labs/seal-hub-contract": ^0.1.0
@@ -1571,7 +1578,7 @@ __metadata:
     circomlibjs: ^0.1.7
     elliptic: ^6.5.4
     ethers: ^5.7.2
-  checksum: 8ac80c3ee6f2093a34cc0c9d341a63666d2ff61a8101be3296e2e89c50f036aa0d018c93a732f5805a020b47401129d9e01c2b66bd5f6c217f0540b58450ce77
+  checksum: 74bb470001d48e40d7c588f82e824d9f1e4255e2e5ee65b35bc71771a19c5a56ed0aa86a6abdecbe45060b8808204e9337cedc93d09992b577717bde9fd164b8
   languageName: node
   linkType: hard
 
@@ -15979,10 +15986,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "seal-hub-frontend@workspace:."
   dependencies:
-    "@big-whale-labs/constants": ^0.1.37
+    "@big-whale-labs/constants": ^0.1.39
     "@big-whale-labs/frontend-utils": ^0.1.2
     "@big-whale-labs/seal-hub-contract": ^0.1.0
-    "@big-whale-labs/seal-hub-kit": ^0.0.1
+    "@big-whale-labs/seal-hub-kit": ^0.0.2-1
     "@big-whale-labs/stores": ^0.1.18
     "@esbuild-plugins/node-globals-polyfill": ^0.1.1
     "@esbuild-plugins/node-modules-polyfill": ^0.1.4
