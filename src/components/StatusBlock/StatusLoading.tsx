@@ -22,9 +22,10 @@ export default function ({
     <AccentText>
       <StatusText color="success">
         <span className={loadingBlock}>
-          {loadingText} {completed ? <Checkmark /> : <Spinner />}
+          {loadingText}
+          {completed ? <Checkmark /> : <Spinner />}
         </span>
-      </StatusText>{' '}
+      </StatusText>
     </AccentText>
   )
 }
