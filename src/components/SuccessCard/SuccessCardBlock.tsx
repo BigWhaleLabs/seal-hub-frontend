@@ -4,7 +4,7 @@ import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import Checkmark from 'icons/Checkmark'
 import SealStar from 'icons/SealStar'
-import StatusBlock from 'components/Common/StatusBlock'
+import StatusBlock from 'components/StatusBlock'
 import classnames, { alignItems, display, gap } from 'classnames/tailwind'
 import getEtherscanTxUrl from 'helpers/getEtherscanTxUrl'
 
@@ -47,5 +47,5 @@ export default function () {
     )
   }
 
-  return <StatusBlock loadingText="" subtitle={<StatusBlockSubtitle />} />
+  return <StatusBlock subtitle={<StatusBlockSubtitle />} />
 }

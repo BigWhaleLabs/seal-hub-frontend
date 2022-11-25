@@ -8,9 +8,8 @@ import { useCallback, useEffect } from 'preact/hooks'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import Button from 'components/Common/Button'
-import ErrorBlock from 'components/Common/ErrorBlock'
 import SigningStates, { States } from 'models/SigningStates'
-import StatusBlock from 'components/Common/StatusBlock'
+import StatusBlock from 'components/StatusBlock'
 import generateInput from 'helpers/generateInput'
 import isMobileDevice from 'helpers/isMobile'
 import signMessage from 'helpers/signMessage'
@@ -93,7 +92,9 @@ export default function () {
   const { title, subTitle } = SigningStates[flowState]
 
   return error ? (
-    <ErrorBlock
+    <StatusBlock
+      error
+      loadingText=""
       subtitle={errorList[error]}
       content={<SignError onClick={reSignMessage} />}
     />

@@ -2,7 +2,6 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { Phase } from 'models/FlowPhase'
 import AppStore from 'stores/AppStore'
 import Button from 'components/Common/Button'
-import SigningFlow from 'components/SigningFlow'
 import Spinner from 'icons/Spinner'
 import classnames, {
   alignItems,
@@ -33,9 +32,7 @@ export default function () {
 
         return (
           <div className={container}>
-            {connected ? (
-              <SigningFlow />
-            ) : (
+            {!connected && (
               <Button onClick={openConnectModal}>Connect wallet</Button>
             )}
           </div>
