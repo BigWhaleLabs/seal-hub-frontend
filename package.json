@@ -28,7 +28,7 @@
     "@big-whale-labs/constants": "^0.1.37",
     "@big-whale-labs/frontend-utils": "^0.1.2",
     "@big-whale-labs/seal-hub-contract": "^0.1.0",
-    "@big-whale-labs/seal-hub-kit": "^0.0.1",
+    "@big-whale-labs/seal-hub-kit": "^0.0.3",
     "@big-whale-labs/stores": "^0.1.18",
     "@lottiefiles/react-lottie-player": "^3.4.9",
     "@material-tailwind/react": "^1.2.4",
