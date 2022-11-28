@@ -58,6 +58,18 @@ circle {
   stroke-linejoin: round;
 }
 
+.animate-draw-path:hover > path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: animate-draw-path 5s ease-in-out alternate infinite;
+}
+
+@keyframes animate-draw-path {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 ::selection {
   background: var(--selection);
 }

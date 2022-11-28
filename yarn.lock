@@ -2797,17 +2797,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lottiefiles/react-lottie-player@npm:^3.4.9":
-  version: 3.4.9
-  resolution: "@lottiefiles/react-lottie-player@npm:3.4.9"
-  dependencies:
-    lottie-web: ^5.7.8
-  peerDependencies:
-    react: 16 - 18
-  checksum: 0be71bbc1c519e8c5cbd457a4eda356745a1ed7e7ef3e1ff38dace1ae2eaa24ebb1d94628b28e39d586ced7f283d3b10d24396b2faa7168b0a7fe4dab7d2f424
-  languageName: node
-  linkType: hard
-
 "@material-tailwind/react@npm:^1.2.4":
   version: 1.2.4
   resolution: "@material-tailwind/react@npm:1.2.4"
@@ -12452,13 +12441,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lottie-web@npm:^5.7.8":
-  version: 5.9.6
-  resolution: "lottie-web@npm:5.9.6"
-  checksum: aed6a1d0c24eefb6c42a42aae18f29737746551cfdc86319f1b9675f5bc276ba26971e8d2b0e1498df880571fe4bfe2fc87885a1d4f8a318d5e4e5b939b7a474
-  languageName: node
-  linkType: hard
-
 "lower-case@npm:^2.0.2":
   version: 2.0.2
   resolution: "lower-case@npm:2.0.2"
@@ -15993,7 +15975,6 @@ __metadata:
     "@big-whale-labs/stores": ^0.1.18
     "@esbuild-plugins/node-globals-polyfill": ^0.1.1
     "@esbuild-plugins/node-modules-polyfill": ^0.1.4
-    "@lottiefiles/react-lottie-player": ^3.4.9
     "@material-tailwind/react": ^1.2.4
     "@opengsn/provider": 3.0.0-beta.1
     "@preact/preset-vite": ^2.4.0

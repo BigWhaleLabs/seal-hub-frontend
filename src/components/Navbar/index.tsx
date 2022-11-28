@@ -1,5 +1,4 @@
-import { Player } from '@lottiefiles/react-lottie-player'
-import { useCallback, useRef, useState } from 'preact/hooks'
+import { useCallback, useState } from 'preact/hooks'
 import AnimatedLogo from 'icons/AnimatedLogo'
 import RightBlock from 'components/Navbar/RightBlock'
 import SiteLogo from 'components/Navbar/SiteLogo'
@@ -33,16 +32,6 @@ const navbar = (visible?: boolean, withoutRightBlock?: boolean) =>
     margin('mb-8')
   )
 
-const NavLogo = () => {
-  const lottieRef = useRef<Player>()
-
-  return (
-    <div onTouchStart={() => lottieRef.current?.play()}>
-      <Player ref={lottieRef} src={AnimatedLogo} hover />
-    </div>
-  )
-}
-
 export default function ({ hideWalletPart }: { hideWalletPart?: boolean }) {
   const [backgroundVisible, setBackgroundVisible] = useState(false)
   const onScroll = useCallback(() => {
@@ -52,7 +41,7 @@ export default function ({ hideWalletPart }: { hideWalletPart?: boolean }) {
 
   return (
     <nav className={navbar(backgroundVisible, hideWalletPart)}>
-      <SiteLogo alpha logoText="SealHub" logo={<NavLogo />} />
+      <SiteLogo alpha logoText="SealHub" logo={<AnimatedLogo />} />
       {!hideWalletPart && <RightBlock />}
     </nav>
   )
