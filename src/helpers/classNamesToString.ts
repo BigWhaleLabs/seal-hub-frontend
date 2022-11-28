@@ -10,6 +10,7 @@ type AllowedExtraClassnames =
   | 'accent-text-stroke'
   | 'empty:border-gray-600'
   | 'hover:pause'
+  | 'animate-draw-path'
 
 export default function (
   ...classNames: (AllowedExtraClassnames | TTailwindString | undefined | null)[]
