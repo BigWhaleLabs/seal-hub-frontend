@@ -1,5 +1,3 @@
-/* eslint-disable no-relative-import-paths/no-relative-import-paths */
-// Used by worker, which accepts only absolute paths, you can use this function as usual
 import { generateSignatureInputs } from '@big-whale-labs/seal-hub-kit'
 
 export default function generateInput(signature: string, message: string) {
