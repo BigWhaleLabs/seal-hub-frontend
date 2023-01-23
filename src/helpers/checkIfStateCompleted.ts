@@ -8,7 +8,7 @@ export default function (state: States) {
     case States.checkCommitment:
       return !!AppStore.commitment || !!JobStore.jobId
     case States.generateProof:
-      return !!AppStore.proof
+      return !!AppStore.ecdsaProof && !!AppStore.uPrecomputesProof
     case States.generateCommitment:
       return AppStore.phase === Phase.success
     default:

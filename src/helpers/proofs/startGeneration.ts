@@ -19,15 +19,16 @@ export default async function ({
   AppStore.flowState = States.generateProof
   AppStore.preferredProofWay = generationWay
   try {
-    if (!AppStore.proof) {
+    if (!AppStore.ecdsaProof || !AppStore.uPrecomputesProof) {
       const txData = await getProofByWay[generationWay](proverAddress)
       AppStore.proof = txData
     }
     AppStore.flowState = States.generateCommitment
-    await generateCommitment(AppStore.proof)
+    await generateCommitment(AppStore.ecdsaProof, AppStore.uPrecomputesProof)
     AppStore.phase = Phase.success
     JobStore.cleanData()
-    delete AppStore.proof
+    delete AppStore.ecdsaProof
+    delete AppStore.uPrecomputesProof
     delete AppStore.input
   } catch (e) {
     console.error(e)

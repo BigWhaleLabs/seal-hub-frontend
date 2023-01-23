@@ -1,6 +1,6 @@
-import { ProofInput } from 'models/ProofInput'
 import JSONbig from 'json-bigint'
 import JobStore from 'stores/JobStore'
+import ProofInput from 'models/ProofInput'
 import api from 'helpers/api'
 
 interface JobResponse {

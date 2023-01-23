@@ -1,4 +1,4 @@
-import { ProofInput } from 'models/ProofInput'
+import ProofInput from 'models/ProofInput'
 import createProof from 'helpers/proofs/createProof'
 import makeTransaction from 'helpers/makeTransaction'
 

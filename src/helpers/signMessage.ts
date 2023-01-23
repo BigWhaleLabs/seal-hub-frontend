@@ -1,10 +1,10 @@
 import { ErrorType } from 'models/ErrorType'
 import { Signer } from 'ethers'
-import { createMessage } from '@big-whale-labs/seal-hub-kit'
+import { getMessage } from '@big-whale-labs/seal-hub-kit'
 
-export default async function (address: string, signer: Signer) {
+export default async function (signer: Signer) {
   try {
-    const baseMessage = createMessage(address)
+    const baseMessage = getMessage()
     const signature = await signer.signMessage(baseMessage)
 
     return { baseMessage, signature }

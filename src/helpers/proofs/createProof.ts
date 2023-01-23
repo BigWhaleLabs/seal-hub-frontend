@@ -1,4 +1,4 @@
-import { ProofInput } from 'models/ProofInput'
+import ProofInput from 'models/ProofInput'
 import ProofResult from 'models/ProofResult'
 import getECDSACheckerFiles from 'helpers/getECDSACheckerFiles'
 

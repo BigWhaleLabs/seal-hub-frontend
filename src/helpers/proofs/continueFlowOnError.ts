@@ -5,8 +5,12 @@ import generateCommitment from 'helpers/generateCommitment'
 import startGeneration from 'helpers/proofs/startGeneration'
 
 export default async function () {
-  if (AppStore.flowState === States.generateCommitment && AppStore.proof) {
-    await generateCommitment(AppStore.proof)
+  if (
+    AppStore.flowState === States.generateCommitment &&
+    AppStore.ecdsaProof &&
+    AppStore.uPrecomputesProof
+  ) {
+    await generateCommitment(AppStore.ecdsaProof, AppStore.uPrecomputesProof)
     return
   }
 

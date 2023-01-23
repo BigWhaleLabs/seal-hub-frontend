@@ -1,7 +1,10 @@
 import { ErrorType, ThrownError, errorList } from 'models/ErrorType'
 import { Phase } from 'models/FlowPhase'
 import { Signer } from 'ethers'
-import { generateCommitment, hasCommitment } from '@big-whale-labs/seal-hub-kit'
+import {
+  getCommitmentFromSignature,
+  isCommitmentRegistered,
+} from '@big-whale-labs/seal-hub-kit'
 import { margin } from 'classnames/tailwind'
 import { useAccount, useProvider, useSigner } from 'wagmi'
 import { useCallback, useEffect } from 'preact/hooks'
@@ -44,7 +47,7 @@ export default function () {
       AppStore.phase = Phase.check
 
       try {
-        const { baseMessage, signature } = await signMessage(address, signer)
+        const { baseMessage, signature } = await signMessage(signer)
 
         AppStore.message = baseMessage
         AppStore.signature = signature
@@ -61,11 +64,14 @@ export default function () {
         }
 
         if (!AppStore.input) return
-        AppStore.commitment = await generateCommitment(signature, baseMessage)
+        AppStore.commitment = await getCommitmentFromSignature(
+          signature,
+          baseMessage
+        )
 
         if (
           AppStore.commitment &&
-          (await hasCommitment(AppStore.commitment, provider))
+          (await isCommitmentRegistered(AppStore.commitment, provider))
         ) {
           AppStore.phase = Phase.success
           return
