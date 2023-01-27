@@ -1,4 +1,7 @@
-import { ECDSAProofStruct } from '@big-whale-labs/seal-hub-contract/dist/typechain/contracts/SealHub'
+import {
+  ECDSAProofStruct,
+  UPrecomputesProofStruct,
+} from '@big-whale-labs/seal-hub-contract/dist/typechain/contracts/SealHub'
 import { ErrorType } from 'models/ErrorType'
 import JobStatus from 'models/JobStatus'
 import JobStore from 'stores/JobStore'
@@ -6,12 +9,19 @@ import RequestJobResult from 'models/JobResult'
 import api from 'helpers/api'
 import makeTransaction from 'helpers/makeTransaction'
 
+type Result = {
+  ecdsaProof: ECDSAProofStruct
+  uPrecomputesProof: UPrecomputesProofStruct
+}
+
 export default async function (
   id: string,
   proverAddress: string
-): Promise<ECDSAProofStruct> {
-  let result: ECDSAProofStruct = {} as ECDSAProofStruct
-
+): Promise<Result> {
+  const result = {} as {
+    ecdsaProof: ECDSAProofStruct
+    uPrecomputesProof: UPrecomputesProofStruct
+  }
   while (!Object.keys(result).length) {
     const {
       status,
@@ -19,7 +29,12 @@ export default async function (
       result: jobResult,
     } = await sendRequest(id, proverAddress)
     if (status === JobStatus.completed) {
-      result = makeTransaction(jobResult)
+      result.ecdsaProof = makeTransaction<ECDSAProofStruct>(
+        jobResult.ecdsaProof
+      )
+      result.uPrecomputesProof = makeTransaction<UPrecomputesProofStruct>(
+        jobResult.uPrecomputesProof
+      )
       JobStore.queuePosition = undefined
     }
     if (status === JobStatus.scheduled || status === JobStatus.running) {
