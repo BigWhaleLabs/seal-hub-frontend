@@ -10,8 +10,8 @@ export default async function (input: ProofInput) {
   const [ecdsaProofResult, uPrecomputesProofResult] = await createProof(input)
 
   return {
-    ecdsaProof: makeTransaction<ECDSAProofStruct>(ecdsaProofResult),
-    uPrecomputesProof: makeTransaction<UPrecomputesProofStruct>(
+    ecdsaResult: makeTransaction<ECDSAProofStruct>(ecdsaProofResult),
+    uPrecomputesResult: makeTransaction<UPrecomputesProofStruct>(
       uPrecomputesProofResult
     ),
   }

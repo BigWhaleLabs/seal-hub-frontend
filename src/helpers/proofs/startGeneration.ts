@@ -22,8 +22,8 @@ export default async function ({
     let { ecdsaProof, uPrecomputesProof } = AppStore
     if (!ecdsaProof || !uPrecomputesProof) {
       const result = await getProofByWay[generationWay](proverAddress)
-      AppStore.ecdsaProof = ecdsaProof = result.ecdsaProof
-      AppStore.uPrecomputesProof = uPrecomputesProof = result.uPrecomputesProof
+      AppStore.ecdsaProof = ecdsaProof = result.ecdsaResult
+      AppStore.uPrecomputesProof = uPrecomputesProof = result.uPrecomputesResult
     }
     AppStore.flowState = States.generateCommitment
     await generateCommitment(ecdsaProof, uPrecomputesProof)

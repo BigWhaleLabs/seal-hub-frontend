@@ -10,18 +10,15 @@ import api from 'helpers/api'
 import makeTransaction from 'helpers/makeTransaction'
 
 type Result = {
-  ecdsaProof: ECDSAProofStruct
-  uPrecomputesProof: UPrecomputesProofStruct
+  ecdsaResult: ECDSAProofStruct
+  uPrecomputesResult: UPrecomputesProofStruct
 }
 
 export default async function (
   id: string,
   proverAddress: string
 ): Promise<Result> {
-  const result = {} as {
-    ecdsaProof: ECDSAProofStruct
-    uPrecomputesProof: UPrecomputesProofStruct
-  }
+  const result = {} as Result
   while (!Object.keys(result).length) {
     const {
       status,
@@ -29,11 +26,11 @@ export default async function (
       result: jobResult,
     } = await sendRequest(id, proverAddress)
     if (status === JobStatus.completed) {
-      result.ecdsaProof = makeTransaction<ECDSAProofStruct>(
-        jobResult.ecdsaProof
+      result.ecdsaResult = makeTransaction<ECDSAProofStruct>(
+        jobResult.ecdsaResult
       )
-      result.uPrecomputesProof = makeTransaction<UPrecomputesProofStruct>(
-        jobResult.uPrecomputesProof
+      result.uPrecomputesResult = makeTransaction<UPrecomputesProofStruct>(
+        jobResult.uPrecomputesResult
       )
       JobStore.queuePosition = undefined
     }
