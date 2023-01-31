@@ -1,8 +1,8 @@
 import { ExternalProvider, Web3Provider } from '@ethersproject/providers'
-import { SealHub__factory } from '@big-whale-labs/seal-hub-contract'
+import { Provider } from '@ethersproject/abstract-provider'
 import { Wallet } from 'ethers'
+import { connectSealHub } from '@big-whale-labs/seal-hub-kit'
 import defaultProvider from 'helpers/defaultProvider'
-import env from 'helpers/env'
 import relayProvider from 'helpers/relayProvider'
 
 export default async function () {
@@ -15,8 +15,7 @@ export default async function () {
     gsnProvider as unknown as ExternalProvider
   )
 
-  return SealHub__factory.connect(
-    env.VITE_SEAL_HUB_CONTRACT,
-    etherProvider.getSigner(wallet.address)
+  return connectSealHub(
+    etherProvider.getSigner(wallet.address) as unknown as Provider
   )
 }
