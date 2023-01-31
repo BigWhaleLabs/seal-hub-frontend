@@ -1513,10 +1513,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@big-whale-labs/constants@npm:^0.1.41, @big-whale-labs/constants@npm:^0.1.45":
+"@big-whale-labs/constants@npm:^0.1.45":
   version: 0.1.45
   resolution: "@big-whale-labs/constants@npm:0.1.45"
   checksum: 66c8060791860c722f378f083c0e8d6c9ee6f92f910d132e364a01703499f9af4ce220e0e609729c6213909571706412ba4caa29f6b0aaa0cada6af4f647a99f
+  languageName: node
+  linkType: hard
+
+"@big-whale-labs/constants@npm:^0.1.47":
+  version: 0.1.47
+  resolution: "@big-whale-labs/constants@npm:0.1.47"
+  checksum: 3e5191fdd5d82be3861c1d61ffc0b813efba73f2b7ea0e0e5d9db4ff170276677cc59ce94f57b5bee555265b41bfb45880908b3ca4ac3b41d93e4a3ccad52296
   languageName: node
   linkType: hard
 
@@ -1572,11 +1579,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@big-whale-labs/seal-hub-kit@npm:^0.0.21":
-  version: 0.0.21
-  resolution: "@big-whale-labs/seal-hub-kit@npm:0.0.21"
+"@big-whale-labs/seal-hub-kit@npm:^0.0.22":
+  version: 0.0.22
+  resolution: "@big-whale-labs/seal-hub-kit@npm:0.0.22"
   dependencies:
-    "@big-whale-labs/constants": ^0.1.41
+    "@big-whale-labs/constants": ^0.1.47
     "@big-whale-labs/seal-hub-contract": ^0.0.7
     "@ethereumjs/util": ^8.0.3
     "@zk-kit/incremental-merkle-tree": ^1.0.0
@@ -1584,7 +1591,7 @@ __metadata:
     circomlibjs: ^0.1.7
     elliptic: ^6.5.4
     ethers: ^5.7.2
-  checksum: 9e1e8a6ecd0da053226217d83cc827a14c345a9f77ac59c5d4d7b9b04c91ec536ff978d5cc949c013c22e6892b98e52cba27fdd56a044f05678703653b99da89
+  checksum: 0c26b9801b08e360131999a6b54318ba4c16d1972c5420e3526b4bf4074dad5adacec663999a44ee29b3a130fc92c93f02b629c49130ef0eaf54c9ddbf5e1002
   languageName: node
   linkType: hard
 
@@ -15863,7 +15870,7 @@ __metadata:
     "@big-whale-labs/constants": ^0.1.45
     "@big-whale-labs/frontend-utils": ^0.1.2
     "@big-whale-labs/seal-hub-contract": ^0.0.8
-    "@big-whale-labs/seal-hub-kit": ^0.0.21
+    "@big-whale-labs/seal-hub-kit": ^0.0.22
     "@big-whale-labs/stores": ^0.1.18
     "@esbuild-plugins/node-globals-polyfill": ^0.1.1
     "@esbuild-plugins/node-modules-polyfill": ^0.1.4
