@@ -25,10 +25,10 @@
     ]
   },
   "dependencies": {
-    "@big-whale-labs/constants": "^0.1.48",
+    "@big-whale-labs/constants": "^0.1.52",
     "@big-whale-labs/frontend-utils": "^0.1.2",
     "@big-whale-labs/seal-hub-contract": "^0.0.8",
-    "@big-whale-labs/seal-hub-kit": "^0.0.22",
+    "@big-whale-labs/seal-hub-kit": "^0.0.25",
     "@big-whale-labs/stores": "^0.1.18",
     "@material-tailwind/react": "^1.2.4",
     "@rainbow-me/rainbowkit": "^0.8.0",
@@ -46,7 +46,7 @@
   "devDependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
     "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
-    "@opengsn/provider": "^3.0.0-beta.1",
+    "@opengsn/provider": "^3.0.0-beta.3",
     "@preact/preset-vite": "^2.4.0",
     "@rollup/plugin-inject": "^5.0.2",
     "@types/elliptic": "^6.4.14",
@@ -79,9 +79,5 @@
     "vite-plugin-remove-console": "^1.3.0",
     "vite-tsconfig-paths": "^3.6.0"
   },
-  "packageManager": "yarn@3.3.0",
-  "resolutions": {
-    "@opengsn/provider/@opengsn/common": "patch:@opengsn/common@npm%3A3.0.0-beta.1#./.yarn/patches/@opengsn-common-npm-3.0.0-beta.1-79cb41f503.patch",
-    "@opengsn/provider/@opengsn/contracts": "3.0.0-beta.1"
-  }
+  "packageManager": "yarn@3.3.0"
 }
