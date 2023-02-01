@@ -10,8 +10,6 @@ export default function (provider: Web3Provider | providers.JsonRpcProvider) {
     provider: new WrapBridge(new Eip1193Bridge(provider.getSigner(), provider)),
     config: {
       paymasterAddress: env.VITE_GSN_PAYMASTER_CONTRACT_ADDRESS,
-      preferredRelays: [env.VITE_GSN_SC_RELAY],
-      blacklistedRelays: ['https://goerli.v3.opengsn.org/v3'],
     },
   }).init()
 }
