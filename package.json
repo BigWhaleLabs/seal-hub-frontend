@@ -28,7 +28,7 @@
     "@big-whale-labs/constants": "^0.1.52",
     "@big-whale-labs/frontend-utils": "^0.1.2",
     "@big-whale-labs/seal-hub-contract": "^0.0.8",
-    "@big-whale-labs/seal-hub-kit": "^0.0.23",
+    "@big-whale-labs/seal-hub-kit": "^0.0.25",
     "@big-whale-labs/stores": "^0.1.18",
     "@material-tailwind/react": "^1.2.4",
     "@rainbow-me/rainbowkit": "^0.8.0",
