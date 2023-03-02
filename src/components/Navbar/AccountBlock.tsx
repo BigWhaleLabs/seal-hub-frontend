@@ -3,7 +3,7 @@ import { useDisconnect, useNetwork } from 'wagmi'
 import AppStore from 'stores/AppStore'
 import Dropdown from 'components/Dropdown'
 import ENSAddress from 'components/Navbar/ENSAddress'
-import getEtherscanAddressUrl from 'helpers/getEtherscanAddressUrl'
+import getEtherscanUrl from 'helpers/getEtherscanUrl'
 
 const options = [
   { label: 'Etherscan', value: 'etherscan' },
@@ -29,7 +29,14 @@ export default function ({ address }: { address: string }) {
     } else {
       address &&
         chain &&
-        window.open(getEtherscanAddressUrl(address, chain.network), '_blank')
+        window.open(
+          getEtherscanUrl({
+            chainId: chain.id,
+            type: 'address',
+            value: address,
+          }),
+          '_blank'
+        )
     }
   }
 

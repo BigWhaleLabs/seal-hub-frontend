@@ -6,7 +6,7 @@ import Checkmark from 'icons/Checkmark'
 import SealStar from 'icons/SealStar'
 import StatusBlock from 'components/StatusBlock'
 import classnames, { alignItems, display, gap } from 'classnames/tailwind'
-import getEtherscanTxUrl from 'helpers/getEtherscanTxUrl'
+import getEtherscanUrl from 'helpers/getEtherscanUrl'
 
 const successText = classnames(
   display('flex'),
@@ -35,7 +35,11 @@ export default function () {
             <>
               Here’s a link to your{' '}
               <LinkText
-                url={getEtherscanTxUrl(commitmentTxHash, chain.network)}
+                url={getEtherscanUrl({
+                  chainId: chain.id,
+                  type: 'tx',
+                  value: commitmentTxHash,
+                })}
               >
                 commitment on etherscan
               </LinkText>
