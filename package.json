@@ -25,7 +25,7 @@
     ]
   },
   "dependencies": {
-    "@big-whale-labs/constants": "^0.1.52",
+    "@big-whale-labs/constants": "^0.1.75",
     "@big-whale-labs/frontend-utils": "^0.1.2",
     "@big-whale-labs/seal-hub-contract": "^0.0.8",
     "@big-whale-labs/seal-hub-kit": "^0.0.25",
