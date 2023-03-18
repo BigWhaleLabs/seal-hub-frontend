@@ -1,11 +1,12 @@
-import { chain, configureChains, createClient } from 'wagmi'
+import { configureChains, createClient } from 'wagmi'
 import { getDefaultWallets } from '@rainbow-me/rainbowkit'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
+import { mainnet } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
 import env from 'helpers/env'
 
 const { chains, provider } = configureChains(
-  [chain.mainnet],
+  [mainnet],
   [
     jsonRpcProvider({
       rpc: () => ({
@@ -24,6 +25,7 @@ const { connectors } = getDefaultWallets({
 export const chainList = chains
 
 export const wagmiClient = createClient({
+  autoConnect: true,
   connectors,
   provider,
 })
