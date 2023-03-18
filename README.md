@@ -24,4 +24,3 @@ Also, please, consider looking at `.env.sample`.
 - `yarn lint` — checks if the code is linted and formatted
 - `yarn start` — runs the app in the development mode
 - `yarn generate-css-types` — generates the CSS types for `tailwind-css`
-- `yarn download-zk-files` — will run a bash script that downloads ZK files into `public/zk`
