@@ -28,6 +28,7 @@ jobs:
           VITE_ENCRYPT_KEY: ${{ secrets.VITE_ENCRYPT_KEY }}
           VITE_SEAL_HUB_CONTRACT: ${{ secrets.VITE_SEAL_HUB_CONTRACT }}
           VITE_SEAL_HUB_PROVER_ADDRESS: ${{ secrets.VITE_SEAL_HUB_PROVER_ADDRESS }}
+          VITE_ETH_RPC: ${{ secrets.VITE_ETH_RPC }}
         run: yarn build
         shell: bash
       - name: Setup Pages

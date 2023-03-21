@@ -1,12 +1,12 @@
 import { configureChains, createClient } from 'wagmi'
 import { getDefaultWallets } from '@rainbow-me/rainbowkit'
+import { goerli } from 'wagmi/chains'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
-import { mainnet } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
 import env from 'helpers/env'
 
 const { chains, provider } = configureChains(
-  [mainnet],
+  [goerli],
   [
     jsonRpcProvider({
       rpc: () => ({
