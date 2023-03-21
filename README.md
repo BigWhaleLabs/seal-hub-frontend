@@ -15,6 +15,7 @@
 | `VITE_SEAL_HUB_PROVER_ADDRESS`        | Address of the centralized prover (defaults to @bwl/constants) |
 | `VITE_GSN_PAYMASTER_CONTRACT_ADDRESS` | GSN Paymaster contract address (defaults to @bwl/constants)    |
 | `VITE_GSN_SC_RELAY`                   | Relay URL (defaults to @bwl/constants)                         |
+| `VITE_ETH_RPC`                        | ETH RPC URL (defaults to @bwl/constants)                       |
 
 Also, please, consider looking at `.env.sample`.
 
