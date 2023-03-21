@@ -24,10 +24,10 @@
     ]
   },
   "dependencies": {
-    "@big-whale-labs/constants": "^0.1.81",
+    "@big-whale-labs/constants": "^0.1.82",
     "@big-whale-labs/frontend-utils": "^0.1.2",
-    "@big-whale-labs/seal-hub-contract": "^0.0.11",
-    "@big-whale-labs/seal-hub-kit": "^0.0.33",
+    "@big-whale-labs/seal-hub-contract": "^0.0.12",
+    "@big-whale-labs/seal-hub-kit": "^0.0.35",
     "@big-whale-labs/stores": "^0.1.18",
     "@ethersproject/experimental": "^5.7.0",
     "@material-tailwind/react": "^1.4.2",
