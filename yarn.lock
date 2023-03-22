@@ -44,7 +44,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.1.0, @babel/core@npm:^7.11.1, @babel/core@npm:^7.12.3, @babel/core@npm:^7.16.0, @babel/core@npm:^7.7.2, @babel/core@npm:^7.8.0, @babel/core@npm:^7.9.6":
+"@babel/core@npm:^7.20.2":
   version: 7.21.3
   resolution: "@babel/core@npm:7.21.3"
   dependencies:
@@ -3281,6 +3281,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@opengsn/common@patch:@opengsn/common@npm%3A3.0.0-beta.3#./.yarn/patches/@opengsn-common-npm-3.0.0-beta.3-79cb41f503.patch::locator=seal-hub-frontend%40workspace%3A.":
+  version: 3.0.0-beta.3
+  resolution: "@opengsn/common@patch:@opengsn/common@npm%3A3.0.0-beta.3#./.yarn/patches/@opengsn-common-npm-3.0.0-beta.3-79cb41f503.patch::version=3.0.0-beta.3&hash=357076&locator=seal-hub-frontend%40workspace%3A."
+  dependencies:
+    "@ethereumjs/common": ^2.6.5
+    "@ethereumjs/tx": ^3.2.0
+    "@metamask/eth-sig-util": ^4.0.1
+    "@opengsn/contracts": ^3.0.0-beta.3
+    "@types/bn.js": ^5.1.0
+    "@types/semver": ^7.3.4
+    axios: ^0.21.1
+    bignumber.js: ^9.0.2
+    bn.js: ^5.2.0
+    chalk: ^4.1.2
+    ethereumjs-util: ^7.1.0
+    ow: ^0.28.1
+    rlp: ^2.2.6
+    semver: ^7.3.2
+    web3: ^1.7.3
+    web3-core: ^1.7.3
+    web3-core-helpers: ^1.7.3
+    web3-eth: ^1.7.3
+    web3-eth-abi: ^1.7.3
+    web3-eth-contract: ^1.7.3
+    web3-utils: ^1.7.3
+  checksum: 8a90cf8b6cc638a8d527e364ab34eb13cd3218a7493bcfe20fca78954daac6254373622e1cff1e6bdd355fe13fc41c5df9ce3b9b805e786bb4b4b0efa57f5c1e
+  languageName: node
+  linkType: hard
+
 "@opengsn/contracts@npm:3.0.0-beta.3":
   version: 3.0.0-beta.3
   resolution: "@opengsn/contracts@npm:3.0.0-beta.3"
@@ -3288,6 +3317,15 @@ __metadata:
     "@openzeppelin/contracts": ^4.2.0
     web3-eth-contract: ^1.7.4
   checksum: 865342da21f9fe82c9cf6844c4380edd9929df43f2597f9ce27dac363012903ec3bac126ad29f94555311b83641b331ee83db038a55d57881ab3ad1e0d185528
+  languageName: node
+  linkType: hard
+
+"@opengsn/contracts@npm:^3.0.0-beta.3":
+  version: 3.0.0-beta.6
+  resolution: "@opengsn/contracts@npm:3.0.0-beta.6"
+  dependencies:
+    "@openzeppelin/contracts": ^4.2.0
+  checksum: 249976efe29853926552ca50c7e63226d9dff31f2ce4aa0f4744fcd9c169d249f7ea34d2f79128ba811528dd23f406d89d716d3b09dc6e447cb49d7e06e09094
   languageName: node
   linkType: hard
 
