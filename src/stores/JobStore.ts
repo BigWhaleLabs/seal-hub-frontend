@@ -10,8 +10,8 @@ export class JobStore extends PersistableStore {
   checkJob() {
     if (this.jobId && this.proverAddress) {
       void startGeneration({
-        proverAddress: this.proverAddress,
         generationWay: 'centralizedReloaded',
+        proverAddress: this.proverAddress,
       })
     }
   }

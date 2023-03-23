@@ -10,8 +10,8 @@ const loadingBlock = classnames(
 )
 
 export default function ({
-  loadingText,
   completed,
+  loadingText,
 }: {
   loadingText?: string
   completed?: boolean

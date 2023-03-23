@@ -21,7 +21,7 @@ export default function () {
 
   return (
     <div className={wrapper}>
-      <Highlighter text="What to do?" textCenter />
+      <Highlighter textCenter text="What to do?" />
       <BodyText centered>Refresh SealHub to start over</BodyText>
       <Link href="/">
         <Button fitContent onClick={() => setLocation('/')}>

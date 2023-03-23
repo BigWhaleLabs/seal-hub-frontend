@@ -6,9 +6,9 @@ import startGeneration from 'helpers/proofs/startGeneration'
 
 export default function ({
   caption,
+  disabled,
   generationWay,
   proverAddress,
-  disabled,
 }: {
   caption: string
   generationWay: GenerationWay
@@ -19,9 +19,9 @@ export default function ({
 
   return (
     <Button
-      disabled={disabled || !input}
       caption={caption}
-      onClick={() => startGeneration({ proverAddress, generationWay })}
+      disabled={disabled || !input}
+      onClick={() => startGeneration({ generationWay, proverAddress })}
     >
       Start ZKP generation
     </Button>

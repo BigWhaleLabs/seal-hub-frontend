@@ -35,8 +35,8 @@ const borderWrapper = classnames(
 )
 
 export default function ({
-  disabled,
   char,
+  disabled,
 }: {
   disabled?: boolean
   char: string

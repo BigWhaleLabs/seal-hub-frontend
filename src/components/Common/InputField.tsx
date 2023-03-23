@@ -37,8 +37,8 @@ const inputContainer = () =>
   )
 
 export default function ({
-  value,
   disabled,
+  value,
   ...rest
 }: {
   value?: string
@@ -47,9 +47,9 @@ export default function ({
 } & HTMLAttributes<HTMLInputElement>) {
   return (
     <input
-      value={value}
-      disabled={disabled}
       className={inputContainer()}
+      disabled={disabled}
+      value={value}
       {...rest}
     />
   )

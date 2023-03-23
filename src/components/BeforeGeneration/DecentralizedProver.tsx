@@ -46,8 +46,8 @@ export default function () {
         <BottomButtonsWrapper
           leftButton={
             <StartGenerationButton
-              generationWay="decentralized"
               caption="Happens locally in browser"
+              generationWay="decentralized"
             />
           }
           rightButton={
@@ -55,7 +55,7 @@ export default function () {
               className={tooltipWrapper}
               onClick={() => (AppStore.phase = Phase.readyCentralized)}
             >
-              <GradientText center animatedOnHover>
+              <GradientText animatedOnHover center>
                 Generate on a centralized prover
               </GradientText>
               <CentralizedProverHint text={tooltipText} />

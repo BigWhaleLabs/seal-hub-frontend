@@ -30,10 +30,10 @@ const headerText = (small?: boolean, mono?: boolean, centered?: boolean) =>
     textAlign({ 'text-center': centered })
   )
 export function HeaderText({
-  children,
-  small,
-  mono,
   centered,
+  children,
+  mono,
+  small,
 }: ChildrenProp & {
   small?: boolean
   mono?: boolean
@@ -49,15 +49,15 @@ const bodyText = (centered?: boolean) =>
     textAlign({ 'text-center': centered })
   )
 export function BodyText({
-  children,
   centered,
+  children,
 }: ChildrenProp & { centered?: boolean }) {
   return <p className={bodyText(centered)}>{children}</p>
 }
 
 export function AccentText({
-  color,
   children,
+  color,
 }: ChildrenProp & { color?: TTextColor }) {
   return <p className={textColor(color ?? 'text-accent')}>{children}</p>
 }
@@ -77,8 +77,8 @@ const gradientText = (center?: boolean, animatedOnHover?: boolean) =>
     textAlign({ 'text-center': center })
   )
 export function GradientText({
-  center,
   animatedOnHover,
+  center,
   children,
 }: ChildrenProp & { center?: boolean; animatedOnHover?: boolean }) {
   return (
@@ -89,9 +89,9 @@ export function GradientText({
 const statusText = (color?: 'success' | 'error', center?: boolean) =>
   classnames(
     textColor({
+      'text-error': color === 'error',
       'text-formal-accent': !color,
       'text-tertiary': color === 'success',
-      'text-error': color === 'error',
     }),
     fontSize('text-sm'),
     fontFamily('font-primary'),
@@ -99,9 +99,9 @@ const statusText = (color?: 'success' | 'error', center?: boolean) =>
     textAlign({ 'text-center': center })
   )
 export function StatusText({
+  center,
   children,
   color,
-  center,
 }: ChildrenProp & { color?: 'success' | 'error'; center?: boolean }) {
   return <span className={statusText(color, center)}>{children}</span>
 }
@@ -112,22 +112,22 @@ const linkText = classnames(
   cursor('cursor-pointer')
 )
 export function LinkText({
-  url,
+  children,
   internal,
   onClick,
-  children,
+  url,
 }: ChildrenProp & { url?: string; internal?: boolean; onClick?: () => void }) {
   if (url) {
     return internal ? (
-      <Link href={url} className={linkText}>
+      <Link className={linkText} href={url}>
         {children}
       </Link>
     ) : (
       <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
         className={linkText}
+        href={url}
+        rel="noopener noreferrer"
+        target="_blank"
       >
         {children}
       </a>
@@ -145,30 +145,30 @@ const footerLink = (active?: boolean) =>
   classnames(
     fontSize('text-sm'),
     fontWeight('font-semibold'),
-    textDecoration({ underline: active, 'hover:underline': true }),
+    textDecoration({ 'hover:underline': true, underline: active }),
     textColor({
-      'text-accent': active,
       'hover:text-accent': true,
+      'text-accent': active,
     }),
     transitionProperty('transition-colors')
   )
 export function FooterLink({
-  url,
-  internal,
   children,
+  internal,
+  url,
 }: ChildrenProp & { url: string; internal?: boolean }) {
   const isActive = checkIsLinkActive(url)
 
   return internal ? (
-    <Link href={url} className={footerLink(isActive)}>
+    <Link className={footerLink(isActive)} href={url}>
       {children}
     </Link>
   ) : (
     <a
-      href={url}
-      target={internal ? '_self' : '_blank'}
-      rel="noopener noreferrer"
       className={footerLink()}
+      href={url}
+      rel="noopener noreferrer"
+      target={internal ? '_self' : '_blank'}
     >
       {children}
     </a>
@@ -199,13 +199,13 @@ const socialLink = classnames(
   textDecoration('no-underline', 'active:underline'),
   textColor('hover:text-tertiary', 'text-formal-accent')
 )
-export function SocialLink({ url, children }: ChildrenProp & { url: string }) {
+export function SocialLink({ children, url }: ChildrenProp & { url: string }) {
   return (
     <a
       className={classNamesToString(socialLink, 'hover-tertiary')}
       href={url}
-      target="_blank"
       rel="noopener noreferrer"
+      target="_blank"
     >
       {children}
     </a>

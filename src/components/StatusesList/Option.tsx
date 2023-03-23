@@ -18,10 +18,10 @@ const option = classnames(
 )
 
 export default function ({
-  loading,
+  children,
   complete,
   error,
-  children,
+  loading,
 }: ChildrenProp & {
   loading?: boolean
   error?: boolean

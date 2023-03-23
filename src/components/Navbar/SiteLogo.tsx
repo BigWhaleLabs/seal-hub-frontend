@@ -30,9 +30,9 @@ const logoWrapper = classnames(
 )
 
 export default function ({
+  alpha,
   logo,
   logoText,
-  alpha,
 }: {
   logo: VNode
   logoText: VNode | string

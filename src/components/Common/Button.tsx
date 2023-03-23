@@ -33,8 +33,8 @@ import Spinner from 'icons/Spinner'
 const button = ({
   available,
   fitContent,
-  small,
   outlined,
+  small,
 }: {
   available?: boolean
   fitContent?: boolean
@@ -59,7 +59,7 @@ const button = ({
     fontSize('text-lg'),
     lineHeight('leading-6'),
     padding(
-      small ? { 'py-2': true, 'px-4': true } : { 'py-4': true, 'px-6': true }
+      small ? { 'px-4': true, 'py-2': true } : { 'px-6': true, 'py-4': true }
     ),
     textColor('text-primary-dark'),
     borderRadius('rounded-5xl'),
@@ -72,9 +72,9 @@ const button = ({
       'active:shadow-tertiary'
     ),
     boxShadow({
-      'shadow-2xl': primaryAvailable,
-      'hover:shadow-lg': primaryAvailable,
       'active:shadow-button-active': primaryAvailable,
+      'hover:shadow-lg': primaryAvailable,
+      'shadow-2xl': primaryAvailable,
     }),
     width({ 'w-fit': fitContent })
   )
@@ -103,11 +103,11 @@ interface ButtonProps {
 }
 
 export default function ({
-  loading,
-  disabled,
-  fitContent,
   caption,
   children,
+  disabled,
+  fitContent,
+  loading,
   outlined,
   small,
   ...rest
@@ -124,7 +124,7 @@ export default function ({
   return (
     <div className={buttonWrapper(!!caption, outlined)}>
       <button
-        className={button({ available, fitContent, small, outlined })}
+        className={button({ available, fitContent, outlined, small })}
         disabled={!available}
         {...rest}
       >

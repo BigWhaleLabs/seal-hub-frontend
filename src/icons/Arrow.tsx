@@ -6,7 +6,7 @@ import classnames, {
   width,
 } from 'classnames/tailwind'
 
-const arrowAnimation = ({ openDisabled, open }: ArrowProps) =>
+const arrowAnimation = ({ open, openDisabled }: ArrowProps) =>
   classnames(
     dropShadow('drop-shadow-secondary'),
     rotate({ 'rotate-180': !openDisabled && open }),
@@ -17,8 +17,8 @@ const svgInnerWrapper = (reversed?: boolean, reversedOnMobiles?: boolean) =>
     width('w-full'),
     height('h-auto'),
     rotate({
-      'rotate-180': reversed || reversedOnMobiles,
       'md:rotate-0': reversedOnMobiles,
+      'rotate-180': reversed || reversedOnMobiles,
     })
   )
 
@@ -32,10 +32,10 @@ interface ArrowProps {
 }
 
 export default function ({
-  pulseDisabled,
   horizontal,
-  openDisabled,
   open,
+  openDisabled,
+  pulseDisabled,
   reversed,
   reversedOnMobiles,
 }: ArrowProps) {
@@ -48,9 +48,9 @@ export default function ({
         viewBox={horizontal ? '0 0 7 14' : '0 0 14 7'}
         xmlns="http://www.w3.org/2000/svg"
         className={arrowAnimation({
-          pulseDisabled,
-          openDisabled,
           open,
+          openDisabled,
+          pulseDisabled,
         })}
       >
         <path
@@ -61,12 +61,12 @@ export default function ({
         />
         <defs>
           <linearGradient
+            gradientUnits="userSpaceOnUse"
             id={strokeId}
             x1="4"
-            y1="1.4"
             x2="4"
+            y1="1.4"
             y2="5.8"
-            gradientUnits="userSpaceOnUse"
           >
             <stop stop-color="#FF7BED" />
             <stop offset="1" stop-color="#FED823" />

@@ -13,9 +13,9 @@ interface TopCardProps {
 
 export default function ({
   label,
-  title,
-  subtitle,
   statusOrContent,
+  subtitle,
+  title,
 }: TopCardProps) {
   return (
     <Card accent bigGap>

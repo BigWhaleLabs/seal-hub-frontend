@@ -25,7 +25,7 @@ function SignError({
 }) {
   return (
     <div className={margin('mx-auto')}>
-      <Button onClick={onClick} fitContent>
+      <Button fitContent onClick={onClick}>
         Sign again
       </Button>
     </div>
@@ -36,7 +36,7 @@ export default function () {
   const provider = useProvider()
   const { address } = useAccount()
   const { data: signer } = useSigner()
-  const { flowState, error } = useSnapshot(AppStore)
+  const { error, flowState } = useSnapshot(AppStore)
   const startCheckingAddress = useCallback(
     async (signer: Signer) => {
       if (!address) {
@@ -95,13 +95,13 @@ export default function () {
     if (!AppStore.input && signer) void startCheckingAddress(signer)
   }, [signer, startCheckingAddress])
 
-  const { title, subTitle } = SigningStates[flowState]
+  const { subTitle, title } = SigningStates[flowState]
 
   return error ? (
     <StatusBlock
       error
-      subtitle={errorList[error]}
       content={<SignError onClick={reSignMessage} />}
+      subtitle={errorList[error]}
     />
   ) : (
     <StatusBlock loadingText={title} subtitle={subTitle} />

@@ -10,9 +10,9 @@ import continueFlowOnError from 'helpers/proofs/continueFlowOnError'
 const buttonsWrapper = classnames(display('flex'), gap('gap-x-4'))
 
 export default function ({
-  statusDescription,
-  hasError,
   children,
+  hasError,
+  statusDescription,
 }: ChildrenProp & {
   hasError?: boolean
   statusDescription?: string
