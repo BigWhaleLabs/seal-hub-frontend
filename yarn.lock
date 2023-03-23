@@ -1516,9 +1516,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@big-whale-labs/eslint-config-bwl@npm:^2.1.5":
-  version: 2.1.5
-  resolution: "@big-whale-labs/eslint-config-bwl@npm:2.1.5"
+"@big-whale-labs/eslint-config-bwl@npm:^2.1.6":
+  version: 2.1.6
+  resolution: "@big-whale-labs/eslint-config-bwl@npm:2.1.6"
   dependencies:
     "@typescript-eslint/eslint-plugin": ^5.56.0
     "@typescript-eslint/parser": ^5.56.0
@@ -1533,7 +1533,7 @@ __metadata:
     eslint-plugin-sort-keys-fix: ^1.1.2
     eslint-plugin-valtio: ^0.6.2
     typescript: ^5.0.2
-  checksum: 0faf06f20ad00987ecf36f4d4d4a0147ec17f8d2cc1711a853ba91d627f5f808e3fb07ef7eb9d7f11c2ec94dfdee5a30b0489d64fec28703487a28b8671f1d61
+  checksum: fb21f1cab1050ef097c6afd937d137417a3c4186493e1143c635369c854429b7c4745f341800501c4c67a5bab2cc30189274abd926b44ce0e6f3ac188b276edf
   languageName: node
   linkType: hard
 
@@ -16629,7 +16629,7 @@ __metadata:
   resolution: "seal-hub-frontend@workspace:."
   dependencies:
     "@big-whale-labs/constants": ^0.1.83
-    "@big-whale-labs/eslint-config-bwl": ^2.1.5
+    "@big-whale-labs/eslint-config-bwl": ^2.1.6
     "@big-whale-labs/frontend-utils": ^0.1.2
     "@big-whale-labs/prettier-config": ^1.1.3
     "@big-whale-labs/seal-hub-contract": ^0.0.13
