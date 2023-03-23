@@ -20,7 +20,7 @@ export default async function (
 ): Promise<Result> {
   const result = {} as Result
   while (!Object.keys(result).length) {
-    const { status, position, ecdsaResult, uPrecomputesResult } =
+    const { ecdsaResult, position, status, uPrecomputesResult } =
       await sendRequest(id, proverAddress)
     if (status === JobStatus.completed) {
       result.ecdsaResult = makeTransaction<ECDSAProofStruct>(ecdsaResult)

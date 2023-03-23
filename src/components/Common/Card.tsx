@@ -38,9 +38,9 @@ const basicCardStyles = ({ accent, bigGap }: CardProps) =>
   )
 
 export default function ({
-  children,
   accent,
   bigGap,
+  children,
 }: ChildrenProp & { accent?: boolean; bigGap?: boolean }) {
   return <div className={basicCardStyles({ accent, bigGap })}>{children}</div>
 }

@@ -8,7 +8,7 @@ import StatusesList from 'components/StatusesList'
 import checkIfStateCompleted from 'helpers/checkIfStateCompleted'
 
 export default function () {
-  const { flowState, error } = useSnapshot(AppStore)
+  const { error, flowState } = useSnapshot(AppStore)
   const { jobId, queuePosition = undefined } = useSnapshot(JobStore)
   const { subTitle } = SigningStates[flowState]
 
@@ -28,8 +28,8 @@ export default function () {
     <StatusesList hasError={isError} statusDescription={jobStatus}>
       {generatingFlow.map((state) => (
         <OptionStatus
-          isError={isError}
           isCompleted={checkIfStateCompleted(state)}
+          isError={isError}
           isLoading={AppStore.flowState === state}
           state={state}
         />

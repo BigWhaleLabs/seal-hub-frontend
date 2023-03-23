@@ -24,7 +24,7 @@ const container = classnames(
 
 export default function () {
   const { phase = Phase.init } = useSnapshot(AppStore)
-  const { label, title, subtitle, content } = PhaseData[phase]
+  const { content, label, subtitle, title } = PhaseData[phase]
   const { connector: activeConnector } = useAccount()
 
   useEffect(() => {
@@ -38,9 +38,9 @@ export default function () {
     <div className={container}>
       <TopCard
         label={label}
-        title={title}
-        subtitle={subtitle}
         statusOrContent={content}
+        subtitle={subtitle}
+        title={title}
       />
       {phase !== Phase.success && <BottomCard />}
     </div>

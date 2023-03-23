@@ -32,7 +32,7 @@ const big404 = classNamesToString(
 export default function () {
   return (
     <>
-      <TopCard subtitle={<TopBlock />} statusOrContent={<BottomBlock />} />
+      <TopCard statusOrContent={<BottomBlock />} subtitle={<TopBlock />} />
       <span className={big404}>404</span>
     </>
   )

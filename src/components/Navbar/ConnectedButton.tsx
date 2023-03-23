@@ -14,7 +14,7 @@ const NotConnected = () => (
 export default function () {
   return (
     <ConnectButton.Custom>
-      {({ account, chain, openConnectModal, mounted }) => {
+      {({ account, chain, mounted, openConnectModal }) => {
         if (!mounted) return <NotConnected />
 
         const connected = mounted && account && chain

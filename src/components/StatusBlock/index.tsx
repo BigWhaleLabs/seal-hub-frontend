@@ -11,12 +11,12 @@ const statusCardWrapper = classnames(
 )
 
 export default function ({
-  loadingText,
-  subtitle = 'Hang tight! We’re fetching the content.',
   completed,
-  errorBlock,
   content,
   error,
+  errorBlock,
+  loadingText,
+  subtitle = 'Hang tight! We’re fetching the content.',
 }: {
   loadingText?: string
   subtitle?: string | JSX.Element
@@ -29,7 +29,7 @@ export default function ({
     <div className={statusCardWrapper}>
       <StatusCard>
         {errorBlock}
-        <StatusLoading loadingText={loadingText} completed={completed} />
+        <StatusLoading completed={completed} loadingText={loadingText} />
         <StatusSubtitle error={error} subtitle={subtitle} />
       </StatusCard>
       {content}

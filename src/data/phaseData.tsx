@@ -10,46 +10,46 @@ import SuccessSubtitle from 'components/SuccessCard/SuccessSubtitle'
 
 const phaseData: { [key: string]: PhaseContext } = {
   [Phase.init]: {
+    content: <GettingStartedBlock />,
     label: '// 100% ANONYMOUS',
-    title: 'Verify, and stay anonymous',
     subtitle:
       'SealHub allows anyone to prove they own a wallet without exposing their identity—not even we’ll know who you are.',
-    content: <GettingStartedBlock />,
+    title: 'Verify, and stay anonymous',
   },
   [Phase.check]: {
+    content: <SigningFlow />,
     label: '// 100% ANONYMOUS',
-    title: 'Verify, and stay anonymous',
     subtitle:
       'SealHub allows anyone to prove they own a wallet without exposing their identity—not even we’ll know who you are.',
-    content: <SigningFlow />,
+    title: 'Verify, and stay anonymous',
   },
   [Phase.readyDecentralized]: {
-    label: 'Ready to anonymize',
-    title: 'Before you start ZKP generation',
-    subtitle: <DecentralizedProver />,
     content: <DecentralizedFlow />,
+    label: 'Ready to anonymize',
+    subtitle: <DecentralizedProver />,
+    title: 'Before you start ZKP generation',
   },
   [Phase.readyCentralized]: {
-    label: 'Ready to anonymize',
-    title: 'To continue, you’ll need to choose a path for ZKP generation',
-    subtitle: <CentralizedProver />,
     content: <CentralizedFlow />,
+    label: 'Ready to anonymize',
+    subtitle: <CentralizedProver />,
+    title: 'To continue, you’ll need to choose a path for ZKP generation',
   },
   [Phase.generate]: {
+    content: <DecentralizedFlow />,
     label: 'Ready to anonymize',
     title: 'Generating ZKP',
-    content: <DecentralizedFlow />,
   },
   [Phase.addToChain]: {
+    content: <DecentralizedFlow />,
     label: 'Ready to anonymize',
     title: 'Getting your commitment on chain',
-    content: <DecentralizedFlow />,
   },
   [Phase.success]: {
-    label: '// Complete',
-    title: 'Your wallet is verified',
-    subtitle: <SuccessSubtitle />,
     content: <SuccessCardBlock />,
+    label: '// Complete',
+    subtitle: <SuccessSubtitle />,
+    title: 'Your wallet is verified',
   },
 }
 

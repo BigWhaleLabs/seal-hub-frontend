@@ -22,7 +22,7 @@ const getProofByWay = {
     return fetchCentralizedProof(jobId, proverAddress)
   },
   centralizedReloaded: () => {
-    const { proverAddress, jobId } = JobStore
+    const { jobId, proverAddress } = JobStore
     if (!proverAddress || !jobId) throw new Error(ErrorType.missingData)
 
     return fetchCentralizedProof(jobId, proverAddress)

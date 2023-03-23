@@ -9,11 +9,11 @@ export default async function (input: ProofInput): Promise<ProofResult[]> {
   const [wasm, zkey, wasmUPrecomputes, zkeyUPrecomputes] =
     await getECDSACheckerFiles()
 
-  const { T, U, s, scalarForT, TPrecomputes, rInv } = input
+  const { T, TPrecomputes, U, rInv, s, scalarForT } = input
 
   return Promise.all([
     snarkjs.groth16.fullProve(
-      { T, U, s, scalarForT, TPrecomputes },
+      { T, TPrecomputes, U, s, scalarForT },
       wasm,
       zkey
     ),

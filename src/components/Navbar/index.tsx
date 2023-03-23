@@ -41,7 +41,7 @@ export default function ({ hideWalletPart }: { hideWalletPart?: boolean }) {
 
   return (
     <nav className={navbar(backgroundVisible, hideWalletPart)}>
-      <SiteLogo alpha logoText="SealHub" logo={<AnimatedLogo />} />
+      <SiteLogo alpha logo={<AnimatedLogo />} logoText="SealHub" />
       {!hideWalletPart && <RightBlock />}
     </nav>
   )

@@ -24,7 +24,7 @@ const container = classnames(
 export default function () {
   return (
     <ConnectButton.Custom>
-      {({ account, chain, openConnectModal, mounted }) => {
+      {({ account, chain, mounted, openConnectModal }) => {
         if (!mounted) return <Spinner />
         const connected = mounted && account && chain
         AppStore.connected = !!connected

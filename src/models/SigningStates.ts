@@ -17,34 +17,34 @@ export const generatingFlow = [
 
 export default {
   [States.error]: {
-    title: 'Error',
     subTitle: 'Try again',
+    title: 'Error',
   },
   [States.init]: {
-    title: 'Waiting for signature',
     subTitle: 'We’re requesting your signature to generate your commitment.',
+    title: 'Waiting for signature',
   },
   [States.checkCommitment]: {
-    title: 'Checking for existing commitment...',
     completedText: 'Commitment generated',
     subTitle: 'Hang tight!',
+    title: 'Checking for existing commitment...',
   },
   [States.readyProofGenerating]: {
-    title: 'Wait for approve...',
     subTitle: 'Ready to begin...',
+    title: 'Wait for approve...',
   },
   [States.generateProof]: {
-    title: 'Generate proof...',
     beforeStart: 'Generate zero knowledge proof',
-    loadingText: 'Generating zero knowledge proof',
     completedText: 'ZKP generated',
+    loadingText: 'Generating zero knowledge proof',
     subTitle: 'Hang tight, this whole process may take 5-20 minutes.',
+    title: 'Generate proof...',
   },
   [States.generateCommitment]: {
-    title: 'Generate commitment...',
     beforeStart: 'Add to chain',
     loadingText: 'Adding to blockchain',
     subTitle: 'Almost there',
+    title: 'Generate commitment...',
   },
 } as {
   [key in States]: StateObject

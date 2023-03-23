@@ -10,6 +10,6 @@ export default async function (signer: Signer) {
     return { baseMessage, signature }
   } catch (e) {
     console.error(e)
-    throw { type: ErrorType.signature, error: e }
+    throw { error: e, type: ErrorType.signature }
   }
 }

@@ -18,15 +18,15 @@ export default function () {
       </BodyText>
       <InputField
         pattern={urlWithBackslash.source}
+        placeholder="Paste prover URL..."
         value={value}
         onChange={({ currentTarget }) => setValue(currentTarget.value)}
-        placeholder="Paste prover URL..."
       />
       <StartGenerationButton
         caption="Generates on your own server"
-        proverAddress={value}
         disabled={!isUrl(value)}
         generationWay="centralized"
+        proverAddress={value}
       />
       <StatusesList>
         <Option complete={true}>Commitment generated</Option>

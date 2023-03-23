@@ -32,10 +32,10 @@ export default function () {
         <Root>
           <Router hook={useHashLocation}>
             <Switch>
-              <Route path="/" component={Main} />
-              <Route path="/terms" component={Terms} />
-              <Route path="/privacy" component={Privacy} />
-              <Route path="/404" component={NotFound} />
+              <Route component={Main} path="/" />
+              <Route component={Terms} path="/terms" />
+              <Route component={Privacy} path="/privacy" />
+              <Route component={NotFound} path="/404" />
               <Route path="">
                 <Redirect to="/404" />
               </Route>

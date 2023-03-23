@@ -7,6 +7,8 @@ const placeholder = <div className={displayFrom('xs')}>SealVerse</div>
 export default function () {
   return (
     <Dropdown
+      fitToItemSize
+      withArrow
       currentValue={window.location.origin}
       options={sealVerseData}
       staticPlaceholder={placeholder}
@@ -15,8 +17,6 @@ export default function () {
           window.open(value, '_blank')
         }
       }}
-      fitToItemSize
-      withArrow
     />
   )
 }
