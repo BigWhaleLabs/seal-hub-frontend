@@ -3,6 +3,7 @@ import { proxy } from 'valtio'
 import startGeneration from 'helpers/proofs/startGeneration'
 
 export class JobStore extends PersistableStore {
+  showCookie = true
   jobId?: string
   proverAddress?: string
   queuePosition?: number

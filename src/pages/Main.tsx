@@ -4,6 +4,7 @@ import { useEffect } from 'preact/hooks'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
 import BottomCard from 'components/CardsLayout/BottomCard'
+import Cookie from 'components/CardsLayout/Cookie'
 import PhaseData from 'data/phaseData'
 import TopCard from 'components/CardsLayout/TopCard'
 import classnames, {
@@ -43,6 +44,7 @@ export default function () {
         title={title}
       />
       {phase !== Phase.success && <BottomCard />}
+      <Cookie />
     </div>
   )
 }

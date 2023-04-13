@@ -19,6 +19,7 @@
   --primary-brighter: #bff5fa;
   --primary-background: #1a0259;
   --primary-semi-dimmed: #4b61d5;
+  --primary-semi-transparent: rgba(21, 161, 252, 0.5);
 }
 
 * {
