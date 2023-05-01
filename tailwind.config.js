@@ -41,6 +41,7 @@ module.exports = {
         'primary-brighter': 'var(--primary-brighter)',
         'primary-background': 'var(--primary-background)',
         'primary-semi-dimmed': 'var(--primary-semi-dimmed)',
+        'primary-semi-transparent': 'var(--primary-semi-transparent)',
         'primary-dimmed': 'var(--primary-dimmed)',
       },
       borderRadius: {
@@ -70,6 +71,7 @@ module.exports = {
       },
       maxWidth: {
         14: '3.5rem',
+        cookie: '25.625rem',
       },
       strokeWidth: {
         1.5: '1.5',

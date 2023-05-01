@@ -288,6 +288,7 @@ export type TBackgroundColor =
   | 'bg-primary-brighter'
   | 'bg-primary-background'
   | 'bg-primary-semi-dimmed'
+  | 'bg-primary-semi-transparent'
   | 'bg-primary-dimmed'
 
 export type TBackgroundPosition =
@@ -1026,6 +1027,9 @@ export type TGradientColorStops =
   | 'from-primary-semi-dimmed'
   | 'via-primary-semi-dimmed'
   | 'to-primary-semi-dimmed'
+  | 'from-primary-semi-transparent'
+  | 'via-primary-semi-transparent'
+  | 'to-primary-semi-transparent'
   | 'from-primary-dimmed'
   | 'via-primary-dimmed'
   | 'to-primary-dimmed'
@@ -2691,6 +2695,11 @@ export type TBorderColor =
   | 'border-r-primary-semi-dimmed'
   | 'border-b-primary-semi-dimmed'
   | 'border-l-primary-semi-dimmed'
+  | 'border-primary-semi-transparent'
+  | 'border-t-primary-semi-transparent'
+  | 'border-r-primary-semi-transparent'
+  | 'border-b-primary-semi-transparent'
+  | 'border-l-primary-semi-transparent'
   | 'border-primary-dimmed'
   | 'border-t-primary-dimmed'
   | 'border-r-primary-dimmed'
@@ -3339,6 +3348,7 @@ export type TRingColor =
   | 'ring-primary-brighter'
   | 'ring-primary-background'
   | 'ring-primary-semi-dimmed'
+  | 'ring-primary-semi-transparent'
   | 'ring-primary-dimmed'
 
 export type TRingWidth =
@@ -3606,6 +3616,7 @@ export type TRingOffsetColor =
   | 'ring-offset-primary-brighter'
   | 'ring-offset-primary-background'
   | 'ring-offset-primary-semi-dimmed'
+  | 'ring-offset-primary-semi-transparent'
   | 'ring-offset-primary-dimmed'
 
 export type TRingOffsetWidth =
@@ -3867,6 +3878,7 @@ export type TOutlineColor =
   | 'outline-primary-brighter'
   | 'outline-primary-background'
   | 'outline-primary-semi-dimmed'
+  | 'outline-primary-semi-transparent'
   | 'outline-primary-dimmed'
 
 export type TBorders =
@@ -4181,6 +4193,7 @@ export type TBoxShadowColor =
   | 'shadow-primary-brighter'
   | 'shadow-primary-background'
   | 'shadow-primary-semi-dimmed'
+  | 'shadow-primary-semi-transparent'
   | 'shadow-primary-dimmed'
 
 export type TOpacity =
@@ -5764,6 +5777,7 @@ export type TCaretColor =
   | 'caret-primary-brighter'
   | 'caret-primary-background'
   | 'caret-primary-semi-dimmed'
+  | 'caret-primary-semi-transparent'
   | 'caret-primary-dimmed'
 
 export type TWillChange =
@@ -6011,6 +6025,7 @@ export type TAccentColor =
   | 'accent-primary-brighter'
   | 'accent-primary-background'
   | 'accent-primary-semi-dimmed'
+  | 'accent-primary-semi-transparent'
   | 'accent-primary-dimmed'
 
 export type TScrollPadding =
@@ -7137,6 +7152,7 @@ export type TMaxWidth =
   | 'max-w-screen-lg'
   | 'max-w-screen-xl'
   | 'max-w-screen-2xl'
+  | 'max-w-cookie'
   | 'max-w-screen-xs'
 
 export type THeight =
@@ -7297,6 +7313,7 @@ export type TFill =
   | 'fill-primary-brighter'
   | 'fill-primary-background'
   | 'fill-primary-semi-dimmed'
+  | 'fill-primary-semi-transparent'
   | 'fill-primary-dimmed'
 
 export type TStroke =
@@ -7339,6 +7356,7 @@ export type TStroke =
   | 'stroke-primary-brighter'
   | 'stroke-primary-background'
   | 'stroke-primary-semi-dimmed'
+  | 'stroke-primary-semi-transparent'
   | 'stroke-primary-dimmed'
 
 export type TStrokeWidth =
@@ -7871,6 +7889,7 @@ export type TPlaceholderColor =
   | 'placeholder-primary-brighter'
   | 'placeholder-primary-background'
   | 'placeholder-primary-semi-dimmed'
+  | 'placeholder-primary-semi-transparent'
   | 'placeholder-primary-dimmed'
 
 export type TPlaceholderOpacity =
@@ -8128,6 +8147,7 @@ export type TTextColor =
   | 'text-primary-brighter'
   | 'text-primary-background'
   | 'text-primary-semi-dimmed'
+  | 'text-primary-semi-transparent'
   | 'text-primary-dimmed'
 
 export type TTextOpacity =
@@ -8425,6 +8445,7 @@ export type TTextDecorationColor =
   | 'decoration-primary-brighter'
   | 'decoration-primary-background'
   | 'decoration-primary-semi-dimmed'
+  | 'decoration-primary-semi-transparent'
   | 'decoration-primary-dimmed'
 
 export type TTextDecorationThickness =

@@ -24,7 +24,7 @@ export default function () {
     <div className={wrapper}>
       {!connected && (
         <>
-          <Highlighter text="Getting Started" />
+          <Highlighter textCenter text="Getting Started" />
           <BodyText centered>
             Connect a wallet to generate a commitment and add on chain.
           </BodyText>
