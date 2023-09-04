@@ -30,7 +30,6 @@ export default function () {
 
   useEffect(() => {
     if (activeConnector) {
-      activeConnector.on('change', () => AppStore.resetOnDisconnect())
       activeConnector.on('disconnect', () => AppStore.resetOnDisconnect())
     }
   }, [activeConnector])

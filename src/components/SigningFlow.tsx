@@ -6,7 +6,12 @@ import {
   isCommitmentRegistered,
 } from '@big-whale-labs/seal-hub-kit'
 import { margin } from 'classnames/tailwind'
-import { useAccount, useProvider, useSigner } from 'wagmi'
+import {
+  useAccount,
+  usePublicClient,
+  useWalletClient,
+  WalletClient,
+} from 'wagmi'
 import { useCallback, useEffect } from 'preact/hooks'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
@@ -17,6 +22,7 @@ import generateInput from 'helpers/generateInput'
 import isMobileDevice from 'helpers/isMobile'
 import signMessage from 'helpers/signMessage'
 import supportsModuleWorkers from 'helpers/supportsModuleWorkers'
+import { Web3Provider } from '@ethersproject/providers'
 
 function SignError({
   onClick,
@@ -33,12 +39,12 @@ function SignError({
 }
 
 export default function () {
-  const provider = useProvider()
+  const publicClient = usePublicClient()
   const { address } = useAccount()
-  const { data: signer } = useSigner()
+  const { data: signer } = useWalletClient()
   const { error, flowState } = useSnapshot(AppStore)
   const startCheckingAddress = useCallback(
-    async (signer: Signer) => {
+    async (signer: WalletClient) => {
       if (!address) {
         AppStore.error = ErrorType.connection
         return
@@ -71,7 +77,10 @@ export default function () {
 
         if (
           AppStore.commitment &&
-          (await isCommitmentRegistered(AppStore.commitment, provider))
+          (await isCommitmentRegistered(
+            AppStore.commitment,
+            new Web3Provider(publicClient.transport)
+          ))
         ) {
           AppStore.phase = Phase.success
           return
@@ -86,7 +95,7 @@ export default function () {
         console.error(e)
       }
     },
-    [address, provider]
+    [address, publicClient]
   )
   const reSignMessage = async () =>
     signer && (await startCheckingAddress(signer))

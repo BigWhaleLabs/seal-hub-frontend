@@ -13,7 +13,7 @@ export default cleanEnv(import.meta.env, {
     default: 'SECRET_KEY',
   }),
   VITE_ETH_NETWORK: str({ default: ETH_NETWORK }),
-  VITE_ETH_RPC: str({ default: ETH_RPC }),
+  VITE_ETH_RPC: str(),
   VITE_GSN_PAYMASTER_CONTRACT_ADDRESS: str({
     default: GSN_PAYMASTER_CONTRACT_ADDRESS,
   }),
@@ -22,4 +22,5 @@ export default cleanEnv(import.meta.env, {
   VITE_SEAL_HUB_PROVER_ADDRESS: str({
     default: SEAL_HUB_PROVER_ADDRESS,
   }),
+  VITE_WALLETCONNECT_PROJECT_ID: str(),
 })

@@ -1,12 +1,12 @@
-import { configureChains, createClient } from 'wagmi'
+import { configureChains, createConfig } from 'wagmi'
 import { getDefaultWallets } from '@rainbow-me/rainbowkit'
-import { goerli } from 'wagmi/chains'
+import { goerli, mainnet, polygon, avalanche } from 'wagmi/chains'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { publicProvider } from 'wagmi/providers/public'
 import env from 'helpers/env'
 
-const { chains, provider } = configureChains(
-  [goerli],
+const { chains, publicClient } = configureChains(
+  [mainnet],
   [
     jsonRpcProvider({
       rpc: () => ({
@@ -19,13 +19,14 @@ const { chains, provider } = configureChains(
 
 const { connectors } = getDefaultWallets({
   appName: 'SealHub',
+  projectId: env.VITE_WALLETCONNECT_PROJECT_ID,
   chains,
 })
 
 export const chainList = chains
 
-export const wagmiClient = createClient({
+export const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
-  provider,
+  publicClient,
 })
