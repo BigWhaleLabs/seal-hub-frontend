@@ -7,9 +7,8 @@ export default function (ref: RefObject<HTMLDivElement>, callback: () => void) {
         event.target &&
         event.target instanceof Node &&
         ref.current?.contains(event.target)
-      ) {
+      )
         return
-      }
 
       callback()
     }

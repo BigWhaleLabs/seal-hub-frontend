@@ -1,7 +1,6 @@
 import { ErrorType } from 'models/ErrorType'
-import { Signer } from 'ethers'
-import { getMessage } from '@big-whale-labs/seal-hub-kit'
 import { WalletClient } from 'wagmi'
+import { getMessage } from '@big-whale-labs/seal-hub-kit'
 
 export default async function (signer: WalletClient) {
   try {

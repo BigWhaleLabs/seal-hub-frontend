@@ -1,17 +1,17 @@
 import { ErrorType, ThrownError, errorList } from 'models/ErrorType'
 import { Phase } from 'models/FlowPhase'
-import { Signer } from 'ethers'
+import {
+  WalletClient,
+  useAccount,
+  usePublicClient,
+  useWalletClient,
+} from 'wagmi'
+import { Web3Provider } from '@ethersproject/providers'
 import {
   getCommitmentFromSignature,
   isCommitmentRegistered,
 } from '@big-whale-labs/seal-hub-kit'
 import { margin } from 'classnames/tailwind'
-import {
-  useAccount,
-  usePublicClient,
-  useWalletClient,
-  WalletClient,
-} from 'wagmi'
 import { useCallback, useEffect } from 'preact/hooks'
 import { useSnapshot } from 'valtio'
 import AppStore from 'stores/AppStore'
@@ -22,7 +22,6 @@ import generateInput from 'helpers/generateInput'
 import isMobileDevice from 'helpers/isMobile'
 import signMessage from 'helpers/signMessage'
 import supportsModuleWorkers from 'helpers/supportsModuleWorkers'
-import { Web3Provider } from '@ethersproject/providers'
 
 function SignError({
   onClick,
@@ -65,9 +64,7 @@ export default function () {
             typeof import('../helpers/generateInput')
           >(new URL('../helpers/generateInput', import.meta.url))
           AppStore.input = await generateInput(signature, baseMessage)
-        } else {
-          AppStore.input = generateInput(signature, baseMessage)
-        }
+        } else AppStore.input = generateInput(signature, baseMessage)
 
         if (!AppStore.input) return
         AppStore.commitment = await getCommitmentFromSignature(
