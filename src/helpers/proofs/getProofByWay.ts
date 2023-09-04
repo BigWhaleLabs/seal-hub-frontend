@@ -11,9 +11,9 @@ const getProofByWay = {
     if (
       !proverAddress.startsWith('https://') &&
       !proverAddress.startsWith('http://')
-    ) {
+    )
       proverAddress = `https://${proverAddress}`
-    }
+
     const { input } = AppStore
     if (!input) throw new Error(ErrorType.missingData)
     JobStore.proverAddress = proverAddress

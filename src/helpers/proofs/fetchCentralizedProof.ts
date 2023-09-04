@@ -28,9 +28,9 @@ export default async function (
         makeTransaction<UPrecomputesProofStruct>(uPrecomputesResult)
       JobStore.queuePosition = undefined
     }
-    if (status === JobStatus.scheduled || status === JobStatus.running) {
+    if (status === JobStatus.scheduled || status === JobStatus.running)
       JobStore.queuePosition = position
-    }
+
     if (status === JobStatus.failed || status === JobStatus.cancelled) {
       JobStore.queuePosition = undefined
       throw new Error(ErrorType.commitment)

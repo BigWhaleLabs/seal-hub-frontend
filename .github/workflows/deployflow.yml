@@ -29,6 +29,7 @@ jobs:
           VITE_SEAL_HUB_CONTRACT: ${{ secrets.VITE_SEAL_HUB_CONTRACT }}
           VITE_SEAL_HUB_PROVER_ADDRESS: ${{ secrets.VITE_SEAL_HUB_PROVER_ADDRESS }}
           VITE_ETH_RPC: ${{ secrets.VITE_ETH_RPC }}
+          VITE_WALLETCONNECT_PROJECT_ID: ${{ secrets.VITE_WALLETCONNECT_PROJECT_ID }}
         run: yarn build
         shell: bash
       - name: Setup Pages

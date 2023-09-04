@@ -1,11 +1,11 @@
 import { ErrorType } from 'models/ErrorType'
-import { Signer } from 'ethers'
+import { WalletClient } from 'wagmi'
 import { getMessage } from '@big-whale-labs/seal-hub-kit'
 
-export default async function (signer: Signer) {
+export default async function (signer: WalletClient) {
   try {
     const baseMessage = getMessage()
-    const signature = await signer.signMessage(baseMessage)
+    const signature = await signer.signMessage({ message: baseMessage })
 
     return { baseMessage, signature }
   } catch (e) {
